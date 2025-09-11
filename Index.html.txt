@@ -311,6 +311,137 @@
         </div>
     </section>
 
+    <!-- Introduction Section -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <!-- Kurdish Content -->
+            <div class="lang-content active rtl" data-lang="ku">
+                <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 2rem;">پێشەکی</h2>
+                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
+                            لە سەردەمی تەکنەلۆژیا و زانیاری دیجیتاڵدا، پێویستی بە کتێبخانەیەکی ئەلیکترۆنی مۆدێرن و کارا لە پەروەردە بەرزدا زۆر گرنگە. ئەم پڕۆژەیە بە مەبەستی ئاسانکاری گەڕان و دەستڕاگەیشتن بە سەرچاوە زانستییەکان لە کۆلێژی زانست دروست کراوە.
+                        </p>
+                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
+                            خوێندکاران دەتوانن بە ئاسانی و لەڕێگەی QR کۆدەوە دەستیان بە کتێبخانەی ئەلیکترۆنی بگات و بە شێوەیەکی ڕێکخراو کتێب و سەرچاوە زانستییەکانی بەشە جیاوازەکان ببینن. ئەم سیستەمە مۆدێرنە بۆ خوێندکارانی بەشەکانی بایەلۆجی، کیمیا، فیزیا و زانستی تاقیگەی پزیشکی دامەزراوە.
+                        </p>
+                        <div style="background: rgba(102, 126, 234, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.5rem;">ئامانجەکانی پڕۆژەکە:</h3>
+                            <ul style="list-style: none; padding: 0; color: #555; font-size: 1.1rem; line-height: 1.8;">
+                                <li style="margin-bottom: 0.5rem;">📚 دەستڕاگەیشتنی ئاسان بە سەرچاوە زانستییەکان</li>
+                                <li style="margin-bottom: 0.5rem;">🔍 گەڕانی ئەفەکتیڤ لە بەشە جیاوازەکان</li>
+                                <li style="margin-bottom: 0.5rem;">📱 بەکارهێنانی تەکنەلۆژیای QR کۆد</li>
+                                <li style="margin-bottom: 0.5rem;">🌐 پشتگیری لە سێ زمان (کوردی، ئینگلیزی، عەرەبی)</li>
+                                <li>💡 پەرەپێدانی فێربوون و لێکۆڵینەوە</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 107, 107, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                            <h3 style="color: #ff6b6b; margin-bottom: 1rem; font-size: 1.5rem;">ئامادەکراوە لەلایەن:</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">ژیاو یوسف حسێن</h4>
+                                    <p style="color: #666; margin: 0;">خوێندکاری بەشی بایەلۆجی</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">نیار قادر ڕەسوڵ</h4>
+                                    <p style="color: #666; margin: 0;">خوێندکاری بەشی بایەلۆجی</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">محمود خدر فقێ ڕەسوڵ ئامانج</h4>
+                                    <p style="color: #666; margin: 0;">خوێندکاری بەشی بایەلۆجی</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content ltr" data-lang="en">
+                <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 2rem;">Introduction</h2>
+                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                            In the era of technology and digital information, the need for a modern and efficient electronic library in higher education is very important. This project has been created to facilitate searching and accessing scientific resources at the College of Science.
+                        </p>
+                        <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                            Students can easily access the electronic library through QR codes and view books and scientific resources of different departments in an organized manner. This modern system has been established for students of Biology, Chemistry, Physics, and Medical Laboratory Science departments.
+                        </p>
+                        <div style="background: rgba(102, 126, 234, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.5rem;">Project Objectives:</h3>
+                            <ul style="list-style: none; padding: 0; color: #555; font-size: 1.1rem; line-height: 1.8;">
+                                <li style="margin-bottom: 0.5rem;">📚 Easy access to scientific resources</li>
+                                <li style="margin-bottom: 0.5rem;">🔍 Effective searching across different departments</li>
+                                <li style="margin-bottom: 0.5rem;">📱 Utilizing QR code technology</li>
+                                <li style="margin-bottom: 0.5rem;">🌐 Support for three languages (Kurdish, English, Arabic)</li>
+                                <li>💡 Enhancing learning and research</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 107, 107, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                            <h3 style="color: #ff6b6b; margin-bottom: 1rem; font-size: 1.5rem;">Prepared by:</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">Zhyaw Yusif Hasan</h4>
+                                    <p style="color: #666; margin: 0;">Biology Department Student</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">Nyar Qadir Rasul</h4>
+                                    <p style="color: #666; margin: 0;">Biology Department Student</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">Mahmoud Khidr Faqi Rasul Amanj</h4>
+                                    <p style="color: #666; margin: 0;">Biology Department Student</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arabic Content -->
+            <div class="lang-content rtl" data-lang="ar">
+                <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 2rem;">مقدمة</h2>
+                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
+                            في عصر التكنولوجيا والمعلومات الرقمية، تعتبر الحاجة إلى مكتبة إلكترونية حديثة وفعالة في التعليم العالي أمراً بالغ الأهمية. تم إنشاء هذا المشروع لتسهيل البحث والوصول إلى الموارد العلمية في كلية العلوم.
+                        </p>
+                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
+                            يمكن للطلاب الوصول بسهولة إلى المكتبة الإلكترونية من خلال رموز QR ومشاهدة الكتب والموارد العلمية للأقسام المختلفة بطريقة منظمة. تم إنشاء هذا النظام الحديث لطلاب أقسام علوم الحياة والكيمياء والفيزياء وعلوم المختبرات الطبية.
+                        </p>
+                        <div style="background: rgba(102, 126, 234, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.5rem;">أهداف المشروع:</h3>
+                            <ul style="list-style: none; padding: 0; color: #555; font-size: 1.1rem; line-height: 1.8;">
+                                <li style="margin-bottom: 0.5rem;">📚 سهولة الوصول إلى الموارد العلمية</li>
+                                <li style="margin-bottom: 0.5rem;">🔍 البحث الفعال عبر الأقسام المختلفة</li>
+                                <li style="margin-bottom: 0.5rem;">📱 استخدام تقنية رموز QR</li>
+                                <li style="margin-bottom: 0.5rem;">🌐 دعم ثلاث لغات (الكردية، الإنجليزية، العربية)</li>
+                                <li>💡 تعزيز التعلم والبحث</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 107, 107, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
+                            <h3 style="color: #ff6b6b; margin-bottom: 1rem; font-size: 1.5rem;">إعداد:</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">ژیاو یوسف حسێن</h4>
+                                    <p style="color: #666; margin: 0;">طالب قسم علوم الحياة</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">نیار قادر ڕەسوڵ</h4>
+                                    <p style="color: #666; margin: 0;">طالب قسم علوم الحياة</p>
+                                </div>
+                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
+                                    <h4 style="color: #333; margin-bottom: 0.5rem;">محمود خدر فقێ ڕەسوڵ ئامانج</h4>
+                                    <p style="color: #666; margin: 0;">طالب قسم علوم الحياة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="library-sections">
         <div class="container">
             <div class="main-library">

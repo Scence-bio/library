@@ -2,39 +2,70 @@
 <html lang="ku">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین</title>
     <style>
+        /* Base Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-            direction: rtl;
+        /* Root Variables for Better Scaling */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --border-radius: 15px;
+            --container-padding: clamp(1rem, 4vw, 2rem);
+            --section-padding: clamp(2rem, 8vw, 4rem);
         }
 
+        /* Typography System */
+        html {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: 480px) {
+            html { font-size: 14px; }
+        }
+
+        @media screen and (min-width: 1200px) {
+            html { font-size: 18px; }
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+            direction: rtl;
+            background-color: var(--white);
+        }
+
+        /* Responsive Container */
         .container {
-            max-width: 1400px;
+            max-width: min(1200px, calc(100% - 2rem));
             margin: 0 auto;
-            padding: 0 clamp(1rem, 5vw, 3rem);
+            padding: 0 var(--container-padding);
             width: 100%;
         }
 
         /* Header - Fully Responsive */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
             padding: clamp(0.5rem, 2vw, 1rem) 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
         }
 
         .header-content {
@@ -42,11 +73,11 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: clamp(0.5rem, 2vw, 1rem);
+            gap: 1rem;
         }
 
         .logo {
-            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: bold;
             flex: 1;
             min-width: 200px;
@@ -54,22 +85,21 @@
 
         .lang-switcher {
             display: flex;
-            gap: clamp(0.3rem, 1vw, 0.5rem);
+            gap: clamp(0.5rem, 2vw, 1rem);
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .lang-btn {
             background: rgba(255,255,255,0.2);
             border: none;
-            color: white;
-            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 2vw, 1rem);
+            color: var(--white);
+            padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: clamp(0.8rem, 2vw, 1rem);
-            min-height: 44px;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
             min-width: 60px;
+            text-align: center;
         }
 
         .lang-btn:hover, .lang-btn.active {
@@ -77,15 +107,34 @@
             transform: translateY(-2px);
         }
 
+        /* Mobile Header Adjustments */
+        @media screen and (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                order: 1;
+                width: 100%;
+            }
+            
+            .lang-switcher {
+                order: 2;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
         /* Hero Section - Fully Responsive */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: clamp(2rem, 8vw, 4rem) 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: var(--section-padding) 0;
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: clamp(300px, 50vh, 600px);
+            min-height: clamp(400px, 60vh, 600px);
             display: flex;
             align-items: center;
         }
@@ -95,7 +144,9 @@
             position: absolute;
             width: 200%;
             height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                              radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 100px 100px;
             animation: float 20s infinite linear;
             top: -50%;
             left: -50%;
@@ -113,20 +164,20 @@
         }
 
         .hero h1 {
-            font-size: clamp(1.5rem, 6vw, 3rem);
+            font-size: clamp(1.8rem, 6vw, 3rem);
             margin-bottom: clamp(1rem, 3vw, 2rem);
             animation: fadeInUp 1s ease-out;
+            font-weight: 700;
             line-height: 1.2;
         }
 
         .hero p {
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            margin-bottom: clamp(1rem, 4vw, 2rem);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
             animation: fadeInUp 1s ease-out 0.2s both;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
         }
 
         @keyframes fadeInUp {
@@ -140,81 +191,83 @@
             }
         }
 
-        /* Introduction Section - Fully Responsive */
+        /* Introduction Section - Responsive */
         .intro-section {
-            padding: clamp(2rem, 8vw, 4rem) 0;
-            background: white;
+            padding: var(--section-padding) 0;
+            background: var(--white);
         }
 
         .intro-content {
             text-align: center;
-            max-width: 1000px;
+            max-width: min(900px, 100%);
             margin: 0 auto;
         }
 
         .intro-content h2 {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            color: #333;
-            margin-bottom: clamp(1rem, 4vw, 2rem);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
         }
 
-        .intro-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        .intro-card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e9ecef 100%);
             padding: clamp(1.5rem, 5vw, 3rem);
-            border-radius: clamp(10px, 3vw, 20px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: clamp(1rem, 3vw, 2rem);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
         }
 
-        .intro-text {
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-            line-height: 1.8;
-            color: #555;
+        .intro-card p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: clamp(1.6, 0.05vw + 1.5, 2);
+            color: var(--text-light);
             margin-bottom: clamp(1rem, 3vw, 2rem);
+            text-align: justify;
         }
 
-        .objectives-box {
+        .objectives-card {
             background: rgba(102, 126, 234, 0.1);
             padding: clamp(1rem, 3vw, 2rem);
-            border-radius: clamp(10px, 2vw, 15px);
+            border-radius: var(--border-radius);
             margin: clamp(1rem, 3vw, 2rem) 0;
         }
 
-        .objectives-box h3 {
-            color: #667eea;
+        .objectives-card h3 {
+            color: var(--primary-color);
             margin-bottom: 1rem;
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
         }
 
         .objectives-list {
             list-style: none;
             padding: 0;
-            color: #555;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--text-light);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
             line-height: 1.8;
         }
 
         .objectives-list li {
             margin-bottom: 0.5rem;
-            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
         }
 
-        .team-box {
+        .team-card {
             background: rgba(255, 107, 107, 0.1);
             padding: clamp(1rem, 3vw, 2rem);
-            border-radius: clamp(10px, 2vw, 15px);
+            border-radius: var(--border-radius);
             margin: clamp(1rem, 3vw, 2rem) 0;
         }
 
-        .team-box h3 {
-            color: #ff6b6b;
+        .team-card h3 {
+            color: var(--accent-color);
             margin-bottom: 1rem;
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
             gap: clamp(0.5rem, 2vw, 1rem);
             margin-top: 1rem;
         }
@@ -222,49 +275,44 @@
         .team-member {
             text-align: center;
             padding: clamp(0.8rem, 2vw, 1rem);
-            background: white;
+            background: var(--white);
             border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .team-member:hover {
-            transform: translateY(-2px);
         }
 
         .team-member h4 {
-            color: #333;
+            color: var(--text-color);
             margin-bottom: 0.5rem;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
         }
 
         .team-member p {
-            color: #666;
+            color: var(--text-light);
             margin: 0;
-            font-size: clamp(0.8rem, 1.8vw, 1rem);
+            font-size: clamp(0.85rem, 2vw, 1rem);
         }
 
-        /* Library Sections - Fully Responsive */
+        /* Library Sections - Ultra Responsive */
         .library-sections {
-            padding: clamp(2rem, 8vw, 4rem) 0;
-            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: var(--section-padding) 0;
+            background: linear-gradient(45deg, var(--bg-light) 0%, #e9ecef 100%);
         }
 
         .main-library {
             text-align: center;
-            margin-bottom: clamp(2rem, 6vw, 3rem);
+            margin-bottom: clamp(2rem, 6vw, 4rem);
         }
 
         .main-library h2 {
-            margin-bottom: clamp(1rem, 4vw, 2rem);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            color: #333;
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
         }
 
         .main-library-btn {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #ee5a24 100%);
+            color: var(--white);
             border: none;
-            padding: clamp(1rem, 3vw, 1.25rem) clamp(2rem, 6vw, 3rem);
+            padding: clamp(1rem, 3vw, 1.25rem) clamp(2rem, 6vw, 3.125rem);
             border-radius: 50px;
             cursor: pointer;
             font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -273,37 +321,60 @@
             text-decoration: none;
             display: inline-block;
             box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-            min-height: 50px;
+            min-width: 200px;
+            text-align: center;
         }
 
         .main-library-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
         }
 
-        .sections-title {
-            text-align: center;
-            margin-bottom: clamp(2rem, 6vw, 3rem);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            color: #333;
-        }
-
+        /* Sections Grid - Advanced Responsive */
         .sections-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: clamp(1rem, 4vw, 2rem);
+            margin-top: clamp(2rem, 6vw, 3rem);
+        }
+
+        /* Mobile First Grid */
+        @media screen and (max-width: 480px) {
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            .sections-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .sections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            .sections-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
         .section-card {
-            background: white;
-            border-radius: clamp(10px, 2vw, 15px);
+            background: var(--white);
+            border-radius: var(--border-radius);
             padding: clamp(1.5rem, 4vw, 2rem);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-height: 300px;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -316,7 +387,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -326,43 +397,46 @@
         }
 
         .section-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .section-icon {
             font-size: clamp(2rem, 6vw, 3rem);
-            margin-bottom: clamp(0.5rem, 2vw, 1rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
         }
 
         .section-card h3 {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            margin-bottom: clamp(0.5rem, 2vw, 1rem);
-            color: #333;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
+            color: var(--text-color);
             line-height: 1.3;
         }
 
         .section-card p {
-            color: #666;
+            color: var(--text-light);
             margin-bottom: clamp(1rem, 3vw, 1.5rem);
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             line-height: 1.6;
             flex-grow: 1;
+            display: flex;
+            align-items: center;
         }
 
         .section-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
             border: none;
-            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+            padding: clamp(0.75rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
             border-radius: 25px;
             cursor: pointer;
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            min-height: 44px;
-            line-height: 1.4;
+            min-width: 140px;
+            text-align: center;
+            font-weight: 500;
         }
 
         .section-btn:hover {
@@ -370,139 +444,118 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* Footer - Fully Responsive */
+        /* Footer - Responsive */
         footer {
-            background: #333;
-            color: white;
+            background: var(--text-color);
+            color: var(--white);
             text-align: center;
             padding: clamp(1.5rem, 4vw, 2rem) 0;
         }
 
         footer p {
-            font-size: clamp(0.8rem, 2vw, 1rem);
+            font-size: clamp(0.9rem, 2vw, 1rem);
             line-height: 1.6;
         }
 
-        /* Language Content */
+        /* Language Content Management */
         .lang-content {
             display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .lang-content.active {
             display: block;
+            opacity: 1;
         }
 
         /* RTL/LTR Support */
-        .rtl {
-            direction: rtl;
-            text-align: right;
-        }
+        .rtl { direction: rtl; }
+        .ltr { direction: ltr; }
 
-        .ltr {
-            direction: ltr;
-            text-align: left;
-        }
-
-        /* Mobile-specific optimizations */
-        @media (max-width: 480px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .logo {
-                min-width: auto;
-                text-align: center;
-            }
-            
-            .lang-switcher {
-                justify-content: center;
-                width: 100%;
-            }
-            
-            .sections-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero {
-                min-height: 250px;
+        /* Enhanced Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .lang-btn, .section-btn, .main-library-btn {
+                min-height: 44px;
+                min-width: 44px;
+                touch-action: manipulation;
             }
         }
 
-        /* Tablet optimizations */
-        @media (min-width: 481px) and (max-width: 768px) {
-            .sections-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-        }
-
-        /* Desktop optimizations */
-        @media (min-width: 1200px) {
-            .sections-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .container {
-                padding: 0 2rem;
-            }
-        }
-
-        /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        /* High Contrast Mode Support */
+        @media (prefers-contrast: high) {
             .section-card {
-                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+                border: 2px solid var(--text-color);
             }
         }
 
-        /* Reduced motion for accessibility */
+        /* Reduced Motion Support */
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, ::before, ::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
 
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .section-btn,
-            .lang-btn,
-            .main-library-btn {
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
+        /* Ultra-wide Screen Support */
+        @media screen and (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
             }
             
-            .section-card:hover {
-                transform: none;
+            .sections-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: none;
             }
         }
 
-        /* Print styles */
-        @media print {
-            header,
-            footer,
-            .lang-switcher {
-                display: none;
-            }
-            
-            body {
-                color: black;
-                background: white;
+        /* Small Mobile Portrait */
+        @media screen and (max-width: 360px) {
+            .container {
+                padding: 0 1rem;
             }
             
             .section-card {
-                break-inside: avoid;
+                padding: 1rem;
+                min-height: 250px;
             }
+            
+            .hero {
+                min-height: 300px;
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hero, .lang-switcher { display: none; }
+            .section-card { page-break-inside: avoid; }
         }
     </style>
 </head>
@@ -516,9 +569,9 @@
                     <span class="lang-content" data-lang="ar">جامعة رابەرين</span>
                 </div>
                 <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="ku" aria-label="کوردی">کوردی</button>
-                    <button class="lang-btn" data-lang="en" aria-label="English">English</button>
-                    <button class="lang-btn" data-lang="ar" aria-label="العربية">العربية</button>
+                    <button class="lang-btn active" data-lang="ku">کوردی</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="ar">العربية</button>
                 </div>
             </div>
         </div>
@@ -555,14 +608,14 @@
             <div class="lang-content active rtl" data-lang="ku">
                 <div class="intro-content">
                     <h2>پێشەکی</h2>
-                    <div class="intro-box">
-                        <p class="intro-text">
+                    <div class="intro-card">
+                        <p>
                             لە سەردەمی تەکنەلۆژیا و زانیاری دیجیتاڵدا، پێویستمان بە کتێبخانەیەکی ئەلیکترۆنی مۆدێرن و کارا هەیە کە لە فێربوون و لێکۆڵینەوەی زانستیدا زۆر گرنگە. ئەم پڕۆژەیە بە مەبەستی ئاسانکاری گەڕان و دەست ڕاگەیشتن بە سەرچاوە زانستییەکان لە کۆلێژی زانست دروست کراوە.
                         </p>
-                        <p class="intro-text">
+                        <p>
                             خوێندکاران دەتوانن بە ئاسانی و لەڕێگەی QR کۆدەوە دەستیان بە کتێبخانەی ئەلیکترۆنی بگات و بە شێوەیەکی ڕێکخراو کتێب و سەرچاوە زانستییەکانی بەشە جیاوازەکان ببینن. ئەم سیستەمە مۆدێرنە بۆ خوێندکارانی بەشەکانی بایەلۆجی، کیمیا، فیزیا و زانستی تاقیگەی پزیشکی دامەزراوە.
                         </p>
-                        <div class="objectives-box">
+                        <div class="objectives-card">
                             <h3>ئامانجەکانی پڕۆژەکە:</h3>
                             <ul class="objectives-list">
                                 <li>📚 دەستڕاگەیشتنی ئاسان بە سەرچاوە زانستییەکان</li>
@@ -572,7 +625,7 @@
                                 <li>💡 پەرەپێدانی فێربوون و لێکۆڵینەوە</li>
                             </ul>
                         </div>
-                        <div class="team-box">
+                        <div class="team-card">
                             <h3>ئامادەکراوە لەلایەن:</h3>
                             <div class="team-grid">
                                 <div class="team-member">
@@ -597,14 +650,14 @@
             <div class="lang-content ltr" data-lang="en">
                 <div class="intro-content">
                     <h2>Introduction</h2>
-                    <div class="intro-box">
-                        <p class="intro-text">
+                    <div class="intro-card">
+                        <p>
                             In the era of technology and digital information, the need for a modern and efficient electronic library in higher education is very important. This project has been created to facilitate searching and accessing scientific resources at the College of Science.
                         </p>
-                        <p class="intro-text">
+                        <p>
                             Students can easily access the electronic library through QR codes and view books and scientific resources of different departments in an organized manner. This modern system has been established for students of Biology, Chemistry, Physics, and Medical Laboratory Science departments.
                         </p>
-                        <div class="objectives-box">
+                        <div class="objectives-card">
                             <h3>Project Objectives:</h3>
                             <ul class="objectives-list">
                                 <li>📚 Easy access to scientific resources</li>
@@ -614,7 +667,7 @@
                                 <li>💡 Enhancing learning and research</li>
                             </ul>
                         </div>
-                        <div class="team-box">
+                        <div class="team-card">
                             <h3>Prepared by:</h3>
                             <div class="team-grid">
                                 <div class="team-member">
@@ -639,14 +692,14 @@
             <div class="lang-content rtl" data-lang="ar">
                 <div class="intro-content">
                     <h2>مقدمة</h2>
-                    <div class="intro-box">
-                        <p class="intro-text">
+                    <div class="intro-card">
+                        <p>
                             في عصر التكنولوجيا والمعلومات الرقمية، تعتبر الحاجة إلى مكتبة إلكترونية حديثة وفعالة في التعليم العالي أمراً بالغ الأهمية. تم إنشاء هذا المشروع لتسهيل البحث والوصول إلى الموارد العلمية في كلية العلوم.
                         </p>
-                        <p class="intro-text">
+                        <p>
                             يمكن للطلاب الوصول بسهولة إلى المكتبة الإلكترونية من خلال رموز QR ومشاهدة الكتب والموارد العلمية للأقسام المختلفة بطريقة منظمة. تم إنشاء هذا النظام الحديث لطلاب أقسام علوم الحياة والكيمياء والفيزياء وعلوم المختبرات الطبية.
                         </p>
-                        <div class="objectives-box">
+                        <div class="objectives-card">
                             <h3>أهداف المشروع:</h3>
                             <ul class="objectives-list">
                                 <li>📚 سهولة الوصول إلى الموارد العلمية</li>
@@ -656,7 +709,7 @@
                                 <li>💡 تعزيز التعلم والبحث</li>
                             </ul>
                         </div>
-                        <div class="team-box">
+                        <div class="team-card">
                             <h3>إعداد:</h3>
                             <div class="team-grid">
                                 <div class="team-member">
@@ -709,102 +762,102 @@
 
             <!-- Kurdish Content -->
             <div class="lang-content active rtl" data-lang="ku">
-                <h2 class="sections-title">بەشە زانستییەکان</h2>
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">بەشە زانستییەکان</h2>
                 <div class="sections-grid">
                     <div class="section-card">
                         <div class="section-icon">🧬</div>
                         <h3>بەشی بایەلۆجی</h3>
                         <p>پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر</p>
-                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn" target="_blank">چونە ناو بەش</a>
+                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">چونە ناو بەش</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">⚗️</div>
                         <h3>بەشی کیمیا</h3>
                         <p>سەرچاوەکانی کیمیای ئەندامی، نا ئەندامی، فیزیکی و کیمیای تاقیگەیی</p>
-                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn" target="_blank">چونە ناو بەش</a>
+                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">چونە ناو بەش</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">⚛️</div>
                         <h3>بەشی فیزیا</h3>
                         <p>پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی</p>
-                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn" target="_blank">چونە ناو بەش</a>
+                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">چونە ناو بەش</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">🔬</div>
                         <h3>زانستی تاقیگەی پزیشکی</h3>
                         <p>سەرچاوەکانی شیکردنەوەی کلینیکی، میکرۆبایەلۆجی پزیشکی و ڕێنماییەکان</p>
-                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn" target="_blank">چونە ناو بەش</a>
+                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">چونە ناو بەش</a>
                     </div>
                 </div>
             </div>
 
             <!-- English Content -->
             <div class="lang-content ltr" data-lang="en">
-                <h2 class="sections-title">Scientific Departments</h2>
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">Scientific Departments</h2>
                 <div class="sections-grid">
                     <div class="section-card">
                         <div class="section-icon">🧬</div>
                         <h3>Biology Department</h3>
                         <p>Books and resources in life sciences, genetics, microbiology and more</p>
-                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn" target="_blank">Enter Department</a>
+                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">Enter Department</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">⚗️</div>
                         <h3>Chemistry Department</h3>
                         <p>Resources for organic, inorganic, physical and laboratory chemistry</p>
-                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn" target="_blank">Enter Department</a>
+                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">Enter Department</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">⚛️</div>
                         <h3>Physics Department</h3>
                         <p>Books on classical, modern, quantum and experimental physics</p>
-                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn" target="_blank">Enter Department</a>
+                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">Enter Department</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">🔬</div>
                         <h3>Medical Laboratory Science</h3>
                         <p>Resources for clinical analysis, medical microbiology and guidelines</p>
-                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn" target="_blank">Enter Department</a>
+                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">Enter Department</a>
                     </div>
                 </div>
             </div>
 
             <!-- Arabic Content -->
             <div class="lang-content rtl" data-lang="ar">
-                <h2 class="sections-title">الأقسام العلمية</h2>
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">الأقسام العلمية</h2>
                 <div class="sections-grid">
                     <div class="section-card">
                         <div class="section-icon">🧬</div>
                         <h3>قسم علوم الحياة</h3>
                         <p>الكتب والمصادر في علوم الحياة والوراثة والأحياء الدقيقة والمزيد</p>
-                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn" target="_blank">دخول القسم</a>
+                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">دخول القسم</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">⚗️</div>
                         <h3>قسم الكيمياء</h3>
                         <p>مصادر الكيمياء العضوية وغير العضوية والفيزيائية والمختبرية</p>
-                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn" target="_blank">دخول القسم</a>
+                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">دخول القسم</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">⚛️</div>
                         <h3>قسم الفيزياء</h3>
                         <p>كتب الفيزياء الكلاسيكية والحديثة والكمية والتجريبية</p>
-                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn" target="_blank">دخول القسم</a>
+                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">دخول القسم</a>
                     </div>
                     
                     <div class="section-card">
                         <div class="section-icon">🔬</div>
                         <h3>علوم المختبرات الطبية</h3>
                         <p>مصادر التحليل السريري والأحياء الدقيقة الطبية والإرشادات</p>
-                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn" target="_blank">دخول القسم</a>
+                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">دخول القسم</a>
                     </div>
                 </div>
             </div>
@@ -831,33 +884,68 @@
     </footer>
 
     <script>
-        // Language Switcher
+        // Enhanced Language Switcher with Session Storage
         const langButtons = document.querySelectorAll('.lang-btn');
         const langContents = document.querySelectorAll('.lang-content');
+        
+        // Load saved language preference
+        const savedLang = sessionStorage.getItem('selectedLanguage') || 'ku';
+        switchLanguage(savedLang);
 
         langButtons.forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
                 const targetLang = button.getAttribute('data-lang');
-                
+                switchLanguage(targetLang);
+                sessionStorage.setItem('selectedLanguage', targetLang);
+            });
+        });
+
+        function switchLanguage(lang) {
+            // Add loading state
+            document.body.classList.add('loading');
+            
+            setTimeout(() => {
                 // Remove active class from all buttons and contents
                 langButtons.forEach(btn => btn.classList.remove('active'));
-                langContents.forEach(content => content.classList.remove('active'));
+                langContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.opacity = '0';
+                });
                 
-                // Add active class to clicked button
-                button.classList.add('active');
+                // Add active class to selected button
+                const targetButton = document.querySelector(`[data-lang="${lang}"].lang-btn`);
+                if (targetButton) targetButton.classList.add('active');
                 
-                // Show contents for selected language
-                const targetContents = document.querySelectorAll(`[data-lang="${targetLang}"]`);
-                targetContents.forEach(content => content.classList.add('active'));
+                // Show contents for selected language with fade effect
+                const targetContents = document.querySelectorAll(`[data-lang="${lang}"].lang-content`);
+                targetContents.forEach(content => {
+                    content.classList.add('active');
+                    setTimeout(() => content.style.opacity = '1', 10);
+                });
                 
-                // Update body direction
-                if (targetLang === 'en') {
-                    document.body.classList.remove('rtl');
+                // Update body direction with smooth transition
+                document.body.classList.remove('rtl', 'ltr');
+                if (lang === 'en') {
                     document.body.classList.add('ltr');
                 } else {
-                    document.body.classList.remove('ltr');
                     document.body.classList.add('rtl');
                 }
+                
+                // Remove loading state
+                document.body.classList.remove('loading');
+            }, 100);
+        }
+
+        // Enhanced Link Interaction with Loading States
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                this.classList.add('loading');
+                
+                // Remove loading state after a delay
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                }, 2000);
             });
         });
 
@@ -875,7 +963,7 @@
             });
         });
 
-        // Add animation on scroll
+        // Enhanced Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -884,44 +972,20 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('animate-in');
                 }
             });
         }, observerOptions);
 
-        // Initialize cards with animation
-        document.querySelectorAll('.section-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
+        // Observe all cards
+        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card').forEach(element => {
+            observer.observe(element);
         });
 
-        // Responsive navigation enhancements
-        function handleResize() {
-            const screenWidth = window.innerWidth;
-            const headerContent = document.querySelector('.header-content');
-            
-            if (screenWidth < 768) {
-                headerContent.style.flexDirection = 'column';
-                headerContent.style.gap = '1rem';
-            } else {
-                headerContent.style.flexDirection = 'row';
-                headerContent.style.gap = 'clamp(0.5rem, 2vw, 1rem)';
-            }
-        }
-
-        // Initial call and event listener
-        handleResize();
-        window.addEventListener('resize', handleResize);
-
-        // Touch device optimizations
+        // Touch feedback for mobile devices
         if ('ontouchstart' in window) {
-            document.body.classList.add('touch-device');
-            
-            // Improve touch interactions
-            document.querySelectorAll('.section-btn, .lang-btn, .main-library-btn').forEach(button => {
+            document.querySelectorAll('.section-btn, .main-library-btn, .lang-btn').forEach(button => {
                 button.addEventListener('touchstart', function() {
                     this.style.transform = 'scale(0.95)';
                 });
@@ -933,31 +997,84 @@
         }
 
         // Keyboard navigation enhancement
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', (e) => {
             if (e.key === 'Tab') {
-                document.body.classList.add('keyboard-navigation');
+                document.body.classList.add('keyboard-nav');
             }
         });
 
-        document.addEventListener('mousedown', function() {
-            document.body.classList.remove('keyboard-navigation');
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-nav');
         });
 
-        // Performance optimization: Lazy load animations
-        const animationElements = document.querySelectorAll('.hero-content h1, .hero-content p');
-        animationElements.forEach((element, index) => {
-            element.style.animationDelay = `${index * 0.2}s`;
+        // Orientation change handler
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
         });
 
-        // Error handling for external links
-        document.querySelectorAll('a[target="_blank"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                try {
-                    // Analytics or tracking code can be added here
-                    console.log('External link clicked:', this.href);
-                } catch (error) {
-                    console.error('Error tracking link click:', error);
+        // Performance optimization: Debounce resize events
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // Re-calculate any dynamic elements if needed
+                console.log('Window resized - recalculating layout');
+            }, 250);
+        });
+
+        // Add CSS for additional animations
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            .keyboard-nav *:focus {
+                outline: 2px solid var(--primary-color);
+                outline-offset: 2px;
+            }
+            
+            .animate-in {
+                animation: slideInUp 0.6s ease-out forwards;
+            }
+            
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
                 }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Additional responsive utilities */
+            @media (max-width: 320px) {
+                .container {
+                    padding: 0 0.5rem;
+                }
+                
+                .section-card {
+                    min-height: 220px;
+                }
+            }
+            
+            @media (orientation: landscape) and (max-height: 500px) {
+                .hero {
+                    min-height: 400px;
+                    padding: 2rem 0;
+                }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Electronic Library - Fully Responsive Version Loaded');
+            
+            // Add a subtle loading animation to cards
+            const cards = document.querySelectorAll('.section-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
             });
         });
     </script>

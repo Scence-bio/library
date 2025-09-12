@@ -2,64 +2,111 @@
 <html lang="ku">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین</title>
     <style>
+        /* Base Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Root Variables for Better Scaling */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --border-radius: 15px;
+            --container-padding: clamp(1rem, 4vw, 2rem);
+            --section-padding: clamp(2rem, 8vw, 4rem);
+        }
+
+        /* Typography System */
+        html {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: 480px) {
+            html { font-size: 14px; }
+        }
+
+        @media screen and (min-width: 1200px) {
+            html { font-size: 18px; }
+        }
+
+@font-face {
+  font-family: 'NotoKufiArabic';
+  src: url('./NotoKufiArabic-Regular/NotoKufiArabic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+            font-family: 'NotoKufiArabic', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
             overflow-x: hidden;
             direction: rtl;
+            background-color: var(--white);
         }
 
+        /* Responsive Container */
         .container {
-            max-width: 1200px;
+            max-width: min(1200px, calc(100% - 2rem));
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 var(--container-padding);
+            width: 100%;
         }
 
-        /* Header */
+        /* Header - Fully Responsive */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: clamp(0.5rem, 2vw, 1rem) 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: clamp(3rem, 4vw, 1.5rem);
             font-weight: bold;
+            flex: 1;
+            min-width: 200px;
         }
 
         .lang-switcher {
             display: flex;
-            gap: 10px;
+            gap: clamp(0.5rem, 2vw, 1rem);
+            flex-wrap: wrap;
         }
 
         .lang-btn {
             background: rgba(255,255,255,0.2);
             border: none;
-            color: white;
-            padding: 5px 10px;
+            color: var(--white);
+            padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            min-width: 60px;
+            text-align: center;
         }
 
         .lang-btn:hover, .lang-btn.active {
@@ -67,14 +114,36 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
+        /* Mobile Header Adjustments */
+        @media screen and (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                order: 1;
+                width: 100%;
+            }
+            
+            .lang-switcher {
+                order: 2;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        /* Hero Section - Fully Responsive */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: var(--section-padding) 0;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: clamp(400px, 60vh, 600px);
+            display: flex;
+            align-items: center;
         }
 
         .hero::before {
@@ -82,7 +151,9 @@
             position: absolute;
             width: 200%;
             height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                              radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 100px 100px;
             animation: float 20s infinite linear;
             top: -50%;
             left: -50%;
@@ -96,18 +167,24 @@
         .hero-content {
             position: relative;
             z-index: 1;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
             animation: fadeInUp 1s ease-out;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            font-size: clamp(1.5rem, 4vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            animation: fadeInUp 2s ease-out 0.8s both;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @keyframes fadeInUp {
@@ -121,28 +198,194 @@
             }
         }
 
-        /* Library Sections */
-        .library-sections {
-            padding: 4rem 0;
-            background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        /* Introduction Section - Responsive */
+        .intro-section {
+            padding: var(--section-padding) 0;
+            background: var(--white);
         }
 
+        .intro-content {
+            text-align: center;
+            max-width: min(900px, 100%);
+            margin: 0 auto;
+        }
+
+        .intro-content h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e9ecef 100%);
+            padding: clamp(1.5rem, 5vw, 3rem);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .intro-card p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: clamp(1.6, 0.05vw + 1.5, 2);
+            color: var(--text-light);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
+            text-align: justify;
+        }
+
+        .objectives-card {
+            background: rgba(102, 126, 234, 0.1);
+            padding: clamp(1rem, 3vw, 2rem);
+            border-radius: var(--border-radius);
+            margin: clamp(1rem, 3vw, 2rem) 0;
+        }
+
+        .objectives-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+            color: var(--text-light);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        .objectives-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .team-card {
+            background: rgba(255, 107, 107, 0.1);
+            padding: clamp(1rem, 3vw, 2rem);
+            border-radius: var(--border-radius);
+            margin: clamp(1rem, 3vw, 2rem) 0;
+        }
+
+        .team-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(0.5rem, 2vw, 1rem);
+            margin-top: 1rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: clamp(0.8rem, 2vw, 1rem);
+            background: var(--white);
+            border-radius: 10px;
+        }
+
+        .team-member h4 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        }
+
+        .team-member p {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+        }
+
+        /* Library Sections - Ultra Responsive */
+        .library-sections {
+            padding: var(--section-padding) 0;
+            background: linear-gradient(45deg, var(--bg-light) 0%, #e9ecef 100%);
+        }
+
+        .main-library {
+            text-align: center;
+            margin-bottom: clamp(2rem, 6vw, 4rem);
+        }
+
+        .main-library h2 {
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
+        }
+
+        .main-library-btn {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #ee5a24 100%);
+            color: var(--white);
+            border: none;
+            padding: clamp(1rem, 3vw, 1.25rem) clamp(2rem, 6vw, 3.125rem);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .main-library-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Sections Grid - Advanced Responsive */
         .sections-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: clamp(1rem, 4vw, 2rem);
+            margin-top: clamp(2rem, 6vw, 3rem);
+        }
+
+        /* Mobile First Grid */
+        @media screen and (max-width: 480px) {
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            .sections-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .sections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            .sections-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
         .section-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: clamp(1.5rem, 4vw, 2rem);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .section-card::before {
@@ -152,7 +395,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -167,32 +410,41 @@
         }
 
         .section-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
         }
 
         .section-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
+            color: var(--text-color);
+            line-height: 1.3;
         }
 
         .section-card p {
-            color: #666;
-            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.6;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
         }
 
         .section-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
             border: none;
-            padding: 12px 30px;
+            padding: clamp(0.75rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
             border-radius: 25px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            min-width: 140px;
+            text-align: center;
+            font-weight: 500;
         }
 
         .section-btn:hover {
@@ -200,72 +452,118 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* Main Library Button */
-        .main-library {
-            text-align: center;
-            margin: 3rem 0;
-        }
-
-        .main-library-btn {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: white;
-            border: none;
-            padding: 20px 50px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-        }
-
-        .main-library-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Footer */
+        /* Footer - Responsive */
         footer {
-            background: #333;
-            color: white;
+            background: var(--text-color);
+            color: var(--white);
             text-align: center;
-            padding: 2rem 0;
+            padding: clamp(1.5rem, 4vw, 2rem) 0;
         }
 
-        /* Language Content */
+        footer p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+        }
+
+        /* Language Content Management */
         .lang-content {
             display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .lang-content.active {
             display: block;
+            opacity: 1;
         }
 
-        /* Responsive */
+        /* RTL/LTR Support */
+        .rtl { direction: rtl; }
+        .ltr { direction: ltr; }
+
+        /* Enhanced Touch Targets for Mobile */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            .lang-btn, .section-btn, .main-library-btn {
+                min-height: 44px;
+                min-width: 44px;
+                touch-action: manipulation;
+            }
+        }
+
+        /* High Contrast Mode Support */
+        @media (prefers-contrast: high) {
+            .section-card {
+                border: 2px solid var(--text-color);
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Ultra-wide Screen Support */
+        @media screen and (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
             }
             
             .sections-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(4, 1fr);
+                max-width: none;
+            }
+        }
+
+        /* Small Mobile Portrait */
+        @media screen and (max-width: 360px) {
+            .container {
+                padding: 0 1rem;
             }
             
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            .section-card {
+                padding: 1rem;
+                min-height: 250px;
+            }
+            
+            .hero {
+                min-height: 300px;
             }
         }
 
-        /* RTL for Arabic and Kurdish */
-        .rtl {
-            direction: rtl;
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+            position: relative;
         }
 
-        .ltr {
-            direction: ltr;
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hero, .lang-switcher { display: none; }
+            .section-card { page-break-inside: avoid; }
         }
     </style>
 </head>
@@ -275,7 +573,7 @@
             <div class="header-content">
                 <div class="logo">
                     <span class="lang-content active" data-lang="ku">زانکۆی ڕاپەڕین</span>
-                    <span class="lang-content" data-lang="en"> University Of Raparin </span>
+                    <span class="lang-content" data-lang="en">University Raparin</span>
                     <span class="lang-content" data-lang="ar">جامعة رابەرين</span>
                 </div>
                 <div class="lang-switcher">
@@ -293,7 +591,7 @@
                 <!-- Kurdish Content -->
                 <div class="lang-content active rtl" data-lang="ku">
                     <h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1>
-                    <p>دەستڕاگەیشتن بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا</p>
+                    <p>دەست ڕاگەیشتن بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا</p>
                 </div>
                 
                 <!-- English Content -->
@@ -312,43 +610,47 @@
     </section>
 
     <!-- Introduction Section -->
-    <section style="padding: 4rem 0; background: white;">
+    <section class="intro-section">
         <div class="container">
             <!-- Kurdish Content -->
             <div class="lang-content active rtl" data-lang="ku">
-                <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 2rem;">پێشەکی</h2>
-                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
-                            لە سەردەمی تەکنەلۆژیا و زانیاری دیجیتاڵدا، پێویستمان بە کتێبخانەیەکی ئەلیکترۆنی مۆدێرن و کارا هەیە کە لە فێربوون و لێکۆڵینەوەی زانستیدا زۆر گرنگە. ئەم پڕۆژەیە بە مەبەستی ئاسانکاری گەڕان و دەست ڕاگەیشتن بە سەرچاوە زانستییەکان لە کۆلێژی زانست دروست کراوە.
+                <div class="intro-content">
+                    <h2>پێشەکی</h2>
+                    <div class="intro-card">
+                        <p>
+                                  بە ناوی خودای بەخشندە و میهرەبان
+                    <p>
+خوێنەران ئەمڕۆ لە جیهانێکدا دەژین کە زانیارییەکان خێراتر لە جاران بەردەست دەبن. چاوەڕوانی کردنەوەی کتێبخانەیەک و گەڕان بەناو ڕەفەکاندا چیتر بەس نییە بۆ دابینکردنی پێداویستییەکانی فێربوونی مۆدێرن. هەر بۆیە لە سۆنگەی هەست کردن بە بەرپرسیارێتی بەرامبەر بە زانست و پەرتووک ئێمە هەستاین بە کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی تاوەکو خزمەت بە لایەنی فێربوون و زانستی خوێنەران بکات.
                         </p>
-                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
-                            خوێندکاران دەتوانن بە ئاسانی و لەڕێگەی QR کۆدەوە دەستیان بە کتێبخانەی ئەلیکترۆنی بگات و بە شێوەیەکی ڕێکخراو کتێب و سەرچاوە زانستییەکانی بەشە جیاوازەکان ببینن. ئەم سیستەمە مۆدێرنە بۆ خوێندکارانی بەشەکانی بایەلۆجی، کیمیا، فیزیا و زانستی تاقیگەی پزیشکی دامەزراوە.
+                        <p>
+کتێبخانەی ئەلیکترۆنی کتێبخانەیەکی بێ دیوارە، گەیشتن بە هەزاران کتێبی دیجیتاڵی، گۆڤاری ئەکادیمی، توێژینەوە، دابین دەکات بۆ خوێنەران. هەموو ئەمانە لە ڕێگەی QR کۆدەوە کە بە شێوازێکی ئەلکترۆنی ئامادەکراوە. ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.
                         </p>
-                        <div style="background: rgba(102, 126, 234, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.5rem;">ئامانجەکانی پڕۆژەکە:</h3>
-                            <ul style="list-style: none; padding: 0; color: #555; font-size: 1.1rem; line-height: 1.8;">
-                                <li style="margin-bottom: 0.5rem;">📚 دەستڕاگەیشتنی ئاسان بە سەرچاوە زانستییەکان</li>
-                                <li style="margin-bottom: 0.5rem;">🔍 گەڕانی خێرا لە بەشە جیاوازەکان</li>
-                                <li style="margin-bottom: 0.5rem;">📱 بەکارهێنانی تەکنەلۆژیای QR کۆد</li>
-                                <li style="margin-bottom: 0.5rem;">🌐 خستنە بەردەستی سەرچاوەکان بە سێ زمان (کوردی، ئینگلیزی، عەرەبی)</li>
-                                <li>💡 پەرەپێدانی فێربوون و لێکۆڵینەوە</li>
-                            </ul>
-                        </div>
-                        <div style="background: rgba(255, 107, 107, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                            <h3 style="color: #ff6b6b; margin-bottom: 1rem; font-size: 1.5rem;">ئامادەکراوە لەلایەن:</h3>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">ژیاو یوسف حسێن</h4>
-                                    <p style="color: #666; margin: 0;">خوێندکاری بەشی بایەلۆجی</p>
+                        <div class="objectives-card">
+    <h3>ئامانجەکانی پڕۆژەکە:</h3>
+    <ul class="objectives-list">
+        <li>🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ</li>
+        <li>⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی</li>
+        <li>📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن</li>
+        <li>📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن و خوێنەران</li>
+        <li>👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە سەرچاوەکانی پەرتووکخانەی دیجیتاڵی</li>
+        <li>⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی</li>
+        <li>🌐 بەردەست بوونی پەرتووک و سەرچاوەکان بە هەر سێ زمانی (کوردی، ئینگلیزی، عەرەبی)</li>
+    </ul>
+</div>
+                        <div class="team-card">
+                            <h3>ئامادەکراوە لەلایەن:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ژیاو یوسف حسێن</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی</p>
                                 </div>
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">نیار قادر ڕەسوڵ</h4>
-                                    <p style="color: #666; margin: 0;">خوێندکاری بەشی بایەلۆجی</p>
+                                <div class="team-member">
+                                    <h4>نیار قادر ڕەسوڵ</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی</p>
                                 </div>
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">محمود خدر فقێ ڕەسوڵ </h4>
-                                    <p style="color: #666; margin: 0;">خوێندکاری بەشی بایەلۆجی</p>
+                                <div class="team-member">
+                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی</p>
                                 </div>
                             </div>
                         </div>
@@ -358,39 +660,39 @@
 
             <!-- English Content -->
             <div class="lang-content ltr" data-lang="en">
-                <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 2rem;">Introduction</h2>
-                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                <div class="intro-content">
+                    <h2>Introduction</h2>
+                    <div class="intro-card">
+                        <p>
                             In the era of technology and digital information, the need for a modern and efficient electronic library in higher education is very important. This project has been created to facilitate searching and accessing scientific resources at the College of Science.
                         </p>
-                        <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                        <p>
                             Students can easily access the electronic library through QR codes and view books and scientific resources of different departments in an organized manner. This modern system has been established for students of Biology, Chemistry, Physics, and Medical Laboratory Science departments.
                         </p>
-                        <div style="background: rgba(102, 126, 234, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.5rem;">Project Objectives:</h3>
-                            <ul style="list-style: none; padding: 0; color: #555; font-size: 1.1rem; line-height: 1.8;">
-                                <li style="margin-bottom: 0.5rem;">📚 Easy access to scientific resources</li>
-                                <li style="margin-bottom: 0.5rem;">🔍 Effective searching across different departments</li>
-                                <li style="margin-bottom: 0.5rem;">📱 Utilizing QR code technology</li>
-                                <li style="margin-bottom: 0.5rem;">🌐 Support for three languages (Kurdish, English, Arabic)</li>
+                        <div class="objectives-card">
+                            <h3>Project Objectives:</h3>
+                            <ul class="objectives-list">
+                                <li>📚 Easy access to scientific resources</li>
+                                <li>🔍 Effective searching across different departments</li>
+                                <li>📱 Utilizing QR code technology</li>
+                                <li>🌐 Support for three languages (Kurdish, English, Arabic)</li>
                                 <li>💡 Enhancing learning and research</li>
                             </ul>
                         </div>
-                        <div style="background: rgba(255, 107, 107, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                            <h3 style="color: #ff6b6b; margin-bottom: 1rem; font-size: 1.5rem;">Prepared by:</h3>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">ZHYAW YOUSF HUSAIN</h4>
-                                    <p style="color: #666; margin: 0;">Biology Department Student</p>
+                        <div class="team-card">
+                            <h3>Prepared by:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ZHYAW YOUSF HUSAIN</h4>
+                                    <p>Biology Department Student</p>
                                 </div>
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">NYAR QADR RASUL</h4>
-                                    <p style="color: #666; margin: 0;">Biology Department Student</p>
+                                <div class="team-member">
+                                    <h4>NYAR QADR RASUL</h4>
+                                    <p>Biology Department Student</p>
                                 </div>
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">MAHMOOD KHDIR FAQE RASUL</h4>
-                                    <p style="color: #666; margin: 0;">Biology Department Student</p>
+                                <div class="team-member">
+                                    <h4>MAHMOOD KHDIR FAQE RASUL</h4>
+                                    <p>Biology Department Student</p>
                                 </div>
                             </div>
                         </div>
@@ -400,39 +702,39 @@
 
             <!-- Arabic Content -->
             <div class="lang-content rtl" data-lang="ar">
-                <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 2rem;">مقدمة</h2>
-                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
+                <div class="intro-content">
+                    <h2>مقدمة</h2>
+                    <div class="intro-card">
+                        <p>
                             في عصر التكنولوجيا والمعلومات الرقمية، تعتبر الحاجة إلى مكتبة إلكترونية حديثة وفعالة في التعليم العالي أمراً بالغ الأهمية. تم إنشاء هذا المشروع لتسهيل البحث والوصول إلى الموارد العلمية في كلية العلوم.
                         </p>
-                        <p style="font-size: 1.2rem; line-height: 2; color: #555; margin-bottom: 2rem;">
+                        <p>
                             يمكن للطلاب الوصول بسهولة إلى المكتبة الإلكترونية من خلال رموز QR ومشاهدة الكتب والموارد العلمية للأقسام المختلفة بطريقة منظمة. تم إنشاء هذا النظام الحديث لطلاب أقسام علوم الحياة والكيمياء والفيزياء وعلوم المختبرات الطبية.
                         </p>
-                        <div style="background: rgba(102, 126, 234, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                            <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.5rem;">أهداف المشروع:</h3>
-                            <ul style="list-style: none; padding: 0; color: #555; font-size: 1.1rem; line-height: 1.8;">
-                                <li style="margin-bottom: 0.5rem;">📚 سهولة الوصول إلى الموارد العلمية</li>
-                                <li style="margin-bottom: 0.5rem;">🔍 البحث الفعال عبر الأقسام المختلفة</li>
-                                <li style="margin-bottom: 0.5rem;">📱 استخدام تقنية رموز QR</li>
-                                <li style="margin-bottom: 0.5rem;">🌐 دعم ثلاث لغات (الكردية، الإنجليزية، العربية)</li>
+                        <div class="objectives-card">
+                            <h3>أهداف المشروع:</h3>
+                            <ul class="objectives-list">
+                                <li>📚 سهولة الوصول إلى الموارد العلمية</li>
+                                <li>🔍 البحث الفعال عبر الأقسام المختلفة</li>
+                                <li>📱 استخدام تقنية رموز QR</li>
+                                <li>🌐 دعم ثلاث لغات (الكردية، الإنجليزية، العربية)</li>
                                 <li>💡 تعزيز التعلم والبحث</li>
                             </ul>
                         </div>
-                        <div style="background: rgba(255, 107, 107, 0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                            <h3 style="color: #ff6b6b; margin-bottom: 1rem; font-size: 1.5rem;">إعداد:</h3>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">ژیاو یوسف حسێن</h4>
-                                    <p style="color: #666; margin: 0;">طالب قسم علوم الحياة</p>
+                        <div class="team-card">
+                            <h3>إعداد:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ژیاو یوسف حسێن</h4>
+                                    <p>طالب قسم علوم الحياة</p>
                                 </div>
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">نیار قادر ڕەسوڵ</h4>
-                                    <p style="color: #666; margin: 0;">طالب قسم علوم الحياة</p>
+                                <div class="team-member">
+                                    <h4>نیار قادر ڕەسوڵ</h4>
+                                    <p>طالب قسم علوم الحياة</p>
                                 </div>
-                                <div style="text-align: center; padding: 1rem; background: white; border-radius: 10px;">
-                                    <h4 style="color: #333; margin-bottom: 0.5rem;">محمود خدر فقێ ڕەسوڵ </h4>
-                                    <p style="color: #666; margin: 0;">طالب قسم علوم الحياة</p>
+                                <div class="team-member">
+                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                    <p>طالب قسم علوم الحياة</p>
                                 </div>
                             </div>
                         </div>
@@ -447,7 +749,7 @@
             <div class="main-library">
                 <!-- Kurdish -->
                 <div class="lang-content active rtl" data-lang="ku">
-                    <h2 style="margin-bottom: 2rem; font-size: 2.5rem;">کتێبخانەی سەرەکی</h2>
+                    <h2>کتێبخانەی سەرەکی</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         چونە ناو کتێبخانەی گشتی
                     </a>
@@ -455,7 +757,7 @@
                 
                 <!-- English -->
                 <div class="lang-content ltr" data-lang="en">
-                    <h2 style="margin-bottom: 2rem; font-size: 2.5rem;">Main Library</h2>
+                    <h2>Main Library</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         Enter Main Library
                     </a>
@@ -463,7 +765,7 @@
                 
                 <!-- Arabic -->
                 <div class="lang-content rtl" data-lang="ar">
-                    <h2 style="margin-bottom: 2rem; font-size: 2.5rem;">المكتبة الرئيسية</h2>
+                    <h2>المكتبة الرئيسية</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         دخول إلى المكتبة العامة
                     </a>
@@ -472,12 +774,12 @@
 
             <!-- Kurdish Content -->
             <div class="lang-content active rtl" data-lang="ku">
-                <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">بەشە زانستییەکان</h2>
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">بەشە زانستییەکان</h2>
                 <div class="sections-grid">
                     <div class="section-card">
                         <div class="section-icon">🧬</div>
                         <h3>بەشی بایەلۆجی</h3>
-                        <p > پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر </p>
+                        <p>پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر</p>
                         <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">چونە ناو بەش</a>
                     </div>
                     
@@ -491,7 +793,7 @@
                     <div class="section-card">
                         <div class="section-icon">⚛️</div>
                         <h3>بەشی فیزیا</h3>
-                        <p> پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی</p>
+                        <p>پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی</p>
                         <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">چونە ناو بەش</a>
                     </div>
                     
@@ -506,7 +808,7 @@
 
             <!-- English Content -->
             <div class="lang-content ltr" data-lang="en">
-                <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Scientific Departments</h2>
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">Scientific Departments</h2>
                 <div class="sections-grid">
                     <div class="section-card">
                         <div class="section-icon">🧬</div>
@@ -540,7 +842,7 @@
 
             <!-- Arabic Content -->
             <div class="lang-content rtl" data-lang="ar">
-                <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">الأقسام العلمية</h2>
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">الأقسام العلمية</h2>
                 <div class="sections-grid">
                     <div class="section-card">
                         <div class="section-icon">🧬</div>
@@ -578,49 +880,84 @@
         <div class="container">
             <!-- Kurdish -->
             <div class="lang-content active" data-lang="ku">
-                <p>&copy; ٢٠٢٥ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون.</p>
+                <p>  کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥ </p>
             </div>
             
             <!-- English -->
             <div class="lang-content" data-lang="en">
-                <p>&copy; 2025 College of Science Electronic Library - Raparin University. All rights reserved.</p>
+                <p> College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025 </p>
             </div>
             
             <!-- Arabic -->
             <div class="lang-content" data-lang="ar">
-                <p>&copy; ٢٠٢٥ المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة.</p>
+                <p>  المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥ </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Language Switcher
+        // Enhanced Language Switcher with Session Storage
         const langButtons = document.querySelectorAll('.lang-btn');
         const langContents = document.querySelectorAll('.lang-content');
+        
+        // Load saved language preference
+        const savedLang = sessionStorage.getItem('selectedLanguage') || 'ku';
+        switchLanguage(savedLang);
 
         langButtons.forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
                 const targetLang = button.getAttribute('data-lang');
-                
+                switchLanguage(targetLang);
+                sessionStorage.setItem('selectedLanguage', targetLang);
+            });
+        });
+
+        function switchLanguage(lang) {
+            // Add loading state
+            document.body.classList.add('loading');
+            
+            setTimeout(() => {
                 // Remove active class from all buttons and contents
                 langButtons.forEach(btn => btn.classList.remove('active'));
-                langContents.forEach(content => content.classList.remove('active'));
+                langContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.opacity = '0';
+                });
                 
-                // Add active class to clicked button
-                button.classList.add('active');
+                // Add active class to selected button
+                const targetButton = document.querySelector(`[data-lang="${lang}"].lang-btn`);
+                if (targetButton) targetButton.classList.add('active');
                 
-                // Show contents for selected language
-                const targetContents = document.querySelectorAll(`[data-lang="${targetLang}"]`);
-                targetContents.forEach(content => content.classList.add('active'));
+                // Show contents for selected language with fade effect
+                const targetContents = document.querySelectorAll(`[data-lang="${lang}"].lang-content`);
+                targetContents.forEach(content => {
+                    content.classList.add('active');
+                    setTimeout(() => content.style.opacity = '1', 10);
+                });
                 
-                // Update body direction
-                if (targetLang === 'en') {
-                    document.body.classList.remove('rtl');
+                // Update body direction with smooth transition
+                document.body.classList.remove('rtl', 'ltr');
+                if (lang === 'en') {
                     document.body.classList.add('ltr');
                 } else {
-                    document.body.classList.remove('ltr');
                     document.body.classList.add('rtl');
                 }
+                
+                // Remove loading state
+                document.body.classList.remove('loading');
+            }, 100);
+        }
+
+        // Enhanced Link Interaction with Loading States
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                this.classList.add('loading');
+                
+                // Remove loading state after a delay
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                }, 2000);
             });
         });
 
@@ -638,7 +975,7 @@
             });
         });
 
-        // Add animation on scroll
+        // Enhanced Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -648,12 +985,109 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('animate-in');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.section-card').forEach(card => {
-            observer.observe(card);
+        // Observe all cards
+        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Touch feedback for mobile devices
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.section-btn, .main-library-btn, .lang-btn').forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+
+        // Keyboard navigation enhancement
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-nav');
+        });
+
+        // Orientation change handler
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+
+        // Performance optimization: Debounce resize events
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // Re-calculate any dynamic elements if needed
+                console.log('Window resized - recalculating layout');
+            }, 250);
+        });
+
+        // Add CSS for additional animations
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            .keyboard-nav *:focus {
+                outline: 2px solid var(--primary-color);
+                outline-offset: 2px;
+            }
+            
+            .animate-in {
+                animation: slideInUp 0.6s ease-out forwards;
+            }
+            
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Additional responsive utilities */
+            @media (max-width: 320px) {
+                .container {
+                    padding: 0 0.5rem;
+                }
+                
+                .section-card {
+                    min-height: 220px;
+                }
+            }
+            
+            @media (orientation: landscape) and (max-height: 500px) {
+                .hero {
+                    min-height: 400px;
+                    padding: 2rem 0;
+                }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Electronic Library - Fully Responsive Version Loaded');
+            
+            // Add a subtle loading animation to cards
+            const cards = document.querySelectorAll('.section-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
         });
     </script>
 </body>

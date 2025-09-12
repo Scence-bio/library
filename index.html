@@ -40,9 +40,17 @@
             html { font-size: 18px; }
         }
 
-<link href="https://fonts.cdnfonts.com/css/noto-kufi-arabic" rel="stylesheet">
+@font-face {
+  font-family: 'NotoKufiArabic';
+  src: url('/fonts/NotoKufiArabic-Regular.woff2') format('woff2'),
+       url('/fonts/NotoKufiArabic-Regular.woff') format('woff'),
+       url('/fonts/NotoKufiArabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
-            font-family: 'Noto Kufi Arabic', sans-serif;
+            font-family: 'NotoKufiArabic', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             overflow-x: hidden;

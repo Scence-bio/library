@@ -39,10 +39,25 @@
         @media screen and (min-width: 1200px) {
             html { font-size: 18px; }
         }
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kurdish:wght@400;700&display=swap');
+@font-face {
+  font-family: 'RudawRegular';
+  src: url('fonts/Rudaw-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-      body {
-            font-family: 'Noto Sans Kurdish', sans-serif;
+@font-face {
+  font-family: 'RudawBold';
+  src: url('fonts/Rudaw-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'RudawRegular', sans-serif;
+}
+h1, h2, strong {
+            font-family: 'RudawBold', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             overflow-x: hidden;

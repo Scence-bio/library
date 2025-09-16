@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ku">
 <head>
@@ -120,12 +121,12 @@ body {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             .logo {
                 order: 1;
                 width: 100%;
             }
-            
+
             .lang-switcher {
                 order: 2;
                 justify-content: center;
@@ -375,10 +376,14 @@ body {
 
         .section-card {
             background: var(--white);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: var(--border-radius);
             padding: clamp(1.5rem, 4vw, 2rem);
             text-align: center;
             box-shadow: var(--shadow);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -511,7 +516,7 @@ body {
             .container {
                 max-width: 1400px;
             }
-            
+
             .sections-grid {
                 grid-template-columns: repeat(4, 1fr);
                 max-width: none;
@@ -523,12 +528,12 @@ body {
             .container {
                 padding: 0 1rem;
             }
-            
+
             .section-card {
                 padding: 1rem;
                 min-height: 250px;
             }
-            
+
             .hero {
                 min-height: 300px;
             }
@@ -591,15 +596,15 @@ body {
                 <!-- Kurdish Content -->
                 <div class="lang-content active rtl" data-lang="ku">
                     <h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1>
-                    <p>دەست ڕاگەیشتن بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا</p>
+                    <p> بەردەست بوون و کۆکردنەوەی هەزاران سەرچاوه و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p>
                 </div>
-                
+
                 <!-- English Content -->
                 <div class="lang-content ltr" data-lang="en">
                     <h1>College of Science Electronic Library</h1>
                     <p>Access thousands of scientific resources and books easily and quickly</p>
                 </div>
-                
+
                 <!-- Arabic Content -->
                 <div class="lang-content rtl" data-lang="ar">
                     <h1>المكتبة الإلكترونية لكلية العلوم</h1>
@@ -650,7 +655,7 @@ body {
                                 </div>
                                 <div class="team-member">
                                     <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                    <p>خوێندکاری بەشی بایەلۆجی</p>
+                                    <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
                                 </div>
                             </div>
                         </div>
@@ -658,27 +663,33 @@ body {
                 </div>
             </div>
 
-            <!-- English Content -->
-            <div class="lang-content ltr" data-lang="en">
-                <div class="intro-content">
-                    <h2>Introduction</h2>
-                    <div class="intro-card">
-                        <p>
-                            In the era of technology and digital information, the need for a modern and efficient electronic library in higher education is very important. This project has been created to facilitate searching and accessing scientific resources at the College of Science.
-                        </p>
-                        <p>
-                            Students can easily access the electronic library through QR codes and view books and scientific resources of different departments in an organized manner. This modern system has been established for students of Biology, Chemistry, Physics, and Medical Laboratory Science departments.
-                        </p>
+           <!-- English Content -->
+<div class="lang-content ltr" data-lang="en">
+    <div class="intro-content">
+        <h2>Introduction</h2>
+        <div class="intro-card">
+            <p>
+In the name of God, the most gracious, the most merciful
+            </p>
+            <p>
+                Today, readers live in a world where information becomes available faster than ever before. Waiting for a library and searching through shelves is no longer sufficient to meet the needs of modern learning. Therefore, feeling our responsibility toward science and books, we have undertaken the collection of thousands of sources and scientific books to serve the educational and scientific aspects of our readers.
+            </p>
+            <p>
+                The electronic library is a library without walls, providing access to thousands of digital books, academic journals, and research for readers. All of these are accessible through QR codes that have been prepared electronically. This modern system has been created to serve the readers of the College of Science.
+            </p>
+        </div>
                         <div class="objectives-card">
-                            <h3>Project Objectives:</h3>
-                            <ul class="objectives-list">
-                                <li>📚 Easy access to scientific resources</li>
-                                <li>🔍 Effective searching across different departments</li>
-                                <li>📱 Utilizing QR code technology</li>
-                                <li>🌐 Support for three languages (Kurdish, English, Arabic)</li>
-                                <li>💡 Enhancing learning and research</li>
-                            </ul>
-                        </div>
+    <h3>Project Objectives:</h3>
+    <ul class="objectives-list">
+        <li>🎓 Supporting online learning at universities</li>
+        <li>⚡ Quick and easy access to scientific resources</li>
+        <li>📖 Gathering thousands of scientific resources in one place</li>
+        <li>📱 Utilizing modern technology {QR code} to serve education and students</li>
+        <li>👨‍🏫 Benefiting teachers and students from digital library resources</li>
+        <li>⏰ Filling students' free time with scientific projects</li>
+        <li>🌐 Availability of books and resources in all three languages (Kurdish, English, Arabic)</li>
+    </ul>
+</div>
                         <div class="team-card">
                             <h3>Prepared by:</h3>
                             <div class="team-grid">
@@ -692,7 +703,7 @@ body {
                                 </div>
                                 <div class="team-member">
                                     <h4>MAHMOOD KHDIR FAQE RASUL</h4>
-                                    <p>Biology Department Student</p>
+                                    <p>Biology Department Student - Web Developer</p>
                                 </div>
                             </div>
                         </div>
@@ -701,26 +712,32 @@ body {
             </div>
 
             <!-- Arabic Content -->
-            <div class="lang-content rtl" data-lang="ar">
-                <div class="intro-content">
-                    <h2>مقدمة</h2>
-                    <div class="intro-card">
-                        <p>
-                            في عصر التكنولوجيا والمعلومات الرقمية، تعتبر الحاجة إلى مكتبة إلكترونية حديثة وفعالة في التعليم العالي أمراً بالغ الأهمية. تم إنشاء هذا المشروع لتسهيل البحث والوصول إلى الموارد العلمية في كلية العلوم.
-                        </p>
-                        <p>
-                            يمكن للطلاب الوصول بسهولة إلى المكتبة الإلكترونية من خلال رموز QR ومشاهدة الكتب والموارد العلمية للأقسام المختلفة بطريقة منظمة. تم إنشاء هذا النظام الحديث لطلاب أقسام علوم الحياة والكيمياء والفيزياء وعلوم المختبرات الطبية.
-                        </p>
+<div class="lang-content rtl" data-lang="ar">
+    <div class="intro-content">
+        <h2>مقدمة</h2>
+        <div class="intro-card">
+            <p>
+                بسم الله الرحمن الرحيم
+            </p>
+            <p>
+                يعيش القراء اليوم في عالم تصبح فيه المعلومات متاحة بشكل أسرع من أي وقت مضى. لم يعد انتظار المكتبة والبحث بين الرفوف كافياً لتلبية احتياجات التعلم الحديث. لذلك، إحساساً منا بالمسؤولية تجاه العلم والكتب، قمنا بجمع آلاف المصادر والكتب العلمية لخدمة الجانب التعليمي والعلمي لقرائنا.
+            </p>
+            <p>
+                المكتبة الإلكترونية هي مكتبة بلا جدران، توفر الوصول إلى آلاف الكتب الرقمية والمجلات الأكاديمية والبحوث للقراء. كل هذا متاح من خلال رموز QR التي تم إعدادها إلكترونياً. تم إنشاء هذا النظام الحديث لخدمة قراء كلية العلوم.
+            </p>
+        </div>
                         <div class="objectives-card">
-                            <h3>أهداف المشروع:</h3>
-                            <ul class="objectives-list">
-                                <li>📚 سهولة الوصول إلى الموارد العلمية</li>
-                                <li>🔍 البحث الفعال عبر الأقسام المختلفة</li>
-                                <li>📱 استخدام تقنية رموز QR</li>
-                                <li>🌐 دعم ثلاث لغات (الكردية، الإنجليزية، العربية)</li>
-                                <li>💡 تعزيز التعلم والبحث</li>
-                            </ul>
-                        </div>
+    <h3>أهداف المشروع:</h3>
+    <ul class="objectives-list">
+        <li>🎓 دعم التعلم الإلكتروني في الجامعات</li>
+        <li>⚡ الوصول السريع والسهل إلى الموارد العلمية</li>
+        <li>📖 جمع آلاف الموارد العلمية في مكان واحد</li>
+        <li>📱 استخدام التكنولوجيا الحديثة {رموز QR} لخدمة التعليم والطلاب</li>
+        <li>👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية</li>
+        <li>⏰ ملء أوقات فراغ الطلاب بمشاريع علمية</li>
+        <li>🌐 توفر الكتب والموارد بجميع اللغات الثلاث (الكردية، الإنجليزية، العربية)</li>
+    </ul>
+</div>
                         <div class="team-card">
                             <h3>إعداد:</h3>
                             <div class="team-grid">
@@ -734,7 +751,7 @@ body {
                                 </div>
                                 <div class="team-member">
                                     <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                    <p>طالب قسم علوم الحياة</p>
+                                    <p>طالب قسم علوم الحياة - مطور مواقع الويب</p>
                                 </div>
                             </div>
                         </div>
@@ -751,27 +768,62 @@ body {
                 <div class="lang-content active rtl" data-lang="ku">
                     <h2>کتێبخانەی سەرەکی</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
-                        چونە ناو کتێبخانەی گشتی
+                        چونە ناو کتێبخانەی گشتی ١
                     </a>
                 </div>
-                
+
                 <!-- English -->
                 <div class="lang-content ltr" data-lang="en">
                     <h2>Main Library</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
-                        Enter Main Library
+                        Enter General Library 1
                     </a>
                 </div>
-                
+
                 <!-- Arabic -->
                 <div class="lang-content rtl" data-lang="ar">
                     <h2>المكتبة الرئيسية</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
-                        دخول إلى المكتبة العامة
+                        دخول إلى المكتبة العامة ١
                     </a>
                 </div>
-            </div>
+</section>
+    <section class="library-sections">
+        <div class="container">
+            <div class="main-library">
+                <!-- Kurdish -->
+                 <div class="general-library-2">
+                <!-- Kurdish -->
+                <div class="lang-content active rtl" data-lang="ku">
 
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        چونە ناو کتێبخانەی گشتی ٢
+                    </a>
+                </div>
+
+                <!-- English -->
+                <div class="lang-content ltr" data-lang="en">
+
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        Enter General Library 2
+                    </a>
+                </div>
+
+                <!-- Arabic -->
+                <div class="lang-content rtl" data-lang="ar">
+
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        دخول إلى المكتبة العامة ٢
+                         </a>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+</section>
             <!-- Kurdish Content -->
             <div class="lang-content active rtl" data-lang="ku">
                 <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">بەشە زانستییەکان</h2>
@@ -782,21 +834,21 @@ body {
                         <p>پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر</p>
                         <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">چونە ناو بەش</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">⚗️</div>
                         <h3>بەشی کیمیا</h3>
                         <p>سەرچاوەکانی کیمیای ئەندامی، نا ئەندامی، فیزیکی و کیمیای تاقیگەیی</p>
                         <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">چونە ناو بەش</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">⚛️</div>
                         <h3>بەشی فیزیا</h3>
                         <p>پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی</p>
                         <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">چونە ناو بەش</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">🔬</div>
                         <h3>زانستی تاقیگەی پزیشکی</h3>
@@ -816,21 +868,21 @@ body {
                         <p>Books and resources in life sciences, genetics, microbiology and more</p>
                         <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">Enter Department</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">⚗️</div>
                         <h3>Chemistry Department</h3>
                         <p>Resources for organic, inorganic, physical and laboratory chemistry</p>
                         <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">Enter Department</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">⚛️</div>
                         <h3>Physics Department</h3>
                         <p>Books on classical, modern, quantum and experimental physics</p>
                         <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">Enter Department</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">🔬</div>
                         <h3>Medical Laboratory Science</h3>
@@ -850,21 +902,21 @@ body {
                         <p>الكتب والمصادر في علوم الحياة والوراثة والأحياء الدقيقة والمزيد</p>
                         <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">دخول القسم</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">⚗️</div>
                         <h3>قسم الكيمياء</h3>
                         <p>مصادر الكيمياء العضوية وغير العضوية والفيزيائية والمختبرية</p>
                         <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">دخول القسم</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">⚛️</div>
                         <h3>قسم الفيزياء</h3>
                         <p>كتب الفيزياء الكلاسيكية والحديثة والكمية والتجريبية</p>
                         <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">دخول القسم</a>
                     </div>
-                    
+
                     <div class="section-card">
                         <div class="section-icon">🔬</div>
                         <h3>علوم المختبرات الطبية</h3>
@@ -882,12 +934,12 @@ body {
             <div class="lang-content active" data-lang="ku">
                 <p>  کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥ </p>
             </div>
-            
+
             <!-- English -->
             <div class="lang-content" data-lang="en">
                 <p> College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025 </p>
             </div>
-            
+
             <!-- Arabic -->
             <div class="lang-content" data-lang="ar">
                 <p>  المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥ </p>
@@ -899,7 +951,7 @@ body {
         // Enhanced Language Switcher with Session Storage
         const langButtons = document.querySelectorAll('.lang-btn');
         const langContents = document.querySelectorAll('.lang-content');
-        
+
         // Load saved language preference
         const savedLang = sessionStorage.getItem('selectedLanguage') || 'ku';
         switchLanguage(savedLang);
@@ -916,7 +968,7 @@ body {
         function switchLanguage(lang) {
             // Add loading state
             document.body.classList.add('loading');
-            
+
             setTimeout(() => {
                 // Remove active class from all buttons and contents
                 langButtons.forEach(btn => btn.classList.remove('active'));
@@ -924,18 +976,18 @@ body {
                     content.classList.remove('active');
                     content.style.opacity = '0';
                 });
-                
+
                 // Add active class to selected button
                 const targetButton = document.querySelector(`[data-lang="${lang}"].lang-btn`);
                 if (targetButton) targetButton.classList.add('active');
-                
+
                 // Show contents for selected language with fade effect
                 const targetContents = document.querySelectorAll(`[data-lang="${lang}"].lang-content`);
                 targetContents.forEach(content => {
                     content.classList.add('active');
                     setTimeout(() => content.style.opacity = '1', 10);
                 });
-                
+
                 // Update body direction with smooth transition
                 document.body.classList.remove('rtl', 'ltr');
                 if (lang === 'en') {
@@ -943,7 +995,7 @@ body {
                 } else {
                     document.body.classList.add('rtl');
                 }
-                
+
                 // Remove loading state
                 document.body.classList.remove('loading');
             }, 100);
@@ -953,7 +1005,7 @@ body {
         document.querySelectorAll('a[href^="http"]').forEach(link => {
             link.addEventListener('click', function(e) {
                 this.classList.add('loading');
-                
+
                 // Remove loading state after a delay
                 setTimeout(() => {
                     this.classList.remove('loading');
@@ -1001,7 +1053,7 @@ body {
                 button.addEventListener('touchstart', function() {
                     this.style.transform = 'scale(0.95)';
                 });
-                
+
                 button.addEventListener('touchend', function() {
                     this.style.transform = '';
                 });
@@ -1082,7 +1134,7 @@ body {
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Electronic Library - Fully Responsive Version Loaded');
-            
+
             // Add a subtle loading animation to cards
             const cards = document.querySelectorAll('.section-card');
             cards.forEach((card, index) => {

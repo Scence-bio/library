@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین</title>
+    <meta name="description" content="کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - دەستگەیشتن بە هەزاران پەرتووک و سەرچاوەی زانستی">
     <style>
         /* Base Reset */
         * {
@@ -17,6 +18,7 @@
             --primary-color: #667eea;
             --secondary-color: #764ba2;
             --accent-color: #ff6b6b;
+            --success-color: #28a745;
             --text-color: #333;
             --text-light: #666;
             --bg-light: #f8f9fa;
@@ -30,6 +32,7 @@
         /* Typography System */
         html {
             font-size: 16px;
+            scroll-behavior: smooth;
         }
 
         @media screen and (max-width: 480px) {
@@ -40,15 +43,16 @@
             html { font-size: 18px; }
         }
 
-@font-face {
-  font-family: 'NotoKufiArabic';
-  src: url('./NotoKufiArabic-Regular/NotoKufiArabic-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+        @font-face {
+            font-family: 'NotoKufiArabic';
+            src: url('./NotoKufiArabic-Regular/NotoKufiArabic-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
-body {
-            font-family: 'NotoKufiArabic', sans-serif;
+        body {
+            font-family: 'NotoKufiArabic', 'Arial Unicode MS', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             overflow-x: hidden;
@@ -84,7 +88,7 @@ body {
         }
 
         .logo {
-            font-size: clamp(3rem, 4vw, 1.5rem);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: bold;
             flex: 1;
             min-width: 200px;
@@ -179,7 +183,7 @@ body {
         }
 
         .hero p {
-            font-size: clamp(1.5rem, 4vw, 1.5rem);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             margin-bottom: clamp(1.5rem, 4vw, 2rem);
             animation: fadeInUp 2s ease-out 0.8s both;
             max-width: 800px;
@@ -196,6 +200,193 @@ body {
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* Quick Stats Section - NEW ADDITION */
+        .stats-section {
+            background: var(--white);
+            padding: clamp(2rem, 4vw, 3rem) 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--bg-light), #e9ecef);
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Search Section - NEW ADDITION */
+        .search-section {
+            background: linear-gradient(45deg, var(--bg-light), #e9ecef);
+            padding: var(--section-padding) 0;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .search-container h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            background: var(--white);
+            transition: all 0.3s ease;
+            direction: inherit;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Contact Section - NEW ADDITION */
+        .contact-section {
+            background: var(--white);
+            padding: var(--section-padding) 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--bg-light), #e9ecef);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Feedback Form - NEW ADDITION */
+        .feedback-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: var(--section-padding) 0;
+        }
+
+        .feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .feedback-form h2 {
+            margin-bottom: 2rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            direction: inherit;
+            background: rgba(255,255,255,0.95);
+        }
+
+        .form-textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #ee5a24;
+            transform: translateY(-2px);
         }
 
         /* Introduction Section - Responsive */
@@ -331,6 +522,7 @@ body {
             box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
             min-width: 200px;
             text-align: center;
+            margin: 0.5rem;
         }
 
         .main-library-btn:hover {
@@ -374,14 +566,12 @@ body {
         }
 
         .section-card {
-            background: var(--white);
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: var(--border-radius);
             padding: clamp(1.5rem, 4vw, 2rem);
             text-align: center;
-            box-shadow: var(--shadow);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             position: relative;
@@ -485,88 +675,28 @@ body {
         .rtl { direction: rtl; }
         .ltr { direction: ltr; }
 
+        /* Success Message */
+        .success-message {
+            background: var(--success-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+        }
+
         /* Enhanced Touch Targets for Mobile */
         @media (max-width: 768px) {
-            .lang-btn, .section-btn, .main-library-btn {
+            .lang-btn, .section-btn, .main-library-btn, .search-btn, .submit-btn {
                 min-height: 44px;
                 min-width: 44px;
                 touch-action: manipulation;
             }
         }
 
-        /* High Contrast Mode Support */
-        @media (prefers-contrast: high) {
-            .section-card {
-                border: 2px solid var(--text-color);
-            }
-        }
-
-        /* Reduced Motion Support */
-        @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Ultra-wide Screen Support */
-        @media screen and (min-width: 1400px) {
-            .container {
-                max-width: 1400px;
-            }
-
-            .sections-grid {
-                grid-template-columns: repeat(4, 1fr);
-                max-width: none;
-            }
-        }
-
-        /* Small Mobile Portrait */
-        @media screen and (max-width: 360px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .section-card {
-                padding: 1rem;
-                min-height: 250px;
-            }
-
-            .hero {
-                min-height: 300px;
-            }
-        }
-
-        /* Loading States */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-            position: relative;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            border: 2px solid transparent;
-            border-top: 2px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
         /* Print Styles */
         @media print {
-            .hero, .lang-switcher { display: none; }
+            .hero, .lang-switcher, .search-section, .feedback-section { display: none; }
             .section-card { page-break-inside: avoid; }
         }
     </style>
@@ -594,15 +724,15 @@ body {
             <div class="hero-content">
                 <!-- Kurdish Content -->
                 <div class="lang-content active rtl" data-lang="ku">
-                    <h2> بەخێربێن بۆ</h2>
+                    <h2>بەخێربێن بۆ</h2>
                     <br>
                     <h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1>
-                    <p> بەردەست بوون و کۆکردنەوەی هەزاران سەرچاوه و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p>
+                    <p>بەردەست بوون و کۆکردنەوەی هەزاران سەرچاوه و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p>
                 </div>
 
                 <!-- English Content -->
                 <div class="lang-content ltr" data-lang="en">
-                    <h2> Welcome To</h2>
+                    <h2>Welcome To</h2>
                     <br>
                     <h1>College of Science Electronic Library</h1>
                     <p>Access thousands of scientific resources and books easily and quickly</p>
@@ -616,6 +746,129 @@ body {
                     <p>الوصول إلى آلاف المصادر والكتب العلمية بسهولة وسرعة</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Section - NEW -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <!-- Kurdish Stats -->
+                <div class="lang-content active rtl" data-lang="ku">
+                    <div class="stat-item">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">پەرتووک و سەرچاوە</span>
+                    </div>
+                </div>
+                <div class="lang-content active rtl" data-lang="ku">
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">بەشی زانستی</span>
+                    </div>
+                </div>
+                <div class="lang-content active rtl" data-lang="ku">
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">دەستگەیشتن</span>
+                    </div>
+                </div>
+                <div class="lang-content active rtl" data-lang="ku">
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">زمان</span>
+                    </div>
+                </div>
+
+                <!-- English Stats -->
+                <div class="lang-content ltr" data-lang="en">
+                    <div class="stat-item">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">Books & Resources</span>
+                    </div>
+                </div>
+                <div class="lang-content ltr" data-lang="en">
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Scientific Departments</span>
+                    </div>
+                </div>
+                <div class="lang-content ltr" data-lang="en">
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Access</span>
+                    </div>
+                </div>
+                <div class="lang-content ltr" data-lang="en">
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Languages</span>
+                    </div>
+                </div>
+
+                <!-- Arabic Stats -->
+                <div class="lang-content rtl" data-lang="ar">
+                    <div class="stat-item">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">كتاب ومورد</span>
+                    </div>
+                </div>
+                <div class="lang-content rtl" data-lang="ar">
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">أقسام علمية</span>
+                    </div>
+                </div>
+                <div class="lang-content rtl" data-lang="ar">
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">الوصول</span>
+                    </div>
+                </div>
+                <div class="lang-content rtl" data-lang="ar">
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">لغات</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section - NEW -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <!-- Kurdish Search -->
+                <div class="lang-content active rtl" data-lang="ku">
+                    <h2>گەڕان لە کتێبخانە</h2>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="بنووسە چی دەگەڕێیت...">
+                        <button class="search-btn" onclick="performSearch()">🔍</button>
+                    </div>
+                    <p>گەڕان لە هەزاران پەرتووک و سەرچاوەی زانستی</p>
+                </div>
+
+                <!-- English Search -->
+                <div class="lang-content ltr" data-lang="en">
+                    <h2>Search Library</h2>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="What are you looking for...">
+                        <button class="search-btn" onclick="performSearch()">🔍</button>
+                    </div>
+                    <p>Search through thousands of scientific books and resources</p>
+                </div>
+
+                <!-- Arabic Search -->
+                <div class="lang-content rtl" data-lang="ar">
+                    <h2>البحث في المكتبة</h2>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="عما تبحث...">
+                        <button class="search-btn" onclick="performSearch()">🔍</button>
+                    </div>
+                    <p>البحث في آلاف الكتب والمصادر العلمية</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Introduction Section -->
@@ -626,9 +879,8 @@ body {
                 <div class="intro-content">
                     <h2>پێشەکی</h2>
                     <div class="intro-card">
+                        <p>بە ناوی خودای بەخشندە و میهرەبان</p>
                         <p>
-                                  بە ناوی خودای بەخشندە و میهرەبان
-                    <p>
 خوێنەران ئەمڕۆ لە جیهانێکدا دەژین کە زانیارییەکان خێراتر لە جاران بەردەست دەبن. چاوەڕوانی کردنەوەی کتێبخانەیەک و گەڕان بەناو ڕەفەکاندا چیتر بەس نییە بۆ دابینکردنی پێداویستییەکانی فێربوونی مۆدێرن. هەر بۆیە لە سۆنگەی هەست کردن بە بەرپرسیارێتی بەرامبەر بە زانست و پەرتووک ئێمە هەستاین بە کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی تاوەکو خزمەت بە لایەنی فێربوون و زانستی خوێنەران بکات.
                         </p>
                         <p>
@@ -672,9 +924,7 @@ body {
     <div class="intro-content">
         <h2>Introduction</h2>
         <div class="intro-card">
-            <p>
-In the name of God, the most gracious, the most merciful
-            </p>
+            <p>In the name of God, the most gracious, the most merciful</p>
             <p>
                 Today, readers live in a world where information becomes available faster than ever before. Waiting for a library and searching through shelves is no longer sufficient to meet the needs of modern learning. Therefore, feeling our responsibility toward science and books, we have undertaken the collection of thousands of sources and scientific books to serve the educational and scientific aspects of our readers.
             </p>
@@ -720,9 +970,7 @@ In the name of God, the most gracious, the most merciful
     <div class="intro-content">
         <h2>مقدمة</h2>
         <div class="intro-card">
-            <p>
-                بسم الله الرحمن الرحيم
-            </p>
+            <p>بسم الله الرحمن الرحيم</p>
             <p>
                 يعيش القراء اليوم في عالم تصبح فيه المعلومات متاحة بشكل أسرع من أي وقت مضى. لم يعد انتظار المكتبة والبحث بين الرفوف كافياً لتلبية احتياجات التعلم الحديث. لذلك، إحساساً منا بالمسؤولية تجاه العلم والكتب، قمنا بجمع آلاف المصادر والكتب العلمية لخدمة الجانب التعليمي والعلمي لقرائنا.
             </p>
@@ -774,6 +1022,9 @@ In the name of God, the most gracious, the most merciful
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         چونە ناو کتێبخانەی گشتی ١
                     </a>
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        چونە ناو کتێبخانەی گشتی ٢
+                    </a>
                 </div>
 
                 <!-- English -->
@@ -781,6 +1032,9 @@ In the name of God, the most gracious, the most merciful
                     <h2>Main Library</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         Enter General Library 1
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        Enter General Library 2
                     </a>
                 </div>
 
@@ -790,44 +1044,12 @@ In the name of God, the most gracious, the most merciful
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         دخول إلى المكتبة العامة ١
                     </a>
-                </div>
-</section>
-    <section class="library-sections">
-        <div class="container">
-            <div class="main-library">
-                <!-- Kurdish -->
-                 <div class="general-library-2">
-                <!-- Kurdish -->
-                <div class="lang-content active rtl" data-lang="ku">
-
-                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        چونە ناو کتێبخانەی گشتی ٢
-                    </a>
-                </div>
-
-                <!-- English -->
-                <div class="lang-content ltr" data-lang="en">
-
-                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        Enter General Library 2
-                    </a>
-                </div>
-
-                <!-- Arabic -->
-                <div class="lang-content rtl" data-lang="ar">
-
                     <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
                         دخول إلى المكتبة العامة ٢
-                         </a>
-                        </a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-        </div>
-     </div>
-</div>
-</section>
+
             <!-- Kurdish Content -->
             <div class="lang-content active rtl" data-lang="ku">
                 <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">بەشە زانستییەکان</h2>
@@ -932,21 +1154,159 @@ In the name of God, the most gracious, the most merciful
         </div>
     </section>
 
+    <!-- Contact Section - NEW -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="lang-content active rtl" data-lang="ku">
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">پەیوەندی</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>ئیمەیڵ</h3>
+                        <p>raparin.library@university.edu</p>
+                        <p>بۆ پرسیار و پێشنیار</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🏫</div>
+                        <h3>ناونیشان</h3>
+                        <p>کۆلێژی زانست</p>
+                        <p>زانکۆی ڕاپەڕین، سلێمانی</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">⏰</div>
+                        <h3>کاتی کارکردن</h3>
+                        <p>24/7 دەستگەیشتنی ئۆنلاین</p>
+                        <p>هەموو ڕۆژێک، هەموو کاتێک</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content ltr" data-lang="en">
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>raparin.library@university.edu</p>
+                        <p>For questions and suggestions</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🏫</div>
+                        <h3>Address</h3>
+                        <p>College of Science</p>
+                        <p>Raparin University, Sulaymaniyah</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">⏰</div>
+                        <h3>Working Hours</h3>
+                        <p>24/7 Online Access</p>
+                        <p>Every day, all time</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-content rtl" data-lang="ar">
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">اتصل بنا</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>البريد الإلكتروني</h3>
+                        <p>raparin.library@university.edu</p>
+                        <p>للأسئلة والاقتراحات</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🏫</div>
+                        <h3>العنوان</h3>
+                        <p>كلية العلوم</p>
+                        <p>جامعة رابەرين، السليمانية</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">⏰</div>
+                        <h3>ساعات العمل</h3>
+                        <p>وصول عبر الإنترنت 24/7</p>
+                        <p>كل يوم، كل الوقت</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Form - NEW -->
+    <section class="feedback-section">
+        <div class="container">
+            <div class="feedback-form">
+                <!-- Kurdish Form -->
+                <div class="lang-content active rtl" data-lang="ku">
+                    <h2>پێشنیار و ڕای خۆت بنێرە</h2>
+                    <form id="feedbackForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="ناوت" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="ئیمەیڵ" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" placeholder="پێشنیار یان ڕای خۆت بنووسە..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">ناردن</button>
+                        <div class="success-message" id="successMessage">سوپاس! پەیامەکەت نێردرا.</div>
+                    </form>
+                </div>
+
+                <!-- English Form -->
+                <div class="lang-content ltr" data-lang="en">
+                    <h2>Send Your Feedback & Suggestions</h2>
+                    <form id="feedbackFormEn">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" placeholder="Write your feedback or suggestion..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send</button>
+                        <div class="success-message" id="successMessageEn">Thank you! Your message has been sent.</div>
+                    </form>
+                </div>
+
+                <!-- Arabic Form -->
+                <div class="lang-content rtl" data-lang="ar">
+                    <h2>أرسل ملاحظاتك واقتراحاتك</h2>
+                    <form id="feedbackFormAr">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="اسمك" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" placeholder="اكتب ملاحظاتك أو اقتراحك..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">إرسال</button>
+                        <div class="success-message" id="successMessageAr">شكرا لك! تم إرسال رسالتك.</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <!-- Kurdish -->
             <div class="lang-content active" data-lang="ku">
-                <p>  کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥ </p>
+                <p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥</p>
             </div>
 
             <!-- English -->
             <div class="lang-content" data-lang="en">
-                <p> College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025 </p>
+                <p>College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025</p>
             </div>
 
             <!-- Arabic -->
             <div class="lang-content" data-lang="ar">
-                <p>  المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥ </p>
+                <p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥</p>
             </div>
         </div>
     </footer>
@@ -1005,6 +1365,66 @@ In the name of God, the most gracious, the most merciful
             }, 100);
         }
 
+        // Search functionality - NEW
+        function performSearch() {
+            const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+            const searchInput = document.querySelector('.lang-content.active .search-input');
+            const searchTerm = searchInput.value.trim();
+            
+            if (searchTerm) {
+                // In a real implementation, this would search through your library database
+                // For now, we'll show a simple alert
+                let message;
+                if (currentLang === 'ku') {
+                    message = `گەڕان بۆ: "${searchTerm}"\nئەم تایبەتمەندییە بەزووترین دەخرێتە کار.`;
+                } else if (currentLang === 'en') {
+                    message = `Searching for: "${searchTerm}"\nThis feature will be implemented soon.`;
+                } else {
+                    message = `البحث عن: "${searchTerm}"\nسيتم تنفيذ هذه الميزة قريباً.`;
+                }
+                alert(message);
+            }
+        }
+
+        // Handle search on Enter key press
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.search-input').forEach(input => {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            });
+        });
+
+        // Feedback form handling - NEW
+        function handleFeedbackSubmit(formId, messageId) {
+            const form = document.getElementById(formId);
+            const message = document.getElementById(messageId);
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    message.style.display = 'block';
+                    form.reset();
+                    
+                    // Hide message after 3 seconds
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                    }, 3000);
+                }, 500);
+            });
+        }
+
+        // Initialize feedback forms
+        document.addEventListener('DOMContentLoaded', () => {
+            handleFeedbackSubmit('feedbackForm', 'successMessage');
+            handleFeedbackSubmit('feedbackFormEn', 'successMessageEn');
+            handleFeedbackSubmit('feedbackFormAr', 'successMessageAr');
+        });
+
         // Enhanced Link Interaction with Loading States
         document.querySelectorAll('a[href^="http"]').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1046,14 +1466,14 @@ In the name of God, the most gracious, the most merciful
             });
         }, observerOptions);
 
-        // Observe all cards
-        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card').forEach(element => {
+        // Observe all cards and sections
+        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card, .stat-item, .contact-card').forEach(element => {
             observer.observe(element);
         });
 
         // Touch feedback for mobile devices
         if ('ontouchstart' in window) {
-            document.querySelectorAll('.section-btn, .main-library-btn, .lang-btn').forEach(button => {
+            document.querySelectorAll('.section-btn, .main-library-btn, .lang-btn, .search-btn, .submit-btn').forEach(button => {
                 button.addEventListener('touchstart', function() {
                     this.style.transform = 'scale(0.95)';
                 });
@@ -1075,19 +1495,11 @@ In the name of God, the most gracious, the most merciful
             document.body.classList.remove('keyboard-nav');
         });
 
-        // Orientation change handler
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 100);
-        });
-
         // Performance optimization: Debounce resize events
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                // Re-calculate any dynamic elements if needed
                 console.log('Window resized - recalculating layout');
             }, 250);
         });
@@ -1115,6 +1527,31 @@ In the name of God, the most gracious, the most merciful
                 }
             }
             
+            .loading {
+                opacity: 0.6;
+                pointer-events: none;
+                position: relative;
+            }
+
+            .loading::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 20px;
+                height: 20px;
+                border: 2px solid transparent;
+                border-top: 2px solid var(--primary-color);
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                transform: translate(-50%, -50%);
+            }
+
+            @keyframes spin {
+                0% { transform: translate(-50%, -50%) rotate(0deg); }
+                100% { transform: translate(-50%, -50%) rotate(360deg); }
+            }
+            
             /* Additional responsive utilities */
             @media (max-width: 320px) {
                 .container {
@@ -1132,17 +1569,59 @@ In the name of God, the most gracious, the most merciful
                     padding: 2rem 0;
                 }
             }
+
+            /* Accessibility improvements */
+            @media (prefers-reduced-motion: reduce) {
+                *, ::before, ::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
         `;
         document.head.appendChild(additionalStyles);
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('Electronic Library - Fully Responsive Version Loaded');
+            console.log('Enhanced Electronic Library - Version 2.0 Loaded');
 
-            // Add a subtle loading animation to cards
-            const cards = document.querySelectorAll('.section-card');
+            // Add subtle loading animation to cards
+            const cards = document.querySelectorAll('.section-card, .stat-item');
             cards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Initialize accessibility features
+            document.body.setAttribute('role', 'main');
+            
+            // Add language announcement for screen readers
+            const langAnnouncer = document.createElement('div');
+            langAnnouncer.setAttribute('aria-live', 'polite');
+            langAnnouncer.setAttribute('aria-atomic', 'true');
+            langAnnouncer.style.position = 'absolute';
+            langAnnouncer.style.left = '-10000px';
+            langAnnouncer.id = 'language-announcer';
+            document.body.appendChild(langAnnouncer);
+        });
+
+        // Announce language changes to screen readers
+        function announceLanguageChange(lang) {
+            const announcer = document.getElementById('language-announcer');
+            if (announcer) {
+                const messages = {
+                    'ku': 'زمان گۆڕدرا بۆ کوردی',
+                    'en': 'Language changed to English',
+                    'ar': 'تم تغيير اللغة إلى العربية'
+                };
+                announcer.textContent = messages[lang] || '';
+            }
+        }
+
+        // Update language switcher to include accessibility
+        langButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const targetLang = button.getAttribute('data-lang');
+                announceLanguageChange(targetLang);
             });
         });
     </script>

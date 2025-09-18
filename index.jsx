@@ -1,447 +1,1289 @@
-import React, { useState, useEffect } from 'react';
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین</title>
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-const CollegeLibraryVue = () => {
-  const [currentLanguage, setCurrentLanguage] = useState('ku');
-  const [isLoading, setIsLoading] = useState(false);
+        /* Root Variables for Better Scaling */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --border-radius: 15px;
+            --container-padding: clamp(1rem, 4vw, 2rem);
+            --section-padding: clamp(2rem, 8vw, 4rem);
+            
+            /* Purple theme colors */
+            --purple-light: #f3f0ff;
+            --purple-medium: #e9e4ff;
+            --purple-dark: #ddd6fe;
+            --purple-darker: #c4b5fd;
+        }
 
-  // Load saved language preference
-  useEffect(() => {
-    const savedLang = localStorage.getItem('selectedLanguage') || 'ku';
-    setCurrentLanguage(savedLang);
-  }, []);
+        /* Typography System */
+        html {
+            font-size: 16px;
+        }
 
-  // Language switching function
-  const switchLanguage = (lang) => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setCurrentLanguage(lang);
-      localStorage.setItem('selectedLanguage', lang);
-      setIsLoading(false);
-    }, 100);
-  };
+        @media screen and (max-width: 480px) {
+            html { font-size: 14px; }
+        }
 
-  // Content data for different languages
-  const content = {
-    ku: {
-      direction: 'rtl',
-      universityName: 'زانکۆی ڕاپەڕین',
-      welcome: 'بەخێربێن بۆ',
-      heroTitle: 'کتێبخانەی ئەلیکترۆنی کۆلێژی زانست',
-      heroSubtitle: 'بەردەست بوون و کۆکردنەوەی هەزاران سەرچاوه و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.',
-      introduction: 'پێشەکی',
-      mainLibrary: 'کتێبخانەی سەرەکی',
-      mainLibraryBtn1: 'چونە ناو کتێبخانەی گشتی ١',
-      mainLibraryBtn2: 'چونە ناو کتێبخانەی گشتی ٢',
-      scientificDepartments: 'بەشە زانستییەکان',
-      aboutUs: '👥 دەربارەی ئێمە',
-      footer: 'کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. © ٢٠٢٥'
-    },
-    en: {
-      direction: 'ltr',
-      universityName: 'University Raparin',
-      welcome: 'Welcome To',
-      heroTitle: 'College of Science Electronic Library',
-      heroSubtitle: 'Access thousands of scientific resources and books easily and quickly',
-      introduction: 'Introduction',
-      mainLibrary: 'Main Library',
-      mainLibraryBtn1: 'Enter General Library 1',
-      mainLibraryBtn2: 'Enter General Library 2',
-      scientificDepartments: 'Scientific Departments',
-      aboutUs: '👥 About Us',
-      footer: 'College of Science Electronic Library - Raparin University. All rights reserved. © 2025'
-    },
-    ar: {
-      direction: 'rtl',
-      universityName: 'جامعة رابەرين',
-      welcome: 'مرحبا بكم في',
-      heroTitle: 'المكتبة الإلكترونية لكلية العلوم',
-      heroSubtitle: 'الوصول إلى آلاف المصادر والكتب العلمية بسهولة وسرعة',
-      introduction: 'مقدمة',
-      mainLibrary: 'المكتبة الرئيسية',
-      mainLibraryBtn1: 'دخول إلى المكتبة العامة ١',
-      mainLibraryBtn2: 'دخول إلى المكتبة العامة ٢',
-      scientificDepartments: 'الأقسام العلمية',
-      aboutUs: '👥 معلومات عنا',
-      footer: 'المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. © ٢٠٢٥'
-    }
-  };
+        @media screen and (min-width: 1200px) {
+            html { font-size: 18px; }
+        }
 
-  // Departments data
-  const departments = {
-    ku: [
-      {
-        icon: '🧬',
-        title: 'بەشی بایەلۆجی',
-        description: 'پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر',
-        link: 'https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN',
-        buttonText: 'چونە ناو بەش'
-      },
-      {
-        icon: '⚗️',
-        title: 'بەشی کیمیا',
-        description: 'سەرچاوەکانی کیمیای ئەندامی، نا ئەندامی، فیزیکی و کیمیای تاقیگەیی',
-        link: 'https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh',
-        buttonText: 'چونە ناو بەش'
-      },
-      {
-        icon: '⚛️',
-        title: 'بەشی فیزیا',
-        description: 'پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی',
-        link: 'https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW',
-        buttonText: 'چونە ناو بەش'
-      },
-      {
-        icon: '🔬',
-        title: 'زانستی تاقیگەی پزیشکی',
-        description: 'سەرچاوەکانی شیکردنەوەی کلینیکی، میکرۆبایەلۆجی پزیشکی و ڕێنماییەکان',
-        link: 'https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i',
-        buttonText: 'چونە ناو بەش'
-      }
-    ],
-    en: [
-      {
-        icon: '🧬',
-        title: 'Biology Department',
-        description: 'Books and resources in life sciences, genetics, microbiology and more',
-        link: 'https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN',
-        buttonText: 'Enter Department'
-      },
-      {
-        icon: '⚗️',
-        title: 'Chemistry Department',
-        description: 'Resources for organic, inorganic, physical and laboratory chemistry',
-        link: 'https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh',
-        buttonText: 'Enter Department'
-      },
-      {
-        icon: '⚛️',
-        title: 'Physics Department',
-        description: 'Books on classical, modern, quantum and experimental physics',
-        link: 'https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW',
-        buttonText: 'Enter Department'
-      },
-      {
-        icon: '🔬',
-        title: 'Medical Laboratory Science',
-        description: 'Resources for clinical analysis, medical microbiology and guidelines',
-        link: 'https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i',
-        buttonText: 'Enter Department'
-      }
-    ],
-    ar: [
-      {
-        icon: '🧬',
-        title: 'قسم علوم الحياة',
-        description: 'الكتب والمصادر في علوم الحياة والوراثة والأحياء الدقيقة والمزيد',
-        link: 'https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN',
-        buttonText: 'دخول القسم'
-      },
-      {
-        icon: '⚗️',
-        title: 'قسم الكيمياء',
-        description: 'مصادر الكيمياء العضوية وغير العضوية والفيزيائية والمختبرية',
-        link: 'https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh',
-        buttonText: 'دخول القسم'
-      },
-      {
-        icon: '⚛️',
-        title: 'قسم الفيزياء',
-        description: 'كتب الفيزياء الكلاسيكية والحديثة والكمية والتجريبية',
-        link: 'https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW',
-        buttonText: 'دخول القسم'
-      },
-      {
-        icon: '🔬',
-        title: 'علوم المختبرات الطبية',
-        description: 'مصادر التحليل السريري والأحياء الدقيقة الطبية والإرشادات',
-        link: 'https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i',
-        buttonText: 'دخول القسم'
-      }
-    ]
-  };
+@font-face {
+  font-family: 'NotoKufiArabic';
+  src: url('./NotoKufiArabic-Regular/NotoKufiArabic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-  const currentContent = content[currentLanguage];
-  const currentDepartments = departments[currentLanguage];
+body {
+            font-family: 'NotoKufiArabic', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+            direction: rtl;
+            background-color: var(--white);
+        }
 
-  return (
-    <div className={`min-h-screen font-arabic ${currentContent.direction === 'rtl' ? 'rtl' : 'ltr'} ${isLoading ? 'opacity-60' : ''}`} style={{ direction: currentContent.direction }}>
-      {/* CSS Styles */}
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap');
-        
-        .font-arabic {
-          font-family: 'Noto Kufi Arabic', sans-serif;
+        /* Responsive Container */
+        .container {
+            max-width: min(1200px, calc(100% - 2rem));
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            width: 100%;
         }
-        
-        .rtl {
-          direction: rtl;
+
+        /* Header - Fully Responsive */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: clamp(0.5rem, 2vw, 1rem) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
         }
-        
-        .ltr {
-          direction: ltr;
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        
-        .hero-bg {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        .logo {
+            font-size: clamp(3rem, 4vw, 1.5rem);
+            font-weight: bold;
+            flex: 1;
+            min-width: 200px;
         }
-        
-        .section-bg {
-          background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+
+        .lang-switcher {
+            display: flex;
+            gap: clamp(0.5rem, 2vw, 1rem);
+            flex-wrap: wrap;
         }
-        
-        .card-hover {
-          transition: all 0.3s ease;
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: var(--white);
+            padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            min-width: 60px;
+            text-align: center;
         }
-        
-        .card-hover:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
         }
-        
-        .btn-primary {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          transition: all 0.3s ease;
+
+        /* Mobile Header Adjustments */
+        @media screen and (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                order: 1;
+                width: 100%;
+            }
+
+            .lang-switcher {
+                order: 2;
+                justify-content: center;
+                width: 100%;
+            }
         }
-        
-        .btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+        /* Hero Section - Fully Responsive */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: var(--section-padding) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: clamp(400px, 60vh, 600px);
+            display: flex;
+            align-items: center;
         }
-        
-        .btn-accent {
-          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-          transition: all 0.3s ease;
-          box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                              radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 100px 100px;
+            animation: float 20s infinite linear;
+            top: -50%;
+            left: -50%;
         }
-        
-        .btn-accent:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-        }
-        
-        .floating-animation {
-          animation: float 20s infinite linear;
-        }
-        
+
         @keyframes float {
-          0% { transform: translateX(0) translateY(0); }
-          100% { transform: translateX(-50px) translateY(-50px); }
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-50px) translateY(-50px); }
         }
-        
-        .fade-in-up {
-          animation: fadeInUp 1s ease-out;
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
         }
-        
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            animation: fadeInUp 1s ease-out;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: clamp(1.5rem, 4vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            animation: fadeInUp 2s ease-out 0.8s both;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        .glass-card {
-          background: rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.18);
+
+        /* Introduction Section - Purple Light Background */
+        .intro-section {
+            padding: var(--section-padding) 0;
+            background: var(--purple-light);
+            border-radius: var(--border-radius);
+            margin: clamp(1rem, 3vw, 2rem) 0;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
         }
-        
+
+        .intro-content {
+            text-align: center;
+            max-width: min(900px, 100%);
+            margin: 0 auto;
+        }
+
+        .intro-content h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .intro-card {
+            background: var(--white);
+            padding: clamp(1.5rem, 5vw, 3rem);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            transition: transform 0.3s ease;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .intro-card p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: clamp(1.6, 0.05vw + 1.5, 2);
+            color: var(--text-light);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
+            text-align: justify;
+        }
+
+        /* Objectives Section - Purple Medium Background */
+        .objectives-section {
+            padding: var(--section-padding) 0;
+            background: var(--purple-medium);
+            border-radius: var(--border-radius);
+            margin: clamp(1rem, 3vw, 2rem) 0;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.12);
+        }
+
+        .objectives-card {
+            background: var(--white);
+            padding: clamp(1rem, 3vw, 2rem);
+            border-radius: var(--border-radius);
+            margin: 0 auto;
+            max-width: min(900px, 100%);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .objectives-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .objectives-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            text-align: center;
+        }
+
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+            color: var(--text-light);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        .objectives-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        /* About Us Section - Purple Dark Background */
+        .about-section {
+            padding: var(--section-padding) 0;
+            background: var(--purple-dark);
+            border-radius: var(--border-radius);
+            margin: clamp(1rem, 3vw, 2rem) 0;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.15);
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: min(900px, 100%);
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: clamp(1.5rem, 5vw, 3rem);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-card p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: clamp(1.6, 0.05vw + 1.5, 2);
+            color: var(--text-light);
+            margin-bottom: clamp(1rem, 3vw, 2rem);
+            text-align: justify;
+        }
+
+        .mission-card {
+            background: rgba(102, 126, 234, 0.1);
+            padding: clamp(1rem, 3vw, 2rem);
+            border-radius: var(--border-radius);
+            margin: clamp(1rem, 3vw, 2rem) 0;
+        }
+
+        .mission-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .team-card {
+            background: rgba(255, 107, 107, 0.1);
+            padding: clamp(1rem, 3vw, 2rem);
+            border-radius: var(--border-radius);
+            margin: clamp(1rem, 3vw, 2rem) 0;
+        }
+
+        .team-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(0.5rem, 2vw, 1rem);
+            margin-top: 1rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: clamp(0.8rem, 2vw, 1rem);
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .team-member h4 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        }
+
+        .team-member p {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+        }
+
+        /* Library Sections - Ultra Responsive */
+        .library-sections {
+            padding: var(--section-padding) 0;
+            background: linear-gradient(45deg, var(--bg-light) 0%, #e9ecef 100%);
+        }
+
+        .main-library {
+            text-align: center;
+            margin-bottom: clamp(2rem, 6vw, 4rem);
+        }
+
+        .main-library h2 {
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--text-color);
+        }
+
+        .main-library-btn {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #ee5a24 100%);
+            color: var(--white);
+            border: none;
+            padding: clamp(1rem, 3vw, 1.25rem) clamp(2rem, 6vw, 3.125rem);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            min-width: 200px;
+            text-align: center;
+            margin: 0.5rem;
+        }
+
+        .main-library-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Sections Grid - Advanced Responsive */
+        .sections-grid {
+            display: grid;
+            gap: clamp(1rem, 4vw, 2rem);
+            margin-top: clamp(2rem, 6vw, 3rem);
+        }
+
+        /* Mobile First Grid */
+        @media screen and (max-width: 480px) {
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            .sections-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .sections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            .sections-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .section-card {
+            background: var(--white);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: var(--border-radius);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            text-align: center;
+            box-shadow: var(--shadow);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .section-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 4px;
-          background: linear-gradient(90deg, #667eea, #764ba2);
-          transform: scaleX(0);
-          transition: transform 0.3s ease;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
-        
+
         .section-card:hover::before {
-          transform: scaleX(1);
+            transform: scaleX(1);
         }
-      `}</style>
 
-      {/* Header */}
-      <header className="hero-bg text-white py-4 sticky top-0 z-50 shadow-lg">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center flex-wrap gap-4">
-            <div className="text-2xl md:text-3xl font-bold flex-1 min-w-[200px]">
-              {currentContent.universityName}
-            </div>
-            <div className="flex gap-2 flex-wrap">
-              {['ku', 'en', 'ar'].map(lang => (
-                <button
-                  key={lang}
-                  onClick={() => switchLanguage(lang)}
-                  className={`px-4 py-2 rounded transition-all duration-300 min-w-[60px] ${
-                    currentLanguage === lang
-                      ? 'bg-white bg-opacity-30'
-                      : 'bg-white bg-opacity-20 hover:bg-opacity-30'
-                  }`}
-                >
-                  {lang === 'ku' ? 'کوردی' : lang === 'en' ? 'English' : 'العربية'}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </header>
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
 
-      {/* Hero Section */}
-      <section className="hero-bg text-white py-16 md:py-24 relative overflow-hidden min-h-[400px] flex items-center">
-        <div 
-          className="absolute w-full h-full floating-animation opacity-10"
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
-                              radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px)`,
-            backgroundSize: '100px 100px'
-          }}
-        />
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="fade-in-up">
-            <h2 className="text-2xl md:text-4xl mb-4">{currentContent.welcome}</h2>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              {currentContent.heroTitle}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
-              {currentContent.heroSubtitle}
-            </p>
-          </div>
-        </div>
-      </section>
+        .section-icon {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
+        }
 
-      {/* Introduction Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
-              {currentContent.introduction}
-            </h2>
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-8 rounded-2xl shadow-lg mb-8">
-              <p className="text-lg text-gray-600 leading-relaxed text-justify mb-6">
-                {currentLanguage === 'ku' && `
-                  بە ناوی خودای بەخشندە و میهرەبان
-                  خوێنەران ئەمڕۆ لە جیهانێکدا دەژین کە زانیارییەکان خێراتر لە جاران بەردەست دەبن. چاوەڕوانی کردنەوەی کتێبخانەیەک و گەڕان بەناو ڕەفەکاندا چیتر بەس نییە بۆ دابینکردنی پێداویستییەکانی فێربوونی مۆدێرن.
-                `}
-                {currentLanguage === 'en' && `
-                  In the name of God, the most gracious, the most merciful.
-                  Today, readers live in a world where information becomes available faster than ever before. Waiting for a library and searching through shelves is no longer sufficient to meet the needs of modern learning.
-                `}
-                {currentLanguage === 'ar' && `
-                  بسم الله الرحمن الرحيم
-                  يعيش القراء اليوم في عالم تصبح فيه المعلومات متاحة بشكل أسرع من أي وقت مضى. لم يعد انتظار المكتبة والبحث بين الرفوف كافياً لتلبية احتياجات التعلم الحديث.
-                `}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        .section-card h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: clamp(0.8rem, 2vw, 1rem);
+            color: var(--text-color);
+            line-height: 1.3;
+        }
 
-      {/* Main Library Section */}
-      <section className="section-bg py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
-              {currentContent.mainLibrary}
-            </h2>
-            <a
-              href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-accent text-white px-8 py-4 rounded-full text-lg font-bold inline-block min-w-[200px] mb-6"
-            >
-              {currentContent.mainLibraryBtn1}
-            </a>
-          </div>
-          
-          <div className="text-center">
-            <a
-              href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-accent text-white px-8 py-4 rounded-full text-lg font-bold inline-block min-w-[200px]"
-            >
-              {currentContent.mainLibraryBtn2}
-            </a>
-          </div>
-        </div>
-      </section>
+        .section-card p {
+            color: var(--text-light);
+            margin-bottom: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.6;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
 
-      {/* Scientific Departments */}
-      <section className="section-bg py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">
-            {currentContent.scientificDepartments}
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {currentDepartments.map((dept, index) => (
-              <div
-                key={index}
-                className="section-card glass-card rounded-2xl p-6 text-center shadow-lg card-hover relative overflow-hidden min-h-[280px] flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-5xl mb-4">{dept.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 leading-tight">
-                    {dept.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 flex-grow flex items-center">
-                    {dept.description}
-                  </p>
+        .section-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            border: none;
+            padding: clamp(0.75rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 140px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .section-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer - Responsive */
+        footer {
+            background: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: clamp(1.5rem, 4vw, 2rem) 0;
+        }
+
+        footer p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+        }
+
+        /* Language Content Management */
+        .lang-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* RTL/LTR Support */
+        .rtl { direction: rtl; }
+        .ltr { direction: ltr; }
+
+        /* Enhanced Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .lang-btn, .section-btn, .main-library-btn {
+                min-height: 44px;
+                min-width: 44px;
+                touch-action: manipulation;
+            }
+        }
+
+        /* High Contrast Mode Support */
+        @media (prefers-contrast: high) {
+            .section-card {
+                border: 2px solid var(--text-color);
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Ultra-wide Screen Support */
+        @media screen and (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            .sections-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: none;
+            }
+        }
+
+        /* Small Mobile Portrait */
+        @media screen and (max-width: 360px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-card {
+                padding: 1rem;
+                min-height: 250px;
+            }
+
+            .hero {
+                min-height: 300px;
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Print Styles */
+        @media print {
+            .hero, .lang-switcher { display: none; }
+            .section-card { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="lang-content active" data-lang="ku">زانکۆی ڕاپەڕین</span>
+                    <span class="lang-content" data-lang="en">University Raparin</span>
+                    <span class="lang-content" data-lang="ar">جامعة رابەرين</span>
                 </div>
-                <a
-                  href={dept.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-white px-6 py-3 rounded-full text-center inline-block min-w-[140px] font-medium"
-                >
-                  {dept.buttonText}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Us Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
-              {currentContent.aboutUs}
-            </h2>
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-8 rounded-2xl shadow-lg">
-              <p className="text-lg text-gray-600 leading-relaxed text-justify mb-6">
-                {currentLanguage === 'ku' && `
-                  ئێمە سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە.
-                `}
-                {currentLanguage === 'en' && `
-                  We are three university students who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality, and well-organized resources in one place was very difficult.
-                `}
-                {currentLanguage === 'ar' && `
-                  نحن ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا. خلال دراستنا، لاحظنا أن العثور على مصادر موثوقة وجيدة ومنظمة في مكان واحد أمر صعب جداً.
-                `}
-              </p>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="ku">کوردی</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="ar">العربية</button>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </header>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 text-center">
-        <div className="container mx-auto px-4">
-          <p className="text-base leading-relaxed">
-            {currentContent.footer}
-          </p>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Kurdish Content -->
+                <div class="lang-content active rtl" data-lang="ku">
+                    <h2> بەخێربێن بۆ</h2>
+                    <br>
+                    <h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1>
+                    <p> بەردەست بوون و کۆکردنەوەی هەزاران سەرچاوه و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-content ltr" data-lang="en">
+                    <h2> Welcome To</h2>
+                    <br>
+                    <h1>College of Science Electronic Library</h1>
+                    <p>Access thousands of scientific resources and books easily and quickly</p>
+                </div>
+
+                <!-- Arabic Content -->
+                <div class="lang-content rtl" data-lang="ar">
+                    <h2>مرحبا بكم في</h2>
+                    <br>
+                    <h1>المكتبة الإلكترونية لكلية العلوم</h1>
+                    <p>الوصول إلى آلاف المصادر والكتب العلمية بسهولة وسرعة</p>
+                </div>
+            </div>
+    </section>
+
+    <!-- Introduction Section - Purple Light Background -->
+    <section class="intro-section">
+        <div class="container">
+            <!-- Kurdish Content -->
+            <div class="lang-content active rtl" data-lang="ku">
+                <div class="intro-content">
+                    <h2>پێشەکی</h2>
+                    <div class="intro-card">
+                        <p>
+                                  بە ناوی خودای بەخشندە و میهرەبان
+                    <p>
+خوێنەران ئەمڕۆ لە جیهانێکدا دەژین کە زانیارییەکان خێراتر لە جاران بەردەست دەبن. چاوەڕوانی کردنەوەی کتێبخانەیەک و گەڕان بەناو ڕەفەکاندا چیتر بەس نییە بۆ دابینکردنی پێداویستییەکانی فێربوونی مۆدێرن. هەر بۆیە لە سۆنگەی هەست کردن بە بەرپرسیارێتی بەرامبەر بە زانست و پەرتووک ئێمە هەستاین بە کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی تاوەکو خزمەت بە لایەنی فێربوون و زانستی خوێنەران بکات.
+                        </p>
+                        <p>
+کتێبخانەی ئەلیکترۆنی کتێبخانەیەکی بێ دیوارە، گەیشتن بە هەزاران کتێبی دیجیتاڵی، گۆڤاری ئەکادیمی، توێژینەوە، دابین دەکات بۆ خوێنەران. هەموو ئەمانە لە ڕێگەی QR کۆدەوە کە بە شێوازێکی ئەلکترۆنی ئامادەکراوە. ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+           <!-- English Content -->
+<div class="lang-content ltr" data-lang="en">
+    <div class="intro-content">
+        <h2>Introduction</h2>
+        <div class="intro-card">
+            <p>
+In the name of God, the most gracious, the most merciful
+            </p>
+            <p>
+                Today, readers live in a world where information becomes available faster than ever before. Waiting for a library and searching through shelves is no longer sufficient to meet the needs of modern learning. Therefore, feeling our responsibility toward science and books, we have undertaken the collection of thousands of sources and scientific books to serve the educational and scientific aspects of our readers.
+            </p>
+            <p>
+                The electronic library is a library without walls, providing access to thousands of digital books, academic journals, and research for readers. All of these are accessible through QR codes that have been prepared electronically. This modern system has been created to serve the readers of the College of Science.
+            </p>
         </div>
-      </footer>
-    </div>
-  );
-};
+                    </div>
+                </div>
+            </div>
 
-export default CollegeLibraryVue;
+            <!-- Arabic Content -->
+<div class="lang-content rtl" data-lang="ar">
+    <div class="intro-content">
+        <h2>مقدمة</h2>
+        <div class="intro-card">
+            <p>
+                بسم الله الرحمن الرحيم
+            </p>
+            <p>
+                يعيش القراء اليوم في عالم تصبح فيه المعلومات متاحة بشكل أسرع من أي وقت مضى. لم يعد انتظار المكتبة والبحث بين الرفوف كافياً لتلبية احتياجات التعلم الحديث. لذلك، إحساساً منا بالمسؤولية تجاه العلم والكتب، قمنا بجمع آلاف المصادر والكتب العلمية لخدمة الجانب التعليمي والعلمي لقرائنا.
+            </p>
+            <p>
+                المكتبة الإلكترونية هي مكتبة بلا جدران، توفر الوصول إلى آلاف الكتب الرقمية والمجلات الأكاديمية والبحوث للقراء. كل هذا متاح من خلال رموز QR التي تم إعدادها إلكترونياً. تم إنشاء هذا النظام الحديث لخدمة قراء كلية العلوم.
+            </p>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section - Purple Medium Background -->
+    <section class="objectives-section">
+        <div class="container">
+            <!-- Kurdish Content -->
+            <div class="lang-content active rtl" data-lang="ku">
+                <div class="objectives-card">
+                    <h3>ئامانجەکانی پڕۆژەکە:</h3>
+                    <ul class="objectives-list">
+                        <li>🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ</li>
+                        <li>⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی</li>
+                        <li>📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن</li>
+                        <li>📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن و خوێنەران</li>
+                        <li>👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە سەرچاوەکانی پەرتووکخانەی دیجیتاڵی</li>
+                        <li>⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی</li>
+                        <li>🌐 بەردەست بوونی پەرتووک و سەرچاوەکان بە هەر سێ زمانی (کوردی، ئینگلیزی، عەرەبی)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content ltr" data-lang="en">
+                <div class="objectives-card">
+                    <h3>Project Objectives:</h3>
+                    <ul class="objectives-list">
+                        <li>🎓 Supporting online learning at universities</li>
+                        <li>⚡ Quick and easy access to scientific resources</li>
+                        <li>📖 Gathering thousands of scientific resources in one place</li>
+                        <li>📱 Utilizing modern technology {QR code} to serve education and students</li>
+                        <li>👨‍🏫 Benefiting teachers and students from digital library resources</li>
+                        <li>⏰ Filling students' free time with scientific projects</li>
+                        <li>🌐 Availability of books and resources in all three languages (Kurdish, English, Arabic)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Arabic Content -->
+            <div class="lang-content rtl" data-lang="ar">
+                <div class="objectives-card">
+                    <h3>أهداف المشروع:</h3>
+                    <ul class="objectives-list">
+                        <li>🎓 دعم التعلم الإلكتروني في الجامعات</li>
+                        <li>⚡ الوصول السريع والسهل إلى الموارد العلمية</li>
+                        <li>📖 جمع آلاف الموارد العلمية في مكان واحد</li>
+                        <li>📱 استخدام التكنولوجيا الحديثة {رموز QR} لخدمة التعليم والطلاب</li>
+                        <li>👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية</li>
+                        <li>⏰ ملء أوقات فراغ الطلاب بمشاريع علمية</li>
+                        <li>🌐 توفر الكتب والموارد بجميع اللغات الثلاث (الكردية، الإنجليزية، العربية)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Library Sections -->
+    <section class="library-sections">
+        <div class="container">
+            <div class="main-library">
+                <!-- Kurdish -->
+                <div class="lang-content active rtl" data-lang="ku">
+                    <h2>کتێبخانەی سەرەکی</h2>
+                    <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
+                        چونە ناو کتێبخانەی گشتی ١
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        چونە ناو کتێبخانەی گشتی ٢
+                    </a>
+                </div>
+
+                <!-- English -->
+                <div class="lang-content ltr" data-lang="en">
+                    <h2>Main Library</h2>
+                    <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
+                        Enter General Library 1
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        Enter General Library 2
+                    </a>
+                </div>
+
+                <!-- Arabic -->
+                <div class="lang-content rtl" data-lang="ar">
+                    <h2>المكتبة الرئيسية</h2>
+                    <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
+                        دخول إلى المكتبة العامة ١
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        دخول إلى المكتبة العامة ٢
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kurdish Content -->
+            <div class="lang-content active rtl" data-lang="ku">
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">بەشە زانستییەکان</h2>
+                <div class="sections-grid">
+                    <div class="section-card">
+                        <div class="section-icon">🧬</div>
+                        <h3>بەشی بایەلۆجی</h3>
+                        <p>پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر</p>
+                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">چونە ناو بەش</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">⚗️</div>
+                        <h3>بەشی کیمیا</h3>
+                        <p>سەرچاوەکانی کیمیای ئەندامی، نا ئەندامی، فیزیکی و کیمیای تاقیگەیی</p>
+                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">چونە ناو بەش</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">⚛️</div>
+                        <h3>بەشی فیزیا</h3>
+                        <p>پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی</p>
+                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">چونە ناو بەش</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">🔬</div>
+                        <h3>زانستی تاقیگەی پزیشکی</h3>
+                        <p>سەرچاوەکانی شیکردنەوەی کلینیکی، میکرۆبایەلۆجی پزیشکی و ڕێنماییەکان</p>
+                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">چونە ناو بەش</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content ltr" data-lang="en">
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">Scientific Departments</h2>
+                <div class="sections-grid">
+                    <div class="section-card">
+                        <div class="section-icon">🧬</div>
+                        <h3>Biology Department</h3>
+                        <p>Books and resources in life sciences, genetics, microbiology and more</p>
+                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">Enter Department</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">⚗️</div>
+                        <h3>Chemistry Department</h3>
+                        <p>Resources for organic, inorganic, physical and laboratory chemistry</p>
+                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">Enter Department</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">⚛️</div>
+                        <h3>Physics Department</h3>
+                        <p>Books on classical, modern, quantum and experimental physics</p>
+                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">Enter Department</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">🔬</div>
+                        <h3>Medical Laboratory Science</h3>
+                        <p>Resources for clinical analysis, medical microbiology and guidelines</p>
+                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">Enter Department</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arabic Content -->
+            <div class="lang-content rtl" data-lang="ar">
+                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">الأقسام العلمية</h2>
+                <div class="sections-grid">
+                    <div class="section-card">
+                        <div class="section-icon">🧬</div>
+                        <h3>قسم علوم الحياة</h3>
+                        <p>الكتب والمصادر في علوم الحياة والوراثة والأحياء الدقيقة والمزيد</p>
+                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">دخول القسم</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">⚗️</div>
+                        <h3>قسم الكيمياء</h3>
+                        <p>مصادر الكيمياء العضوية وغير العضوية والفيزيائية والمختبرية</p>
+                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">دخول القسم</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">⚛️</div>
+                        <h3>قسم الفيزياء</h3>
+                        <p>كتب الفيزياء الكلاسيكية والحديثة والكمية والتجريبية</p>
+                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">دخول القسم</a>
+                    </div>
+
+                    <div class="section-card">
+                        <div class="section-icon">🔬</div>
+                        <h3>علوم المختبرات الطبية</h3>
+                        <p>مصادر التحليل السريري والأحياء الدقيقة الطبية والإرشادات</p>
+                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">دخول القسم</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section - Purple Dark Background -->
+    <section class="about-section">
+        <div class="container">
+            <!-- Kurdish Content -->
+            <div class="lang-content active rtl" data-lang="ku">
+                <div class="about-content">
+                    <h2>👥 دەربارەی ئێمە</h2>
+                    <div class="about-card">
+                        <p>
+                            ئێمە سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەوەش ئیلهامبەخش بوو بۆ دروستکردنی ئەم پەرتووکخانە ئەلیکترۆنییە کە پلاتفۆرمێکی سادە و ئاسانە بۆ بەکارهێنان لە لایەن خوێندکاران و مامۆستایان کە دەتوانن زۆرترین زانیاری تێیدا بدۆزنەوە.
+                        </p>
+                        <div class="mission-card">
+                            <h3>ئامانجی ئێمە:</h3>
+                            <p>
+                                کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و دابینکردنی یەک پلاتفۆرم کە هەموو پێداویستییەکانی ئەکادیمی دابین بکات بە شێوەیەکی مۆدێرن و سەردەمیانە.
+                            </p>
+                        </div>
+                        <div class="team-card">
+                            <h3>ئامادەکراوە لەلایەن:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ژیاو یوسف حسێن</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>نیار قادر ڕەسوڵ</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-content ltr" data-lang="en">
+                <div class="about-content">
+                    <h2>👥 About Us</h2>
+                    <div class="about-card">
+                        <p>
+                            We are three university students who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality, and well-organized resources in one place was very difficult. This inspired us to create this electronic library as a simple and easy-to-use platform for students and teachers to find the most comprehensive information.
+                        </p>
+                        <div class="mission-card">
+                            <h3>Our Mission:</h3>
+                            <p>
+                                To open the door of knowledge to every student and provide a comprehensive platform that meets all academic needs in a modern and contemporary way.
+                            </p>
+                        </div>
+                        <div class="team-card">
+                            <h3>Prepared by:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ZHYAW YOUSF HUSAIN</h4>
+                                    <p>Biology Department Student - Provision of books</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>NYAR QADR RASUL</h4>
+                                    <p>Biology Department Student - Organization of the library</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>MAHMOOD KHDIR FAQE RASUL</h4>
+                                    <p>Biology Department Student - Web Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arabic Content -->
+            <div class="lang-content rtl" data-lang="ar">
+                <div class="about-content">
+                    <h2>👥 معلومات عنا</h2>
+                    <div class="about-card">
+                        <p>
+                            نحن ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا. خلال دراستنا، لاحظنا أن العثور على مصادر موثوقة وجيدة ومنظمة في مكان واحد أمر صعب جداً. هذا ما ألهمنا لإنشاء هذه المكتبة الإلكترونية كمنصة بسيطة وسهلة الاستخدام للطلاب والمدرسين للعثور على أكثر المعلومات شمولية.
+                        </p>
+                        <div class="mission-card">
+                            <h3>مهمتنا:</h3>
+                            <p>
+                                فتح باب المعرفة لكل طالب وتوفير منصة شاملة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.
+                            </p>
+                        </div>
+                        <div class="team-card">
+                            <h3>إعداد:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ژیاو یوسف حسێن</h4>
+                                    <p>طالب قسم علوم الحياة - توفير الكتب</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>نیار قادر ڕەسوڵ</h4>
+                                    <p>طالب قسم علوم الحياة - تنظيم المكتبة</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                    <p>طالب قسم علوم الحياة - مطور مواقع الويب</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <!-- Kurdish -->
+            <div class="lang-content active" data-lang="ku">
+                <p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥</p>
+            </div>
+
+            <!-- English -->
+            <div class="lang-content" data-lang="en">
+                <p>College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025</p>
+            </div>
+
+            <!-- Arabic -->
+            <div class="lang-content" data-lang="ar">
+                <p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Language Switcher with Session Storage
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langContents = document.querySelectorAll('.lang-content');
+
+        // Load saved language preference
+        const savedLang = sessionStorage.getItem('selectedLanguage') || 'ku';
+        switchLanguage(savedLang);
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetLang = button.getAttribute('data-lang');
+                switchLanguage(targetLang);
+                sessionStorage.setItem('selectedLanguage', targetLang);
+            });
+        });
+
+        function switchLanguage(lang) {
+            // Add loading state
+            document.body.classList.add('loading');
+
+            setTimeout(() => {
+                // Remove active class from all buttons and contents
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                langContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.opacity = '0';
+                });
+
+                // Add active class to selected button
+                const targetButton = document.querySelector(`[data-lang="${lang}"].lang-btn`);
+                if (targetButton) targetButton.classList.add('active');
+
+                // Show contents for selected language with fade effect
+                const targetContents = document.querySelectorAll(`[data-lang="${lang}"].lang-content`);
+                targetContents.forEach(content => {
+                    content.classList.add('active');
+                    setTimeout(() => content.style.opacity = '1', 10);
+                });
+
+                // Update body direction with smooth transition
+                document.body.classList.remove('rtl', 'ltr');
+                if (lang === 'en') {
+                    document.body.classList.add('ltr');
+                } else {
+                    document.body.classList.add('rtl');
+                }
+
+                // Remove loading state
+                document.body.classList.remove('loading');
+            }, 100);
+        }
+
+        // Enhanced Link Interaction with Loading States
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                this.classList.add('loading');
+
+                // Remove loading state after a delay
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                }, 2000);
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card, .about-card, .mission-card').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Touch feedback for mobile devices
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.section-btn, .main-library-btn, .lang-btn').forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+
+                button.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+
+        // Keyboard navigation enhancement
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-nav');
+        });
+
+        // Orientation change handler
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+
+        // Performance optimization: Debounce resize events
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // Re-calculate any dynamic elements if needed
+                console.log('Window resized - recalculating layout');
+            }, 250);
+        });
+
+        // Add CSS for additional animations
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            .keyboard-nav *:focus {
+                outline: 2px solid var(--primary-color);
+                outline-offset: 2px;
+            }
+            
+            .animate-in {
+                animation: slideInUp 0.6s ease-out forwards;
+            }
+            
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            /* Additional responsive utilities */
+            @media (max-width: 320px) {
+                .container {
+                    padding: 0 0.5rem;
+                }
+                
+                .section-card {
+                    min-height: 220px;
+                }
+            }
+            
+            @media (orientation: landscape) and (max-height: 500px) {
+                .hero {
+                    min-height: 400px;
+                    padding: 2rem 0;
+                }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Electronic Library - Fully Responsive Version Loaded');
+
+            // Add a subtle loading animation to cards
+            const cards = document.querySelectorAll('.section-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

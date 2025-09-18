@@ -756,7 +756,7 @@
                 <!-- Kurdish Stats -->
                 <div class="lang-content active rtl" data-lang="ku">
                     <div class="stat-item">
-                        <span class="stat-number">1000+</span>
+                        <span class="stat-number">5000+</span>
                         <span class="stat-label">پەرتووک و سەرچاوە</span>
                     </div>
                 </div>
@@ -782,7 +782,7 @@
                 <!-- English Stats -->
                 <div class="lang-content ltr" data-lang="en">
                     <div class="stat-item">
-                        <span class="stat-number">1000+</span>
+                        <span class="stat-number">5000+</span>
                         <span class="stat-label">Books & Resources</span>
                     </div>
                 </div>
@@ -808,7 +808,7 @@
                 <!-- Arabic Stats -->
                 <div class="lang-content rtl" data-lang="ar">
                     <div class="stat-item">
-                        <span class="stat-number">1000+</span>
+                        <span class="stat-number">5000+</span>
                         <span class="stat-label">كتاب ومورد</span>
                     </div>
                 </div>
@@ -1238,16 +1238,17 @@
                 <!-- Kurdish Form -->
                 <div class="lang-content active rtl" data-lang="ku">
                     <h2>پێشنیار و ڕای خۆت بنێرە</h2>
-                    <form id="feedbackForm">
+                    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdYUAh_fLvqHnKy-XTwvxk5nSOrVhoLZ8KRD-BXveyYhwpVfg/viewform?usp=header" method="POST" target="hidden_iframe" id="feedbackForm">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="ناوت" required>
+                            <input type="text" name="entry.NAME_ENTRY_ID" class="form-input" placeholder="ناوت" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="ئیمەیڵ" required>
+                            <input type="email" name="entry.EMAIL_ENTRY_ID" class="form-input" placeholder="ئیمەیڵ" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-input form-textarea" placeholder="پێشنیار یان ڕای خۆت بنووسە..." required></textarea>
+                            <textarea name="entry.MESSAGE_ENTRY_ID" class="form-input form-textarea" placeholder="پێشنیار یان ڕای خۆت بنووسە..." required></textarea>
                         </div>
+                        <input type="hidden" name="entry.LANGUAGE_ENTRY_ID" value="کوردی">
                         <button type="submit" class="submit-btn">ناردن</button>
                         <div class="success-message" id="successMessage">سوپاس! پەیامەکەت نێردرا.</div>
                     </form>
@@ -1256,16 +1257,17 @@
                 <!-- English Form -->
                 <div class="lang-content ltr" data-lang="en">
                     <h2>Send Your Feedback & Suggestions</h2>
-                    <form id="feedbackFormEn">
+                    <form action="https://docs.google.com/forms/d/YOUR_FORM_ID_HERE/formResponse" method="POST" target="hidden_iframe" id="feedbackFormEn">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Name" required>
+                            <input type="text" name="entry.NAME_ENTRY_ID" class="form-input" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email" required>
+                            <input type="email" name="entry.EMAIL_ENTRY_ID" class="form-input" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-input form-textarea" placeholder="Write your feedback or suggestion..." required></textarea>
+                            <textarea name="entry.MESSAGE_ENTRY_ID" class="form-input form-textarea" placeholder="Write your feedback or suggestion..." required></textarea>
                         </div>
+                        <input type="hidden" name="entry.LANGUAGE_ENTRY_ID" value="English">
                         <button type="submit" class="submit-btn">Send</button>
                         <div class="success-message" id="successMessageEn">Thank you! Your message has been sent.</div>
                     </form>
@@ -1274,20 +1276,24 @@
                 <!-- Arabic Form -->
                 <div class="lang-content rtl" data-lang="ar">
                     <h2>أرسل ملاحظاتك واقتراحاتك</h2>
-                    <form id="feedbackFormAr">
+                    <form action="https://docs.google.com/forms/d/YOUR_FORM_ID_HERE/formResponse" method="POST" target="hidden_iframe" id="feedbackFormAr">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="اسمك" required>
+                            <input type="text" name="entry.NAME_ENTRY_ID" class="form-input" placeholder="اسمك" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" placeholder="البريد الإلكتروني" required>
+                            <input type="email" name="entry.EMAIL_ENTRY_ID" class="form-input" placeholder="البريد الإلكتروني" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-input form-textarea" placeholder="اكتب ملاحظاتك أو اقتراحك..." required></textarea>
+                            <textarea name="entry.MESSAGE_ENTRY_ID" class="form-input form-textarea" placeholder="اكتب ملاحظاتك أو اقتراحك..." required></textarea>
                         </div>
+                        <input type="hidden" name="entry.LANGUAGE_ENTRY_ID" value="العربية">
                         <button type="submit" class="submit-btn">إرسال</button>
                         <div class="success-message" id="successMessageAr">شكرا لك! تم إرسال رسالتك.</div>
                     </form>
                 </div>
+
+                <!-- Hidden iframe for form submission -->
+                <iframe name="hidden_iframe" style="display:none"></iframe>
             </div>
         </div>
     </section>
@@ -1397,32 +1403,34 @@
             });
         });
 
-        // Feedback form handling - NEW
-        function handleFeedbackSubmit(formId, messageId) {
+        // Google Forms feedback handling - UPDATED
+        function handleGoogleFormSubmit(formId, messageId) {
             const form = document.getElementById(formId);
             const message = document.getElementById(messageId);
             
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Simulate form submission
-                setTimeout(() => {
-                    message.style.display = 'block';
-                    form.reset();
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    // Don't prevent default - let the form submit to Google
                     
-                    // Hide message after 3 seconds
+                    // Show success message after a brief delay
                     setTimeout(() => {
-                        message.style.display = 'none';
-                    }, 3000);
-                }, 500);
-            });
+                        message.style.display = 'block';
+                        form.reset();
+                        
+                        // Hide message after 5 seconds
+                        setTimeout(() => {
+                            message.style.display = 'none';
+                        }, 5000);
+                    }, 1000); // Delay to allow form submission
+                });
+            }
         }
 
-        // Initialize feedback forms
+        // Initialize Google Forms feedback
         document.addEventListener('DOMContentLoaded', () => {
-            handleFeedbackSubmit('feedbackForm', 'successMessage');
-            handleFeedbackSubmit('feedbackFormEn', 'successMessageEn');
-            handleFeedbackSubmit('feedbackFormAr', 'successMessageAr');
+            handleGoogleFormSubmit('feedbackForm', 'successMessage');
+            handleGoogleFormSubmit('feedbackFormEn', 'successMessageEn');
+            handleGoogleFormSubmit('feedbackFormAr', 'successMessageAr');
         });
 
         // Enhanced Link Interaction with Loading States

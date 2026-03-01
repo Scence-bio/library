@@ -582,7 +582,6 @@
             <div class="lang-content ltr" data-lang="tr"><a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">Genel Kütüphane 2'ye Gir</a></div>
         </div>
 
-        <!-- Macros for department cards -->
         <!-- Sorani -->
         <div class="lang-content active rtl" data-lang="ku-sorani">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بەشە زانستییەکان</h2>
@@ -706,18 +705,40 @@
 <!-- ===== FOOTER ===== -->
 <footer>
     <div class="container">
-        <div class="lang-content active" data-lang="ku-sorani"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥</p></div>
-        <div class="lang-content" data-lang="ku-badini"><p>کتێبخانەی ئەلیکترۆنی کۆلێژا زانستێ - زانکوی ڕاپەڕین. هەموو مافێن پارێزراون. &copy; ٢٠٢٥</p></div>
-        <div class="lang-content" data-lang="ku-badini-lat"><p>Kitêbxaneya Elektronîkî ya Kolêja Zanistê - Zanko Raperin. Hemû maf parastî ne. &copy; 2025</p></div>
-        <div class="lang-content" data-lang="ku-hawrami"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥</p></div>
-        <div class="lang-content" data-lang="en"><p>College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025</p></div>
-        <div class="lang-content" data-lang="ar"><p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥</p></div>
-        <div class="lang-content" data-lang="fa"><p>کتابخانه الکترونیکی دانشکده علوم - دانشگاه راپەرین. تمامی حقوق محفوظ است. &copy; ۲۰۲۵</p></div>
-        <div class="lang-content" data-lang="tr"><p>Fen Fakültesi Elektronik Kütüphanesi - Raparin Üniversitesi. Tüm hakları saklıdır. &copy; 2025</p></div>
+        <div class="lang-content active" data-lang="ku-sorani"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="ku-badini"><p>کتێبخانەی ئەلیکترۆنی کۆلێژا زانستێ - زانکوی ڕاپەڕین. هەموو مافێن پارێزراون. &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="ku-badini-lat"><p>Kitêbxaneya Elektronîkî ya Kolêja Zanistê - Zanko Raperin. Hemû maf parastî ne. &copy; <span class="footer-year-en"></span></p></div>
+        <div class="lang-content" data-lang="ku-hawrami"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="en"><p>College of Science Electronic Library - Raparin University. All rights reserved. &copy; <span class="footer-year-en"></span></p></div>
+        <div class="lang-content" data-lang="ar"><p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="fa"><p>کتابخانه الکترونیکی دانشکده علوم - دانشگاه راپەرین. تمامی حقوق محفوظ است. &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="tr"><p>Fen Fakültesi Elektronik Kütüphanesi - Raparin Üniversitesi. Tüm hakları saklıdır. &copy; <span class="footer-year-en"></span></p></div>
     </div>
 </footer>
 
 <script>
+    // ===== DYNAMIC YEAR IN FOOTER =====
+    (function setFooterYear() {
+        var year = new Date().getFullYear();
+
+        // Convert to Eastern Arabic/Indic numerals for RTL languages
+        function toEasternArabic(n) {
+            return String(n).replace(/\d/g, function(d) {
+                return '٠١٢٣٤٥٦٧٨٩'[d];
+            });
+        }
+
+        // Set English (Western) numerals
+        document.querySelectorAll('.footer-year-en').forEach(function(el) {
+            el.textContent = year;
+        });
+
+        // Set Eastern Arabic numerals
+        document.querySelectorAll('.footer-year-ar').forEach(function(el) {
+            el.textContent = toEasternArabic(year);
+        });
+    })();
+
     // ===== CURRENT ACTIVE LANGUAGE =====
     let currentLang = sessionStorage.getItem('selectedLanguage') || 'ku-sorani';
     const KU_DIALECTS = ['ku-sorani','ku-badini','ku-badini-lat','ku-hawrami'];
@@ -748,11 +769,8 @@
     // ===== SELECT DIALECT =====
     function selectDialect(lang, btn) {
         closeKuDropdown();
-        // Mark Kurdish main btn active
         document.getElementById('kuMainBtn').classList.add('active');
-        // Mark all non-Kurdish btns inactive
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        // Mark dialect btn active
         document.querySelectorAll('.ku-dialect-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         applyLanguage(lang);
@@ -774,19 +792,16 @@
         currentLang = lang;
         sessionStorage.setItem('selectedLanguage', lang);
 
-        // Hide all content
         document.querySelectorAll('.lang-content').forEach(el => {
             el.classList.remove('active');
             el.style.opacity = '0';
         });
 
-        // Show selected language content
         document.querySelectorAll(`[data-lang="${lang}"].lang-content`).forEach(el => {
             el.classList.add('active');
             setTimeout(() => el.style.opacity = '1', 15);
         });
 
-        // Set direction
         const isLtr = LTR_LANGS.includes(lang);
         document.body.style.direction = isLtr ? 'ltr' : 'rtl';
         document.body.classList.toggle('ltr', isLtr);

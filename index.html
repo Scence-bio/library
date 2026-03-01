@@ -25,12 +25,6 @@
             --border-radius: 15px;
             --container-padding: clamp(1rem, 4vw, 2rem);
             --section-padding: clamp(2rem, 8vw, 4rem);
-            
-            /* Purple theme colors */
-            --purple-light: #f3f0ff;
-            --purple-medium: #e9e4ff;
-            --purple-dark: #ddd6fe;
-            --purple-darker: #c4b5fd;
         }
 
         /* Typography System */
@@ -204,13 +198,10 @@ body {
             }
         }
 
-        /* Introduction Section - Purple Light Background */
+        /* Introduction Section - Responsive */
         .intro-section {
             padding: var(--section-padding) 0;
-            background: var(--purple-light);
-            border-radius: var(--border-radius);
-            margin: clamp(1rem, 3vw, 2rem) 0;
-            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+            background: var(--white);
         }
 
         .intro-content {
@@ -226,16 +217,11 @@ body {
         }
 
         .intro-card {
-            background: var(--white);
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e9ecef 100%);
             padding: clamp(1.5rem, 5vw, 3rem);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            transition: transform 0.3s ease;
-        }
-
-        .intro-card:hover {
-            transform: translateY(-5px);
         }
 
         .intro-card p {
@@ -246,34 +232,17 @@ body {
             text-align: justify;
         }
 
-        /* Objectives Section - Purple Medium Background */
-        .objectives-section {
-            padding: var(--section-padding) 0;
-            background: var(--purple-medium);
-            border-radius: var(--border-radius);
-            margin: clamp(1rem, 3vw, 2rem) 0;
-            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.12);
-        }
-
         .objectives-card {
-            background: var(--white);
+            background: rgba(102, 126, 234, 0.1);
             padding: clamp(1rem, 3vw, 2rem);
             border-radius: var(--border-radius);
-            margin: 0 auto;
-            max-width: min(900px, 100%);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .objectives-card:hover {
-            transform: translateY(-5px);
+            margin: clamp(1rem, 3vw, 2rem) 0;
         }
 
         .objectives-card h3 {
             color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: clamp(1.2rem, 3vw, 1.5rem);
-            text-align: center;
         }
 
         .objectives-list {
@@ -288,61 +257,6 @@ body {
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
-        }
-
-        /* About Us Section - Purple Dark Background */
-        .about-section {
-            padding: var(--section-padding) 0;
-            background: var(--purple-dark);
-            border-radius: var(--border-radius);
-            margin: clamp(1rem, 3vw, 2rem) 0;
-            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.15);
-        }
-
-        .about-content {
-            text-align: center;
-            max-width: min(900px, 100%);
-            margin: 0 auto;
-        }
-
-        .about-content h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: var(--text-color);
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-        }
-
-        .about-card {
-            background: var(--white);
-            padding: clamp(1.5rem, 5vw, 3rem);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            transition: transform 0.3s ease;
-        }
-
-        .about-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .about-card p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            line-height: clamp(1.6, 0.05vw + 1.5, 2);
-            color: var(--text-light);
-            margin-bottom: clamp(1rem, 3vw, 2rem);
-            text-align: justify;
-        }
-
-        .mission-card {
-            background: rgba(102, 126, 234, 0.1);
-            padding: clamp(1rem, 3vw, 2rem);
-            border-radius: var(--border-radius);
-            margin: clamp(1rem, 3vw, 2rem) 0;
-        }
-
-        .mission-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
         }
 
         .team-card {
@@ -370,7 +284,6 @@ body {
             padding: clamp(0.8rem, 2vw, 1rem);
             background: var(--white);
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .team-member h4 {
@@ -418,7 +331,6 @@ body {
             box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
             min-width: 200px;
             text-align: center;
-            margin: 0.5rem;
         }
 
         .main-library-btn:hover {
@@ -706,7 +618,7 @@ body {
             </div>
     </section>
 
-    <!-- Introduction Section - Purple Light Background -->
+    <!-- Introduction Section -->
     <section class="intro-section">
         <div class="container">
             <!-- Kurdish Content -->
@@ -717,11 +629,45 @@ body {
                         <p>
                                   بە ناوی خودای بەخشندە و میهرەبان
                     <p>
-خوێنەران ئەمڕۆ لە جیهانێکدا دەژین کە زانیارییەکان خێراتر لە جاران بەردەست دەبن. چاوەڕوانی کردنەوەی کتێبخانەیەک و گەڕان بەناو ڕەفەکاندا چیتر بەس نییە بۆ دابینکردنی پێداویستییەکانی فێربوونی مۆدێرن. هەر بۆیە لە سۆنگەی هەست کردن بە بەرپرسیارێتی بەرامبەر بە زانست و پەرتووک ئێمە هەستاین بە کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی تاوەکو خزمەت بە لایەنی فێربوون و زانستی خوێنەران بکات.
-                        </p>
+بەخێربێن بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست
+ژینگەیەکی دیجیتاڵییە کە دروستکراوە بۆ ئەوەی گەیشتن بە زانیاری و فێربوون چێژبەخش بێت و توێژینەوە کاراتر بێت بۆ خوێندکاران و ستافی ئەکادیمی. لە سەردەمێکدا کە تەکنەلۆژیا باڵی بەسەر ژیانماندا گرتووە، گەیشتن بە زانیارییە زانستییە متمانەپێکراوەکان بووەتە شتێکی بنەڕەتی بۆ سەرکەوتنی ئەکادیمی و گەشەکردنی هزری.                        </p>
                         <p>
-کتێبخانەی ئەلیکترۆنی کتێبخانەیەکی بێ دیوارە، گەیشتن بە هەزاران کتێبی دیجیتاڵی، گۆڤاری ئەکادیمی، توێژینەوە، دابین دەکات بۆ خوێنەران. هەموو ئەمانە لە ڕێگەی QR کۆدەوە کە بە شێوازێکی ئەلکترۆنی ئامادەکراوە. ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.
-                        </p>
+ئەم کتێبخانە ئەلیکترۆنییە کۆمەڵێک سەرچاوەی زانستی بەرفراوان پێشکەش دەکات، لەوانە کتێبی خوێندن، توێژینەوەی زانستی و ئەکادیمی، گۆڤاری ئەکادیمی، کەرەستەی وانەوتنەوە و ئاماژەی پەروەردەیی، کە هەموویان لە یەک پلاتفۆرمی گونجاودا بەردەستن. ڕێگە بە بەکارهێنەران دەدات لە هەر کاتێکدا و لە هەر شوێنێکدا بە دوای زانیارییەکان بگەڕێن، کە پشتگیری لە هەردوو فێربوونی سەربەخۆ و چالاکییەکانی توێژینەوەی پێشکەوتوو دەکات. هەموو ئەمانە لە ڕێگەی QR کۆدەوە کە بە شێوازێکی ئەلکترۆنی ئامادەکراوە.                        </p>
+                        <p>
+                            کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی، نیشاندەری پەیوەندی نێوان زانست و تەکنەلۆژیایە. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە، لە هەمان کاتدا یارمەتی خوێندکاران و توێژەران دەدات کە لە پێشکەوتنە زانستییە مۆدێرنەکاندا ئاگاداربن.
+                            <p>
+                                ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانە کە زانیاری بە ئازادی تێدا بەردەست بکرێت، بیرۆکەکان پەرەی پێبدرێت، و زانایانی داهاتوو بەهێز بکرێن بۆ دۆزینەوە و داهێنان و بەشداریکردن لە پێشکەوتنی زانست و کۆمەڵگا.ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.
+                                <p>
+    
+                        <div class="objectives-card">
+    <h3>ئامانجەکانی پڕۆژەکە:</h3>
+    <ul class="objectives-list">
+        <li>🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ</li>
+        <li>⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی</li>
+        <li>📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن</li>
+        <li>📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن و خوێنەران</li>
+        <li>👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە سەرچاوەکانی پەرتووکخانەی دیجیتاڵی</li>
+        <li>⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی</li>
+        <li>🌐 بەردەست بوونی پەرتووک و سەرچاوەکان بە هەر سێ زمانی (کوردی، ئینگلیزی، عەرەبی)</li>
+    </ul>
+</div>
+                        <div class="team-card">
+                            <h3>ئامادەکراوە لەلایەن:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ژیاو یوسف حسێن</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>نیار قادر ڕەسوڵ</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                    <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -741,6 +687,35 @@ In the name of God, the most gracious, the most merciful
                 The electronic library is a library without walls, providing access to thousands of digital books, academic journals, and research for readers. All of these are accessible through QR codes that have been prepared electronically. This modern system has been created to serve the readers of the College of Science.
             </p>
         </div>
+                        <div class="objectives-card">
+    <h3>Project Objectives:</h3>
+    <ul class="objectives-list">
+        <li>🎓 Supporting online learning at universities</li>
+        <li>⚡ Quick and easy access to scientific resources</li>
+        <li>📖 Gathering thousands of scientific resources in one place</li>
+        <li>📱 Utilizing modern technology {QR code} to serve education and students</li>
+        <li>👨‍🏫 Benefiting teachers and students from digital library resources</li>
+        <li>⏰ Filling students' free time with scientific projects</li>
+        <li>🌐 Availability of books and resources in all three languages (Kurdish, English, Arabic)</li>
+    </ul>
+</div>
+                        <div class="team-card">
+                            <h3>Prepared by:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ZHYAW YOUSF HUSAIN</h4>
+                                    <p>Biology Department Student - Provision of books</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>NYAR QADR RASUL</h4>
+                                    <p>Biology Department Student - Organization of the library</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>MAHMOOD KHDIR FAQE RASUL</h4>
+                                    <p>Biology Department Student - Web Developer</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -760,66 +735,44 @@ In the name of God, the most gracious, the most merciful
                 المكتبة الإلكترونية هي مكتبة بلا جدران، توفر الوصول إلى آلاف الكتب الرقمية والمجلات الأكاديمية والبحوث للقراء. كل هذا متاح من خلال رموز QR التي تم إعدادها إلكترونياً. تم إنشاء هذا النظام الحديث لخدمة قراء كلية العلوم.
             </p>
         </div>
+                        <div class="objectives-card">
+    <h3>أهداف المشروع:</h3>
+    <ul class="objectives-list">
+        <li>🎓 دعم التعلم الإلكتروني في الجامعات</li>
+        <li>⚡ الوصول السريع والسهل إلى الموارد العلمية</li>
+        <li>📖 جمع آلاف الموارد العلمية في مكان واحد</li>
+        <li>📱 استخدام التكنولوجيا الحديثة {رموز QR} لخدمة التعليم والطلاب</li>
+        <li>👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية</li>
+        <li>⏰ ملء أوقات فراغ الطلاب بمشاريع علمية</li>
+        <li>🌐 توفر الكتب والموارد بجميع اللغات الثلاث (الكردية، الإنجليزية، العربية)</li>
+    </ul>
+</div>
+ 
+
+  <div class="team-card">
+                            <h3>إعداد:</h3>
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <h4>ژیاو یوسف حسێن</h4>
+                                    <p>طالب قسم علوم الحياة - توفير الكتب </p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>نیار قادر ڕەسوڵ </h4>
+                                    <p>مطالب قسم علوم الحياة - تنظيم المكتبة</p>
+                                </div>
+                                <div class="team-member">
+                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                    <p>طالب قسم علوم الحياة - مطور مواقع الويب</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+                        
 
-    <!-- Objectives Section - Purple Medium Background -->
-    <section class="objectives-section">
-        <div class="container">
-            <!-- Kurdish Content -->
-            <div class="lang-content active rtl" data-lang="ku">
-                <div class="objectives-card">
-                    <h3>ئامانجەکانی پڕۆژەکە:</h3>
-                    <ul class="objectives-list">
-                        <li>🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ</li>
-                        <li>⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی</li>
-                        <li>📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن</li>
-                        <li>📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن و خوێنەران</li>
-                        <li>👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە سەرچاوەکانی پەرتووکخانەی دیجیتاڵی</li>
-                        <li>⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی</li>
-                        <li>🌐 بەردەست بوونی پەرتووک و سەرچاوەکان بە هەر سێ زمانی (کوردی، ئینگلیزی، عەرەبی)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- English Content -->
-            <div class="lang-content ltr" data-lang="en">
-                <div class="objectives-card">
-                    <h3>Project Objectives:</h3>
-                    <ul class="objectives-list">
-                        <li>🎓 Supporting online learning at universities</li>
-                        <li>⚡ Quick and easy access to scientific resources</li>
-                        <li>📖 Gathering thousands of scientific resources in one place</li>
-                        <li>📱 Utilizing modern technology {QR code} to serve education and students</li>
-                        <li>👨‍🏫 Benefiting teachers and students from digital library resources</li>
-                        <li>⏰ Filling students' free time with scientific projects</li>
-                        <li>🌐 Availability of books and resources in all three languages (Kurdish, English, Arabic)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Arabic Content -->
-            <div class="lang-content rtl" data-lang="ar">
-                <div class="objectives-card">
-                    <h3>أهداف المشروع:</h3>
-                    <ul class="objectives-list">
-                        <li>🎓 دعم التعلم الإلكتروني في الجامعات</li>
-                        <li>⚡ الوصول السريع والسهل إلى الموارد العلمية</li>
-                        <li>📖 جمع آلاف الموارد العلمية في مكان واحد</li>
-                        <li>📱 استخدام التكنولوجيا الحديثة {رموز QR} لخدمة التعليم والطلاب</li>
-                        <li>👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية</li>
-                        <li>⏰ ملء أوقات فراغ الطلاب بمشاريع علمية</li>
-                        <li>🌐 توفر الكتب والموارد بجميع اللغات الثلاث (الكردية، الإنجليزية، العربية)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Library Sections -->
     <section class="library-sections">
         <div class="container">
             <div class="main-library">
@@ -829,9 +782,6 @@ In the name of God, the most gracious, the most merciful
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         چونە ناو کتێبخانەی گشتی ١
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        چونە ناو کتێبخانەی گشتی ٢
-                    </a>
                 </div>
 
                 <!-- English -->
@@ -839,9 +789,6 @@ In the name of God, the most gracious, the most merciful
                     <h2>Main Library</h2>
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         Enter General Library 1
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        Enter General Library 2
                     </a>
                 </div>
 
@@ -851,12 +798,44 @@ In the name of God, the most gracious, the most merciful
                     <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
                         دخول إلى المكتبة العامة ١
                     </a>
+                </div>
+</section>
+    <section class="library-sections">
+        <div class="container">
+            <div class="main-library">
+                <!-- Kurdish -->
+                 <div class="general-library-2">
+                <!-- Kurdish -->
+                <div class="lang-content active rtl" data-lang="ku">
+
                     <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        دخول إلى المكتبة العامة ٢
+                        چونە ناو کتێبخانەی گشتی ٢
                     </a>
                 </div>
-            </div>
 
+                <!-- English -->
+                <div class="lang-content ltr" data-lang="en">
+
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        Enter General Library 2
+                    </a>
+                </div>
+
+                <!-- Arabic -->
+                <div class="lang-content rtl" data-lang="ar">
+
+                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
+                        دخول إلى المكتبة العامة ٢
+                         </a>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+</section>
             <!-- Kurdish Content -->
             <div class="lang-content active rtl" data-lang="ku">
                 <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">بەشە زانستییەکان</h2>
@@ -959,9 +938,9 @@ In the name of God, the most gracious, the most merciful
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- About Us Section - Purple Dark Background -->
+   
+</section>
+    <!-- About Us Section -->
     <section class="about-section">
         <div class="container">
             <!-- Kurdish Content -->
@@ -969,6 +948,7 @@ In the name of God, the most gracious, the most merciful
                 <div class="about-content">
                     <h2>👥 دەربارەی ئێمە</h2>
                     <div class="about-card">
+                        
                         <p>
                             ئێمە سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەوەش ئیلهامبەخش بوو بۆ دروستکردنی ئەم پەرتووکخانە ئەلیکترۆنییە کە پلاتفۆرمێکی سادە و ئاسانە بۆ بەکارهێنان لە لایەن خوێندکاران و مامۆستایان کە دەتوانن زۆرترین زانیاری تێیدا بدۆزنەوە.
                         </p>
@@ -977,23 +957,6 @@ In the name of God, the most gracious, the most merciful
                             <p>
                                 کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و دابینکردنی یەک پلاتفۆرم کە هەموو پێداویستییەکانی ئەکادیمی دابین بکات بە شێوەیەکی مۆدێرن و سەردەمیانە.
                             </p>
-                        </div>
-                        <div class="team-card">
-                            <h3>ئامادەکراوە لەلایەن:</h3>
-                            <div class="team-grid">
-                                <div class="team-member">
-                                    <h4>ژیاو یوسف حسێن</h4>
-                                    <p>خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>نیار قادر ڕەسوڵ</h4>
-                                    <p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                    <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1004,6 +967,7 @@ In the name of God, the most gracious, the most merciful
                 <div class="about-content">
                     <h2>👥 About Us</h2>
                     <div class="about-card">
+                        
                         <p>
                             We are three university students who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality, and well-organized resources in one place was very difficult. This inspired us to create this electronic library as a simple and easy-to-use platform for students and teachers to find the most comprehensive information.
                         </p>
@@ -1012,23 +976,6 @@ In the name of God, the most gracious, the most merciful
                             <p>
                                 To open the door of knowledge to every student and provide a comprehensive platform that meets all academic needs in a modern and contemporary way.
                             </p>
-                        </div>
-                        <div class="team-card">
-                            <h3>Prepared by:</h3>
-                            <div class="team-grid">
-                                <div class="team-member">
-                                    <h4>ZHYAW YOUSF HUSAIN</h4>
-                                    <p>Biology Department Student - Provision of books</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>NYAR QADR RASUL</h4>
-                                    <p>Biology Department Student - Organization of the library</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>MAHMOOD KHDIR FAQE RASUL</h4>
-                                    <p>Biology Department Student - Web Developer</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1039,6 +986,7 @@ In the name of God, the most gracious, the most merciful
                 <div class="about-content">
                     <h2>👥 معلومات عنا</h2>
                     <div class="about-card">
+                        
                         <p>
                             نحن ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا. خلال دراستنا، لاحظنا أن العثور على مصادر موثوقة وجيدة ومنظمة في مكان واحد أمر صعب جداً. هذا ما ألهمنا لإنشاء هذه المكتبة الإلكترونية كمنصة بسيطة وسهلة الاستخدام للطلاب والمدرسين للعثور على أكثر المعلومات شمولية.
                         </p>
@@ -1047,23 +995,6 @@ In the name of God, the most gracious, the most merciful
                             <p>
                                 فتح باب المعرفة لكل طالب وتوفير منصة شاملة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.
                             </p>
-                        </div>
-                        <div class="team-card">
-                            <h3>إعداد:</h3>
-                            <div class="team-grid">
-                                <div class="team-member">
-                                    <h4>ژیاو یوسف حسێن</h4>
-                                    <p>طالب قسم علوم الحياة - توفير الكتب</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>نیار قادر ڕەسوڵ</h4>
-                                    <p>طالب قسم علوم الحياة - تنظيم المكتبة</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                    <p>طالب قسم علوم الحياة - مطور مواقع الويب</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1075,17 +1006,17 @@ In the name of God, the most gracious, the most merciful
         <div class="container">
             <!-- Kurdish -->
             <div class="lang-content active" data-lang="ku">
-                <p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥</p>
+                <p>  کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥ </p>
             </div>
 
             <!-- English -->
             <div class="lang-content" data-lang="en">
-                <p>College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025</p>
+                <p> College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025 </p>
             </div>
 
             <!-- Arabic -->
             <div class="lang-content" data-lang="ar">
-                <p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥</p>
+                <p>  المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥ </p>
             </div>
         </div>
     </footer>
@@ -1186,7 +1117,7 @@ In the name of God, the most gracious, the most merciful
         }, observerOptions);
 
         // Observe all cards
-        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card, .about-card, .mission-card').forEach(element => {
+        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card').forEach(element => {
             observer.observe(element);
         });
 

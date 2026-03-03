@@ -24,67 +24,40 @@
         body { font-family: 'NotoKufiArabic', sans-serif; line-height: 1.6; color: var(--text-color); overflow-x: hidden; direction: rtl; background-color: var(--white); }
         .container { max-width: min(1200px, calc(100% - 2rem)); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
 
-        /* ===== HEADER ===== */
         header { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding: clamp(0.5rem, 2vw, 1rem) 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
         .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; }
         .logo { font-size: clamp(1rem, 3vw, 1.4rem); font-weight: bold; flex: 1; min-width: 160px; }
-
-        /* ===== LANGUAGE SWITCHER ===== */
-        .lang-switcher { display: flex; gap: clamp(0.25rem, 0.8vw, 0.4rem); flex-wrap: wrap; align-items: center; }
-
-        .lang-btn {
-            background: rgba(255,255,255,0.2); border: none; color: var(--white);
-            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.45rem, 1.2vw, 0.8rem);
-            border-radius: 5px; cursor: pointer; transition: all 0.3s ease;
-            font-size: clamp(0.65rem, 1.5vw, 0.85rem); min-width: 48px; text-align: center;
-            white-space: nowrap;
+        .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* بۆشایی نێوان لۆگۆ و دەقەکە */
         }
+
+        .uor-logo {
+        height: 60px; /* دەتوانیت بەرزییەکەی بەپێی ویستی خۆت بگۆڕیت */
+        width: auto;
+        object-fit: contain;
+        }
+        .lang-switcher { display: flex; gap: clamp(0.25rem, 0.8vw, 0.4rem); flex-wrap: wrap; align-items: center; }
+        .lang-btn { background: rgba(255,255,255,0.2); border: none; color: var(--white); padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.45rem, 1.2vw, 0.8rem); border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: clamp(0.65rem, 1.5vw, 0.85rem); min-width: 48px; text-align: center; white-space: nowrap; }
         .lang-btn:hover, .lang-btn.active { background: rgba(255,255,255,0.38); transform: translateY(-2px); }
 
-        /* Kurdish dropdown group */
         .ku-group { position: relative; display: inline-flex; flex-direction: column; align-items: center; }
-
-        .ku-main-btn {
-            background: rgba(255,255,255,0.2); border: none; color: var(--white);
-            padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.45rem, 1.2vw, 0.8rem);
-            border-radius: 5px; cursor: pointer; transition: all 0.3s ease;
-            font-size: clamp(0.65rem, 1.5vw, 0.85rem); min-width: 58px; text-align: center;
-            white-space: nowrap; display: flex; align-items: center; gap: 3px;
-        }
+        .ku-main-btn { background: rgba(255,255,255,0.2); border: none; color: var(--white); padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.45rem, 1.2vw, 0.8rem); border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: clamp(0.65rem, 1.5vw, 0.85rem); min-width: 58px; text-align: center; white-space: nowrap; display: flex; align-items: center; gap: 3px; }
         .ku-main-btn:hover, .ku-main-btn.active { background: rgba(255,255,255,0.38); transform: translateY(-2px); }
         .ku-main-btn .arrow { font-size: 0.6rem; transition: transform 0.2s; }
         .ku-main-btn.open .arrow { transform: rotate(180deg); }
-
-        .ku-dropdown {
-            display: none; position: absolute; top: calc(100% + 6px);
-            background: rgba(80, 60, 140, 0.97); backdrop-filter: blur(10px);
-            border-radius: 8px; overflow: hidden; z-index: 200;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-            min-width: 130px; right: 0;
-        }
+        .ku-dropdown { display: none; position: absolute; top: calc(100% + 6px); background: rgba(80, 60, 140, 0.97); backdrop-filter: blur(10px); border-radius: 8px; overflow: hidden; z-index: 200; box-shadow: 0 8px 24px rgba(0,0,0,0.25); min-width: 130px; right: 0; }
         .ku-dropdown.open { display: block; }
-        .ku-dialect-btn {
-            display: block; width: 100%; background: none; border: none;
-            color: var(--white); padding: 0.55rem 1rem; cursor: pointer;
-            font-size: clamp(0.65rem, 1.5vw, 0.82rem); text-align: right;
-            transition: background 0.2s; white-space: nowrap;
-            font-family: 'NotoKufiArabic', sans-serif;
-        }
+        .ku-dialect-btn { display: block; width: 100%; background: none; border: none; color: var(--white); padding: 0.55rem 1rem; cursor: pointer; font-size: clamp(0.65rem, 1.5vw, 0.82rem); text-align: right; transition: background 0.2s; white-space: nowrap; font-family: 'NotoKufiArabic', sans-serif; }
         .ku-dialect-btn:hover { background: rgba(255,255,255,0.18); }
         .ku-dialect-btn.active { background: rgba(255,255,255,0.28); font-weight: bold; }
         .ku-dialect-btn.ltr-btn { text-align: left; font-family: sans-serif; }
-
-        /* divider between Kurdish dialects and others */
         .lang-divider { width: 1px; height: 26px; background: rgba(255,255,255,0.3); margin: 0 2px; }
+        .dialect-badge { font-size: 0.6rem; opacity: 0.7; display: block; margin-top: 1px; }
 
-        @media screen and (max-width: 600px) {
-            .header-content { flex-direction: column; text-align: center; }
-            .logo { order: 1; width: 100%; }
-            .lang-switcher { order: 2; justify-content: center; width: 100%; }
-            .ku-dropdown { right: auto; left: 50%; transform: translateX(-50%); }
-        }
+        @media screen and (max-width: 600px) { .header-content { flex-direction: column; text-align: center; } .logo { order: 1; width: 100%; } .lang-switcher { order: 2; justify-content: center; width: 100%; } .ku-dropdown { right: auto; left: 50%; transform: translateX(-50%); } }
 
-        /* ===== HERO ===== */
         .hero { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding: var(--section-padding) 0; text-align: center; position: relative; overflow: hidden; min-height: clamp(400px, 60vh, 600px); display: flex; align-items: center; }
         .hero::before { content: ''; position: absolute; width: 200%; height: 200%; background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px); background-size: 100px 100px; animation: float 20s infinite linear; top: -50%; left: -50%; }
         @keyframes float { 0% { transform: translateX(0) translateY(0); } 100% { transform: translateX(-50px) translateY(-50px); } }
@@ -93,7 +66,6 @@
         .hero p { font-size: clamp(1rem, 3vw, 1.4rem); margin-bottom: clamp(1rem, 3vw, 2rem); animation: fadeInUp 2s ease-out 0.8s both; max-width: 800px; margin-left: auto; margin-right: auto; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ===== INTRO SECTION ===== */
         .intro-section { padding: var(--section-padding) 0; background: var(--white); }
         .intro-content { text-align: center; max-width: min(900px, 100%); margin: 0 auto; }
         .intro-content h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); color: var(--text-color); margin-bottom: clamp(1.5rem, 4vw, 2rem); }
@@ -110,14 +82,12 @@
         .team-member h4 { color: var(--text-color); margin-bottom: 0.5rem; font-size: clamp(0.95rem,2.5vw,1.1rem); }
         .team-member p { text-align: center; color: var(--text-light); margin-bottom: 0.5rem; font-size: clamp(0.85rem,2vw,1rem); }
 
-        /* ===== LIBRARY SECTIONS ===== */
         .library-sections { padding: var(--section-padding) 0; background: linear-gradient(45deg, var(--bg-light) 0%, #e9ecef 100%); }
         .main-library { text-align: center; margin-bottom: clamp(2rem,6vw,4rem); }
         .main-library h2 { margin-bottom: clamp(1.5rem,4vw,2rem); font-size: clamp(1.8rem,5vw,2.5rem); color: var(--text-color); }
         .main-library-btn { background: linear-gradient(135deg, var(--accent-color) 0%, #ee5a24 100%); color: var(--white); border: none; padding: clamp(1rem,3vw,1.25rem) clamp(2rem,6vw,3rem); border-radius: 50px; cursor: pointer; font-size: clamp(1rem,2.5vw,1.2rem); font-weight: bold; transition: all 0.3s ease; text-decoration: none; display: inline-block; box-shadow: 0 10px 30px rgba(255,107,107,0.3); min-width: 200px; text-align: center; }
         .main-library-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255,107,107,0.4); }
 
-        /* ===== SECTIONS GRID ===== */
         .sections-grid { display: grid; gap: clamp(1rem,4vw,2rem); margin-top: clamp(2rem,6vw,3rem); }
         @media screen and (max-width: 480px) { .sections-grid { grid-template-columns: 1fr; } }
         @media screen and (min-width: 481px) and (max-width: 768px) { .sections-grid { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); } }
@@ -134,7 +104,6 @@
         .section-btn { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); border: none; padding: clamp(0.75rem,2.5vw,1rem) clamp(1.5rem,4vw,2rem); border-radius: 25px; cursor: pointer; font-size: clamp(0.9rem,2.5vw,1rem); transition: all 0.3s ease; text-decoration: none; display: inline-block; min-width: 140px; text-align: center; font-weight: 500; }
         .section-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        /* ===== ABOUT ===== */
         .about-section { padding: var(--section-padding) 0; background: var(--white); }
         .about-content { max-width: min(900px,100%); margin: 0 auto; }
         .about-content h2 { font-size: clamp(1.8rem,5vw,2.5rem); color: var(--text-color); margin-bottom: clamp(1.5rem,4vw,2rem); text-align: center; }
@@ -144,11 +113,9 @@
         .mission-card h3 { color: var(--primary-color); margin-bottom: 1rem; font-size: clamp(1.2rem,3vw,1.5rem); }
         .mission-card p { margin-bottom: 0; }
 
-        /* ===== FOOTER ===== */
         footer { background: var(--text-color); color: var(--white); text-align: center; padding: clamp(1.5rem,4vw,2rem) 0; }
         footer p { font-size: clamp(0.9rem,2vw,1rem); line-height: 1.6; }
 
-        /* ===== LANG CONTENT ===== */
         .lang-content { display: none; opacity: 0; transition: opacity 0.3s ease; }
         .lang-content.active { display: block; opacity: 1; }
         .rtl { direction: rtl; } .ltr { direction: ltr; }
@@ -158,20 +125,6 @@
         @media screen and (min-width: 1400px) { .container { max-width: 1400px; } .sections-grid { grid-template-columns: repeat(4,1fr); max-width: none; } }
         @media screen and (max-width: 360px) { .container { padding: 0 1rem; } .section-card { padding: 1rem; min-height: 250px; } .hero { min-height: 300px; } }
         @media print { .hero, .lang-switcher { display: none; } .section-card { page-break-inside: avoid; } }
-
-        .logo {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* بۆشایی نێوان لۆگۆ و دەقەکە */
-}
-
-.uor-logo {
-    height: 60px; /* دەتوانیت بەرزییەکەی بەپێی ویستی خۆت بگۆڕیت */
-    width: auto;
-    object-fit: contain;
-}
-        /* dialect badge on dropdown buttons */
-        .dialect-badge { font-size: 0.6rem; opacity: 0.7; display: block; margin-top: 1px; }
     </style>
 </head>
 <body>
@@ -191,33 +144,18 @@
                 <span class="lang-content" data-lang="tr">Raparin Üniversitesi</span>
             </div>
             <div class="lang-switcher">
-                <!-- Kurdish dropdown group -->
                 <div class="ku-group" id="kuGroup">
                     <button class="ku-main-btn active" id="kuMainBtn" onclick="toggleKuDropdown()">
                         کوردی <span class="arrow">▼</span>
                     </button>
                     <div class="ku-dropdown" id="kuDropdown">
-                        <button class="ku-dialect-btn active" data-lang="ku-sorani" onclick="selectDialect('ku-sorani', this)">
-                            سۆرانی
-                            <span class="dialect-badge">Soranî</span>
-                        </button>
-                        <button class="ku-dialect-btn" data-lang="ku-badini" onclick="selectDialect('ku-badini', this)">
-                            بادینی
-                            <span class="dialect-badge">Kurmancî (عەرەبی)</span>
-                        </button>
-                        <button class="ku-dialect-btn ltr-btn" data-lang="ku-badini-lat" onclick="selectDialect('ku-badini-lat', this)">
-                            Badînî
-                            <span class="dialect-badge">Kurmancî (Latînî)</span>
-                        </button>
-                        <button class="ku-dialect-btn" data-lang="ku-hawrami" onclick="selectDialect('ku-hawrami', this)">
-                            هەورامی
-                            <span class="dialect-badge">Hewramî</span>
-                        </button>
+                        <button class="ku-dialect-btn active" data-lang="ku-sorani" onclick="selectDialect('ku-sorani', this)">سۆرانی<span class="dialect-badge">Soranî</span></button>
+                        <button class="ku-dialect-btn" data-lang="ku-badini" onclick="selectDialect('ku-badini', this)">بادینی<span class="dialect-badge">Kurmancî (عەرەبی)</span></button>
+                        <button class="ku-dialect-btn ltr-btn" data-lang="ku-badini-lat" onclick="selectDialect('ku-badini-lat', this)">Badînî<span class="dialect-badge">Kurmancî (Latînî)</span></button>
+                        <button class="ku-dialect-btn" data-lang="ku-hawrami" onclick="selectDialect('ku-hawrami', this)">هەورامی<span class="dialect-badge">Hewramî</span></button>
                     </div>
                 </div>
-
                 <div class="lang-divider"></div>
-
                 <button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button>
                 <button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">العربية</button>
                 <button class="lang-btn" data-lang="fa" onclick="switchLang('fa')">فارسی</button>
@@ -227,72 +165,48 @@
     </div>
 </header>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-
-            <!-- Sorani -->
-            <div class="lang-content active rtl" data-lang="ku-sorani">
-                <h2>بەخێربێن بۆ</h2><br>
-                <h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1>
-                <p>بەردەستبوون و کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p>
-            </div>
-
-            <!-- Badini Arabic -->
-            <div class="lang-content rtl" data-lang="ku-badini">
-                <h2>بخێر هاتن بۆ</h2><br>
-                <h1>کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ</h1>
-                <p>بهێسانی و زو پەیدابوونا بی هەزاران چاوکانی و پەرتوکین زانستی.</p>
-            </div>
-
-            <!-- Badini Latin -->
-            <div class="lang-content ltr" data-lang="ku-badini-lat">
-                <h2>Bi xêr hatin</h2><br>
-                <h1>Kitêbxaneya Elektronîkî ya Kolêja Zanistê</h1>
-                <p>Bigihîje hezaran çavkanî û pirtûkên zanistî bi awayekî hêsan û bilez.</p>
-            </div>
-
-            <!-- Hawrami -->
-            <div class="lang-content rtl" data-lang="ku-hawrami">
-                <h2>خۆش بگەیەیت بۆ</h2><br>
-                <h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1>
-                <p>دەستڕەسیەتی بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p>
-            </div>
-
-            <!-- English -->
-            <div class="lang-content ltr" data-lang="en">
-                <h2>Welcome To</h2><br>
-                <h1>College of Science Electronic Library</h1>
-                <p>Access and gather thousands of scientific resources and books easily and quickly.</p>
-            </div>
-
-            <!-- Arabic -->
-            <div class="lang-content rtl" data-lang="ar">
-                <h2>مرحبا بكم في</h2><br>
-                <h1>المكتبة الإلكترونية لكلية العلوم</h1>
-                <p>الوصول وتجميع آلاف المصادر والكتب العلمية بسهولة وسرعة.</p>
-            </div>
-
-            <!-- Persian -->
-            <div class="lang-content rtl" data-lang="fa">
-                <h2>خوش آمدید به</h2><br>
-                <h1>کتابخانه الکترونیکی دانشکده علوم</h1>
-                <p>دسترسی و گردآوری هزاران منبع و کتاب علمی به آسانی و سرعت.</p>
-            </div>
-
-            <!-- Turkish -->
-            <div class="lang-content ltr" data-lang="tr">
-                <h2>Hoş Geldiniz</h2><br>
-                <h1>Fen Fakültesi Elektronik Kütüphanesi</h1>
-                <p>Binlerce bilimsel kaynak ve kitaba kolayca ve hızlıca erişin ve toplayın.</p>
-            </div>
-
+            <div class="lang-content active rtl" data-lang="ku-sorani"><h2>بەخێربێن بۆ</h2><br><h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1><p>بەردەستبوون و کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p></div>
+            <div class="lang-content rtl" data-lang="ku-badini"><h2>بخێر هاتن بۆ</h2><br><h1>کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ</h1><p>بهێسانی و زو پەیدابوونا بی هەزاران چاوکانی و پەرتوکین زانستی.</p></div>
+            <div class="lang-content ltr" data-lang="ku-badini-lat"><h2>Bi xêr hatin</h2><br><h1>Kitêbxaneya Elektronîkî ya Kolêja Zanistê</h1><p>Bigihîje hezaran çavkanî û pirtûkên zanistî bi awayekî hêsan û bilez.</p></div>
+            <div class="lang-content rtl" data-lang="ku-hawrami"><h2>خۆش بگەیەیت بۆ</h2><br><h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1><p>دەستڕەسیەتی بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p></div>
+            <div class="lang-content ltr" data-lang="en"><h2>Welcome To</h2><br><h1>College of Science Electronic Library</h1><p>Access and gather thousands of scientific resources and books easily and quickly.</p></div>
+            <div class="lang-content rtl" data-lang="ar"><h2>مرحبا بكم في</h2><br><h1>المكتبة الإلكترونية لكلية العلوم</h1><p>الوصول وتجميع آلاف المصادر والكتب العلمية بسهولة وسرعة.</p></div>
+            <div class="lang-content rtl" data-lang="fa"><h2>خوش آمدید به</h2><br><h1>کتابخانه الکترونیکی دانشکده علوم</h1><p>دسترسی و گردآوری هزاران منبع و کتاب علمی به آسانی و سرعت.</p></div>
+            <div class="lang-content ltr" data-lang="tr"><h2>Hoş Geldiniz</h2><br><h1>Fen Fakültesi Elektronik Kütüphanesi</h1><p>Binlerce bilimsel kaynak ve kitaba kolayca ve hızlıca erişin ve toplayın.</p></div>
         </div>
     </div>
 </section>
 
-<!-- ===== INTRO ===== -->
+<!-- SOCIAL ICONS TEMPLATE (reused via JS clone or inline per section) -->
+<!-- We define the social block once as a template -->
+<template id="social-tpl">
+  <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+    </a>
+    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+    </a>
+    <a href="tel:+9647507087901" title="Phone">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/></svg>
+    </a>
+    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00"><path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+    </a>
+  </div>
+</template>
+
+<!-- INTRO -->
 <section class="intro-section">
     <div class="container">
 
@@ -301,11 +215,10 @@
             <div class="intro-content">
                 <h2>پێشەکی</h2>
                 <div class="intro-card">
-                    <p>بەخێربێن بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست
-                    ژینگەیەکی دیجیتاڵییە کە دروستکراوە بۆ ئەوەی گەیشتن بە زانیاری و فێربوون چێژبەخش بێت و توێژینەوە کاراتر بێت بۆ خوێندکاران و ستافی ئەکادیمی. لە سەردەمێکدا کە تەکنەلۆژیا باڵی بەسەر ژیانماندا گرتووە، گەیشتن بە زانیارییە زانستییە متمانەپێکراوەکان بووەتە شتێکی بنەڕەتی بۆ سەرکەوتنی ئەکادیمی و گەشەکردنی هزری.</p>
-                    <p>ئەم کتێبخانە ئەلیکترۆنییە کۆمەڵێک سەرچاوەی زانستی بەرفراوان پێشکەش دەکات، لەوانە کتێبی خوێندن، توێژینەوەی زانستی و ئەکادیمی، گۆڤاری ئەکادیمی، کەرەستەی وانەوتنەوە و ئاماژەی پەروەردەیی، کە هەموویان لە یەک پلاتفۆرمی گونجاودا بەردەستن. ڕێگە بە بەکارهێنەران دەدات لە هەر کاتێکدا و لە هەر شوێنێکدا بە دوای زانیارییەکان بگەڕێن، کە پشتگیری لە هەردوو فێربوونی سەربەخۆ و چالاکییەکانی توێژینەوەی پێشکەوتوو دەکات. هەموو ئەمانە لە ڕێگەی QR کۆدەوە کە بە شێوازێکی ئەلکترۆنی ئامادەکراوە.</p>
-                    <p>کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی، نیشاندەری پەیوەندی نێوان زانست و تەکنەلۆژیایە. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە، لە هەمان کاتدا یارمەتی خوێندکاران و توێژەران دەدات کە لە پێشکەوتنە زانستییە مۆدێرنەکاندا ئاگاداربن.</p>
-                    <p>ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانە کە زانیاری بە ئازادی تێدا بەردەست بکرێت، بیرۆکەکان پەرەی پێبدرێت، و زانایانی داهاتوو بەهێز بکرێن بۆ دۆزینەوە و داهێنان و بەشداریکردن لە پێشکەوتنی زانست و کۆمەڵگا. ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.</p>
+                    <p>بەخێربێن بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ژینگەیەکی دیجیتاڵییە کە دروستکراوە بۆ ئەوەی گەیشتن بە زانیاری و فێربوون چێژبەخش بێت و توێژینەوە کاراتر بێت بۆ خوێندکاران و ستافی ئەکادیمی. لە سەردەمێکدا کە تەکنەلۆژیا باڵی بەسەر ژیانماندا گرتووە، گەیشتن بە زانیارییە زانستییە متمانەپێکراوەکان بووەتە شتێکی بنەڕەتی بۆ سەرکەوتنی ئەکادیمی و گەشەکردنی هزری.</p>
+                    <p>ئەم کتێبخانە ئەلیکترۆنییە کۆمەڵێک سەرچاوەی زانستی بەرفراوان پێشکەش دەکات، لەوانە کتێبی خوێندن، توێژینەوەی زانستی و ئەکادیمی، گۆڤاری ئەکادیمی، کەرەستەی وانەوتنەوە و ئاماژەی پەروەردەیی، کە هەموویان لە یەک پلاتفۆرمی گونجاودا بەردەستن.</p>
+                    <p>کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی، نیشاندەری پەیوەندی نێوان زانست و تەکنەلۆژیایە. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە.</p>
+                    <p>ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانەیە کە زانیاری بە ئازادی تێدا بەردەست بکرێت. ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.</p>
                     <div class="objectives-card">
                         <h3>ئامانجەکانی پڕۆژەکە:</h3>
                         <ul class="objectives-list">
@@ -315,7 +228,7 @@
                             <li>📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن</li>
                             <li>👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە پەرتووکخانەی دیجیتاڵی</li>
                             <li>⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی</li>
-                            <li>🌐 بەردەستبوونی پەرتووک و سەرچاوەکان بە هەموو زمانەکان، وەک زمانی ئینگلیزی، عەرەبی، تورکی، فارسی، کوردی { زاراوەکانی سۆرانی، بادینی، کرمانجی، هەورامی }</li>
+                            <li>🌐 بەردەستبوونی پەرتووک و سەرچاوەکان بە هەموو زمانەکان</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -324,55 +237,10 @@
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p></div>
                             <div class="team-member">
-  <h4>محمود خدر فقێ ڕەسوڵ</h4>
-  <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
-  <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-  </div>
-
-
+                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
+                                <div class="social-placeholder"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -384,10 +252,10 @@
             <div class="intro-content">
                 <h2>پێشگرتن</h2>
                 <div class="intro-card">
-                    <p>بخێر هاتن بۆ کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ — هاوێردۆرەکا دیجیتال کو ژ بۆ هێسانکرنا گهیشتنا ئاگەهداری و فێربوونێ و باندۆرکرنا لێکۆلینێ ژ بۆ خوێندکار و کارمەندێن ئەکادیمی هاتیە چێکرن. د سەردەمەک کو تەکنەلۆژی ژیانا مە داگیر کرییە دە، گهیشتنا ئاگەهداریا زانستی یا پێباوەر بوویە بنگەهەک ژ بۆ سەرکەفتنا ئەکادیمی و پێشکەفتنا ڕەوشەنبیرێ.</p>
-                    <p>ئڤ پرتوکخانەیا ئەلیکترۆنیک جوربەجور چاوکانیێن زانستی پێشکێش دکە، د ناڤ دا پِرتوکێن دەرسێ، لێکۆلینێن زانستی و ئەکادیمی، کۆڤارێن ئەکادیمی، ماتەریالێن هینکرنێ و رێفەرەنسێن پەروەردەهێ هەمی ل سەر یەک پلاتفۆرمی گونجاو پەیدا دبن. ڕێ بە بەکارهێنەران ددە کو ل هەر کاتێکدا و ل هەر شوینێکدا ل دوای ئاگەهداریێن دبگەڕێن، کو پشتگیریا هەردوو فێربوونا سەربەخۆ و چالاکیێن تەهقیقێن پێشکەفتی دکە. ئەڤ هەمی بە ڕێیا کۆدێن QR تێنە پەیداکرن.</p>
-                    <p>پرتوکخانەیا ئەلیکترۆنیک بیاتر ئە ژ تەنە بەرھەڤەکا دیجیتال، نیشانکرا پەیوەندیا نێوان زانست و تەکنەلۆژیێ یە. هاندەرا بیرکرنا ڕەخنەگر و فێربوونا بەردەوامە، ل هەمان کاتیدا یارمەتیا خوێندکار و توێژکاران دکە کو ل پێشکەفتنێن زانستی یێن مودێرن ئاگەداربن.</p>
-                    <p>میسیونا مە ئەوە کو ئەم قادەکا ئەکادیمی یا هاڤکار بیاڤرینین کو تێدا زانین ئازاد دبیت، ڕامان پێشڤە دچیت، و زانایێن پێشەڕۆژێ ژ بۆ کیفشکرن و نووژەنیێ تێنە هێزدارکرن و بەشداریکرنا د پێشکەفتنا زانست و کۆمەڵگایێ دە. ئڤ سیستەما مودێرن ژ بۆ خزمەتکرنا خوێندکارێن کۆلێژا زانستێ هاتیە ئامادەکرن.</p>
+                    <p>بخێر هاتن بۆ کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ — هاوێردۆرەکا دیجیتال کو ژ بۆ هێسانکرنا گهیشتنا ئاگەهداری و فێربوونێ و باندۆرکرنا لێکۆلینێ ژ بۆ خوێندکار و کارمەندێن ئەکادیمی هاتیە چێکرن.</p>
+                    <p>ئڤ پرتوکخانەیا ئەلیکترۆنیک جوربەجور چاوکانیێن زانستی پێشکێش دکە، د ناڤ دا پِرتوکێن دەرسێ، لێکۆلینێن زانستی و ئەکادیمی، کۆڤارێن ئەکادیمی، ماتەریالێن هینکرنێ هەمی ل سەر یەک پلاتفۆرمی گونجاو پەیدا دبن.</p>
+                    <p>پرتوکخانەیا ئەلیکترۆنیک بیاتر ئە ژ تەنە بەرھەڤەکا دیجیتال، نیشانکرا پەیوەندیا نێوان زانست و تەکنەلۆژیێ یە. هاندەرا بیرکرنا ڕەخنەگر و فێربوونا بەردەوامە.</p>
+                    <p>میسیونا مە ئەوە کو ئەم قادەکا ئەکادیمی یا هاڤکار بیاڤرینین. ئڤ سیستەما مودێرن ژ بۆ خزمەتکرنا خوێندکارێن کۆلێژا زانستێ هاتیە ئامادەکرن.</p>
                     <div class="objectives-card">
                         <h3>ئارمانجێن پڕۆژەیێ:</h3>
                         <ul class="objectives-list">
@@ -397,7 +265,7 @@
                             <li>📱 بکارئینانا تەکنەلۆژیا نووژەن {کۆدا QR} ژ بۆ خزمەتێن پەروەردەهیێ</li>
                             <li>👨‍🏫 سوودێن مامۆستا و خوێندکاران ژ کتێبخانەیێن دیجیتال</li>
                             <li>⏰ داگیرتنا دەمێ ڤالا یا خوێندکاران بی پرۆژەک زانستی</li>
-                            <li>🌐 هەبوونا کتێب و چاوکانییان بی هەمی زمانان، وەک ئینگلیزی، عەرەبی، تورکی، فارسی، کوردی { سۆرانی، بادینی، کرمانجی، هەورامی }</li>
+                            <li>🌐 هەبوونا کتێب و چاوکانییان بی هەمی زمانان</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -405,53 +273,12 @@
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>خینکارێ بایۆلۆجیێ - دابینکرنا پرتوکان</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>خینکارێ بایۆلۆجیێ - ڕێکخستنا پرتوکخانەیێ</p></div>
-                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4>
+                            <div class="team-member">
+                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
                                 <p>خینکارێ بایۆلۆجیێ - پێشدەبرێ مالپەرێ</p>
-                        <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-                       </div>
+                                <div class="social-placeholder"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -462,10 +289,10 @@
             <div class="intro-content">
                 <h2>Pêşgotin</h2>
                 <div class="intro-card">
-                    <p>Bi xêr hatin bo Kitêbxaneya Elektronîkî ya Kolêja Zanistê — ev jî hawîrdorek dîjîtal e ku ji bo ku gihîştina zaniariyê û fêrbûn kêfxweş bibe û lêkolîn ji bo xwendekaran û stafa akademîk bikêrtir bibe hat çêkirin. Di serdemek de ku teknolojî jiyana me giştî girtiye, gihîştina agahdariyên zanistî yên pêbawer bûye tiştekî bingehîn bo serketina akademîk û mezinbûna fikrî.</p>
-                    <p>Ev kitêbxaneya elektronîkî gelek çavkaniyên zanistî pêşkêş dike, di nav wan de pirtûkên xwendinê, lêkolînên zanistî û akademîk, kovarên akademîk, materyalên dersê û rêbernameyên perwerdehiyê — hemî di yek platformeke guncavî de amade ne. Rê dide bikarhêneran ku her dem û her cihî li pey agahdariyên bigerin, ku piştgiriyê ji herdû fêrbûna serbixwe û çalakiyên lêkolînên pêşketî dike. Hemû ev tişt bi riya QR-kodê yên ku bi awayekî elektronîkî hatine amade kirin têne gihîştin.</p>
-                    <p>Kitêbxaneya elektronîkî ji tena berhevokeke dîjîtal zêdetir e, nîşankerek e ji pêwendiya di navbera zanist û teknolojiyê de. Teşwîqa ramanêna rexnegir û fêrbûna domdar e, di heman demê de alîkariya xwendekar û lêkolîneran dike ku ji pêşkeftinên zanistî yên modern haydar bin.</p>
-                    <p>Mîsyona me avakirina cîhekî akademîk piştgirî ye ku zaniarî tê de azad be, ramanên nû pêş bikevin, û zanyarên pêşerojê bihêz bibin da ku keşif bikin, nûjenî bikin û beşdarî pêşkeftina zanist û civakê bibin. Ev sistema modern ji bo xizmeta xwendekarên Kolêja Zanistê hat çêkirin.</p>
+                    <p>Bi xêr hatin bo Kitêbxaneya Elektronîkî ya Kolêja Zanistê — ev jî hawîrdorek dîjîtal e ku ji bo ku gihîştina zaniariyê û fêrbûn kêfxweş bibe û lêkolîn ji bo xwendekaran û stafa akademîk bikêrtir bibe hat çêkirin.</p>
+                    <p>Ev kitêbxaneya elektronîkî gelek çavkaniyên zanistî pêşkêş dike, di nav wan de pirtûkên xwendinê, lêkolînên zanistî û akademîk, kovarên akademîk, materyalên dersê — hemî di yek platformeke guncavî de amade ne.</p>
+                    <p>Kitêbxaneya elektronîkî ji tena berhevokeke dîjîtal zêdetir e. Teşwîqa ramanêna rexnegir û fêrbûna domdar e.</p>
+                    <p>Mîsyona me avakirina cîhekî akademîk piştgirî ye. Ev sistema modern ji bo xizmeta xwendekarên Kolêja Zanistê hat çêkirin.</p>
                     <div class="objectives-card">
                         <h3>Armancên Projeyê:</h3>
                         <ul class="objectives-list">
@@ -475,7 +302,7 @@
                             <li>📱 Bikaranîna teknolojiya nû {QR koda} bo xizmeta xwendinê</li>
                             <li>👨‍🏫 Sûdwergirtina mamoste û xwendekaran ji kitêbxaneya dîjîtal</li>
                             <li>⏰ Tijîkirina demên vala yên xwendekaran bi projeyek zanistî</li>
-                            <li>🌐 Berdestbûna pirtûk û çavkaniyan bi hemû zimanan, wek Inglîzî, Erebî, Tirkî, Farisî, Kurdî { Soranî, Badînî, Kurmancî, Hewramî }</li>
+                            <li>🌐 Berdestbûna pirtûk û çavkaniyan bi hemû zimanan</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -483,52 +310,12 @@
                         <div class="team-grid">
                             <div class="team-member"><h4>ZHYAW YOUSF HUSAIN</h4><p>Xwendekarê Beşê Biyolojiyê - Dabînkirina pirtûkan</p></div>
                             <div class="team-member"><h4>NYAR QADR RASUL</h4><p>Xwendekarê Beşê Biyolojiyê - Rêxistina kitêbxanê</p></div>
-                            <div class="team-member"><h4>MAHMOOD KHDIR FAQE RASUL</h4><p>Xwendekarê Beşê Biyolojiyê - Pêşxistinkarê malperê</p></div>
-                        <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-  </div>
+                            <div class="team-member">
+                                <h4>MAHMOOD KHDIR FAQE RASUL</h4>
+                                <p>Xwendekarê Beşê Biyolojiyê - Pêşxistinkarê malperê</p>
+                                <div class="social-placeholder"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -539,10 +326,10 @@
             <div class="intro-content">
                 <h2>پێشەکی</h2>
                 <div class="intro-card">
-                    <p>خۆش بگەیەیت بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ئەمە یەک ژینگەی دیجیتاڵیە کە دروستکراوە بۆ ئەوەی دەستڕەسیەتی بە زانیاری و فێربوون ئاسان ببێت و توێژینەوە کارامەتر بۆ خوێندکاران و ستافی ئەکادیمی. لەم سەردەمەیدا کە تەکنەلۆژی سەرتاسەر ژیانمان گرتووەتە، دەستڕەسیەتی بە زانیاری زانستی متمانەپێکراو ببێتە رکنێکی بنیادین بۆ سەرکەفتنی ئەکادیمی و گەشەکردنی هزری.</p>
-                    <p>ئەمە کتێبخانەی ئەلیکترۆنیە یەک کۆمەڵ سەرچاوەی زانستی بەرفراوان پێشکەش دەکات، لەوانە کتێبی خوێندن، توێژینەوەی زانستی و ئەکادیمی، گۆڤاری ئەکادیمی، کەرەستەی دەرسدان و ئاماژەی خوێندن — هەموویان لە یەک پلاتفۆرمی گونجاودا ئامادەن. ڕێگە دەدات بە بەکارهێنەران کە هەر کاتێک و هەر شوێنێک لە دوای زانیاریدا بگەڕێن، کە پشتگیری لە هەردوو فێربوونی سەربەخۆ و چالاکییەکانی توێژینەوەی پێشکەوتوو دەکات. هەموو ئەمانە بە ڕێگای QR کۆدەوە دەستڕەسن.</p>
-                    <p>کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی، نیشانی پەیوەندی نێوان زانست و تەکنەلۆژیایە. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە، لە هەمان کاتدا یارمەتی خوێندکاران و توێژەران دەدات کە لە پێشکەوتنە زانستییە مۆدێرنەکاندا ئاگاداربن.</p>
-                    <p>ئەرکمان ئەوەیە کە یەک بۆشایی ئەکادیمی هاوکاری دروست بکەین کە زانیاری ئازادانە تێدا بەردەست ببێت، بیرۆکەکان پەرەیان پێ بدرێت، و زانایانی داهاتوو بەهێز ببێن بۆ دۆزینەوە و داهێنان و بەشداریکردن لە پێشکەوتنی زانست و کۆمەڵگا. ئەم سیستەمەی مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروستکراوە.</p>
+                    <p>خۆش بگەیەیت بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ئەمە یەک ژینگەی دیجیتاڵیە کە دروستکراوە بۆ ئەوەی دەستڕەسیەتی بە زانیاری و فێربوون ئاسان ببێت.</p>
+                    <p>ئەمە کتێبخانەی ئەلیکترۆنیە یەک کۆمەڵ سەرچاوەی زانستی بەرفراوان پێشکەش دەکات — هەموویان لە یەک پلاتفۆرمی گونجاودا ئامادەن.</p>
+                    <p>کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە.</p>
+                    <p>ئەرکمان ئەوەیە کە یەک بۆشایی ئەکادیمی هاوکاری دروست بکەین. ئەم سیستەمەی مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروستکراوە.</p>
                     <div class="objectives-card">
                         <h3>ئامانجەکانی پرۆژەکە:</h3>
                         <ul class="objectives-list">
@@ -552,7 +339,7 @@
                             <li>📱 بەکارهێنانی تەکنەلۆژیای نوی {QR code} بۆ خزمەتی خوێندن</li>
                             <li>👨‍🏫 سوودگرتنی مامۆستایان و خوێندکاران لە کتێبخانەی دیجیتاڵ</li>
                             <li>⏰ پڕکردنی کاتی بەتاڵی خوێندکاران بە پرۆژەیەکی زانستی</li>
-                            <li>🌐 بەردەستبوونی کتێب و سەرچاوەکان بە هەموو زمانەکان، وەک ئینگلیزی، عەرەبی، تورکی، فارسی، کوردی { سۆرانی، بادینی، کرمانجی، هەورامی }</li>
+                            <li>🌐 بەردەستبوونی کتێب و سەرچاوەکان بە هەموو زمانەکان</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -560,52 +347,12 @@
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>خوێندکاری بەشی بایەلۆجی - دابینکردنی کتێب</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p></div>
-                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت</p></div>
-                        <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-  </div>
+                            <div class="team-member">
+                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                <p>خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت</p>
+                                <div class="social-placeholder"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -616,20 +363,20 @@
             <div class="intro-content">
                 <h2>Introduction</h2>
                 <div class="intro-card">
-                    <p>Welcome to the College of Science Electronic Library — a digital environment created to make access to knowledge and learning enjoyable, and to make research more effective for students and academic staff. In an era where technology has spread its wings over our lives, access to trusted scientific information has become a cornerstone of academic success and intellectual growth.</p>
-                    <p>This electronic library offers a wide range of scientific resources, including textbooks, scientific and academic research, academic journals, teaching materials and educational references — all available on a single convenient platform. It allows users to search for information at any time and from any place, supporting both independent learning and advanced research activities. All of this is accessible via QR codes that have been prepared electronically.</p>
-                    <p>The electronic library is more than just a digital collection — it is a reflection of the relationship between science and technology. It encourages critical thinking and lifelong learning, while helping students and researchers stay informed about modern scientific advancements.</p>
-                    <p>Our mission is to build a supportive academic space where knowledge is freely accessible, ideas are developed, and future scholars are empowered to discover, innovate, and contribute to the advancement of science and society. This modern system was created to serve the students of the College of Science.</p>
+                    <p>Welcome to the College of Science Electronic Library — a digital environment created to make access to knowledge and learning enjoyable, and to make research more effective for students and academic staff.</p>
+                    <p>This electronic library offers a wide range of scientific resources, including textbooks, scientific and academic research, academic journals, teaching materials and educational references — all available on a single convenient platform.</p>
+                    <p>The electronic library is more than just a digital collection — it is a reflection of the relationship between science and technology. It encourages critical thinking and lifelong learning.</p>
+                    <p>Our mission is to build a supportive academic space where knowledge is freely accessible. This modern system was created to serve the students of the College of Science.</p>
                     <div class="objectives-card">
                         <h3>Project Objectives:</h3>
                         <ul class="objectives-list">
                             <li>🎓 Supporting online learning at universities</li>
                             <li>⚡ Quick and easy access to scientific resources</li>
                             <li>📖 Gathering thousands of scientific resources in one place</li>
-                            <li>📱 Utilizing modern technology {QR code} to serve education and students</li>
+                            <li>📱 Utilizing modern technology {QR code} to serve education</li>
                             <li>👨‍🏫 Benefiting teachers and students from digital library resources</li>
                             <li>⏰ Filling students' free time with scientific projects</li>
-                            <li>🌐 Availability of books and resources in all languages, such as English, Arabic, Turkish, Persian, Kurdish { Sorani, Badini, Kurmanji, Hawrami }</li>
+                            <li>🌐 Availability of books and resources in all languages</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -637,52 +384,12 @@
                         <div class="team-grid">
                             <div class="team-member"><h4>ZHYAW YOUSF HUSAIN</h4><p>Biology Department Student - Provision of books</p></div>
                             <div class="team-member"><h4>NYAR QADR RASUL</h4><p>Biology Department Student - Organization of the library</p></div>
-                            <div class="team-member"><h4>MAHMOOD KHDIR FAQE RASUL</h4><p>Biology Department Student - Web Developer</p></div>
-                        <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-  </div>
+                            <div class="team-member">
+                                <h4>MAHMOOD KHDIR FAQE RASUL</h4>
+                                <p>Biology Department Student - Web Developer</p>
+                                <div class="social-placeholder"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -693,20 +400,20 @@
             <div class="intro-content">
                 <h2>مقدمة</h2>
                 <div class="intro-card">
-                    <p>مرحباً بكم في المكتبة الإلكترونية لكلية العلوم — بيئة رقمية أُنشئت لجعل الوصول إلى المعرفة والتعلم ممتعاً، وجعل البحث العلمي أكثر فاعلية للطلاب والكادر الأكاديمي. في عصر باتت فيه التكنولوجيا تهيمن على حياتنا، أصبح الوصول إلى المعلومات العلمية الموثوقة ركيزةً أساسية للنجاح الأكاديمي والنمو الفكري.</p>
-                    <p>تقدم هذه المكتبة الإلكترونية مجموعة واسعة من المصادر العلمية، تشمل الكتب الدراسية، والبحوث العلمية والأكاديمية، والمجلات المتخصصة، ومواد التدريس والمراجع التعليمية — وكل ذلك متاح على منصة واحدة ملائمة. تتيح للمستخدمين البحث عن المعلومات في أي وقت ومن أي مكان، مما يدعم التعلم الذاتي وأنشطة البحث المتقدمة. وكل ذلك متاح عبر رموز QR المُعدَّة إلكترونياً.</p>
-                    <p>المكتبة الإلكترونية أكثر من مجرد مجموعة رقمية، فهي تعكس العلاقة بين العلم والتكنولوجيا. إنها تشجع على التفكير النقدي والتعلم المستمر، وتساعد الطلاب والباحثين في متابعة أحدث التطورات العلمية.</p>
-                    <p>مهمتنا هي بناء فضاء أكاديمي داعم تكون فيه المعرفة متاحة بحرية، وتُنمَّى الأفكار، ويتمكن العلماء المستقبليون من الاكتشاف والابتكار والمساهمة في تقدم العلم والمجتمع. تم إنشاء هذا النظام الحديث لخدمة طلاب كلية العلوم.</p>
+                    <p>مرحباً بكم في المكتبة الإلكترونية لكلية العلوم — بيئة رقمية أُنشئت لجعل الوصول إلى المعرفة والتعلم ممتعاً، وجعل البحث العلمي أكثر فاعلية للطلاب والكادر الأكاديمي.</p>
+                    <p>تقدم هذه المكتبة الإلكترونية مجموعة واسعة من المصادر العلمية، تشمل الكتب الدراسية، والبحوث العلمية والأكاديمية، والمجلات المتخصصة، ومواد التدريس والمراجع التعليمية — وكل ذلك متاح على منصة واحدة.</p>
+                    <p>المكتبة الإلكترونية أكثر من مجرد مجموعة رقمية، فهي تعكس العلاقة بين العلم والتكنولوجيا. إنها تشجع على التفكير النقدي والتعلم المستمر.</p>
+                    <p>مهمتنا هي بناء فضاء أكاديمي داعم تكون فيه المعرفة متاحة بحرية. تم إنشاء هذا النظام الحديث لخدمة طلاب كلية العلوم.</p>
                     <div class="objectives-card">
                         <h3>أهداف المشروع:</h3>
                         <ul class="objectives-list">
                             <li>🎓 دعم التعلم الإلكتروني في الجامعات</li>
                             <li>⚡ الوصول السريع والسهل إلى الموارد العلمية</li>
                             <li>📖 جمع آلاف الموارد العلمية في مكان واحد</li>
-                            <li>📱 استخدام التكنولوجيا الحديثة {رموز QR} لخدمة التعليم والطلاب</li>
+                            <li>📱 استخدام التكنولوجيا الحديثة {رموز QR} لخدمة التعليم</li>
                             <li>👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية</li>
                             <li>⏰ ملء أوقات فراغ الطلاب بمشاريع علمية</li>
-                            <li>🌐 توفر الكتب والموارد بجميع اللغات، كالإنجليزية والعربية والتركية والفارسية والكردية { السورانية، البادينية، الكرمانجية، الهورامية }</li>
+                            <li>🌐 توفر الكتب والموارد بجميع اللغات</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -714,52 +421,12 @@
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>طالب قسم علوم الحياة - توفير الكتب</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>طالبة قسم علوم الحياة - تنظيم المكتبة</p></div>
-                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>طالب قسم علوم الحياة - مطور مواقع الويب</p></div>
-                        <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-  </div>
+                            <div class="team-member">
+                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                <p>طالب قسم علوم الحياة - مطور مواقع الويب</p>
+                                <div class="social-placeholder"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -770,20 +437,20 @@
             <div class="intro-content">
                 <h2>مقدمه</h2>
                 <div class="intro-card">
-                    <p>به کتابخانه الکترونیکی دانشکده علوم خوش آمدید — یک محیط دیجیتال که برای آسان‌تر کردن دسترسی به دانش و لذت‌بخش‌تر کردن یادگیری، و مؤثرتر کردن پژوهش برای دانشجویان و کادر علمی طراحی شده است. در عصری که فناوری بر زندگی ما سایه افکنده، دسترسی به اطلاعات علمی معتبر به رکن اساسی موفقیت تحصیلی و رشد فکری تبدیل شده است.</p>
-                    <p>این کتابخانه الکترونیکی طیف گسترده‌ای از منابع علمی ارائه می‌دهد، از جمله کتاب‌های درسی، تحقیقات علمی و دانشگاهی، مجلات تخصصی، مواد آموزشی و مراجع پرورشی — همه در یک پلتفرم واحد و مناسب در دسترس هستند. به کاربران امکان می‌دهد در هر زمان و از هر مکانی به دنبال اطلاعات بگردند، که از یادگیری مستقل و فعالیت‌های پژوهشی پیشرفته حمایت می‌کند. تمام اینها از طریق کدهای QR که به صورت الکترونیکی آماده شده‌اند قابل دسترسی هستند.</p>
-                    <p>کتابخانه الکترونیکی بیش از یک مجموعه دیجیتال است — نمایانگر رابطه میان علم و فناوری است. تفکر انتقادی و یادگیری مستمر را تشویق می‌کند و در عین حال به دانشجویان و پژوهشگران کمک می‌کند از پیشرفت‌های علمی نوین آگاه باشند.</p>
-                    <p>مأموریت ما ایجاد یک فضای دانشگاهی حمایتگر است که در آن دانش آزادانه در دسترس باشد، ایده‌ها پرورش یابند، و دانشمندان آینده توانمند شوند تا کشف کنند، نوآوری داشته باشند و در پیشرفت علم و جامعه مشارکت کنند. این سیستم مدرن برای خدمت به دانشجویان دانشکده علوم ساخته شده است.</p>
+                    <p>به کتابخانه الکترونیکی دانشکده علوم خوش آمدید — یک محیط دیجیتال که برای آسان‌تر کردن دسترسی به دانش و لذت‌بخش‌تر کردن یادگیری، و مؤثرتر کردن پژوهش برای دانشجویان و کادر علمی طراحی شده است.</p>
+                    <p>این کتابخانه الکترونیکی طیف گسترده‌ای از منابع علمی ارائه می‌دهد، از جمله کتاب‌های درسی، تحقیقات علمی و دانشگاهی، مجلات تخصصی، مواد آموزشی — همه در یک پلتفرم واحد در دسترس هستند.</p>
+                    <p>کتابخانه الکترونیکی بیش از یک مجموعه دیجیتال است — نمایانگر رابطه میان علم و فناوری است. تفکر انتقادی و یادگیری مستمر را تشویق می‌کند.</p>
+                    <p>مأموریت ما ایجاد یک فضای دانشگاهی حمایتگر است. این سیستم مدرن برای خدمت به دانشجویان دانشکده علوم ساخته شده است.</p>
                     <div class="objectives-card">
                         <h3>اهداف پروژه:</h3>
                         <ul class="objectives-list">
                             <li>🎓 حمایت از یادگیری آنلاین در دانشگاه‌ها</li>
                             <li>⚡ دسترسی سریع و آسان به منابع علمی</li>
                             <li>📖 گردآوری هزاران منبع علمی در یک مکان</li>
-                            <li>📱 استفاده از فناوری مدرن {QR کد} برای خدمت به آموزش و دانشجویان</li>
+                            <li>📱 استفاده از فناوری مدرن {QR کد} برای خدمت به آموزش</li>
                             <li>👨‍🏫 بهره‌مندی اساتید و دانشجویان از منابع کتابخانه دیجیتال</li>
                             <li>⏰ پر کردن اوقات فراغت دانشجویان با پروژه‌های علمی</li>
-                            <li>🌐 در دسترس بودن کتاب‌ها و منابع به همه زبان‌ها، مانند انگلیسی، عربی، ترکی، فارسی، کردی { سورانی، بادینی، کرمانجی، هورامی }</li>
+                            <li>🌐 در دسترس بودن کتاب‌ها و منابع به همه زبان‌ها</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -791,52 +458,12 @@
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>دانشجوی گروه زیست‌شناسی - تأمین کتاب‌ها</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>دانشجوی گروه زیست‌شناسی - سازماندهی کتابخانه</p></div>
-                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>دانشجوی گروه زیست‌شناسی - توسعه‌دهنده وب</p></div>
-                        <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-  </div>
+                            <div class="team-member">
+                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
+                                <p>دانشجوی گروه زیست‌شناسی - توسعه‌دهنده وب</p>
+                                <div class="social-placeholder"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -847,20 +474,20 @@
             <div class="intro-content">
                 <h2>Giriş</h2>
                 <div class="intro-card">
-                    <p>Fen Fakültesi Elektronik Kütüphanesi'ne hoş geldiniz — bilgiye erişimi keyifli, araştırmayı öğrenciler ve akademik personel için daha verimli hale getirmek amacıyla oluşturulmuş dijital bir ortam. Teknolojinin hayatımıza hâkim olduğu bu çağda, güvenilir bilimsel bilgiye erişim akademik başarı ve entelektüel gelişimin temel taşı haline gelmiştir.</p>
-                    <p>Bu elektronik kütüphane; ders kitapları, bilimsel ve akademik araştırmalar, akademik dergiler, öğretim materyalleri ve eğitim kaynakları dahil olmak üzere geniş bir bilimsel kaynak yelpazesi sunar — hepsi tek ve kullanışlı bir platformda mevcuttur. Kullanıcıların her zaman ve her yerden bilgiye ulaşmasına imkân tanıyarak hem bağımsız öğrenmeyi hem de ileri düzey araştırma faaliyetlerini destekler. Tüm bunlara elektronik ortamda hazırlanan QR kodlarıyla erişilebilir.</p>
-                    <p>Elektronik kütüphane yalnızca dijital bir koleksiyondan fazlasıdır; bilim ile teknoloji arasındaki ilişkinin yansımasıdır. Eleştirel düşünmeyi ve yaşam boyu öğrenmeyi teşvik eder; öte yandan öğrencilerin ve araştırmacıların modern bilimsel gelişmelerden haberdar olmasına yardımcı olur.</p>
-                    <p>Misyonumuz, bilginin özgürce erişilebilir olduğu, fikirlerin geliştirildiği ve geleceğin bilim insanlarının keşfetmek, yenilik yapmak ve bilim ile toplumun ilerlemesine katkıda bulunmak için güçlendirildiği destekleyici bir akademik alan inşa etmektir. Bu modern sistem, Fen Fakültesi öğrencilerine hizmet etmek amacıyla oluşturulmuştur.</p>
+                    <p>Fen Fakültesi Elektronik Kütüphanesi'ne hoş geldiniz — bilgiye erişimi keyifli, araştırmayı öğrenciler ve akademik personel için daha verimli hale getirmek amacıyla oluşturulmuş dijital bir ortam.</p>
+                    <p>Bu elektronik kütüphane; ders kitapları, bilimsel ve akademik araştırmalar, akademik dergiler, öğretim materyalleri dahil olmak üzere geniş bir bilimsel kaynak yelpazesi sunar — hepsi tek ve kullanışlı bir platformda mevcuttur.</p>
+                    <p>Elektronik kütüphane yalnızca dijital bir koleksiyondan fazlasıdır; bilim ile teknoloji arasındaki ilişkinin yansımasıdır. Eleştirel düşünmeyi ve yaşam boyu öğrenmeyi teşvik eder.</p>
+                    <p>Misyonumuz, bilginin özgürce erişilebilir olduğu destekleyici bir akademik alan inşa etmektir. Bu modern sistem, Fen Fakültesi öğrencilerine hizmet etmek amacıyla oluşturulmuştur.</p>
                     <div class="objectives-card">
                         <h3>Proje Hedefleri:</h3>
                         <ul class="objectives-list">
                             <li>🎓 Üniversitelerde çevrimiçi öğrenimi destekleme</li>
                             <li>⚡ Bilimsel kaynaklara hızlı ve kolay erişim</li>
                             <li>📖 Binlerce bilimsel kaynağı tek bir yerde toplama</li>
-                            <li>📱 Modern teknolojiyi {QR kodu} eğitime ve öğrencilere hizmet için kullanma</li>
+                            <li>📱 Modern teknolojiyi {QR kodu} eğitime hizmet için kullanma</li>
                             <li>👨‍🏫 Öğretmenlerin ve öğrencilerin dijital kütüphane kaynaklarından yararlanması</li>
                             <li>⏰ Öğrencilerin boş zamanlarını bilimsel projelerle değerlendirme</li>
-                            <li>🌐 Kitap ve kaynakların tüm dillerde erişilebilir olması: İngilizce, Arapça, Türkçe, Farsça, Kürtçe { Soranca, Badinî, Kurmancî, Hewramî }</li>
+                            <li>🌐 Kitap ve kaynakların tüm dillerde erişilebilir olması</li>
                         </ul>
                     </div>
                     <div class="team-card">
@@ -868,52 +495,12 @@
                         <div class="team-grid">
                             <div class="team-member"><h4>ZHYAW YOUSF HUSAIN</h4><p>Biyoloji Bölümü Öğrencisi - Kitap temini</p></div>
                             <div class="team-member"><h4>NYAR QADR RASUL</h4><p>Biyoloji Bölümü Öğrencisi - Kütüphane organizasyonu</p></div>
-                            <div class="team-member"><h4>MAHMOOD KHDIR FAQE RASUL</h4><p>Biyoloji Bölümü Öğrencisi - Web Geliştirici</p></div>
-                        <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-    
-    <!-- Telegram -->
-    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0088cc">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/>
-      </svg>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877f2">
-        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-      </svg>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
-        <path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-    </a>
-
-    <!-- Phone -->
-    <a href="tel:+9647507087901" title="Phone">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4CAF50">
-        <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
-      </svg>
-    </a>
-
-    <!-- Snapchat -->
-    <a href="https://snapchat.com/add/mahmod.faqe" target="_blank" title="Snapchat">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFFC00">
-        <path stroke="#ccc" stroke-width="0.3" d="M12.017 0C8.992 0 6.477 1.025 5.198 3.168c-.67 1.107-.838 2.376-.838 3.551v1.09c-.375.179-.78.21-1.168.082-.172-.057-.338-.087-.49-.087-.43 0-.737.236-.812.622-.09.461.199.867.829 1.101.044.016.098.035.157.056.523.182 1.396.485 1.62 1.376.017.067.029.137.035.209-.344.383-.878.63-1.446.63-.194 0-.39-.034-.578-.1-.126-.044-.252-.066-.374-.066-.508 0-.885.332-.885.772 0 .334.214.623.604.812.985.48 2.084.699 3.266.652.083.43.139.882.166 1.35-.222.092-.477.145-.775.145-.57 0-1.12-.186-1.572-.186-.367 0-.635.178-.635.488 0 .365.348.567.918.773 1.561.562 2.531 1.547 3.094 3.191.086.253.152.426.425.426.148 0 .334-.054.574-.104.435-.09.983-.197 1.68-.197.63 0 1.138.09 1.558.198.264.068.474.111.644.111.297 0 .374-.183.46-.445.552-1.638 1.519-2.622 3.084-3.186.556-.201.91-.404.91-.769 0-.307-.264-.488-.629-.488-.396 0-.913.17-1.535.17-.308 0-.572-.051-.801-.146.027-.468.084-.92.167-1.349 1.18.047 2.279-.172 3.265-.652.39-.189.604-.478.604-.812 0-.44-.377-.772-.885-.772-.122 0-.248.022-.374.066-.189.066-.384.1-.578.1-.568 0-1.102-.247-1.446-.63.006-.072.018-.142.035-.209.224-.891 1.097-1.194 1.62-1.376.059-.021.113-.04.157-.056.63-.234.919-.64.829-1.101-.075-.386-.382-.622-.812-.622-.152 0-.318.03-.49.087-.368.122-.756.1-1.115-.064V6.72c0-1.175-.121-2.444-.791-3.551C17.496 1.025 15.042 0 12.017 0z"/>
-      </svg>
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@mahmod.faqe" target="_blank" title="TikTok">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-      </svg>
-    </a>
-
-  </div>
+                            <div class="team-member">
+                                <h4>MAHMOOD KHDIR FAQE RASUL</h4>
+                                <p>Biyoloji Bölümü Öğrencisi - Web Geliştirici</p>
+                                <div class="social-placeholder"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -922,12 +509,12 @@
     </div>
 </section>
 
-<!-- ===== MAIN LIBRARY 1 ===== -->
+<!-- LIBRARY 1 -->
 <section class="library-sections">
     <div class="container">
         <div class="main-library">
             <div class="lang-content active rtl" data-lang="ku-sorani"><h2>کتێبخانەی سەرەکی</h2><a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">چونە ناو کتێبخانەی گشتی ١</a></div>
-            <div class="lang-content rtl" data-lang="ku-badini"><h2>کتێبخانەیا سەرەکە </h2><a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">بکەڤن کتێبخانەیا سەرەکە ١</a></div>
+            <div class="lang-content rtl" data-lang="ku-badini"><h2>کتێبخانەیا سەرەکە</h2><a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">بکەڤن کتێبخانەیا سەرەکە ١</a></div>
             <div class="lang-content ltr" data-lang="ku-badini-lat"><h2>Kitêbxaneya Sereke</h2><a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">Têkeve Kitêbxaneya Giştî 1</a></div>
             <div class="lang-content rtl" data-lang="ku-hawrami"><h2>کتێبخانەی سەرەکی</h2><a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">بچۆ ناو کتێبخانەی گشتی ١</a></div>
             <div class="lang-content ltr" data-lang="en"><h2>Main Library</h2><a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">Enter General Library 1</a></div>
@@ -938,7 +525,7 @@
     </div>
 </section>
 
-<!-- ===== MAIN LIBRARY 2 + DEPARTMENTS ===== -->
+<!-- LIBRARY 2 + DEPARTMENTS -->
 <section class="library-sections">
     <div class="container">
         <div class="main-library">
@@ -952,7 +539,7 @@
             <div class="lang-content ltr" data-lang="tr"><a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">Genel Kütüphane 2'ye Gir</a></div>
         </div>
 
-        <!-- Sorani Departments -->
+        <!-- Sorani -->
         <div class="lang-content active rtl" data-lang="ku-sorani">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بەشە زانستییەکان</h2>
             <div class="sections-grid">
@@ -960,11 +547,11 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>بەشی کیمیا</h3><p>سەرچاوەکانی کیمیای ئەندامی، نا ئەندامی، فیزیکی و کیمیای تاقیگەیی</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">چونە ناو بەش</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>بەشی فیزیا</h3><p>پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">چونە ناو بەش</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>زانستی تاقیگەی پزیشکی</h3><p>سەرچاوەکانی شیکردنەوەی کلینیکی، میکرۆبایەلۆجی پزیشکی و ڕێنماییەکان</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">چونە ناو بەش</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>کتێبخانەی ئەندازیاری شارستانی</h3><p>پەرتووکەکانی بواری ئەندازیاری شارستانی</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">چونە ناو بەش</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>کتێبخانەی ئەندازیاری شارستانی</h3><p>پەرتووکەکانی بواری ئەندازیاری شارستانی</p><a href="https://bio.site/civil.engineer" class="section-btn">چونە ناو بەش</a></div>
             </div>
         </div>
 
-        <!-- Badini Arabic Departments -->
+        <!-- Badini Arabic -->
         <div class="lang-content rtl" data-lang="ku-badini">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بەشێن زانستی</h2>
             <div class="sections-grid">
@@ -972,11 +559,11 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>بەشێ کیمیایێ</h3><p>چاوکانیێن کیمیایا ئەندامی، نائەندامی، فیزیکی و تاقیگەیی</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">بکەڤن بەشێ</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>بەشێ فیزیایێ</h3><p>پرتوکێن فیزیایا کلاسیک، مودێرن، کوانتوم و تاقیگەیی</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">بکەڤن بەشێ</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>زانستێن تاقیگەیا پزیشکی</h3><p>چاوکانیێن تەهلیلێ کلینیکی، مایکرۆبایۆلۆجیا پزیشکی و رێنماییێن</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">بکەڤن بەشێ</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>پرتوکخانەیا ئەندازیاریا شاری</h3><p>پرتوک و چاوکانیێن بوارێ ئەندازیاریا شاری</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">بکەڤن بەشێ</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>پرتوکخانەیا ئەندازیاریا شاری</h3><p>پرتوک و چاوکانیێن بوارێ ئەندازیاریا شاری</p><a href="https://bio.site/civil.engineer" class="section-btn">بکەڤن بەشێ</a></div>
             </div>
         </div>
 
-        <!-- Badini Latin Departments -->
+        <!-- Badini Latin -->
         <div class="lang-content ltr" data-lang="ku-badini-lat">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">Beşên Zanistî</h2>
             <div class="sections-grid">
@@ -984,11 +571,11 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>Beşa Kimyayê</h3><p>Çavkaniyên kimyaya organîk, neorganîk, fîzîkî û laboratuwarê</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">Têkeve Beşê</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>Beşa Fîzîkê</h3><p>Pirtûkên fîzîka klasîk, modern, kuantum û ezmûnî</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">Têkeve Beşê</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>Zanistên Laboratuwara Bijîşkî</h3><p>Çavkaniyên analîza klînîkî, mîkrobiyolojiya bijîşkî û rênimayan</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">Têkeve Beşê</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>Kitêbxaneya Endezyariya Sivîl</h3><p>Pirtûk û çavkaniyên qada endezyariya sivîl</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">Têkeve Beşê</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>Kitêbxaneya Endezyariya Sivîl</h3><p>Pirtûk û çavkaniyên qada endezyariya sivîl</p><a href="https://bio.site/civil.engineer" class="section-btn">Têkeve Beşê</a></div>
             </div>
         </div>
 
-        <!-- Hawrami Departments -->
+        <!-- Hawrami -->
         <div class="lang-content rtl" data-lang="ku-hawrami">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بەشەکانی زانستی</h2>
             <div class="sections-grid">
@@ -996,11 +583,11 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>بەشی کیمیا</h3><p>سەرچاوەکانی کیمیای ئەندامی، نائەندامی، فیزیکی و تاقیگەیی</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">بچۆ ناو بەش</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>بەشی فیزیکا</h3><p>کتێبەکانی فیزیکای کلاسیک، مۆدێرن، کوانتوم و تاقیگەیی</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">بچۆ ناو بەش</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>زانستی تاقیگەی پزیشکی</h3><p>سەرچاوەکانی تەهلیلی کلینیکی، مایکرۆبایەلۆجی پزیشکی و ڕێنماییەکان</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">بچۆ ناو بەش</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>کتێبخانەی ئەندازیاری شارستانی</h3><p>کتێبەکانی بواری ئەندازیاری شارستانی</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">بچۆ ناو بەش</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>کتێبخانەی ئەندازیاری شارستانی</h3><p>کتێبەکانی بواری ئەندازیاری شارستانی</p><a href="https://bio.site/civil.engineer" class="section-btn">بچۆ ناو بەش</a></div>
             </div>
         </div>
 
-        <!-- English Departments -->
+        <!-- English -->
         <div class="lang-content ltr" data-lang="en">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">Scientific Departments</h2>
             <div class="sections-grid">
@@ -1008,11 +595,11 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>Chemistry Department</h3><p>Resources for organic, inorganic, physical and laboratory chemistry</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">Enter Department</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>Physics Department</h3><p>Books on classical, modern, quantum and experimental physics</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">Enter Department</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>Medical Laboratory Science</h3><p>Resources for clinical analysis, medical microbiology and guidelines</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">Enter Department</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>Civil Engineering Library</h3><p>Books and resources in the field of civil engineering</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">Enter Department</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>Civil Engineering Library</h3><p>Books and resources in the field of civil engineering</p><a href="https://bio.site/civil.engineer" class="section-btn">Enter Department</a></div>
             </div>
         </div>
 
-        <!-- Arabic Departments -->
+        <!-- Arabic -->
         <div class="lang-content rtl" data-lang="ar">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">الأقسام العلمية</h2>
             <div class="sections-grid">
@@ -1020,11 +607,11 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>قسم الكيمياء</h3><p>مصادر الكيمياء العضوية وغير العضوية والفيزيائية والمختبرية</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">دخول القسم</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>قسم الفيزياء</h3><p>كتب الفيزياء الكلاسيكية والحديثة والكمية والتجريبية</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">دخول القسم</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>علوم المختبرات الطبية</h3><p>مصادر التحليل السريري والأحياء الدقيقة الطبية والإرشادات</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">دخول القسم</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>مكتبة الهندسة المدنية</h3><p>الكتب والمصادر في مجال الهندسة المدنية</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">دخول القسم</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>مكتبة الهندسة المدنية</h3><p>الكتب والمصادر في مجال الهندسة المدنية</p><a href="https://bio.site/civil.engineer" class="section-btn">دخول القسم</a></div>
             </div>
         </div>
 
-        <!-- Persian Departments -->
+        <!-- Persian -->
         <div class="lang-content rtl" data-lang="fa">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بخش‌های علمی</h2>
             <div class="sections-grid">
@@ -1032,11 +619,11 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>بخش شیمی</h3><p>منابع شیمی آلی، معدنی، فیزیکی و آزمایشگاهی</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">ورود به بخش</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>بخش فیزیک</h3><p>کتاب‌های فیزیک کلاسیک، مدرن، کوانتوم و تجربی</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">ورود به بخش</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>علوم آزمایشگاه پزشکی</h3><p>منابع آنالیز بالینی، میکروبیولوژی پزشکی و راهنماها</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">ورود به بخش</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>کتابخانه مهندسی عمران</h3><p>کتاب‌ها و منابع در حوزه مهندسی عمران</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">ورود به بخش</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>کتابخانه مهندسی عمران</h3><p>کتاب‌ها و منابع در حوزه مهندسی عمران</p><a href="https://bio.site/civil.engineer" class="section-btn">ورود به بخش</a></div>
             </div>
         </div>
 
-        <!-- Turkish Departments -->
+        <!-- Turkish -->
         <div class="lang-content ltr" data-lang="tr">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">Bilim Bölümleri</h2>
             <div class="sections-grid">
@@ -1044,101 +631,28 @@
                 <div class="section-card"><div class="section-icon">⚗️</div><h3>Kimya Bölümü</h3><p>Organik, inorganik, fiziksel ve laboratuvar kimyası kaynakları</p><a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">Bölüme Gir</a></div>
                 <div class="section-card"><div class="section-icon">⚛️</div><h3>Fizik Bölümü</h3><p>Klasik, modern, kuantum ve deneysel fizik kitapları</p><a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">Bölüme Gir</a></div>
                 <div class="section-card"><div class="section-icon">🔬</div><h3>Tıbbi Laboratuvar Bilimleri</h3><p>Klinik analiz, tıbbi mikrobiyoloji ve rehber kaynakları</p><a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">Bölüme Gir</a></div>
-                <div class="section-card"><div class="section-icon">🏗️</div><h3>İnşaat Mühendisliği Kütüphanesi</h3><p>İnşaat mühendisliği alanındaki kitaplar ve kaynaklar</p><a href="https://bio.site/civil.engineer?fbclid=Iwb21leAQRGVtjbGNrBBEZTWV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHrB-lCJCmRHrffqg0DxJwMas-6-sRnQTCTHuNv92oFKVSVrnXSwkH4Mf3kqq_aem_zoudZZA3HldmpqAdrnB3Ew" class="section-btn">Bölüme Gir</a></div>
+                <div class="section-card"><div class="section-icon">🏗️</div><h3>İnşaat Mühendisliği Kütüphanesi</h3><p>İnşaat mühendisliği alanındaki kitaplar ve kaynaklar</p><a href="https://bio.site/civil.engineer" class="section-btn">Bölüme Gir</a></div>
             </div>
         </div>
 
     </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
+<!-- ABOUT -->
 <section class="about-section">
     <div class="container">
-
-        <!-- Sorani -->
-        <div class="lang-content active rtl" data-lang="ku-sorani">
-            <div class="about-content"><h2>👥 دەربارەی ئێمە</h2>
-            <div class="about-card">
-                <p>ئێمە وەک تیمی BioNova کە سێ خوێندکاری زانکۆین خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەوەش ئیلهامبەخش بوو بۆ دروستکردنی ئەم پەرتووکخانە ئەلیکترۆنییە کە پلاتفۆرمێکی سادە و ئاسانە بۆ بەکارهێنان لە لایەن خوێندکاران و مامۆستایان کە دەتوانن زۆرترین زانیاری تێیدا بدۆزنەوە.</p>
-                <div class="mission-card"><h3>ئامانجی ئێمە:</h3>
-                <p>کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و دابینکردنی یەک پلاتفۆرم کە هەموو پێداویستییەکانی ئەکادیمی دابین بکات بە شێوەیەکی مۆدێرن و سەردەمیانە.</p></div>
-            </div></div>
-        </div>
-
-        <!-- Badini Arabic -->
-        <div class="lang-content rtl" data-lang="ku-badini">
-            <div class="about-content"><h2>👥 دەربارا مە</h2>
-            <div class="about-card">
-                <p>وەک تیما BioNova یا ژ سێ خوێندکارێن زانینگەهێ پێک تێ، ئەم ژ بۆ فێربوون و تەکنەلۆژیێ هەوەسەکا هەڤپار پارڤە دکین. د دەما خوێندنا خوە دە، مە دیت کو دیتنا چاوکانیێن پێباوەر و باش رێخستینکری ل یەک جهێکی پیر دژوارە. ئەڤ یەک ئیلهام دا مە کو ئەم ڤێ پرتوکخانەیا ئەلیکترۆنیک بیاڤرینین، کو پلاتفۆرمەکا هێسان و ئاسانە کو خوێندکار و مامۆستا دکارن بی قاسی کو پێکان ئاگەهداریێ ببینن.</p>
-                <div class="mission-card"><h3>ئارمانجا مە:</h3>
-                <p>ڤەکرنا دەریێ ئاگەهداریێ ژ بۆ هەموو خوێندکاران و پەیداکرنا پلاتفۆرمەک کو بی ئاڤایەکی مودێرن و سەردەمی هەموو پێداڤیێن ئەکادیمی پێک تینە.</p></div>
-            </div></div>
-        </div>
-
-        <!-- Badini Latin -->
-        <div class="lang-content ltr" data-lang="ku-badini-lat">
-            <div class="about-content"><h2>👥 Derbarê Me</h2>
-            <div class="about-card">
-                <p>Em wek tîma BioNova, sê xwendekarên zanko ne ku xweşiya hevbeş ji bo fêrbûn û teknolojiyê parve dikin. Di dema xwendina xwe de me dît ku dîtina çavkaniyên pêbawer û baş-rêxistinkirî li yek cihî pir dijwar e. Ev tiştê me handan ku ev kitêbxaneya elektronîkî wek platformek sade û bikaranîna hêsan ji bo xwendekar û mamostayan bê çêkirin, ku tê de dikarin herî zêde agahdariyê bibîne.</p>
-                <div class="mission-card"><h3>Mîsyona Me:</h3>
-                <p>Deriyê zaniariyê ji bo her xwendekarekî vekirin û peydakirina platformek berfireh ku hemû hewcedariyên akademîk bi awayekî nûjen û hemdem bicîh bîne.</p></div>
-            </div></div>
-        </div>
-
-        <!-- Hawrami -->
-        <div class="lang-content rtl" data-lang="ku-hawrami">
-            <div class="about-content"><h2>👥 دەربارەی ئێمە</h2>
-            <div class="about-card">
-                <p>ئێمە وەک تیمی BioNova سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژی هەیە. لەو کاتەیدا کە لە خوێندندا بووین، بینیمان کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەمەش هاندەرمان بوو بۆ دروستکردنی ئەم کتێبخانەی ئەلیکترۆنییە بە وەک پلاتفۆرمێکی سادە و ئاسان بۆ بەکارهێنان لە لایەن خوێندکاران و مامۆستایان کە دەتوانن زۆرترین زانیاری تێیدا بدۆزنەوە.</p>
-                <div class="mission-card"><h3>ئامانجمان:</h3>
-                <p>کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و پێشکەشکردنی یەک پلاتفۆرمی گشتگیر کە هەموو پێویستییەکانی ئەکادیمی بە شێوازێکی مۆدێرن و سەردەمیانە دابین بکات.</p></div>
-            </div></div>
-        </div>
-
-        <!-- English -->
-        <div class="lang-content ltr" data-lang="en">
-            <div class="about-content"><h2>👥 About Us</h2>
-            <div class="about-card">
-                <p>We are three university students as BioNova team who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality, and well-organized resources in one place was very difficult. This inspired us to create this electronic library as a simple and easy-to-use platform for students and teachers, where they can find the maximum amount of information.</p>
-                <div class="mission-card"><h3>Our Mission:</h3>
-                <p>To open the door of knowledge to every student and provide a platform that meets all academic needs in a modern and contemporary way.</p></div>
-            </div></div>
-        </div>
-
-        <!-- Arabic -->
-        <div class="lang-content rtl" data-lang="ar">
-            <div class="about-content"><h2>👥 معلومات عنا</h2>
-            <div class="about-card">
-                <p>نحن فريق BioNova المكوّن من ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا. خلال دراستنا، لاحظنا أن العثور على مصادر موثوقة وجيدة ومنظمة في مكان واحد أمر صعب جداً. هذا ما ألهمنا لإنشاء هذه المكتبة الإلكترونية كمنصة بسيطة وسهلة الاستخدام للطلاب والمدرسين، يمكنهم فيها إيجاد أكبر قدر من المعلومات.</p>
-                <div class="mission-card"><h3>مهمتنا:</h3>
-                <p>فتح باب المعرفة لكل طالب وتوفير منصة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.</p></div>
-            </div></div>
-        </div>
-
-        <!-- Persian -->
-        <div class="lang-content rtl" data-lang="fa">
-            <div class="about-content"><h2>👥 درباره ما</h2>
-            <div class="about-card">
-                <p>ما تیم BioNova هستیم، سه دانشجوی دانشگاه که علاقه مشترکی به یادگیری و فناوری داریم. در طول تحصیل متوجه شدیم که یافتن منابع معتبر، باکیفیت و منسجم در یک مکان بسیار دشوار است. این ما را برانگیخت تا این کتابخانه الکترونیکی را به عنوان یک پلتفرم ساده و آسان برای استفاده دانشجویان و اساتید ایجاد کنیم، جایی که می‌توانند بیشترین اطلاعات را بیابند.</p>
-                <div class="mission-card"><h3>مأموریت ما:</h3>
-                <p>باز کردن درِ دانش به روی هر دانشجو و ارائه یک پلتفرم که تمام نیازهای دانشگاهی را به شیوه‌ای مدرن و معاصر برطرف کند.</p></div>
-            </div></div>
-        </div>
-
-        <!-- Turkish -->
-        <div class="lang-content ltr" data-lang="tr">
-            <div class="about-content"><h2>👥 Hakkımızda</h2>
-            <div class="about-card">
-                <p>BioNova ekibi olarak, öğrenme ve teknolojiye ortak bir tutku duyan üç üniversite öğrencisiyiz. Eğitimimiz sürecinde, güvenilir, kaliteli ve iyi organize edilmiş kaynakları tek bir yerde bulmanın çok zor olduğunu fark ettik. Bu durum, öğrencilerin ve öğretmenlerin en fazla bilgiye ulaşabileceği, basit ve kullanımı kolay bir platform olarak bu elektronik kütüphaneyi oluşturmamıza ilham verdi.</p>
-                <div class="mission-card"><h3>Misyonumuz:</h3>
-                <p>Her öğrenciye bilgi kapısını açmak ve tüm akademik ihtiyaçları modern ve çağdaş bir şekilde karşılayan bir platform sunmak.</p></div>
-            </div></div>
-        </div>
-
+        <div class="lang-content active rtl" data-lang="ku-sorani"><div class="about-content"><h2>👥 دەربارەی ئێمە</h2><div class="about-card"><p>ئێمە وەک تیمی BioNova کە سێ خوێندکاری زانکۆین خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەوەش ئیلهامبەخش بوو بۆ دروستکردنی ئەم پەرتووکخانە ئەلیکترۆنییە.</p><div class="mission-card"><h3>ئامانجی ئێمە:</h3><p>کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و دابینکردنی یەک پلاتفۆرم کە هەموو پێداویستییەکانی ئەکادیمی دابین بکات بە شێوەیەکی مۆدێرن و سەردەمیانە.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="ku-badini"><div class="about-content"><h2>👥 دەربارا مە</h2><div class="about-card"><p>وەک تیما BioNova یا ژ سێ خوێندکارێن زانینگەهێ پێک تێ، ئەم ژ بۆ فێربوون و تەکنەلۆژیێ هەوەسەکا هەڤپار پارڤە دکین. د دەما خوێندنا خوە دە، مە دیت کو دیتنا چاوکانیێن پێباوەر و باش رێخستینکری ل یەک جهێکی پیر دژوارە.</p><div class="mission-card"><h3>ئارمانجا مە:</h3><p>ڤەکرنا دەریێ ئاگەهداریێ ژ بۆ هەموو خوێندکاران و پەیداکرنا پلاتفۆرمەک کو بی ئاڤایەکی مودێرن و سەردەمی هەموو پێداڤیێن ئەکادیمی پێک تینە.</p></div></div></div></div>
+        <div class="lang-content ltr" data-lang="ku-badini-lat"><div class="about-content"><h2>👥 Derbarê Me</h2><div class="about-card"><p>Em wek tîma BioNova, sê xwendekarên zanko ne ku xweşiya hevbeş ji bo fêrbûn û teknolojiyê parve dikin. Di dema xwendina xwe de me dît ku dîtina çavkaniyên pêbawer û baş-rêxistinkirî li yek cihî pir dijwar e.</p><div class="mission-card"><h3>Mîsyona Me:</h3><p>Deriyê zaniariyê ji bo her xwendekarekî vekirin û peydakirina platformek berfireh ku hemû hewcedariyên akademîk bi awayekî nûjen û hemdem bicîh bîne.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="ku-hawrami"><div class="about-content"><h2>👥 دەربارەی ئێمە</h2><div class="about-card"><p>ئێمە وەک تیمی BioNova سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژی هەیە. لەو کاتەیدا کە لە خوێندندا بووین، بینیمان کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە.</p><div class="mission-card"><h3>ئامانجمان:</h3><p>کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و پێشکەشکردنی یەک پلاتفۆرمی گشتگیر کە هەموو پێویستییەکانی ئەکادیمی بە شێوازێکی مۆدێرن و سەردەمیانە دابین بکات.</p></div></div></div></div>
+        <div class="lang-content ltr" data-lang="en"><div class="about-content"><h2>👥 About Us</h2><div class="about-card"><p>We are three university students as BioNova team who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality, and well-organized resources in one place was very difficult. This inspired us to create this electronic library.</p><div class="mission-card"><h3>Our Mission:</h3><p>To open the door of knowledge to every student and provide a platform that meets all academic needs in a modern and contemporary way.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="ar"><div class="about-content"><h2>👥 معلومات عنا</h2><div class="about-card"><p>نحن فريق BioNova المكوّن من ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا. خلال دراستنا، لاحظنا أن العثور على مصادر موثوقة وجيدة ومنظمة في مكان واحد أمر صعب جداً.</p><div class="mission-card"><h3>مهمتنا:</h3><p>فتح باب المعرفة لكل طالب وتوفير منصة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="fa"><div class="about-content"><h2>👥 درباره ما</h2><div class="about-card"><p>ما تیم BioNova هستیم، سه دانشجوی دانشگاه که علاقه مشترکی به یادگیری و فناوری داریم. در طول تحصیل متوجه شدیم که یافتن منابع معتبر، باکیفیت و منسجم در یک مکان بسیار دشوار است.</p><div class="mission-card"><h3>مأموریت ما:</h3><p>باز کردن درِ دانش به روی هر دانشجو و ارائه یک پلتفرم که تمام نیازهای دانشگاهی را به شیوه‌ای مدرن و معاصر برطرف کند.</p></div></div></div></div>
+        <div class="lang-content ltr" data-lang="tr"><div class="about-content"><h2>👥 Hakkımızda</h2><div class="about-card"><p>BioNova ekibi olarak, öğrenme ve teknolojiye ortak bir tutku duyan üç üniversite öğrencisiyiz. Eğitimimiz sürecinde, güvenilir, kaliteli ve iyi organize edilmiş kaynakları tek bir yerde bulmanın çok zor olduğunu fark ettik.</p><div class="mission-card"><h3>Misyonumuz:</h3><p>Her öğrenciye bilgi kapısını açmak ve tüm akademik ihtiyaçları modern ve çağdaş bir şekilde karşılayan bir platform sunmak.</p></div></div></div></div>
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
     <div class="container">
         <div class="lang-content active" data-lang="ku-sorani"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; <span class="footer-year-ar"></span></p></div>
@@ -1153,138 +667,109 @@
 </footer>
 
 <script>
-    // ===== DYNAMIC YEAR IN FOOTER =====
-    (function setFooterYear() {
-        var year = new Date().getFullYear();
+    // Footer year
+    (function(){
+        var y = new Date().getFullYear();
+        function toAr(n){ return String(n).replace(/\d/g,function(d){ return '٠١٢٣٤٥٦٧٨٩'[d]; }); }
+        document.querySelectorAll('.footer-year-en').forEach(function(el){ el.textContent=y; });
+        document.querySelectorAll('.footer-year-ar').forEach(function(el){ el.textContent=toAr(y); });
+    })();
 
-        function toEasternArabic(n) {
-            return String(n).replace(/\d/g, function(d) {
-                return '٠١٢٣٤٥٦٧٨٩'[d];
-            });
-        }
-
-        document.querySelectorAll('.footer-year-en').forEach(function(el) {
-            el.textContent = year;
-        });
-
-        document.querySelectorAll('.footer-year-ar').forEach(function(el) {
-            el.textContent = toEasternArabic(year);
+    // Inject social icons into all .social-placeholder elements
+    (function injectSocial(){
+        var tpl = document.getElementById('social-tpl');
+        document.querySelectorAll('.social-placeholder').forEach(function(ph){
+            ph.replaceWith(tpl.content.cloneNode(true));
         });
     })();
 
-    // ===== CURRENT ACTIVE LANGUAGE =====
-    let currentLang = sessionStorage.getItem('selectedLanguage') || 'ku-sorani';
-    const KU_DIALECTS = ['ku-sorani','ku-badini','ku-badini-lat','ku-hawrami'];
-    const LTR_LANGS = ['en','tr','ku-badini-lat'];
+    var currentLang = sessionStorage.getItem('selectedLanguage') || 'ku-sorani';
+    var KU_DIALECTS = ['ku-sorani','ku-badini','ku-badini-lat','ku-hawrami'];
+    var LTR_LANGS = ['en','tr','ku-badini-lat'];
 
     applyLanguage(currentLang);
+    restoreButtons(currentLang);
 
-    // ===== TOGGLE KURDISH DROPDOWN =====
-    function toggleKuDropdown() {
-        const btn = document.getElementById('kuMainBtn');
-        const dd = document.getElementById('kuDropdown');
-        const isOpen = dd.classList.contains('open');
+    function toggleKuDropdown(){
+        var btn=document.getElementById('kuMainBtn');
+        var dd=document.getElementById('kuDropdown');
+        var open=dd.classList.contains('open');
         closeKuDropdown();
-        if (!isOpen) { btn.classList.add('open'); dd.classList.add('open'); }
+        if(!open){ btn.classList.add('open'); dd.classList.add('open'); }
     }
-
-    function closeKuDropdown() {
+    function closeKuDropdown(){
         document.getElementById('kuMainBtn').classList.remove('open');
         document.getElementById('kuDropdown').classList.remove('open');
     }
-
-    document.addEventListener('click', function(e) {
-        if (!document.getElementById('kuGroup').contains(e.target)) closeKuDropdown();
+    document.addEventListener('click',function(e){
+        if(!document.getElementById('kuGroup').contains(e.target)) closeKuDropdown();
     });
-
-    // ===== SELECT DIALECT =====
-    function selectDialect(lang, btn) {
+    function selectDialect(lang,btn){
         closeKuDropdown();
         document.getElementById('kuMainBtn').classList.add('active');
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.ku-dialect-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('active'); });
+        document.querySelectorAll('.ku-dialect-btn').forEach(function(b){ b.classList.remove('active'); });
         btn.classList.add('active');
         applyLanguage(lang);
     }
-
-    // ===== SWITCH NON-KURDISH LANG =====
-    function switchLang(lang) {
+    function switchLang(lang){
         closeKuDropdown();
         document.getElementById('kuMainBtn').classList.remove('active');
-        document.querySelectorAll('.ku-dialect-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.lang-btn').forEach(b => {
-            b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+        document.querySelectorAll('.ku-dialect-btn').forEach(function(b){ b.classList.remove('active'); });
+        document.querySelectorAll('.lang-btn').forEach(function(b){
+            b.classList.toggle('active', b.getAttribute('data-lang')===lang);
         });
         applyLanguage(lang);
     }
-
-    // ===== APPLY LANGUAGE =====
-    function applyLanguage(lang) {
-        currentLang = lang;
-        sessionStorage.setItem('selectedLanguage', lang);
-
-        document.querySelectorAll('.lang-content').forEach(el => {
+    function applyLanguage(lang){
+        currentLang=lang;
+        sessionStorage.setItem('selectedLanguage',lang);
+        document.querySelectorAll('.lang-content').forEach(function(el){
             el.classList.remove('active');
-            el.style.opacity = '0';
+            el.style.opacity='0';
         });
-
-        document.querySelectorAll(`[data-lang="${lang}"].lang-content`).forEach(el => {
+        document.querySelectorAll('[data-lang="'+lang+'"].lang-content').forEach(function(el){
             el.classList.add('active');
-            setTimeout(() => el.style.opacity = '1', 15);
+            setTimeout(function(){ el.style.opacity='1'; },15);
         });
-
-        const isLtr = LTR_LANGS.includes(lang);
-        document.body.style.direction = isLtr ? 'ltr' : 'rtl';
-        document.body.classList.toggle('ltr', isLtr);
-        document.body.classList.toggle('rtl', !isLtr);
+        var isLtr=LTR_LANGS.indexOf(lang)>-1;
+        document.body.style.direction=isLtr?'ltr':'rtl';
     }
-
-    // ===== RESTORE STATE ON LOAD =====
-    (function restoreState() {
-        const lang = currentLang;
-        if (KU_DIALECTS.includes(lang)) {
+    function restoreButtons(lang){
+        if(KU_DIALECTS.indexOf(lang)>-1){
             document.getElementById('kuMainBtn').classList.add('active');
-            document.querySelectorAll('.ku-dialect-btn').forEach(b => {
-                if (b.getAttribute('data-lang') === lang) b.classList.add('active');
-                else b.classList.remove('active');
+            document.querySelectorAll('.ku-dialect-btn').forEach(function(b){
+                b.classList.toggle('active', b.getAttribute('data-lang')===lang);
             });
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('active'); });
         } else {
             document.getElementById('kuMainBtn').classList.remove('active');
-            document.querySelectorAll('.ku-dialect-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.lang-btn').forEach(b => {
-                b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+            document.querySelectorAll('.ku-dialect-btn').forEach(function(b){ b.classList.remove('active'); });
+            document.querySelectorAll('.lang-btn').forEach(function(b){
+                b.classList.toggle('active', b.getAttribute('data-lang')===lang);
             });
         }
-    })();
+    }
 
     // Touch feedback
-    if ('ontouchstart' in window) {
-        document.querySelectorAll('.section-btn,.main-library-btn,.lang-btn,.ku-main-btn,.ku-dialect-btn').forEach(btn => {
-            btn.addEventListener('touchstart', function() { this.style.transform = 'scale(0.95)'; });
-            btn.addEventListener('touchend', function() { this.style.transform = ''; });
+    if('ontouchstart' in window){
+        document.querySelectorAll('.section-btn,.main-library-btn,.lang-btn,.ku-main-btn,.ku-dialect-btn').forEach(function(btn){
+            btn.addEventListener('touchstart',function(){ this.style.transform='scale(0.95)'; });
+            btn.addEventListener('touchend',function(){ this.style.transform=''; });
         });
     }
 
-    // Intersection observer for card animations
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate-in'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.section-card,.intro-card,.objectives-card,.team-card').forEach(el => observer.observe(el));
+    // Intersection observer
+    var observer=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('animate-in'); });
+    },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+    document.querySelectorAll('.section-card,.intro-card,.objectives-card,.team-card').forEach(function(el){ observer.observe(el); });
 
-    // Keyboard nav
-    document.addEventListener('keydown', e => { if (e.key === 'Tab') document.body.classList.add('keyboard-nav'); });
-    document.addEventListener('mousedown', () => document.body.classList.remove('keyboard-nav'));
-    window.addEventListener('orientationchange', () => setTimeout(() => window.scrollTo(0, 0), 100));
+    document.addEventListener('keydown',function(e){ if(e.key==='Tab') document.body.classList.add('keyboard-nav'); });
+    document.addEventListener('mousedown',function(){ document.body.classList.remove('keyboard-nav'); });
 
-    // Extra styles
-    const s = document.createElement('style');
-    s.textContent = `
-        .keyboard-nav *:focus { outline: 2px solid var(--primary-color); outline-offset: 2px; }
-        .animate-in { animation: slideInUp 0.6s ease-out forwards; }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @media (orientation: landscape) and (max-height: 500px) { .hero { min-height: 400px; padding: 2rem 0; } }
-    `;
+    var s=document.createElement('style');
+    s.textContent='.keyboard-nav *:focus{outline:2px solid var(--primary-color);outline-offset:2px}.animate-in{animation:slideInUp 0.6s ease-out forwards}@keyframes slideInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}';
     document.head.appendChild(s);
 </script>
 </body>

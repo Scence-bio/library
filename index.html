@@ -24,40 +24,184 @@
         body { font-family: 'NotoKufiArabic', sans-serif; line-height: 1.6; color: var(--text-color); overflow-x: hidden; direction: rtl; background-color: var(--white); }
         .container { max-width: min(1200px, calc(100% - 2rem)); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
 
-        header { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding: clamp(0.5rem, 2vw, 1rem) 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
-        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; }
-        .logo { font-size: clamp(1rem, 3vw, 1.4rem); font-weight: bold; flex: 1; min-width: 160px; }
-        .logo {
-        display: flex;
-        align-items: center;
-        gap: 15px; /* بۆشایی نێوان لۆگۆ و دەقەکە */
+        /* ══════════════════════════════════════
+           HEADER
+        ══════════════════════════════════════ */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: clamp(0.5rem, 1.5vw, 0.85rem) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
         }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: nowrap;
+        }
+
+        /* Logo + name block */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            text-decoration: none;
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        .logo:hover { transform: scale(1.04); }
 
         .uor-logo {
-        height: 60px; /* دەتوانیت بەرزییەکەی بەپێی ویستی خۆت بگۆڕیت */
-        width: auto;
-        object-fit: contain;
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 0 0px rgba(255,255,255,0));
         }
-        .lang-switcher { display: flex; gap: clamp(0.25rem, 0.8vw, 0.4rem); flex-wrap: wrap; align-items: center; }
-        .lang-btn { background: rgba(255,255,255,0.2); border: none; color: var(--white); padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.45rem, 1.2vw, 0.8rem); border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: clamp(0.65rem, 1.5vw, 0.85rem); min-width: 48px; text-align: center; white-space: nowrap; }
-        .lang-btn:hover, .lang-btn.active { background: rgba(255,255,255,0.38); transform: translateY(-2px); }
+        .logo:hover .uor-logo {
+            transform: scale(1.1) rotate(3deg);
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+        }
 
-        .ku-group { position: relative; display: inline-flex; flex-direction: column; align-items: center; }
-        .ku-main-btn { background: rgba(255,255,255,0.2); border: none; color: var(--white); padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.45rem, 1.2vw, 0.8rem); border-radius: 5px; cursor: pointer; transition: all 0.3s ease; font-size: clamp(0.65rem, 1.5vw, 0.85rem); min-width: 58px; text-align: center; white-space: nowrap; display: flex; align-items: center; gap: 3px; }
-        .ku-main-btn:hover, .ku-main-btn.active { background: rgba(255,255,255,0.38); transform: translateY(-2px); }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title {
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
+            font-weight: 700;
+            color: white;
+            line-height: 1.1;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+        .logo-subtitle {
+            font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+            color: rgba(255,255,255,0.75);
+            display: block;
+            margin-top: 0.1rem;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+        .logo:hover .logo-title  { color: #ffd700; }
+        .logo:hover .logo-subtitle { color: rgba(255,215,0,0.8); }
+
+        /* Divider */
+        .header-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(255,255,255,0.3);
+            flex-shrink: 0;
+        }
+
+        /* Lang switcher — single row, pushed to end */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.2rem, 0.6vw, 0.35rem);
+            flex-wrap: nowrap;
+            margin-inline-start: auto;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .lang-switcher::-webkit-scrollbar { display: none; }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: var(--white);
+            padding: clamp(0.28rem, 0.8vw, 0.45rem) clamp(0.4rem, 1vw, 0.7rem);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: clamp(0.62rem, 1.3vw, 0.82rem);
+            white-space: nowrap;
+            font-family: inherit;
+            flex-shrink: 0;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.38);
+            transform: translateY(-2px);
+        }
+
+        .lang-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
+
+        /* Kurdish dropdown group */
+        .ku-group { position: relative; display: inline-flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+        .ku-main-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: var(--white);
+            padding: clamp(0.28rem, 0.8vw, 0.45rem) clamp(0.4rem, 1vw, 0.7rem);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: clamp(0.62rem, 1.3vw, 0.82rem);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-family: inherit;
+        }
+        .ku-main-btn:hover, .ku-main-btn.active {
+            background: rgba(255,255,255,0.38);
+            transform: translateY(-2px);
+        }
         .ku-main-btn .arrow { font-size: 0.6rem; transition: transform 0.2s; }
         .ku-main-btn.open .arrow { transform: rotate(180deg); }
-        .ku-dropdown { display: none; position: absolute; top: calc(100% + 6px); background: rgba(80, 60, 140, 0.97); backdrop-filter: blur(10px); border-radius: 8px; overflow: hidden; z-index: 200; box-shadow: 0 8px 24px rgba(0,0,0,0.25); min-width: 130px; right: 0; }
+
+        .ku-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            background: rgba(80,60,140,0.97);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 200;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            min-width: 130px;
+            right: 0;
+            animation: dropdownFade 0.22s ease;
+        }
         .ku-dropdown.open { display: block; }
-        .ku-dialect-btn { display: block; width: 100%; background: none; border: none; color: var(--white); padding: 0.55rem 1rem; cursor: pointer; font-size: clamp(0.65rem, 1.5vw, 0.82rem); text-align: right; transition: background 0.2s; white-space: nowrap; font-family: 'NotoKufiArabic', sans-serif; }
+        @keyframes dropdownFade {
+            from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .ku-dialect-btn {
+            display: block; width: 100%; background: none; border: none;
+            color: var(--white);
+            padding: 0.55rem 1rem;
+            cursor: pointer;
+            font-size: clamp(0.62rem, 1.3vw, 0.82rem);
+            text-align: right;
+            transition: background 0.2s;
+            white-space: nowrap;
+            font-family: 'NotoKufiArabic', sans-serif;
+        }
         .ku-dialect-btn:hover { background: rgba(255,255,255,0.18); }
         .ku-dialect-btn.active { background: rgba(255,255,255,0.28); font-weight: bold; }
         .ku-dialect-btn.ltr-btn { text-align: left; font-family: sans-serif; }
-        .lang-divider { width: 1px; height: 26px; background: rgba(255,255,255,0.3); margin: 0 2px; }
         .dialect-badge { font-size: 0.6rem; opacity: 0.7; display: block; margin-top: 1px; }
 
-        @media screen and (max-width: 600px) { .header-content { flex-direction: column; text-align: center; } .logo { order: 1; width: 100%; } .lang-switcher { order: 2; justify-content: center; width: 100%; } .ku-dropdown { right: auto; left: 50%; transform: translateX(-50%); } }
+        @media screen and (max-width: 600px) {
+            .header-divider { display: none; }
+            .logo-subtitle { display: none; }
+            .uor-logo { height: 40px; }
+            .ku-dropdown { right: auto; left: 50%; transform: translateX(-50%); }
+            .ku-dropdown.open { transform: translateX(-50%); animation: none; }
+        }
+        @media screen and (max-width: 400px) {
+            .logo-title { font-size: 0.85rem; }
+        }
 
+        /* ══════════════════════════════════════
+           REST OF STYLES (unchanged)
+        ══════════════════════════════════════ */
         .hero { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: var(--white); padding: var(--section-padding) 0; text-align: center; position: relative; overflow: hidden; min-height: clamp(400px, 60vh, 600px); display: flex; align-items: center; }
         .hero::before { content: ''; position: absolute; width: 200%; height: 200%; background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px); background-size: 100px 100px; animation: float 20s infinite linear; top: -50%; left: -50%; }
         @keyframes float { 0% { transform: translateX(0) translateY(0); } 100% { transform: translateX(-50px) translateY(-50px); } }
@@ -128,21 +272,25 @@
     </style>
 </head>
 <body>
+
 <header>
     <div class="container">
         <div class="header-content">
-            <div class="logo">
-                <img src="https://uor.edu.krd/wp-content/uploads/2023/12/4bc51081cc23dcd53e16c02e329e3878-scaled.webp" alt="University of Raparin Logo" class="uor-logo">
-                
-                <span class="lang-content active" data-lang="ku-sorani">زانکۆی ڕاپەڕین</span>
-                <span class="lang-content" data-lang="ku-badini">زانینگەها ڕاپەرین</span>
-                <span class="lang-content" data-lang="ku-badini-lat">Zanko Raperin</span>
-                <span class="lang-content" data-lang="ku-hawrami">زانکۆی ڕاپەڕین</span>
-                <span class="lang-content" data-lang="en">University Raparin</span>
-                <span class="lang-content" data-lang="ar">جامعة رابەرين</span>
-                <span class="lang-content" data-lang="fa">دانشگاه راپەرین</span>
-                <span class="lang-content" data-lang="tr">Raparin Üniversitesi</span>
-            </div>
+
+            <!-- Logo + name -->
+            <a class="logo" href="#">
+                <img src="https://uor.edu.krd/wp-content/uploads/2023/12/4bc51081cc23dcd53e16c02e329e3878-scaled.webp"
+                     alt="University of Raparin Logo"
+                     class="uor-logo">
+                <div class="logo-text">
+                    <span class="logo-title">زانکۆی ڕاپەڕین</span>
+                    <span class="logo-subtitle">کتێبخانەی ئەلیکترۆنی</span>
+                </div>
+            </a>
+
+            <div class="header-divider"></div>
+
+            <!-- Language switcher — all in one row -->
             <div class="lang-switcher">
                 <div class="ku-group" id="kuGroup">
                     <button class="ku-main-btn active" id="kuMainBtn" onclick="toggleKuDropdown()">
@@ -156,33 +304,18 @@
                     </div>
                 </div>
                 <div class="lang-divider"></div>
-                <button class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button>
-                <button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">العربية</button>
-                <button class="lang-btn" data-lang="fa" onclick="switchLang('fa')">فارسی</button>
-                <button class="lang-btn" data-lang="tr" onclick="switchLang('tr')">Türkçe</button>
+                <button class="lang-btn" data-lang="en"  onclick="switchLang('en')">English</button>
+                <button class="lang-btn" data-lang="ar"  onclick="switchLang('ar')">العربية</button>
+                <button class="lang-btn" data-lang="fa"  onclick="switchLang('fa')">فارسی</button>
+                <button class="lang-btn" data-lang="tr"  onclick="switchLang('tr')">Türkçe</button>
             </div>
+
         </div>
     </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="lang-content active rtl" data-lang="ku-sorani"><h2>بەخێربێن بۆ</h2><br><h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1><p>بەردەستبوون و کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p></div>
-            <div class="lang-content rtl" data-lang="ku-badini"><h2>بخێر هاتن بۆ</h2><br><h1>کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ</h1><p>بهێسانی و زو پەیدابوونا بی هەزاران چاوکانی و پەرتوکین زانستی.</p></div>
-            <div class="lang-content ltr" data-lang="ku-badini-lat"><h2>Bi xêr hatin</h2><br><h1>Kitêbxaneya Elektronîkî ya Kolêja Zanistê</h1><p>Bigihîje hezaran çavkanî û pirtûkên zanistî bi awayekî hêsan û bilez.</p></div>
-            <div class="lang-content rtl" data-lang="ku-hawrami"><h2>خۆش بگەیەیت بۆ</h2><br><h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1><p>دەستڕەسیەتی بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p></div>
-            <div class="lang-content ltr" data-lang="en"><h2>Welcome To</h2><br><h1>College of Science Electronic Library</h1><p>Access and gather thousands of scientific resources and books easily and quickly.</p></div>
-            <div class="lang-content rtl" data-lang="ar"><h2>مرحبا بكم في</h2><br><h1>المكتبة الإلكترونية لكلية العلوم</h1><p>الوصول وتجميع آلاف المصادر والكتب العلمية بسهولة وسرعة.</p></div>
-            <div class="lang-content rtl" data-lang="fa"><h2>خوش آمدید به</h2><br><h1>کتابخانه الکترونیکی دانشکده علوم</h1><p>دسترسی و گردآوری هزاران منبع و کتاب علمی به آسانی و سرعت.</p></div>
-            <div class="lang-content ltr" data-lang="tr"><h2>Hoş Geldiniz</h2><br><h1>Fen Fakültesi Elektronik Kütüphanesi</h1><p>Binlerce bilimsel kaynak ve kitaba kolayca ve hızlıca erişin ve toplayın.</p></div>
-        </div>
-    </div>
-</section>
 
-<!-- SOCIAL ICONS TEMPLATE (reused via JS clone or inline per section) -->
-<!-- We define the social block once as a template -->
+<!-- SOCIAL ICONS TEMPLATE -->
 <template id="social-tpl">
   <div class="social-links" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
     <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
@@ -206,21 +339,33 @@
   </div>
 </template>
 
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="lang-content active rtl" data-lang="ku-sorani"><h2>بەخێربێن بۆ</h2><br><h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1><p>بەردەستبوون و کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p></div>
+            <div class="lang-content rtl" data-lang="ku-badini"><h2>بخێر هاتن بۆ</h2><br><h1>کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ</h1><p>بهێسانی و زو پەیدابوونا بی هەزاران چاوکانی و پەرتوکین زانستی.</p></div>
+            <div class="lang-content ltr" data-lang="ku-badini-lat"><h2>Bi xêr hatin</h2><br><h1>Kitêbxaneya Elektronîkî ya Kolêja Zanistê</h1><p>Bigihîje hezaran çavkanî û pirtûkên zanistî bi awayekî hêsan û bilez.</p></div>
+            <div class="lang-content rtl" data-lang="ku-hawrami"><h2>خۆش بگەیەیت بۆ</h2><br><h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1><p>دەستڕەسیەتی بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p></div>
+            <div class="lang-content ltr" data-lang="en"><h2>Welcome To</h2><br><h1>College of Science Electronic Library</h1><p>Access and gather thousands of scientific resources and books easily and quickly.</p></div>
+            <div class="lang-content rtl" data-lang="ar"><h2>مرحبا بكم في</h2><br><h1>المكتبة الإلكترونية لكلية العلوم</h1><p>الوصول وتجميع آلاف المصادر والكتب العلمية بسهولة وسرعة.</p></div>
+            <div class="lang-content rtl" data-lang="fa"><h2>خوش آمدید به</h2><br><h1>کتابخانه الکترونیکی دانشکده علوم</h1><p>دسترسی و گردآوری هزاران منبع و کتاب علمی به آسانی و سرعت.</p></div>
+            <div class="lang-content ltr" data-lang="tr"><h2>Hoş Geldiniz</h2><br><h1>Fen Fakültesi Elektronik Kütüphanesi</h1><p>Binlerce bilimsel kaynak ve kitaba kolayca ve hızlıca erişin ve toplayın.</p></div>
+        </div>
+    </div>
+</section>
+
 <!-- INTRO -->
 <section class="intro-section">
     <div class="container">
-
-        <!-- Sorani -->
         <div class="lang-content active rtl" data-lang="ku-sorani">
-            <div class="intro-content">
-                <h2>پێشەکی</h2>
+            <div class="intro-content"><h2>پێشەکی</h2>
                 <div class="intro-card">
-                    <p>بەخێربێن بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ژینگەیەکی دیجیتاڵییە کە دروستکراوە بۆ ئەوەی گەیشتن بە زانیاری و فێربوون چێژبەخش بێت و توێژینەوە کاراتر بێت بۆ خوێندکاران و ستافی ئەکادیمی. لە سەردەمێکدا کە تەکنەلۆژیا باڵی بەسەر ژیانماندا گرتووە، گەیشتن بە زانیارییە زانستییە متمانەپێکراوەکان بووەتە شتێکی بنەڕەتی بۆ سەرکەوتنی ئەکادیمی و گەشەکردنی هزری.</p>
+                    <p>بەخێربێن بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ژینگەیەکی دیجیتاڵییە کە دروستکراوە بۆ ئەوەی گەیشتن بە زانیاری و فێربوون چێژبەخش بێت و توێژینەوە کاراتر بێت بۆ خوێندکاران و ستافی ئەکادیمی.</p>
                     <p>ئەم کتێبخانە ئەلیکترۆنییە کۆمەڵێک سەرچاوەی زانستی بەرفراوان پێشکەش دەکات، لەوانە کتێبی خوێندن، توێژینەوەی زانستی و ئەکادیمی، گۆڤاری ئەکادیمی، کەرەستەی وانەوتنەوە و ئاماژەی پەروەردەیی، کە هەموویان لە یەک پلاتفۆرمی گونجاودا بەردەستن.</p>
                     <p>کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی، نیشاندەری پەیوەندی نێوان زانست و تەکنەلۆژیایە. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە.</p>
-                    <p>ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانەیە کە زانیاری بە ئازادی تێدا بەردەست بکرێت. ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.</p>
-                    <div class="objectives-card">
-                        <h3>ئامانجەکانی پڕۆژەکە:</h3>
+                    <p>ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانەیە کە زانیاری بە ئازادی تێدا بەردەست بکرێت.</p>
+                    <div class="objectives-card"><h3>ئامانجەکانی پڕۆژەکە:</h3>
                         <ul class="objectives-list">
                             <li>🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ</li>
                             <li>⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی</li>
@@ -231,33 +376,25 @@
                             <li>🌐 بەردەستبوونی پەرتووک و سەرچاوەکان بە هەموو زمانەکان</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>ئامادەکراوە لەلایەن:</h3>
+                    <div class="team-card"><h3>ئامادەکراوە لەلایەن:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p></div>
-                            <div class="team-member">
-                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Badini Arabic -->
         <div class="lang-content rtl" data-lang="ku-badini">
-            <div class="intro-content">
-                <h2>پێشگرتن</h2>
+            <div class="intro-content"><h2>پێشگرتن</h2>
                 <div class="intro-card">
                     <p>بخێر هاتن بۆ کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ — هاوێردۆرەکا دیجیتال کو ژ بۆ هێسانکرنا گهیشتنا ئاگەهداری و فێربوونێ و باندۆرکرنا لێکۆلینێ ژ بۆ خوێندکار و کارمەندێن ئەکادیمی هاتیە چێکرن.</p>
                     <p>ئڤ پرتوکخانەیا ئەلیکترۆنیک جوربەجور چاوکانیێن زانستی پێشکێش دکە، د ناڤ دا پِرتوکێن دەرسێ، لێکۆلینێن زانستی و ئەکادیمی، کۆڤارێن ئەکادیمی، ماتەریالێن هینکرنێ هەمی ل سەر یەک پلاتفۆرمی گونجاو پەیدا دبن.</p>
                     <p>پرتوکخانەیا ئەلیکترۆنیک بیاتر ئە ژ تەنە بەرھەڤەکا دیجیتال، نیشانکرا پەیوەندیا نێوان زانست و تەکنەلۆژیێ یە. هاندەرا بیرکرنا ڕەخنەگر و فێربوونا بەردەوامە.</p>
-                    <p>میسیونا مە ئەوە کو ئەم قادەکا ئەکادیمی یا هاڤکار بیاڤرینین. ئڤ سیستەما مودێرن ژ بۆ خزمەتکرنا خوێندکارێن کۆلێژا زانستێ هاتیە ئامادەکرن.</p>
-                    <div class="objectives-card">
-                        <h3>ئارمانجێن پڕۆژەیێ:</h3>
+                    <p>میسیونا مە ئەوە کو ئەم قادەکا ئەکادیمی یا هاڤکار بیاڤرینین.</p>
+                    <div class="objectives-card"><h3>ئارمانجێن پڕۆژەیێ:</h3>
                         <ul class="objectives-list">
                             <li>🎓 پشتگیریا پەروەردەهیا سەرھێل ل زانینگەھێ</li>
                             <li>⚡ هەبوونا بیلەز و هێسانا چاوکانیێن زانستی</li>
@@ -268,33 +405,25 @@
                             <li>🌐 هەبوونا کتێب و چاوکانییان بی هەمی زمانان</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>هاتیە ئامادەکرن ژ هێلا:</h3>
+                    <div class="team-card"><h3>هاتیە ئامادەکرن ژ هێلا:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>خینکارێ بایۆلۆجیێ - دابینکرنا پرتوکان</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>خینکارێ بایۆلۆجیێ - ڕێکخستنا پرتوکخانەیێ</p></div>
-                            <div class="team-member">
-                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                <p>خینکارێ بایۆلۆجیێ - پێشدەبرێ مالپەرێ</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>خینکارێ بایۆلۆجیێ - پێشدەبرێ مالپەرێ</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Badini Latin -->
         <div class="lang-content ltr" data-lang="ku-badini-lat">
-            <div class="intro-content">
-                <h2>Pêşgotin</h2>
+            <div class="intro-content"><h2>Pêşgotin</h2>
                 <div class="intro-card">
                     <p>Bi xêr hatin bo Kitêbxaneya Elektronîkî ya Kolêja Zanistê — ev jî hawîrdorek dîjîtal e ku ji bo ku gihîştina zaniariyê û fêrbûn kêfxweş bibe û lêkolîn ji bo xwendekaran û stafa akademîk bikêrtir bibe hat çêkirin.</p>
                     <p>Ev kitêbxaneya elektronîkî gelek çavkaniyên zanistî pêşkêş dike, di nav wan de pirtûkên xwendinê, lêkolînên zanistî û akademîk, kovarên akademîk, materyalên dersê — hemî di yek platformeke guncavî de amade ne.</p>
                     <p>Kitêbxaneya elektronîkî ji tena berhevokeke dîjîtal zêdetir e. Teşwîqa ramanêna rexnegir û fêrbûna domdar e.</p>
-                    <p>Mîsyona me avakirina cîhekî akademîk piştgirî ye. Ev sistema modern ji bo xizmeta xwendekarên Kolêja Zanistê hat çêkirin.</p>
-                    <div class="objectives-card">
-                        <h3>Armancên Projeyê:</h3>
+                    <p>Mîsyona me avakirina cîhekî akademîk piştgirî ye.</p>
+                    <div class="objectives-card"><h3>Armancên Projeyê:</h3>
                         <ul class="objectives-list">
                             <li>🎓 Piştgirîkirina xwendina serhêl li zanko</li>
                             <li>⚡ Gihîştina zû û hêsan bo çavkaniyên zanistî</li>
@@ -305,33 +434,25 @@
                             <li>🌐 Berdestbûna pirtûk û çavkaniyan bi hemû zimanan</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>Amadekirî ji aliyê:</h3>
+                    <div class="team-card"><h3>Amadekirî ji aliyê:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ZHYAW YOUSF HUSAIN</h4><p>Xwendekarê Beşê Biyolojiyê - Dabînkirina pirtûkan</p></div>
                             <div class="team-member"><h4>NYAR QADR RASUL</h4><p>Xwendekarê Beşê Biyolojiyê - Rêxistina kitêbxanê</p></div>
-                            <div class="team-member">
-                                <h4>MAHMOOD KHDIR FAQE RASUL</h4>
-                                <p>Xwendekarê Beşê Biyolojiyê - Pêşxistinkarê malperê</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>MAHMOOD KHDIR FAQE RASUL</h4><p>Xwendekarê Beşê Biyolojiyê - Pêşxistinkarê malperê</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Hawrami -->
         <div class="lang-content rtl" data-lang="ku-hawrami">
-            <div class="intro-content">
-                <h2>پێشەکی</h2>
+            <div class="intro-content"><h2>پێشەکی</h2>
                 <div class="intro-card">
                     <p>خۆش بگەیەیت بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ئەمە یەک ژینگەی دیجیتاڵیە کە دروستکراوە بۆ ئەوەی دەستڕەسیەتی بە زانیاری و فێربوون ئاسان ببێت.</p>
                     <p>ئەمە کتێبخانەی ئەلیکترۆنیە یەک کۆمەڵ سەرچاوەی زانستی بەرفراوان پێشکەش دەکات — هەموویان لە یەک پلاتفۆرمی گونجاودا ئامادەن.</p>
                     <p>کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە.</p>
-                    <p>ئەرکمان ئەوەیە کە یەک بۆشایی ئەکادیمی هاوکاری دروست بکەین. ئەم سیستەمەی مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروستکراوە.</p>
-                    <div class="objectives-card">
-                        <h3>ئامانجەکانی پرۆژەکە:</h3>
+                    <p>ئەرکمان ئەوەیە کە یەک بۆشایی ئەکادیمی هاوکاری دروست بکەین.</p>
+                    <div class="objectives-card"><h3>ئامانجەکانی پرۆژەکە:</h3>
                         <ul class="objectives-list">
                             <li>🎓 پشتگیری کردن بە خوێندنی ئۆنلاین لە زانکۆ</li>
                             <li>⚡ دەستڕەسیەتی خێرا و ئاسان بە سەرچاوەی زانستی</li>
@@ -342,33 +463,25 @@
                             <li>🌐 بەردەستبوونی کتێب و سەرچاوەکان بە هەموو زمانەکان</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>ئامادەکراوە لەلایەن:</h3>
+                    <div class="team-card"><h3>ئامادەکراوە لەلایەن:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>خوێندکاری بەشی بایەلۆجی - دابینکردنی کتێب</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p></div>
-                            <div class="team-member">
-                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                <p>خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- English -->
         <div class="lang-content ltr" data-lang="en">
-            <div class="intro-content">
-                <h2>Introduction</h2>
+            <div class="intro-content"><h2>Introduction</h2>
                 <div class="intro-card">
                     <p>Welcome to the College of Science Electronic Library — a digital environment created to make access to knowledge and learning enjoyable, and to make research more effective for students and academic staff.</p>
                     <p>This electronic library offers a wide range of scientific resources, including textbooks, scientific and academic research, academic journals, teaching materials and educational references — all available on a single convenient platform.</p>
                     <p>The electronic library is more than just a digital collection — it is a reflection of the relationship between science and technology. It encourages critical thinking and lifelong learning.</p>
-                    <p>Our mission is to build a supportive academic space where knowledge is freely accessible. This modern system was created to serve the students of the College of Science.</p>
-                    <div class="objectives-card">
-                        <h3>Project Objectives:</h3>
+                    <p>Our mission is to build a supportive academic space where knowledge is freely accessible.</p>
+                    <div class="objectives-card"><h3>Project Objectives:</h3>
                         <ul class="objectives-list">
                             <li>🎓 Supporting online learning at universities</li>
                             <li>⚡ Quick and easy access to scientific resources</li>
@@ -379,33 +492,25 @@
                             <li>🌐 Availability of books and resources in all languages</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>Prepared by:</h3>
+                    <div class="team-card"><h3>Prepared by:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ZHYAW YOUSF HUSAIN</h4><p>Biology Department Student - Provision of books</p></div>
                             <div class="team-member"><h4>NYAR QADR RASUL</h4><p>Biology Department Student - Organization of the library</p></div>
-                            <div class="team-member">
-                                <h4>MAHMOOD KHDIR FAQE RASUL</h4>
-                                <p>Biology Department Student - Web Developer</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>MAHMOOD KHDIR FAQE RASUL</h4><p>Biology Department Student - Web Developer</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Arabic -->
         <div class="lang-content rtl" data-lang="ar">
-            <div class="intro-content">
-                <h2>مقدمة</h2>
+            <div class="intro-content"><h2>مقدمة</h2>
                 <div class="intro-card">
                     <p>مرحباً بكم في المكتبة الإلكترونية لكلية العلوم — بيئة رقمية أُنشئت لجعل الوصول إلى المعرفة والتعلم ممتعاً، وجعل البحث العلمي أكثر فاعلية للطلاب والكادر الأكاديمي.</p>
                     <p>تقدم هذه المكتبة الإلكترونية مجموعة واسعة من المصادر العلمية، تشمل الكتب الدراسية، والبحوث العلمية والأكاديمية، والمجلات المتخصصة، ومواد التدريس والمراجع التعليمية — وكل ذلك متاح على منصة واحدة.</p>
-                    <p>المكتبة الإلكترونية أكثر من مجرد مجموعة رقمية، فهي تعكس العلاقة بين العلم والتكنولوجيا. إنها تشجع على التفكير النقدي والتعلم المستمر.</p>
-                    <p>مهمتنا هي بناء فضاء أكاديمي داعم تكون فيه المعرفة متاحة بحرية. تم إنشاء هذا النظام الحديث لخدمة طلاب كلية العلوم.</p>
-                    <div class="objectives-card">
-                        <h3>أهداف المشروع:</h3>
+                    <p>المكتبة الإلكترونية أكثر من مجرد مجموعة رقمية. إنها تشجع على التفكير النقدي والتعلم المستمر.</p>
+                    <p>مهمتنا هي بناء فضاء أكاديمي داعم تكون فيه المعرفة متاحة بحرية.</p>
+                    <div class="objectives-card"><h3>أهداف المشروع:</h3>
                         <ul class="objectives-list">
                             <li>🎓 دعم التعلم الإلكتروني في الجامعات</li>
                             <li>⚡ الوصول السريع والسهل إلى الموارد العلمية</li>
@@ -416,33 +521,25 @@
                             <li>🌐 توفر الكتب والموارد بجميع اللغات</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>إعداد:</h3>
+                    <div class="team-card"><h3>إعداد:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>طالب قسم علوم الحياة - توفير الكتب</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>طالبة قسم علوم الحياة - تنظيم المكتبة</p></div>
-                            <div class="team-member">
-                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                <p>طالب قسم علوم الحياة - مطور مواقع الويب</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>طالب قسم علوم الحياة - مطور مواقع الويب</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Persian -->
         <div class="lang-content rtl" data-lang="fa">
-            <div class="intro-content">
-                <h2>مقدمه</h2>
+            <div class="intro-content"><h2>مقدمه</h2>
                 <div class="intro-card">
-                    <p>به کتابخانه الکترونیکی دانشکده علوم خوش آمدید — یک محیط دیجیتال که برای آسان‌تر کردن دسترسی به دانش و لذت‌بخش‌تر کردن یادگیری، و مؤثرتر کردن پژوهش برای دانشجویان و کادر علمی طراحی شده است.</p>
-                    <p>این کتابخانه الکترونیکی طیف گسترده‌ای از منابع علمی ارائه می‌دهد، از جمله کتاب‌های درسی، تحقیقات علمی و دانشگاهی، مجلات تخصصی، مواد آموزشی — همه در یک پلتفرم واحد در دسترس هستند.</p>
-                    <p>کتابخانه الکترونیکی بیش از یک مجموعه دیجیتال است — نمایانگر رابطه میان علم و فناوری است. تفکر انتقادی و یادگیری مستمر را تشویق می‌کند.</p>
-                    <p>مأموریت ما ایجاد یک فضای دانشگاهی حمایتگر است. این سیستم مدرن برای خدمت به دانشجویان دانشکده علوم ساخته شده است.</p>
-                    <div class="objectives-card">
-                        <h3>اهداف پروژه:</h3>
+                    <p>به کتابخانه الکترونیکی دانشکده علوم خوش آمدید — یک محیط دیجیتال که برای آسان‌تر کردن دسترسی به دانش و لذت‌بخش‌تر کردن یادگیری طراحی شده است.</p>
+                    <p>این کتابخانه الکترونیکی طیف گسترده‌ای از منابع علمی ارائه می‌دهد — همه در یک پلتفرم واحد در دسترس هستند.</p>
+                    <p>کتابخانه الکترونیکی بیش از یک مجموعه دیجیتال است. تفکر انتقادی و یادگیری مستمر را تشویق می‌کند.</p>
+                    <p>مأموریت ما ایجاد یک فضای دانشگاهی حمایتگر است.</p>
+                    <div class="objectives-card"><h3>اهداف پروژه:</h3>
                         <ul class="objectives-list">
                             <li>🎓 حمایت از یادگیری آنلاین در دانشگاه‌ها</li>
                             <li>⚡ دسترسی سریع و آسان به منابع علمی</li>
@@ -453,33 +550,25 @@
                             <li>🌐 در دسترس بودن کتاب‌ها و منابع به همه زبان‌ها</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>تهیه شده توسط:</h3>
+                    <div class="team-card"><h3>تهیه شده توسط:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ژیاو یوسف حسێن</h4><p>دانشجوی گروه زیست‌شناسی - تأمین کتاب‌ها</p></div>
                             <div class="team-member"><h4>نیار قادر ڕەسوڵ</h4><p>دانشجوی گروه زیست‌شناسی - سازماندهی کتابخانه</p></div>
-                            <div class="team-member">
-                                <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                <p>دانشجوی گروه زیست‌شناسی - توسعه‌دهنده وب</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>محمود خدر فقێ ڕەسوڵ</h4><p>دانشجوی گروه زیست‌شناسی - توسعه‌دهنده وب</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Turkish -->
         <div class="lang-content ltr" data-lang="tr">
-            <div class="intro-content">
-                <h2>Giriş</h2>
+            <div class="intro-content"><h2>Giriş</h2>
                 <div class="intro-card">
                     <p>Fen Fakültesi Elektronik Kütüphanesi'ne hoş geldiniz — bilgiye erişimi keyifli, araştırmayı öğrenciler ve akademik personel için daha verimli hale getirmek amacıyla oluşturulmuş dijital bir ortam.</p>
                     <p>Bu elektronik kütüphane; ders kitapları, bilimsel ve akademik araştırmalar, akademik dergiler, öğretim materyalleri dahil olmak üzere geniş bir bilimsel kaynak yelpazesi sunar — hepsi tek ve kullanışlı bir platformda mevcuttur.</p>
-                    <p>Elektronik kütüphane yalnızca dijital bir koleksiyondan fazlasıdır; bilim ile teknoloji arasındaki ilişkinin yansımasıdır. Eleştirel düşünmeyi ve yaşam boyu öğrenmeyi teşvik eder.</p>
-                    <p>Misyonumuz, bilginin özgürce erişilebilir olduğu destekleyici bir akademik alan inşa etmektir. Bu modern sistem, Fen Fakültesi öğrencilerine hizmet etmek amacıyla oluşturulmuştur.</p>
-                    <div class="objectives-card">
-                        <h3>Proje Hedefleri:</h3>
+                    <p>Elektronik kütüphane yalnızca dijital bir koleksiyondan fazlasıdır. Eleştirel düşünmeyi ve yaşam boyu öğrenmeyi teşvik eder.</p>
+                    <p>Misyonumuz, bilginin özgürce erişilebilir olduğu destekleyici bir akademik alan inşa etmektir.</p>
+                    <div class="objectives-card"><h3>Proje Hedefleri:</h3>
                         <ul class="objectives-list">
                             <li>🎓 Üniversitelerde çevrimiçi öğrenimi destekleme</li>
                             <li>⚡ Bilimsel kaynaklara hızlı ve kolay erişim</li>
@@ -490,22 +579,16 @@
                             <li>🌐 Kitap ve kaynakların tüm dillerde erişilebilir olması</li>
                         </ul>
                     </div>
-                    <div class="team-card">
-                        <h3>Hazırlayanlar:</h3>
+                    <div class="team-card"><h3>Hazırlayanlar:</h3>
                         <div class="team-grid">
                             <div class="team-member"><h4>ZHYAW YOUSF HUSAIN</h4><p>Biyoloji Bölümü Öğrencisi - Kitap temini</p></div>
                             <div class="team-member"><h4>NYAR QADR RASUL</h4><p>Biyoloji Bölümü Öğrencisi - Kütüphane organizasyonu</p></div>
-                            <div class="team-member">
-                                <h4>MAHMOOD KHDIR FAQE RASUL</h4>
-                                <p>Biyoloji Bölümü Öğrencisi - Web Geliştirici</p>
-                                <div class="social-placeholder"></div>
-                            </div>
+                            <div class="team-member"><h4>MAHMOOD KHDIR FAQE RASUL</h4><p>Biyoloji Bölümü Öğrencisi - Web Geliştirici</p><div class="social-placeholder"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -539,7 +622,6 @@
             <div class="lang-content ltr" data-lang="tr"><a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">Genel Kütüphane 2'ye Gir</a></div>
         </div>
 
-        <!-- Sorani -->
         <div class="lang-content active rtl" data-lang="ku-sorani">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بەشە زانستییەکان</h2>
             <div class="sections-grid">
@@ -551,7 +633,6 @@
             </div>
         </div>
 
-        <!-- Badini Arabic -->
         <div class="lang-content rtl" data-lang="ku-badini">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بەشێن زانستی</h2>
             <div class="sections-grid">
@@ -563,7 +644,6 @@
             </div>
         </div>
 
-        <!-- Badini Latin -->
         <div class="lang-content ltr" data-lang="ku-badini-lat">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">Beşên Zanistî</h2>
             <div class="sections-grid">
@@ -575,7 +655,6 @@
             </div>
         </div>
 
-        <!-- Hawrami -->
         <div class="lang-content rtl" data-lang="ku-hawrami">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بەشەکانی زانستی</h2>
             <div class="sections-grid">
@@ -587,7 +666,6 @@
             </div>
         </div>
 
-        <!-- English -->
         <div class="lang-content ltr" data-lang="en">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">Scientific Departments</h2>
             <div class="sections-grid">
@@ -599,7 +677,6 @@
             </div>
         </div>
 
-        <!-- Arabic -->
         <div class="lang-content rtl" data-lang="ar">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">الأقسام العلمية</h2>
             <div class="sections-grid">
@@ -611,7 +688,6 @@
             </div>
         </div>
 
-        <!-- Persian -->
         <div class="lang-content rtl" data-lang="fa">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">بخش‌های علمی</h2>
             <div class="sections-grid">
@@ -623,7 +699,6 @@
             </div>
         </div>
 
-        <!-- Turkish -->
         <div class="lang-content ltr" data-lang="tr">
             <h2 style="text-align:center;margin-bottom:3rem;font-size:clamp(1.8rem,5vw,2.5rem);">Bilim Bölümleri</h2>
             <div class="sections-grid">
@@ -634,7 +709,6 @@
                 <div class="section-card"><div class="section-icon">🏗️</div><h3>İnşaat Mühendisliği Kütüphanesi</h3><p>İnşaat mühendisliği alanındaki kitaplar ve kaynaklar</p><a href="https://bio.site/civil.engineer" class="section-btn">Bölüme Gir</a></div>
             </div>
         </div>
-
     </div>
 </section>
 
@@ -642,32 +716,31 @@
 <section class="about-section">
     <div class="container">
         <div class="lang-content active rtl" data-lang="ku-sorani"><div class="about-content"><h2>👥 دەربارەی ئێمە</h2><div class="about-card"><p>ئێمە وەک تیمی BioNova کە سێ خوێندکاری زانکۆین خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەوەش ئیلهامبەخش بوو بۆ دروستکردنی ئەم پەرتووکخانە ئەلیکترۆنییە.</p><div class="mission-card"><h3>ئامانجی ئێمە:</h3><p>کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و دابینکردنی یەک پلاتفۆرم کە هەموو پێداویستییەکانی ئەکادیمی دابین بکات بە شێوەیەکی مۆدێرن و سەردەمیانە.</p></div></div></div></div>
-        <div class="lang-content rtl" data-lang="ku-badini"><div class="about-content"><h2>👥 دەربارا مە</h2><div class="about-card"><p>وەک تیما BioNova یا ژ سێ خوێندکارێن زانینگەهێ پێک تێ، ئەم ژ بۆ فێربوون و تەکنەلۆژیێ هەوەسەکا هەڤپار پارڤە دکین. د دەما خوێندنا خوە دە، مە دیت کو دیتنا چاوکانیێن پێباوەر و باش رێخستینکری ل یەک جهێکی پیر دژوارە.</p><div class="mission-card"><h3>ئارمانجا مە:</h3><p>ڤەکرنا دەریێ ئاگەهداریێ ژ بۆ هەموو خوێندکاران و پەیداکرنا پلاتفۆرمەک کو بی ئاڤایەکی مودێرن و سەردەمی هەموو پێداڤیێن ئەکادیمی پێک تینە.</p></div></div></div></div>
-        <div class="lang-content ltr" data-lang="ku-badini-lat"><div class="about-content"><h2>👥 Derbarê Me</h2><div class="about-card"><p>Em wek tîma BioNova, sê xwendekarên zanko ne ku xweşiya hevbeş ji bo fêrbûn û teknolojiyê parve dikin. Di dema xwendina xwe de me dît ku dîtina çavkaniyên pêbawer û baş-rêxistinkirî li yek cihî pir dijwar e.</p><div class="mission-card"><h3>Mîsyona Me:</h3><p>Deriyê zaniariyê ji bo her xwendekarekî vekirin û peydakirina platformek berfireh ku hemû hewcedariyên akademîk bi awayekî nûjen û hemdem bicîh bîne.</p></div></div></div></div>
-        <div class="lang-content rtl" data-lang="ku-hawrami"><div class="about-content"><h2>👥 دەربارەی ئێمە</h2><div class="about-card"><p>ئێمە وەک تیمی BioNova سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژی هەیە. لەو کاتەیدا کە لە خوێندندا بووین، بینیمان کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە.</p><div class="mission-card"><h3>ئامانجمان:</h3><p>کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و پێشکەشکردنی یەک پلاتفۆرمی گشتگیر کە هەموو پێویستییەکانی ئەکادیمی بە شێوازێکی مۆدێرن و سەردەمیانە دابین بکات.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="ku-badini"><div class="about-content"><h2>👥 دەربارا مە</h2><div class="about-card"><p>وەک تیما BioNova یا ژ سێ خوێندکارێن زانینگەهێ پێک تێ، ئەم ژ بۆ فێربوون و تەکنەلۆژیێ هەوەسەکا هەڤپار پارڤە دکین.</p><div class="mission-card"><h3>ئارمانجا مە:</h3><p>ڤەکرنا دەریێ ئاگەهداریێ ژ بۆ هەموو خوێندکاران و پەیداکرنا پلاتفۆرمەک کو بی ئاڤایەکی مودێرن و سەردەمی هەموو پێداڤیێن ئەکادیمی پێک تینە.</p></div></div></div></div>
+        <div class="lang-content ltr" data-lang="ku-badini-lat"><div class="about-content"><h2>👥 Derbarê Me</h2><div class="about-card"><p>Em wek tîma BioNova, sê xwendekarên zanko ne ku xweşiya hevbeş ji bo fêrbûn û teknolojiyê parve dikin.</p><div class="mission-card"><h3>Mîsyona Me:</h3><p>Deriyê zaniariyê ji bo her xwendekarekî vekirin û peydakirina platformek berfireh ku hemû hewcedariyên akademîk bi awayekî nûjen û hemdem bicîh bîne.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="ku-hawrami"><div class="about-content"><h2>👥 دەربارەی ئێمە</h2><div class="about-card"><p>ئێمە وەک تیمی BioNova سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژی هەیە.</p><div class="mission-card"><h3>ئامانجمان:</h3><p>کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و پێشکەشکردنی یەک پلاتفۆرمی گشتگیر بە شێوازێکی مۆدێرن و سەردەمیانە.</p></div></div></div></div>
         <div class="lang-content ltr" data-lang="en"><div class="about-content"><h2>👥 About Us</h2><div class="about-card"><p>We are three university students as BioNova team who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality, and well-organized resources in one place was very difficult. This inspired us to create this electronic library.</p><div class="mission-card"><h3>Our Mission:</h3><p>To open the door of knowledge to every student and provide a platform that meets all academic needs in a modern and contemporary way.</p></div></div></div></div>
-        <div class="lang-content rtl" data-lang="ar"><div class="about-content"><h2>👥 معلومات عنا</h2><div class="about-card"><p>نحن فريق BioNova المكوّن من ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا. خلال دراستنا، لاحظنا أن العثور على مصادر موثوقة وجيدة ومنظمة في مكان واحد أمر صعب جداً.</p><div class="mission-card"><h3>مهمتنا:</h3><p>فتح باب المعرفة لكل طالب وتوفير منصة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.</p></div></div></div></div>
-        <div class="lang-content rtl" data-lang="fa"><div class="about-content"><h2>👥 درباره ما</h2><div class="about-card"><p>ما تیم BioNova هستیم، سه دانشجوی دانشگاه که علاقه مشترکی به یادگیری و فناوری داریم. در طول تحصیل متوجه شدیم که یافتن منابع معتبر، باکیفیت و منسجم در یک مکان بسیار دشوار است.</p><div class="mission-card"><h3>مأموریت ما:</h3><p>باز کردن درِ دانش به روی هر دانشجو و ارائه یک پلتفرم که تمام نیازهای دانشگاهی را به شیوه‌ای مدرن و معاصر برطرف کند.</p></div></div></div></div>
-        <div class="lang-content ltr" data-lang="tr"><div class="about-content"><h2>👥 Hakkımızda</h2><div class="about-card"><p>BioNova ekibi olarak, öğrenme ve teknolojiye ortak bir tutku duyan üç üniversite öğrencisiyiz. Eğitimimiz sürecinde, güvenilir, kaliteli ve iyi organize edilmiş kaynakları tek bir yerde bulmanın çok zor olduğunu fark ettik.</p><div class="mission-card"><h3>Misyonumuz:</h3><p>Her öğrenciye bilgi kapısını açmak ve tüm akademik ihtiyaçları modern ve çağdaş bir şekilde karşılayan bir platform sunmak.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="ar"><div class="about-content"><h2>👥 معلومات عنا</h2><div class="about-card"><p>نحن فريق BioNova المكوّن من ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا.</p><div class="mission-card"><h3>مهمتنا:</h3><p>فتح باب المعرفة لكل طالب وتوفير منصة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.</p></div></div></div></div>
+        <div class="lang-content rtl" data-lang="fa"><div class="about-content"><h2>👥 درباره ما</h2><div class="about-card"><p>ما تیم BioNova هستیم، سه دانشجوی دانشگاه که علاقه مشترکی به یادگیری و فناوری داریم.</p><div class="mission-card"><h3>مأموریت ما:</h3><p>باز کردن درِ دانش به روی هر دانشجو و ارائه یک پلتفرم که تمام نیازهای دانشگاهی را به شیوه‌ای مدرن و معاصر برطرف کند.</p></div></div></div></div>
+        <div class="lang-content ltr" data-lang="tr"><div class="about-content"><h2>👥 Hakkımızda</h2><div class="about-card"><p>BioNova ekibi olarak, öğrenme ve teknolojiye ortak bir tutku duyan üç üniversite öğrencisiyiz.</p><div class="mission-card"><h3>Misyonumuz:</h3><p>Her öğrenciye bilgi kapısını açmak ve tüm akademik ihtiyaçları modern ve çağdaş bir şekilde karşılayan bir platform sunmak.</p></div></div></div></div>
     </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
     <div class="container">
-        <div class="lang-content active" data-lang="ku-sorani"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; <span class="footer-year-ar"></span></p></div>
-        <div class="lang-content" data-lang="ku-badini"><p>کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ - زانینگەها ڕاپەرین. هەموو ماف پاراستی نە. &copy; <span class="footer-year-ar"></span></p></div>
-        <div class="lang-content" data-lang="ku-badini-lat"><p>Kitêbxaneya Elektronîkî ya Kolêja Zanistê - Zanko Raperin. Hemû maf parastî ne. &copy; <span class="footer-year-en"></span></p></div>
-        <div class="lang-content" data-lang="ku-hawrami"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; <span class="footer-year-ar"></span></p></div>
-        <div class="lang-content" data-lang="en"><p>College of Science Electronic Library - Raparin University. All rights reserved. &copy; <span class="footer-year-en"></span></p></div>
-        <div class="lang-content" data-lang="ar"><p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; <span class="footer-year-ar"></span></p></div>
-        <div class="lang-content" data-lang="fa"><p>کتابخانه الکترونیکی دانشکده علوم - دانشگاه راپەرین. تمامی حقوق محفوظ است. &copy; <span class="footer-year-ar"></span></p></div>
-        <div class="lang-content" data-lang="tr"><p>Fen Fakültesi Elektronik Kütüphanesi - Raparin Üniversitesi. Tüm hakları saklıdır. &copy; <span class="footer-year-en"></span></p></div>
+        <div class="lang-content active" data-lang="ku-sorani"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="ku-badini"><p>کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ - زانینگەها ڕاپەرین. هەموو ماف پاراستی نە &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="ku-badini-lat"><p>Kitêbxaneya Elektronîkî ya Kolêja Zanistê - Zanko Raperin. Hemû maf parastî ne &copy; <span class="footer-year-en"></span></p></div>
+        <div class="lang-content" data-lang="ku-hawrami"><p>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="en"><p>College of Science Electronic Library - Raparin University. All rights reserved &copy; <span class="footer-year-en"></span></p></div>
+        <div class="lang-content" data-lang="ar"><p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="fa"><p>کتابخانه الکترونیکی دانشکده علوم - دانشگاه راپەرین. تمامی حقوق محفوظ است &copy; <span class="footer-year-ar"></span></p></div>
+        <div class="lang-content" data-lang="tr"><p>Fen Fakültesi Elektronik Kütüphanesi - Raparin Üniversitesi. Tüm hakları saklıdır &copy; <span class="footer-year-en"></span></p></div>
     </div>
 </footer>
 
 <script>
-    // Footer year
     (function(){
         var y = new Date().getFullYear();
         function toAr(n){ return String(n).replace(/\d/g,function(d){ return '٠١٢٣٤٥٦٧٨٩'[d]; }); }
@@ -675,7 +748,6 @@
         document.querySelectorAll('.footer-year-ar').forEach(function(el){ el.textContent=toAr(y); });
     })();
 
-    // Inject social icons into all .social-placeholder elements
     (function injectSocial(){
         var tpl = document.getElementById('social-tpl');
         document.querySelectorAll('.social-placeholder').forEach(function(ph){
@@ -751,7 +823,6 @@
         }
     }
 
-    // Touch feedback
     if('ontouchstart' in window){
         document.querySelectorAll('.section-btn,.main-library-btn,.lang-btn,.ku-main-btn,.ku-dialect-btn').forEach(function(btn){
             btn.addEventListener('touchstart',function(){ this.style.transform='scale(0.95)'; });
@@ -759,7 +830,6 @@
         });
     }
 
-    // Intersection observer
     var observer=new IntersectionObserver(function(entries){
         entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('animate-in'); });
     },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});

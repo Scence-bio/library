@@ -625,9 +625,29 @@
             opacity: 1;
             transform: scale(1.12);
         }
+
+        /* SCROLL PROGRESS BAR */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #667eea, #764ba2, #ff6b6b);
+            background-size: 200% 100%;
+            z-index: 2000;
+            transition: width 0.1s linear;
+            animation: progressShimmer 3s linear infinite;
+        }
+        @keyframes progressShimmer {
+            0%   { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
     </style>
 </head>
 <body>
+
+<div id="scrollProgress"></div>
 
 <header id="site-header">
     <div class="container">
@@ -1287,6 +1307,17 @@ if('ontouchstart' in window){
     });
 }
 
+// ─── SCROLL PROGRESS BAR ───
+(function(){
+    var bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', function(){
+        var scrolled = window.scrollY;
+        var total = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = total > 0 ? (scrolled / total) * 100 : 0;
+        bar.style.width = pct + '%';
+    }, {passive: true});
+})();
+
 // ─── SCROLL TO TOP ───
 (function(){
     var btn = document.getElementById('scrollTopBtn');
@@ -1321,6 +1352,9 @@ document.querySelectorAll('.sections-grid').forEach(function(grid){
         <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
 </button>
+
+<script data-goatcounter="https://mahmodfaqe.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>

@@ -103,11 +103,21 @@
             gap: clamp(0.2rem, 0.6vw, 0.35rem);
             flex-wrap: nowrap;
             margin-inline-start: auto;
+            overflow: visible;
+            position: relative;
+        }
+
+        .lang-switcher-inner {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.2rem, 0.6vw, 0.35rem);
+            flex-wrap: nowrap;
             overflow-x: auto;
+            overflow-y: visible;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
-        .lang-switcher::-webkit-scrollbar { display: none; }
+        .lang-switcher-inner::-webkit-scrollbar { display: none; }
 
         .lang-btn {
             background: rgba(255,255,255,0.2);
@@ -325,11 +335,13 @@
                         <button class="ku-dialect-btn" data-lang="ku-hawrami" onclick="selectDialect('ku-hawrami', this)">هەورامی<span class="dialect-badge">Hewramî</span></button>
                     </div>
                 </div>
-                <div class="lang-divider"></div>
-                <button class="lang-btn" data-lang="en"  onclick="switchLang('en')">English</button>
-                <button class="lang-btn" data-lang="ar"  onclick="switchLang('ar')">العربية</button>
-                <button class="lang-btn" data-lang="fa"  onclick="switchLang('fa')">فارسی</button>
-                <button class="lang-btn" data-lang="tr"  onclick="switchLang('tr')">Türkçe</button>
+                <div class="lang-switcher-inner">
+                    <div class="lang-divider"></div>
+                    <button class="lang-btn" data-lang="en"  onclick="switchLang('en')">English</button>
+                    <button class="lang-btn" data-lang="ar"  onclick="switchLang('ar')">العربية</button>
+                    <button class="lang-btn" data-lang="fa"  onclick="switchLang('fa')">فارسی</button>
+                    <button class="lang-btn" data-lang="tr"  onclick="switchLang('tr')">Türkçe</button>
+                </div>
             </div>
 
         </div>

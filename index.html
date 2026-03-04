@@ -30,7 +30,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: var(--white);
-            padding: clamp(0.75rem, 2vw, 1.1rem) 0;
+            padding: clamp(0.5rem, 1.5vw, 1.1rem) 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -40,23 +40,24 @@
         .header-content {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: clamp(0.3rem, 1.5vw, 1rem);
             flex-wrap: nowrap;
+            min-height: 0;
         }
 
-        /* Logo + name block */
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
+            gap: clamp(5px, 1.5vw, 10px);
+            flex-shrink: 1;
+            min-width: 0;
             text-decoration: none;
             transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
         }
         .logo:hover { transform: scale(1.04); }
 
         .uor-logo {
-            height: 64px;
+            height: clamp(34px, 7.5vw, 64px);
             width: auto;
             object-fit: contain;
             flex-shrink: 0;
@@ -68,54 +69,58 @@
             filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
         }
 
-        .logo-text { display: flex; flex-direction: column; }
+        .logo-text { display: flex; flex-direction: column; min-width: 0; flex-shrink: 1; }
         .logo-title {
-            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+            font-size: clamp(0.72rem, 2.8vw, 1.45rem);
             font-weight: 700;
             color: white;
-            line-height: 1.1;
+            line-height: 1.15;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             transition: color 0.3s;
         }
         .logo-subtitle {
-            font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+            font-size: clamp(0.55rem, 1.8vw, 0.95rem);
             color: rgba(255,255,255,0.75);
             display: block;
-            margin-top: 0.15rem;
+            margin-top: 0.1rem;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             transition: color 0.3s;
         }
         .logo:hover .logo-title  { color: #ffd700; }
         .logo:hover .logo-subtitle { color: rgba(255,215,0,0.8); }
 
-        /* Divider */
         .header-divider {
             width: 1px;
-            height: 36px;
+            height: clamp(22px, 5vw, 36px);
             background: rgba(255,255,255,0.3);
             flex-shrink: 0;
         }
 
-        /* Lang switcher — single row, pushed to end */
         .lang-switcher {
             display: flex;
             align-items: center;
-            gap: clamp(0.2rem, 0.6vw, 0.35rem);
+            gap: clamp(0.15rem, 0.5vw, 0.35rem);
             flex-wrap: nowrap;
             margin-inline-start: auto;
             overflow: visible;
             position: relative;
+            flex-shrink: 0;
         }
 
         .lang-switcher-inner {
             display: flex;
             align-items: center;
-            gap: clamp(0.2rem, 0.6vw, 0.35rem);
+            gap: clamp(0.15rem, 0.5vw, 0.35rem);
             flex-wrap: nowrap;
             overflow-x: auto;
             overflow-y: visible;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            max-width: clamp(100px, 40vw, 400px);
         }
         .lang-switcher-inner::-webkit-scrollbar { display: none; }
 
@@ -123,59 +128,57 @@
             background: rgba(255,255,255,0.2);
             border: none;
             color: var(--white);
-            padding: clamp(0.28rem, 0.8vw, 0.45rem) clamp(0.4rem, 1vw, 0.7rem);
+            padding: clamp(0.2rem, 0.8vw, 0.45rem) clamp(0.25rem, 1vw, 0.7rem);
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.25s ease;
-            font-size: clamp(0.62rem, 1.3vw, 0.82rem);
+            font-size: clamp(0.52rem, 1.4vw, 0.82rem);
             white-space: nowrap;
             font-family: inherit;
             flex-shrink: 0;
+            min-height: 30px;
         }
         .lang-btn:hover, .lang-btn.active {
             background: rgba(255,255,255,0.38);
             transform: translateY(-2px);
         }
 
-        .lang-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.3); flex-shrink: 0; }
+        .lang-divider { width: 1px; height: clamp(16px, 3.5vw, 22px); background: rgba(255,255,255,0.3); flex-shrink: 0; }
 
-        /* Kurdish dropdown group */
-        .ku-group { position: relative; display: inline-flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+        .ku-group { position: relative; display: inline-flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; }
         .ku-main-btn {
             background: rgba(255,255,255,0.2);
             border: none;
             color: var(--white);
-            padding: clamp(0.28rem, 0.8vw, 0.45rem) clamp(0.4rem, 1vw, 0.7rem);
+            padding: clamp(0.2rem, 0.8vw, 0.45rem) clamp(0.25rem, 1vw, 0.7rem);
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.25s ease;
-            font-size: clamp(0.62rem, 1.3vw, 0.82rem);
+            font-size: clamp(0.52rem, 1.4vw, 0.82rem);
             white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 3px;
             font-family: inherit;
+            min-height: 30px;
         }
         .ku-main-btn:hover, .ku-main-btn.active {
             background: rgba(255,255,255,0.38);
             transform: translateY(-2px);
         }
-        .ku-main-btn .arrow { font-size: 0.6rem; transition: transform 0.2s; }
+        .ku-main-btn .arrow { font-size: 0.52rem; transition: transform 0.2s; }
         .ku-main-btn.open .arrow { transform: rotate(180deg); }
 
         .ku-dropdown {
             display: none;
-            position: absolute;
-            top: calc(100% + 6px);
+            position: fixed;
             background: rgba(80,60,140,0.97);
             backdrop-filter: blur(10px);
             border-radius: 8px;
             overflow: hidden;
-            z-index: 200;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-            min-width: 130px;
-            right: 0;
-            animation: dropdownFade 0.22s ease;
+            z-index: 9999;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            min-width: clamp(110px, 28vw, 150px);
         }
         .ku-dropdown.open { display: block; }
         @keyframes dropdownFade {
@@ -185,29 +188,19 @@
         .ku-dialect-btn {
             display: block; width: 100%; background: none; border: none;
             color: var(--white);
-            padding: 0.55rem 1rem;
+            padding: clamp(0.38rem, 1.2vw, 0.55rem) clamp(0.6rem, 2vw, 1rem);
             cursor: pointer;
-            font-size: clamp(0.62rem, 1.3vw, 0.82rem);
+            font-size: clamp(0.58rem, 1.4vw, 0.82rem);
             text-align: right;
             transition: background 0.2s;
             white-space: nowrap;
             font-family: 'NotoKufiArabic', sans-serif;
+            min-height: 36px;
         }
         .ku-dialect-btn:hover { background: rgba(255,255,255,0.18); }
         .ku-dialect-btn.active { background: rgba(255,255,255,0.28); font-weight: bold; }
         .ku-dialect-btn.ltr-btn { text-align: left; font-family: sans-serif; }
-        .dialect-badge { font-size: 0.6rem; opacity: 0.7; display: block; margin-top: 1px; }
-
-        @media screen and (max-width: 600px) {
-            .header-divider { display: none; }
-            .uor-logo { height: 48px; }
-            .logo-subtitle { display: block; font-size: 0.62rem; }
-            .ku-dropdown { right: 0; left: auto; transform: none; }
-            .ku-dropdown.open { transform: none; animation: none; display: block; }
-        }
-        @media screen and (max-width: 400px) {
-            .logo-title { font-size: 0.85rem; }
-        }
+        .dialect-badge { font-size: 0.52rem; opacity: 0.7; display: block; margin-top: 1px; }
 
         /* ══════════════════════════════════════
            REST OF STYLES (unchanged)
@@ -801,7 +794,13 @@
         var dd=document.getElementById('kuDropdown');
         var open=dd.classList.contains('open');
         closeKuDropdown();
-        if(!open){ btn.classList.add('open'); dd.classList.add('open'); }
+        if(!open){
+            var rect = btn.getBoundingClientRect();
+            dd.style.top = (rect.bottom + 6) + 'px';
+            dd.style.right = (window.innerWidth - rect.right) + 'px';
+            btn.classList.add('open');
+            dd.classList.add('open');
+        }
     }
     function closeKuDropdown(){
         document.getElementById('kuMainBtn').classList.remove('open');

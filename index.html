@@ -569,6 +569,62 @@
         }
         @media (min-width:1400px) { .container { max-width:1400px; } .sections-grid { grid-template-columns:repeat(4,1fr); max-width:none; } }
         @media (max-width:360px) { .section-card { padding:1rem; min-height:240px; } }
+
+        /* SCROLL TO TOP */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: clamp(1.2rem, 4vw, 2rem);
+            left: clamp(1.2rem, 4vw, 2rem);
+            width: clamp(44px, 6vw, 54px);
+            height: clamp(44px, 6vw, 54px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(102,126,234,0.45);
+            z-index: 990;
+            opacity: 0;
+            transform: translateY(20px) scale(0.85);
+            transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1),
+                        transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                        box-shadow 0.25s ease;
+            pointer-events: none;
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        #scrollTopBtn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 14px 36px rgba(102,126,234,0.58);
+        }
+        #scrollTopBtn:active { transform: translateY(0) scale(0.95); }
+        #scrollTopBtn svg {
+            width: clamp(18px, 3vw, 22px);
+            height: clamp(18px, 3vw, 22px);
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        #scrollTopBtn:hover svg { transform: translateY(-3px); }
+        #scrollTopBtn::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid rgba(102,126,234,0.35);
+            opacity: 0;
+            transform: scale(0.88);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        #scrollTopBtn.visible:hover::before {
+            opacity: 1;
+            transform: scale(1.12);
+        }
     </style>
 </head>
 <body>
@@ -1231,6 +1287,22 @@ if('ontouchstart' in window){
     });
 }
 
+// ─── SCROLL TO TOP ───
+(function(){
+    var btn = document.getElementById('scrollTopBtn');
+    var shown = false;
+    window.addEventListener('scroll', function(){
+        var shouldShow = window.scrollY > 320;
+        if(shouldShow !== shown){
+            shown = shouldShow;
+            btn.classList.toggle('visible', shown);
+        }
+    }, {passive: true});
+    btn.addEventListener('click', function(){
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+})();
+
 // ─── KEYBOARD NAV ───
 document.addEventListener('keydown',function(e){ if(e.key==='Tab') document.body.classList.add('keyboard-nav'); });
 document.addEventListener('mousedown',function(){ document.body.classList.remove('keyboard-nav'); });
@@ -1243,5 +1315,12 @@ document.querySelectorAll('.sections-grid').forEach(function(grid){
     });
 });
 </script>
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scrollTopBtn" title="بگەڕێوە سەرەوە" aria-label="بگەڕێوە سەرەوە">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
 </body>
 </html>

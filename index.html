@@ -530,6 +530,18 @@
             padding:clamp(1.5rem,4vw,2.2rem) 0;
         }
         footer p { font-size:clamp(0.85rem,2vw,0.95rem); line-height:1.7; }
+        .visitor-badge {
+            margin-top: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            opacity: 0.75;
+            transition: opacity 0.3s ease;
+        }
+        .visitor-badge:hover { opacity: 1; }
+        .visitor-badge span { font-size: clamp(0.75rem, 1.8vw, 0.85rem); color: rgba(255,255,255,0.65); }
+        .visitor-badge img { height: 18px; vertical-align: middle; filter: brightness(0) invert(1); opacity: 0.85; }
 
         /* ══════════════════════════════
            LANG CONTENT
@@ -1132,6 +1144,14 @@
         <div class="lang-content" data-lang="ar"><p>المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين &nbsp;|&nbsp; جميع الحقوق محفوظة &copy; <span class="footer-year-ar"></span></p></div>
         <div class="lang-content" data-lang="fa"><p>کتابخانه الکترونیکی دانشکده علوم - دانشگاه راپەرین &nbsp;|&nbsp; تمامی حقوق محفوظ است &copy; <span class="footer-year-ar"></span></p></div>
         <div class="lang-content" data-lang="tr"><p>Fen Fakültesi Elektronik Kütüphanesi - Raparin Üniversitesi &nbsp;|&nbsp; Tüm hakları saklıdır &copy; <span class="footer-year-en"></span></p></div>
+
+        <div class="visitor-badge">
+            <span>👁</span>
+            <a href="https://mahmodfaqe.goatcounter.com" target="_blank" style="display:flex;align-items:center;gap:0.4rem;text-decoration:none;">
+                <img src="https://mahmodfaqe.goatcounter.com/counter/TOTAL.svg" alt="visitor count">
+                <span id="visitor-label">سەردانکەر</span>
+            </a>
+        </div>
     </div>
 </footer>
 

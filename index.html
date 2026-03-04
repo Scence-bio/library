@@ -1147,7 +1147,7 @@
 
         <div class="visitor-badge">
             <span>👁</span>
-            <img src="https://mahmodfaqe.goatcounter.com/counter/TOTAL.svg" alt="visitor count">
+            <span id="visitor-count" style="color:rgba(255,255,255,0.85);font-size:clamp(0.85rem,2vw,1rem);font-weight:600;"></span>
             <span id="visitor-label">سەردانکەر</span>
         </div>
     </div>
@@ -1335,6 +1335,20 @@ if('ontouchstart' in window){
         btn.addEventListener('touchend',function(){ this.style.transform=''; },{passive:true});
     });
 }
+
+// ─── VISITOR COUNT ───
+(function(){
+    var t = setInterval(function(){
+        if(window.goatcounter && window.goatcounter.visit_count){
+            clearInterval(t);
+            window.goatcounter.visit_count({
+                append: '#visitor-count',
+                type: 'html',
+                no_branding: true
+            });
+        }
+    }, 100);
+})();
 
 // ─── SCROLL PROGRESS BAR ───
 (function(){

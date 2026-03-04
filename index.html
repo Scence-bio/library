@@ -262,6 +262,10 @@
 
         .lang-content { display: none; opacity: 0; transition: opacity 0.3s ease; }
         .lang-content.active { display: block; opacity: 1; }
+        .logo-title .lang-content,
+        .logo-subtitle .lang-content { display: none; }
+        .logo-title .lang-content.active,
+        .logo-subtitle .lang-content.active { display: inline; opacity: 1; }
         .rtl { direction: rtl; } .ltr { direction: ltr; }
 
         @media (max-width: 768px) { .lang-btn, .section-btn, .main-library-btn, .ku-main-btn { min-height: 44px; touch-action: manipulation; } }
@@ -283,8 +287,26 @@
                      alt="University of Raparin Logo"
                      class="uor-logo">
                 <div class="logo-text">
-                    <span class="logo-title">زانکۆی ڕاپەڕین</span>
-                    <span class="logo-subtitle">کتێبخانەی ئەلیکترۆنی</span>
+                    <span class="logo-title">
+                        <span class="lang-content active" data-lang="ku-sorani">زانکۆی ڕاپەڕین</span>
+                        <span class="lang-content" data-lang="ku-badini">زانینگەها ڕاپەرین</span>
+                        <span class="lang-content" data-lang="ku-badini-lat">Zanko Raperin</span>
+                        <span class="lang-content" data-lang="ku-hawrami">زانکۆی ڕاپەڕین</span>
+                        <span class="lang-content" data-lang="en">University of Raparin</span>
+                        <span class="lang-content" data-lang="ar">جامعة رابەرين</span>
+                        <span class="lang-content" data-lang="fa">دانشگاه راپەرین</span>
+                        <span class="lang-content" data-lang="tr">Raparin Üniversitesi</span>
+                    </span>
+                    <span class="logo-subtitle">
+                        <span class="lang-content active" data-lang="ku-sorani">کتێبخانەی ئەلیکترۆنی</span>
+                        <span class="lang-content" data-lang="ku-badini">پرتوکخانەیا ئەلیکترۆنیک</span>
+                        <span class="lang-content" data-lang="ku-badini-lat">Kitêbxaneya Elektronîkî</span>
+                        <span class="lang-content" data-lang="ku-hawrami">کتێبخانەی ئەلیکترۆنی</span>
+                        <span class="lang-content" data-lang="en">Electronic Library</span>
+                        <span class="lang-content" data-lang="ar">المكتبة الإلكترونية</span>
+                        <span class="lang-content" data-lang="fa">کتابخانه الکترونیکی</span>
+                        <span class="lang-content" data-lang="tr">Elektronik Kütüphane</span>
+                    </span>
                 </div>
             </a>
 

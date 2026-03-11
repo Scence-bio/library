@@ -371,8 +371,8 @@
             <div class="team-card reveal-item">
               <h3>{{ t('teamTitle') }}</h3>
               <div class="team-grid">
-                <div v-for="member in teamMembers" :key="member.name" class="team-member">
-                  <h4>{{ member.name }}</h4>
+                <div v-for="member in teamMembers" :key="member.nameKey" class="team-member">
+                  <h4>{{ t(member.nameKey) }}</h4>
                   <p>{{ t(member.roleKey) }}</p>
                   <div v-if="member.social" class="social-links">
                     <!-- Telegram -->
@@ -511,7 +511,8 @@ const translations = {
     intro4: 'ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانەیە کە زانیاری بە ئازادی تێدا بەردەست بکرێت.',
     objTitle: 'ئامانجەکانی پڕۆژەکە:',
     objectives: ['🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ','⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی','📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن','📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن','👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە پەرتووکخانەی دیجیتاڵی','⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی','🌐 بەردەستبوونی پەرتووک و سەرچاوەکان بە هەموو زمانەکان'],
-    teamTitle: 'ئامادەکراوە لەلایەن:',
+    teamTitle: 'ئامادەکراوە لەلایەن تیمی BioNova:',
+    name1: 'ژیاو یوسف حسێن', name2: 'نیار قادر ڕەسوڵ', name3: 'محمود خدر فقێ ڕەسوڵ',
     role1: 'خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک',
     role2: 'خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە',
     role3: 'خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت',
@@ -540,7 +541,9 @@ const translations = {
     intro4: 'میسیونا مە ئەوە کو ئەم قادەکا ئەکادیمی یا هاڤکار بیاڤرینین.',
     objTitle: 'ئارمانجێن پڕۆژەیێ:',
     objectives: ['🎓 پشتگیریا پەروەردەهیا سەرھێل ل زانینگەھێ','⚡ هەبوونا بیلەز و هێسانا چاوکانیێن زانستی','📖 بەرھەڤکرنا بی هەزاران چاوکانیێن زانستی ل یەک جهێکی','📱 بکارئینانا تەکنەلۆژیا نووژەن {کۆدا QR}','👨‍🏫 سوودێن مامۆستا و خوێندکاران ژ کتێبخانەیێن دیجیتال','⏰ داگیرتنا دەمێ ڤالا یا خوێندکاران بی پرۆژەک زانستی','🌐 هەبوونا کتێب و چاوکانییان بی هەمی زمانان'],
-    teamTitle: 'هاتیە ئامادەکرن ژ هێلا:', role1: 'خینکارێ بایۆلۆجیێ - دابینکرنا پرتوکان', role2: 'خینکارێ بایۆلۆجیێ - ڕێکخستنا پرتوکخانەیێ', role3: 'خینکارێ بایۆلۆجیێ - پێشدەبرێ مالپەرێ',
+    teamTitle: 'هاتیە ئامادەکرن ژ هێلا تیما BioNova:',
+    name1: 'ژیاو یوسف حسێن', name2: 'نیار قادر ڕەسوڵ', name3: 'محمود خدر فقێ ڕەسوڵ',
+    role1: 'خینکارێ بایۆلۆجیێ - دابینکرنا پرتوکان', role2: 'خینکارێ بایۆلۆجیێ - ڕێکخستنا پرتوکخانەیێ', role3: 'خینکارێ بایۆلۆجیێ - پێشدەبرێ مالپەرێ',
     mainLibTitle: 'کتێبخانەیا سەرەکە', enterLib1: 'بکەڤن کتێبخانەیا سەرەکە ١', enterLib2: 'بکەڤن کتێبخانەیا سەرەکە ٢',
     deptTitle: 'بەشێن زانستی', enterDept: 'بکەڤن بەشێ',
     dept1: 'بەشێ بایۆلۆجیێ', dept1desc: 'پرتوک و چاوکانیێن زانستێن ژیانێ، جینیتیک، مایکرۆبایۆلۆجی و زیاتر',
@@ -566,7 +569,9 @@ const translations = {
     intro4: 'Mîsyona me avakirina cîhekî akademîk piştgirî ye.',
     objTitle: 'Armancên Projeyê:',
     objectives: ['🎓 Piştgirîkirina xwendina serhêl li zanko','⚡ Gihîştina zû û hêsan bo çavkaniyên zanistî','📖 Berhevkirina hezaran çavkaniyên zanistî di yek cihî de','📱 Bikaranîna teknolojiya nû {QR koda} bo xizmeta xwendinê','👨‍🏫 Sûdwergirtina mamoste û xwendekaran ji kitêbxaneya dîjîtal','⏰ Tijîkirina demên vala yên xwendekaran bi projeyek zanistî','🌐 Berdestbûna pirtûk û çavkaniyan bi hemû zimanan'],
-    teamTitle: 'Amadekirî ji aliyê:', role1: 'Xwendekarê Beşê Biyolojiyê - Dabînkirina pirtûkan', role2: 'Xwendekarê Beşê Biyolojiyê - Rêxistina kitêbxanê', role3: 'Xwendekarê Beşê Biyolojiyê - Pêşxistinkarê malperê',
+    teamTitle: 'Amadekirî ji aliyê BioNova Team:',
+    name1: 'Zhyaw Yousf Husain', name2: 'Nyar Qadr Rasul', name3: 'Mahmood Khdir Faqe Rasul',
+    role1: 'Xwendekarê Beşê Biyolojiyê - Dabînkirina pirtûkan', role2: 'Xwendekarê Beşê Biyolojiyê - Rêxistina kitêbxanê', role3: 'Xwendekarê Beşê Biyolojiyê - Pêşxistinkarê malperê',
     mainLibTitle: 'Kitêbxaneya Sereke', enterLib1: 'Têkeve Kitêbxaneya Giştî 1', enterLib2: 'Têkeve Kitêbxaneya Giştî 2',
     deptTitle: 'Beşên Zanistî', enterDept: 'Têkeve Beşê',
     dept1: 'Beşa Biyolojiyê', dept1desc: 'Pirtûk û çavkaniyên zanistên jiyanê, genetîk, mîkrobiyolojî û zêdetir',
@@ -592,7 +597,9 @@ const translations = {
     intro4: 'ئەرکمان ئەوەیە کە یەک بۆشایی ئەکادیمی هاوکاری دروست بکەین.',
     objTitle: 'ئامانجەکانی پرۆژەکە:',
     objectives: ['🎓 پشتگیری کردن بە خوێندنی ئۆنلاین لە زانکۆ','⚡ دەستڕەسیەتی خێرا و ئاسان بە سەرچاوەی زانستی','📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن','📱 بەکارهێنانی تەکنەلۆژیای نوی {QR code}','👨‍🏫 سوودگرتنی مامۆستایان و خوێندکاران لە کتێبخانەی دیجیتاڵ','⏰ پڕکردنی کاتی بەتاڵی خوێندکاران بە پرۆژەیەکی زانستی','🌐 بەردەستبوونی کتێب و سەرچاوەکان بە هەموو زمانەکان'],
-    teamTitle: 'ئامادەکراوە لەلایەن:', role1: 'خوێندکاری بەشی بایەلۆجی - دابینکردنی کتێب', role2: 'خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە', role3: 'خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت',
+    teamTitle: 'ئامادەکراوە لەلایەن تیمی BioNova:',
+    name1: 'ژیاو یوسف حسێن', name2: 'نیار قادر ڕەسوڵ', name3: 'محمود خدر فقێ ڕەسوڵ',
+    role1: 'خوێندکاری بەشی بایەلۆجی - دابینکردنی کتێب', role2: 'خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە', role3: 'خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت',
     mainLibTitle: 'کتێبخانەی سەرەکی', enterLib1: 'بچۆ ناو کتێبخانەی گشتی ١', enterLib2: 'بچۆ ناو کتێبخانەی گشتی ٢',
     deptTitle: 'بەشەکانی زانستی', enterDept: 'بچۆ ناو بەش',
     dept1: 'بەشی بایەلۆجی', dept1desc: 'کتێب و سەرچاوەکانی زانستی ژیان، ژینیتیک، مایکرۆبایەلۆجی و زیاتر',
@@ -618,7 +625,9 @@ const translations = {
     intro4: 'Our mission is to build a supportive academic space where knowledge is freely accessible.',
     objTitle: 'Project Objectives:',
     objectives: ['🎓 Supporting online learning at universities','⚡ Quick and easy access to scientific resources','📖 Gathering thousands of scientific resources in one place','📱 Utilizing modern technology {QR code} to serve education','👨‍🏫 Benefiting teachers and students from digital library resources','⏰ Filling students\' free time with scientific projects','🌐 Availability of books and resources in all languages'],
-    teamTitle: 'Prepared by:', role1: 'Biology Department Student - Provision of books', role2: 'Biology Department Student - Organization of the library', role3: 'Biology Department Student - Web Developer',
+    teamTitle: 'Prepared by BioNova Team:',
+    name1: 'Zhyaw Yousf Husain', name2: 'Nyar Qadr Rasul', name3: 'Mahmood Khdir Faqe Rasul',
+    role1: 'Biology Department Student - Provision of books', role2: 'Biology Department Student - Organization of the library', role3: 'Biology Department Student - Web Developer',
     mainLibTitle: 'Main Library', enterLib1: 'Enter General Library 1', enterLib2: 'Enter General Library 2',
     deptTitle: 'Scientific Departments', enterDept: 'Enter Department',
     dept1: 'Biology Department', dept1desc: 'Books and resources in life sciences, genetics, microbiology and more',
@@ -644,7 +653,9 @@ const translations = {
     intro4: 'مهمتنا هي بناء فضاء أكاديمي داعم تكون فيه المعرفة متاحة بحرية.',
     objTitle: 'أهداف المشروع:',
     objectives: ['🎓 دعم التعلم الإلكتروني في الجامعات','⚡ الوصول السريع والسهل إلى الموارد العلمية','📖 جمع آلاف الموارد العلمية في مكان واحد','📱 استخدام التكنولوجيا الحديثة {رموز QR}','👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية','⏰ ملء أوقات فراغ الطلاب بمشاريع علمية','🌐 توفر الكتب والموارد بجميع اللغات'],
-    teamTitle: 'إعداد:', role1: 'طالب قسم علوم الحياة - توفير الكتب', role2: 'طالبة قسم علوم الحياة - تنظيم المكتبة', role3: 'طالب قسم علوم الحياة - مطور مواقع الويب',
+    teamTitle: 'إعداد فريق BioNova:',
+    name1: 'ژياو يوسف حسين', name2: 'نيار قادر رسول', name3: 'محمود خدر فقي رسول',
+    role1: 'طالب قسم علوم الحياة - توفير الكتب', role2: 'طالبة قسم علوم الحياة - تنظيم المكتبة', role3: 'طالب قسم علوم الحياة - مطور مواقع الويب',
     mainLibTitle: 'المكتبة الرئيسية', enterLib1: 'دخول إلى المكتبة العامة ١', enterLib2: 'دخول إلى المكتبة العامة ٢',
     deptTitle: 'الأقسام العلمية', enterDept: 'دخول القسم',
     dept1: 'قسم علوم الحياة', dept1desc: 'الكتب والمصادر في علوم الحياة والوراثة والأحياء الدقيقة',
@@ -670,7 +681,9 @@ const translations = {
     intro4: 'مأموریت ما ایجاد یک فضای دانشگاهی حمایتگر است.',
     objTitle: 'اهداف پروژه:',
     objectives: ['🎓 حمایت از یادگیری آنلاین در دانشگاه‌ها','⚡ دسترسی سریع و آسان به منابع علمی','📖 گردآوری هزاران منبع علمی در یک مکان','📱 استفاده از فناوری مدرن {QR کد}','👨‍🏫 بهره‌مندی اساتید و دانشجویان از منابع کتابخانه دیجیتال','⏰ پر کردن اوقات فراغت دانشجویان با پروژه‌های علمی','🌐 در دسترس بودن کتاب‌ها و منابع به همه زبان‌ها'],
-    teamTitle: 'تهیه شده توسط:', role1: 'دانشجوی گروه زیست‌شناسی - تأمین کتاب‌ها', role2: 'دانشجوی گروه زیست‌شناسی - سازماندهی کتابخانه', role3: 'دانشجوی گروه زیست‌شناسی - توسعه‌دهنده وب',
+    teamTitle: 'تهیه شده توسط تیم BioNova:',
+    name1: 'ژیاو یوسف حسین', name2: 'نیار قادر رسول', name3: 'محمود خدر فقی رسول',
+    role1: 'دانشجوی گروه زیست‌شناسی - تأمین کتاب‌ها', role2: 'دانشجوی گروه زیست‌شناسی - سازماندهی کتابخانه', role3: 'دانشجوی گروه زیست‌شناسی - توسعه‌دهنده وب',
     mainLibTitle: 'کتابخانه اصلی', enterLib1: 'ورود به کتابخانه عمومی ۱', enterLib2: 'ورود به کتابخانه عمومی ۲',
     deptTitle: 'بخش‌های علمی', enterDept: 'ورود به بخش',
     dept1: 'بخش زیست‌شناسی', dept1desc: 'کتاب‌ها و منابع در زمینه علوم زیستی، ژنتیک، میکروبیولوژی',
@@ -696,7 +709,9 @@ const translations = {
     intro4: 'Misyonumuz, bilginin özgürce erişilebilir olduğu destekleyici bir akademik alan inşa etmektir.',
     objTitle: 'Proje Hedefleri:',
     objectives: ['🎓 Üniversitelerde çevrimiçi öğrenimi destekleme','⚡ Bilimsel kaynaklara hızlı ve kolay erişim','📖 Binlerce bilimsel kaynağı tek bir yerde toplama','📱 Modern teknolojiyi {QR kodu} eğitime hizmet için kullanma','👨‍🏫 Öğretmenlerin ve öğrencilerin dijital kütüphane kaynaklarından yararlanması','⏰ Öğrencilerin boş zamanlarını bilimsel projelerle değerlendirme','🌐 Kitap ve kaynakların tüm dillerde erişilebilir olması'],
-    teamTitle: 'Hazırlayanlar:', role1: 'Biyoloji Bölümü Öğrencisi - Kitap temini', role2: 'Biyoloji Bölümü Öğrencisi - Kütüphane organizasyonu', role3: 'Biyoloji Bölümü Öğrencisi - Web Geliştirici',
+    teamTitle: 'BioNova Ekibi tarafından hazırlanmıştır:',
+    name1: 'Jiyaw Yusuf Hüseyin', name2: 'Niyar Kadir Resul', name3: 'Mahmut Hıdır Faki Resul',
+    role1: 'Biyoloji Bölümü Öğrencisi - Kitap temini', role2: 'Biyoloji Bölümü Öğrencisi - Kütüphane organizasyonu', role3: 'Biyoloji Bölümü Öğrencisi - Web Geliştirici',
     mainLibTitle: 'Ana Kütüphane', enterLib1: 'Genel Kütüphane 1\'e Gir', enterLib2: 'Genel Kütüphane 2\'ye Gir',
     deptTitle: 'Bilim Bölümleri', enterDept: 'Bölüme Gir',
     dept1: 'Biyoloji Bölümü', dept1desc: 'Yaşam bilimleri, genetik, mikrobiyoloji ve daha fazlasında kitaplar',
@@ -748,9 +763,9 @@ const app = createApp({
     ]
 
     const teamMembers = [
-      { name: 'ژیاو یوسف حسێن',        roleKey: 'role1', social: false },
-      { name: 'نیار قادر ڕەسوڵ',        roleKey: 'role2', social: false },
-      { name: 'محمود خدر فقێ ڕەسوڵ',   roleKey: 'role3', social: true  },
+      { nameKey: 'name1', roleKey: 'role1', social: false },
+      { nameKey: 'name2', roleKey: 'role2', social: false },
+      { nameKey: 'name3', roleKey: 'role3', social: true  },
     ]
 
     const departments = [

@@ -1,1220 +1,851 @@
 <!DOCTYPE html>
-<html lang="ku">
+<html lang="ku" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین</title>
-    <style>
-        /* Base Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Root Variables for Better Scaling */
-        :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #ff6b6b;
-            --text-color: #333;
-            --text-light: #666;
-            --bg-light: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --border-radius: 15px;
-            --container-padding: clamp(1rem, 4vw, 2rem);
-            --section-padding: clamp(2rem, 8vw, 4rem);
-        }
-
-        /* Typography System */
-        html {
-            font-size: 16px;
-        }
-
-        @media screen and (max-width: 480px) {
-            html { font-size: 14px; }
-        }
-
-        @media screen and (min-width: 1200px) {
-            html { font-size: 18px; }
-        }
-
-@font-face {
-  font-family: 'NotoKufiArabic';
-  src: url('./NotoKufiArabic-Regular/NotoKufiArabic-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-body {
-            font-family: 'NotoKufiArabic', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            overflow-x: hidden;
-            direction: rtl;
-            background-color: var(--white);
-        }
-
-        /* Responsive Container */
-        .container {
-            max-width: min(1200px, calc(100% - 2rem));
-            margin: 0 auto;
-            padding: 0 var(--container-padding);
-            width: 100%;
-        }
-
-        /* Header - Fully Responsive */
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: clamp(0.5rem, 2vw, 1rem) 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo {
-            font-size: clamp(3rem, 4vw, 1.5rem);
-            font-weight: bold;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .lang-switcher {
-            display: flex;
-            gap: clamp(0.5rem, 2vw, 1rem);
-            flex-wrap: wrap;
-        }
-
-        .lang-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: var(--white);
-            padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
-            min-width: 60px;
-            text-align: center;
-        }
-
-        .lang-btn:hover, .lang-btn.active {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Header Adjustments */
-        @media screen and (max-width: 600px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .logo {
-                order: 1;
-                width: 100%;
-            }
-
-            .lang-switcher {
-                order: 2;
-                justify-content: center;
-                width: 100%;
-            }
-        }
-
-        /* Hero Section - Fully Responsive */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: var(--section-padding) 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: clamp(400px, 60vh, 600px);
-            display: flex;
-            align-items: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
-                              radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px);
-            background-size: 100px 100px;
-            animation: float 20s infinite linear;
-            top: -50%;
-            left: -50%;
-        }
-
-        @keyframes float {
-            0% { transform: translateX(0) translateY(0); }
-            100% { transform: translateX(-50px) translateY(-50px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            animation: fadeInUp 1s ease-out;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: clamp(1.5rem, 4vw, 1.5rem);
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            animation: fadeInUp 2s ease-out 0.8s both;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Introduction Section - Responsive */
-        .intro-section {
-            padding: var(--section-padding) 0;
-            background: var(--white);
-        }
-
-        .intro-content {
-            text-align: center;
-            max-width: min(900px, 100%);
-            margin: 0 auto;
-        }
-
-        .intro-content h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: var(--text-color);
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-        }
-
-        .intro-card {
-            background: linear-gradient(135deg, var(--bg-light) 0%, #e9ecef 100%);
-            padding: clamp(1.5rem, 5vw, 3rem);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-        }
-
-        .intro-card p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            line-height: clamp(1.6, 0.05vw + 1.5, 2);
-            color: var(--text-light);
-            margin-bottom: clamp(1rem, 3vw, 2rem);
-            text-align: justify;
-        }
-
-        .objectives-card {
-            background: rgba(102, 126, 234, 0.1);
-            padding: clamp(1rem, 3vw, 2rem);
-            border-radius: var(--border-radius);
-            margin: clamp(1rem, 3vw, 2rem) 0;
-        }
-
-        .objectives-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-        }
-
-        .objectives-list {
-            list-style: none;
-            padding: 0;
-            color: var(--text-light);
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-            line-height: 1.8;
-        }
-
-        .objectives-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .team-card {
-            background: rgba(255, 107, 107, 0.1);
-            padding: clamp(1rem, 3vw, 2rem);
-            border-radius: var(--border-radius);
-            margin: clamp(1rem, 3vw, 2rem) 0;
-        }
-
-        .team-card h3 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-            gap: clamp(0.5rem, 2vw, 1rem);
-            margin-top: 1rem;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: clamp(0.8rem, 2vw, 1rem);
-            background: var(--white);
-            border-radius: 10px;
-        }
-
-        .team-member h4 {
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-        }
-
-        .team-member p {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            font-size: clamp(0.85rem, 2vw, 1rem);
-        }
-
-        /* Library Sections - Ultra Responsive */
-        .library-sections {
-            padding: var(--section-padding) 0;
-            background: linear-gradient(45deg, var(--bg-light) 0%, #e9ecef 100%);
-        }
-
-        .main-library {
-            text-align: center;
-            margin-bottom: clamp(2rem, 6vw, 4rem);
-        }
-
-        .main-library h2 {
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: var(--text-color);
-        }
-
-        .main-library-btn {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #ee5a24 100%);
-            color: var(--white);
-            border: none;
-            padding: clamp(1rem, 3vw, 1.25rem) clamp(2rem, 6vw, 3.125rem);
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-            min-width: 200px;
-            text-align: center;
-        }
-
-        .main-library-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Sections Grid - Advanced Responsive */
-        .sections-grid {
-            display: grid;
-            gap: clamp(1rem, 4vw, 2rem);
-            margin-top: clamp(2rem, 6vw, 3rem);
-        }
-
-        /* Mobile First Grid */
-        @media screen and (max-width: 480px) {
-            .sections-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media screen and (min-width: 481px) and (max-width: 768px) {
-            .sections-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-        }
-
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-            .sections-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media screen and (min-width: 1025px) {
-            .sections-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                max-width: 1200px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        .section-card {
-            background: var(--white);
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: var(--border-radius);
-            padding: clamp(1.5rem, 4vw, 2rem);
-            text-align: center;
-            box-shadow: var(--shadow);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .section-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .section-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .section-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .section-icon {
-            font-size: clamp(2rem, 6vw, 3rem);
-            margin-bottom: clamp(0.8rem, 2vw, 1rem);
-        }
-
-        .section-card h3 {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            margin-bottom: clamp(0.8rem, 2vw, 1rem);
-            color: var(--text-color);
-            line-height: 1.3;
-        }
-
-        .section-card p {
-            color: var(--text-light);
-            margin-bottom: clamp(1rem, 3vw, 1.5rem);
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            line-height: 1.6;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-btn {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            border: none;
-            padding: clamp(0.75rem, 2.5vw, 1rem) clamp(1.5rem, 4vw, 2rem);
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            min-width: 140px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .section-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Footer - Responsive */
-        footer {
-            background: var(--text-color);
-            color: var(--white);
-            text-align: center;
-            padding: clamp(1.5rem, 4vw, 2rem) 0;
-        }
-
-        footer p {
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            line-height: 1.6;
-        }
-
-        /* Language Content Management */
-        .lang-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lang-content.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* RTL/LTR Support */
-        .rtl { direction: rtl; }
-        .ltr { direction: ltr; }
-
-        /* Enhanced Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            .lang-btn, .section-btn, .main-library-btn {
-                min-height: 44px;
-                min-width: 44px;
-                touch-action: manipulation;
-            }
-        }
-
-        /* High Contrast Mode Support */
-        @media (prefers-contrast: high) {
-            .section-card {
-                border: 2px solid var(--text-color);
-            }
-        }
-
-        /* Reduced Motion Support */
-        @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Ultra-wide Screen Support */
-        @media screen and (min-width: 1400px) {
-            .container {
-                max-width: 1400px;
-            }
-
-            .sections-grid {
-                grid-template-columns: repeat(4, 1fr);
-                max-width: none;
-            }
-        }
-
-        /* Small Mobile Portrait */
-        @media screen and (max-width: 360px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .section-card {
-                padding: 1rem;
-                min-height: 250px;
-            }
-
-            .hero {
-                min-height: 300px;
-            }
-        }
-
-        /* Loading States */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-            position: relative;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            border: 2px solid transparent;
-            border-top: 2px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Print Styles */
-        @media print {
-            .hero, .lang-switcher { display: none; }
-            .section-card { page-break-inside: avoid; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.prod.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --accent: #ff6b6b;
+      --text: #2d2d3a;
+      --text-light: #6b6b80;
+      --bg: #f8f9ff;
+      --white: #ffffff;
+      --card-bg: rgba(255,255,255,0.85);
+      --shadow-sm: 0 4px 16px rgba(102,126,234,0.10);
+      --shadow-md: 0 8px 32px rgba(102,126,234,0.15);
+      --shadow-lg: 0 20px 60px rgba(102,126,234,0.18);
+      --radius: 18px;
+      --radius-sm: 10px;
+      --transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
+      --transition-fast: all 0.22s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    @media (max-width: 480px) { html { font-size: 14px; } }
+    @media (min-width: 1200px) { html { font-size: 18px; } }
+    body {
+      font-family: 'Segoe UI', 'Tahoma', sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      overflow-x: hidden;
+      background: var(--bg);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+    .container { max-width: min(1200px, calc(100% - 2rem)); margin: 0 auto; padding: 0 clamp(1rem,4vw,2rem); }
+
+    /* SCROLL PROGRESS */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, #ff6b6b, #667eea, #764ba2, #ff6b6b);
+      background-size: 200% 100%;
+      z-index: 2000;
+      animation: progressShimmer 3s linear infinite;
+      transition: width 0.1s linear;
+    }
+    @keyframes progressShimmer { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: clamp(0.5rem,1.5vw,1rem) 0;
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 4px 24px rgba(102,126,234,0.25);
+      backdrop-filter: blur(12px);
+      transition: box-shadow 0.4s ease;
+    }
+    header.scrolled { box-shadow: 0 6px 36px rgba(60,40,100,0.28); }
+    .header-content { display: flex; align-items: center; gap: clamp(0.3rem,1.5vw,1rem); flex-wrap: nowrap; }
+    .logo { display: flex; align-items: center; gap: clamp(5px,1.5vw,10px); flex-shrink: 1; min-width: 0; text-decoration: none; }
+    .uor-logo {
+      height: clamp(34px,7.5vw,62px); width: auto; object-fit: contain; flex-shrink: 0;
+      transition: var(--transition);
+      filter: drop-shadow(0 0 0px rgba(255,255,255,0));
+    }
+    .logo:hover .uor-logo { transform: scale(1.12) rotate(4deg); filter: drop-shadow(0 0 10px rgba(255,255,255,0.55)); }
+    .logo-text { display: flex; flex-direction: column; min-width: 0; flex-shrink: 1; }
+    .logo-title {
+      font-size: clamp(0.72rem,2.8vw,1.4rem); font-weight: 700; color: white;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.35s ease;
+    }
+    .logo-subtitle {
+      font-size: clamp(0.55rem,1.8vw,0.9rem); color: rgba(255,255,255,0.72);
+      display: block; margin-top: 0.3rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .logo:hover .logo-title { color: #ffd700; }
+    .logo:hover .logo-subtitle { color: rgba(255,215,0,0.78); }
+    .header-divider { width: 1px; height: clamp(22px,5vw,36px); background: rgba(255,255,255,0.28); flex-shrink: 0; }
+
+    /* LANG SWITCHER */
+    .lang-switcher { display: flex; align-items: center; gap: clamp(0.15rem,0.5vw,0.35rem); margin-inline-start: auto; flex-shrink: 0; }
+    .lang-switcher-inner { display: flex; align-items: center; gap: clamp(0.15rem,0.5vw,0.35rem); overflow-x: auto; scrollbar-width: none; max-width: clamp(100px,40vw,400px); }
+    .lang-switcher-inner::-webkit-scrollbar { display: none; }
+    .lang-btn {
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; padding: clamp(0.2rem,0.8vw,0.4rem) clamp(0.25rem,1vw,0.65rem);
+      border-radius: 6px; cursor: pointer; transition: var(--transition-fast);
+      font-size: clamp(0.52rem,1.4vw,0.8rem); white-space: nowrap; font-family: inherit;
+      flex-shrink: 0; min-height: 30px;
+    }
+    .lang-btn:hover, .lang-btn.active { border-color: rgba(255,255,255,0.45); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); background: rgba(255,255,255,0.25); }
+    .lang-divider { width: 1px; height: clamp(16px,3.5vw,22px); background: rgba(255,255,255,0.25); flex-shrink: 0; }
+
+    /* KU DROPDOWN */
+    .ku-group { position: relative; display: inline-flex; flex-direction: column; flex-shrink: 0; }
+    .ku-main-btn {
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; padding: clamp(0.2rem,0.8vw,0.4rem) clamp(0.25rem,1vw,0.65rem);
+      border-radius: 6px; cursor: pointer; transition: var(--transition-fast);
+      font-size: clamp(0.52rem,1.4vw,0.8rem); white-space: nowrap;
+      display: flex; align-items: center; gap: 4px; font-family: inherit; min-height: 30px;
+    }
+    .ku-main-btn:hover, .ku-main-btn.active { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.45); transform: translateY(-2px); }
+    .ku-main-btn .arrow { font-size: 0.5rem; transition: transform 0.28s cubic-bezier(0.4,0,0.2,1); }
+    .ku-main-btn.open .arrow { transform: rotate(180deg); }
+    .ku-dropdown {
+      position: fixed; background: rgba(70,50,130,0.96); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; overflow: hidden;
+      z-index: 9999; box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+      min-width: clamp(110px,28vw,155px);
+    }
+    .ku-dropdown-enter-active { animation: dropdownOpen 0.22s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+    .ku-dropdown-leave-active { animation: dropdownClose 0.18s ease forwards; }
+    @keyframes dropdownOpen { from { opacity:0; transform:scale(0.88) translateY(-8px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    @keyframes dropdownClose { from { opacity:1; transform:scale(1); } to { opacity:0; transform:scale(0.88) translateY(-8px); } }
+    .ku-dialect-btn {
+      display: block; width: 100%; background: none; border: none; color: #fff;
+      padding: clamp(0.38rem,1.2vw,0.55rem) clamp(0.6rem,2vw,1rem);
+      cursor: pointer; font-size: clamp(0.58rem,1.4vw,0.8rem); text-align: right;
+      transition: background 0.18s ease; white-space: nowrap; font-family: inherit; min-height: 36px;
+    }
+    .ku-dialect-btn:hover { background: rgba(255,255,255,0.15); }
+    .ku-dialect-btn.active { background: rgba(255,255,255,0.22); font-weight: bold; }
+    .ku-dialect-btn.ltr-btn { text-align: left; font-family: sans-serif; }
+    .dialect-badge { font-size: 0.5rem; opacity: 0.65; display: block; margin-top: 1px; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff; padding: clamp(5rem,14vw,10rem) 0 clamp(4rem,10vw,8rem);
+      text-align: center; position: relative; overflow: hidden;
+      min-height: clamp(420px,65vh,680px); display: flex; align-items: center;
+    }
+    .hero-mesh { position: absolute; inset: 0; overflow: hidden; }
+    .hero-mesh span {
+      position: absolute; border-radius: 50%; filter: blur(60px);
+      animation: meshFloat 12s ease-in-out infinite; opacity: 0.35;
+    }
+    .hero-mesh span:nth-child(1) { width:45vw; height:45vw; background:rgba(255,255,255,0.15); top:-10%; left:-8%; }
+    .hero-mesh span:nth-child(2) { width:35vw; height:35vw; background:rgba(255,107,107,0.2); top:20%; right:-5%; animation-delay:-4s; }
+    .hero-mesh span:nth-child(3) { width:30vw; height:30vw; background:rgba(255,255,255,0.1); bottom:-10%; left:30%; animation-delay:-8s; }
+    @keyframes meshFloat { 0%,100%{transform:translate(0,0) scale(1);} 33%{transform:translate(3%,4%) scale(1.06);} 66%{transform:translate(-2%,2%) scale(0.96);} }
+    .hero-particles { position: absolute; inset: 0; pointer-events: none; }
+    .particle { position:absolute; width:4px; height:4px; background:rgba(255,255,255,0.5); border-radius:50%; animation:particleDrift linear infinite; }
+    @keyframes particleDrift { 0%{transform:translateY(0) translateX(0) scale(1);opacity:0;} 10%{opacity:1;} 90%{opacity:0.6;} 100%{transform:translateY(-120vh) translateX(30px) scale(0);opacity:0;} }
+    .hero-content { position: relative; z-index: 2; width: 100%; }
+    .hero-content h2 { font-size:clamp(1rem,3vw,1.3rem); opacity:0.82; letter-spacing:0.05em; animation:heroFadeUp 0.8s ease-out both; }
+    .hero-content h1 { font-size:clamp(1.8rem,6.5vw,4.2rem); margin:0.5rem 0 1.2rem; line-height:1.2; animation:heroFadeUp 0.8s ease-out 0.18s both; text-shadow:0 4px 24px rgba(0,0,0,0.18); }
+    .hero-content p { font-size:clamp(0.95rem,2.5vw,1.25rem); animation:heroFadeUp 0.8s ease-out 0.35s both; max-width:680px; margin:0 auto; opacity:0.9; }
+    @keyframes heroFadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+
+    /* SECTIONS */
+    .intro-section { padding: clamp(3rem,8vw,6rem) 0; background: var(--white); }
+    .intro-content { text-align: center; max-width: min(900px,100%); margin: 0 auto; }
+    .intro-content h2 { font-size: clamp(1.7rem,4.5vw,2.4rem); color: var(--text); margin-bottom: clamp(1.5rem,4vw,2.5rem); }
+    .intro-card {
+      background: linear-gradient(145deg, #f5f7ff 0%, #eef0f8 100%);
+      padding: clamp(1.5rem,5vw,3rem); border-radius: var(--radius); box-shadow: var(--shadow-md);
+      position: relative; overflow: hidden;
+    }
+    .intro-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+      background-size: 200% 100%; animation: shimmerBar 3s linear infinite;
+    }
+    @keyframes shimmerBar { 0%{background-position:200% 0;} 100%{background-position:-200% 0;} }
+    .intro-card p { font-size:clamp(0.95rem,2.5vw,1.15rem); line-height:1.9; color:var(--text-light); margin-bottom:clamp(1rem,3vw,1.8rem); text-align:justify; }
+    .objectives-card {
+      background: rgba(102,126,234,0.08); border: 1px solid rgba(102,126,234,0.16);
+      padding: clamp(1rem,3vw,2rem); border-radius: var(--radius-sm); margin: clamp(1rem,3vw,2rem) 0;
+      transition: var(--transition);
+    }
+    .objectives-card:hover { background:rgba(102,126,234,0.12); box-shadow:var(--shadow-sm); }
+    .objectives-card h3 { color:var(--primary); margin-bottom:1rem; font-size:clamp(1.1rem,3vw,1.4rem); }
+    .objectives-list { list-style:none; padding:0; color:var(--text-light); font-size:clamp(0.9rem,2.5vw,1.05rem); line-height:2; }
+    .objectives-list li { margin-bottom:0.3rem; padding-inline-start:1.5rem; }
+    .team-card {
+      background:rgba(255,107,107,0.07); border:1px solid rgba(255,107,107,0.15);
+      padding:clamp(1rem,3vw,2rem); border-radius:var(--radius-sm); margin:clamp(1rem,3vw,2rem) 0; transition:var(--transition);
+    }
+    .team-card:hover { background:rgba(255,107,107,0.11); box-shadow:var(--shadow-sm); }
+    .team-card h3 { color:var(--accent); margin-bottom:1rem; font-size:clamp(1.1rem,3vw,1.4rem); }
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:clamp(0.5rem,2vw,1rem); margin-top:1rem; }
+    .team-member { text-align:center; padding:clamp(0.8rem,2vw,1.2rem); background:var(--white); border-radius:12px; box-shadow:var(--shadow-sm); transition:var(--transition); }
+    .team-member:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .team-member h4 { color:var(--text); margin-bottom:0.4rem; font-size:clamp(0.9rem,2.5vw,1.05rem); }
+    .team-member p { text-align:center; color:var(--text-light); margin-bottom:0.4rem; font-size:clamp(0.8rem,2vw,0.95rem); }
+
+    /* LIBRARY SECTIONS */
+    .library-sections { padding:clamp(3rem,8vw,6rem) 0; background:linear-gradient(160deg,#f0f2ff 0%,#e8ebff 100%); }
+    .main-library { text-align:center; margin-bottom:clamp(2rem,6vw,4rem); }
+    .main-library h2 { margin-bottom:clamp(1.5rem,4vw,2.2rem); font-size:clamp(1.7rem,4.5vw,2.4rem); color:var(--text); }
+    .main-library-btn {
+      background:linear-gradient(135deg,var(--accent) 0%,#ee5a24 100%); color:#fff; border:none;
+      padding:clamp(0.9rem,3vw,1.15rem) clamp(2rem,6vw,3rem); border-radius:50px; cursor:pointer;
+      font-size:clamp(0.95rem,2.5vw,1.15rem); font-weight:bold; text-decoration:none; display:inline-block;
+      box-shadow:0 8px 24px rgba(255,107,107,0.35); transition:var(--transition); min-width:200px; text-align:center;
+    }
+    .main-library-btn:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 16px 40px rgba(255,107,107,0.42); }
+    .sections-grid { display:grid; gap:clamp(1rem,3vw,1.8rem); margin-top:clamp(2rem,5vw,3rem); }
+    @media(max-width:480px){ .sections-grid{grid-template-columns:1fr;} }
+    @media(min-width:481px) and (max-width:768px){ .sections-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));} }
+    @media(min-width:769px) and (max-width:1024px){ .sections-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(min-width:1025px){ .sections-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:1200px;margin-inline:auto;} }
+    .section-card {
+      background:var(--card-bg); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.7);
+      border-radius:var(--radius); padding:clamp(1.5rem,4vw,2.2rem); text-align:center;
+      box-shadow:var(--shadow-sm); transition:var(--transition); position:relative; overflow:hidden;
+      min-height:280px; display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .section-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,var(--primary),var(--secondary));
+      transform:scaleX(0); transform-origin:left; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .section-card:hover::before { transform:scaleX(1); }
+    .section-card:hover { transform:translateY(-12px); box-shadow:var(--shadow-lg); border-color:rgba(102,126,234,0.2); }
+    .section-icon { font-size:clamp(2.2rem,6vw,3.2rem); margin-bottom:clamp(0.8rem,2vw,1.1rem); display:block; transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+    .section-card:hover .section-icon { transform:scale(1.18) translateY(-4px); }
+    .section-card h3 { font-size:clamp(1.1rem,3vw,1.4rem); margin-bottom:clamp(0.7rem,2vw,1rem); color:var(--text); }
+    .section-card p { color:var(--text-light); margin-bottom:clamp(1rem,3vw,1.5rem); font-size:clamp(0.88rem,2.2vw,0.98rem); line-height:1.65; flex-grow:1; display:flex; align-items:center; }
+    .section-btn {
+      background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%); color:#fff; border:none;
+      padding:clamp(0.6rem,2.2vw,0.85rem) clamp(1.3rem,3.5vw,1.9rem); border-radius:50px; cursor:pointer;
+      font-size:clamp(0.85rem,2.2vw,0.95rem); transition:var(--transition); text-decoration:none; display:inline-block;
+      min-width:130px; text-align:center; font-weight:600; font-family:inherit;
+      box-shadow:0 4px 14px rgba(102,126,234,0.28);
+    }
+    .section-btn:hover { transform:translateY(-3px); box-shadow:0 8px 22px rgba(102,126,234,0.38); }
+
+    /* ABOUT */
+    .about-section { padding:clamp(3rem,8vw,6rem) 0; background:var(--white); }
+    .about-content { max-width:min(900px,100%); margin:0 auto; }
+    .about-content h2 { font-size:clamp(1.7rem,4.5vw,2.4rem); color:var(--text); margin-bottom:clamp(1.5rem,4vw,2.2rem); text-align:center; }
+    .about-card { background:linear-gradient(145deg,#f5f7ff 0%,#eef0f8 100%); padding:clamp(1.5rem,5vw,3rem); border-radius:var(--radius); box-shadow:var(--shadow-md); position:relative; overflow:hidden; }
+    .about-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--primary),var(--secondary)); }
+    .about-card p { font-size:clamp(0.95rem,2.5vw,1.15rem); line-height:1.9; color:var(--text-light); margin-bottom:clamp(1rem,3vw,1.8rem); text-align:justify; }
+    .mission-card { background:rgba(102,126,234,0.09); border:1px solid rgba(102,126,234,0.16); padding:clamp(1rem,3vw,2rem); border-radius:var(--radius-sm); margin-top:1rem; transition:var(--transition); }
+    .mission-card:hover { background:rgba(102,126,234,0.13); }
+    .mission-card h3 { color:var(--primary); margin-bottom:0.8rem; font-size:clamp(1.1rem,3vw,1.35rem); }
+    .mission-card p { margin-bottom:0; }
+
+    /* SOCIAL */
+    .social-links { margin-top:12px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .social-links a { transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),filter 0.3s ease; display:inline-block; }
+    .social-links a:hover { transform:translateY(-4px) scale(1.15); filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2)); }
+
+    /* FOOTER */
+    footer { background:linear-gradient(135deg,#1e1e2e 0%,#2d2b4e 100%); color:rgba(255,255,255,0.82); text-align:center; padding:clamp(1.5rem,4vw,2.2rem) 0; }
+    footer p { font-size:clamp(0.85rem,2vw,0.95rem); line-height:1.7; }
+    .visitor-badge { margin-top:0.8rem; display:flex; align-items:center; justify-content:center; gap:0.5rem; opacity:0.75; transition:opacity 0.3s ease; }
+    .visitor-badge:hover { opacity:1; }
+    .visitor-badge span { font-size:clamp(0.75rem,1.8vw,0.85rem); color:rgba(255,255,255,0.65); }
+    .visitor-badge img { height:18px; vertical-align:middle; }
+
+    /* SCROLL TOP BTN */
+    #scroll-top {
+      position:fixed; bottom:clamp(1.2rem,4vw,2rem); left:clamp(1.2rem,4vw,2rem);
+      width:clamp(44px,6vw,54px); height:clamp(44px,6vw,54px); border-radius:50%;
+      background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);
+      color:white; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 24px rgba(102,126,234,0.45); z-index:990;
+      transition:opacity 0.35s,transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s;
+    }
+    #scroll-top:hover { transform:translateY(-5px) scale(1.1); box-shadow:0 14px 36px rgba(102,126,234,0.58); }
+    #scroll-top svg { width:clamp(18px,3vw,22px); height:clamp(18px,3vw,22px); }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(32px); transition:opacity 0.65s cubic-bezier(0.4,0,0.2,1),transform 0.65s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* FADE TRANSITION */
+    .fade-enter-active,.fade-leave-active { transition:opacity 0.3s ease; }
+    .fade-enter-from,.fade-leave-to { opacity:0; }
+
+    @media(prefers-reduced-motion:reduce){ *,::before,::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;} }
+    @media(min-width:1400px){ .container{max-width:1400px;} .sections-grid{grid-template-columns:repeat(4,1fr);max-width:none;} }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="lang-content active" data-lang="ku">زانکۆی ڕاپەڕین</span>
-                    <span class="lang-content" data-lang="en">University Raparin</span>
-                    <span class="lang-content" data-lang="ar">جامعة رابەرين</span>
-                </div>
-                <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="ku">کوردی</button>
-                    <button class="lang-btn" data-lang="en">English</button>
-                    <button class="lang-btn" data-lang="ar">العربية</button>
-                </div>
-            </div>
+<div id="app">
+  <!-- SCROLL PROGRESS -->
+  <div id="scroll-progress" :style="{ width: scrollPct + '%' }"></div>
+
+  <!-- ═══ HEADER ═══ -->
+  <header :class="{ scrolled: isScrolled }">
+    <div class="container">
+      <div class="header-content">
+        <a class="logo" href="#">
+          <img src="https://uor.edu.krd/wp-content/uploads/2023/12/4bc51081cc23dcd53e16c02e329e3878-scaled.webp"
+               alt="University of Raparin Logo" class="uor-logo" />
+          <div class="logo-text">
+            <span class="logo-title">{{ t('uniName') }}</span>
+            <span class="logo-subtitle">{{ t('libName') }}</span>
+          </div>
+        </a>
+        <div class="header-divider"></div>
+        <div class="lang-switcher">
+          <!-- Kurdish dropdown -->
+          <div class="ku-group" v-click-outside="closeKuDropdown">
+            <button :class="['ku-main-btn', { active: isKurdish, open: kuDropdownOpen }]"
+                    @click="toggleKuDropdown">
+              {{ t('kurdishLabel') }} <span class="arrow">▼</span>
+            </button>
+            <Transition name="ku-dropdown">
+              <div v-if="kuDropdownOpen" class="ku-dropdown" :style="kuDropdownStyle">
+                <button v-for="d in kurdishDialects" :key="d.key"
+                        :class="['ku-dialect-btn', { active: currentLang === d.key, 'ltr-btn': d.ltr }]"
+                        @click="selectLang(d.key)">
+                  {{ d.label }}<span class="dialect-badge">{{ d.badge }}</span>
+                </button>
+              </div>
+            </Transition>
+          </div>
+          <div class="lang-switcher-inner">
+            <div class="lang-divider"></div>
+            <button v-for="l in otherLangs" :key="l.key"
+                    :class="['lang-btn', { active: currentLang === l.key }]"
+                    @click="selectLang(l.key)">{{ l.label }}</button>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <!-- Kurdish Content -->
-                <div class="lang-content active rtl" data-lang="ku">
-                    <h2> بەخێربێن بۆ</h2>
-                    <br>
-                    <h1>کتێبخانەی ئەلیکترۆنی کۆلێژی زانست</h1>
-                    <p> بەردەست بوون و کۆکردنەوەی هەزاران سەرچاوه و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.</p>
-                </div>
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-mesh"><span></span><span></span><span></span></div>
+    <div class="hero-particles">
+      <div v-for="p in particles" :key="p.id" class="particle" :style="p.style"></div>
+    </div>
+    <div class="container">
+      <Transition name="fade" mode="out-in">
+        <div class="hero-content" :key="currentLang" :dir="isLtr ? 'ltr' : 'rtl'">
+          <h2>{{ t('heroSub') }}</h2>
+          <h1>{{ t('heroTitle') }}</h1>
+          <p>{{ t('heroDesc') }}</p>
+        </div>
+      </Transition>
+    </div>
+  </section>
 
-                <!-- English Content -->
-                <div class="lang-content ltr" data-lang="en">
-                    <h2> Welcome To</h2>
-                    <br>
-                    <h1>College of Science Electronic Library</h1>
-                    <p>Access thousands of scientific resources and books easily and quickly</p>
-                </div>
-
-                <!-- Arabic Content -->
-                <div class="lang-content rtl" data-lang="ar">
-                    <h2>مرحبا بكم في</h2>
-                    <br>
-                    <h1>المكتبة الإلكترونية لكلية العلوم</h1>
-                    <p>الوصول إلى آلاف المصادر والكتب العلمية بسهولة وسرعة</p>
-                </div>
+  <!-- ═══ INTRO ═══ -->
+  <section class="intro-section">
+    <div class="container">
+      <Transition name="fade" mode="out-in">
+        <div class="intro-content" :key="currentLang" :dir="isLtr ? 'ltr' : 'rtl'">
+          <h2>{{ t('introTitle') }}</h2>
+          <div class="intro-card reveal-item">
+            <p>{{ t('intro1') }}</p>
+            <p>{{ t('intro2') }}</p>
+            <p>{{ t('intro3') }}</p>
+            <p>{{ t('intro4') }}</p>
+            <div class="objectives-card reveal-item">
+              <h3>{{ t('objTitle') }}</h3>
+              <ul class="objectives-list">
+                <li v-for="obj in t('objectives')" :key="obj">{{ obj }}</li>
+              </ul>
             </div>
-    </section>
+            <div class="team-card reveal-item">
+              <h3>{{ t('teamTitle') }}</h3>
+              <div class="team-grid">
+                <div v-for="member in teamMembers" :key="member.name" class="team-member">
+                  <h4>{{ member.name }}</h4>
+                  <p>{{ t(member.roleKey) }}</p>
+                  <div v-if="member.social" class="social-links">
+                    <a href="https://t.me/mahmod_faqe" target="_blank" title="Telegram">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#0088cc"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.299z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/Mahmod.Faqe" target="_blank" title="Facebook">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://wa.me/9647704692000" target="_blank" title="WhatsApp">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#25D366"><path d="M12.004 0C5.374 0 .006 5.367.006 11.997c0 2.117.554 4.103 1.522 5.83L0 24l6.335-1.507a11.964 11.964 0 0 0 5.669 1.43h.005C18.634 23.923 24 18.557 24 11.928 24 5.368 18.634 0 12.004 0zm0 21.887a9.916 9.916 0 0 1-5.058-1.383l-.362-.215-3.757.984 1.003-3.651-.236-.374a9.884 9.884 0 0 1-1.517-5.251c0-5.455 4.439-9.893 9.894-9.893 5.455 0 9.893 4.438 9.893 9.893 0 5.456-4.438 9.89-9.86 9.89zm5.422-7.403c-.297-.149-1.758-.867-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51a12.1 12.1 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </div>
+  </section>
 
-    <!-- Introduction Section -->
-    <section class="intro-section">
-        <div class="container">
-            <!-- Kurdish Content -->
-            <div class="lang-content active rtl" data-lang="ku">
-                <div class="intro-content">
-                    <h2>پێشەکی</h2>
-                    <div class="intro-card">
-                        <p>
-                                  بە ناوی خودای بەخشندە و میهرەبان
-                    <p>
-بەخێربێن بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست
-ژینگەیەکی دیجیتاڵییە کە دروستکراوە بۆ ئەوەی گەیشتن بە زانیاری و فێربوون چێژبەخش بێت و توێژینەوە کاراتر بێت بۆ خوێندکاران و ستافی ئەکادیمی. لە سەردەمێکدا کە تەکنەلۆژیا باڵی بەسەر ژیانماندا گرتووە، گەیشتن بە زانیارییە زانستییە متمانەپێکراوەکان بووەتە شتێکی بنەڕەتی بۆ سەرکەوتنی ئەکادیمی و گەشەکردنی هزری.                        </p>
-                        <p>
-ئەم کتێبخانە ئەلیکترۆنییە کۆمەڵێک سەرچاوەی زانستی بەرفراوان پێشکەش دەکات، لەوانە کتێبی خوێندن، توێژینەوەی زانستی و ئەکادیمی، گۆڤاری ئەکادیمی، کەرەستەی وانەوتنەوە و ئاماژەی پەروەردەیی، کە هەموویان لە یەک پلاتفۆرمی گونجاودا بەردەستن. ڕێگە بە بەکارهێنەران دەدات لە هەر کاتێکدا و لە هەر شوێنێکدا بە دوای زانیارییەکان بگەڕێن، کە پشتگیری لە هەردوو فێربوونی سەربەخۆ و چالاکییەکانی توێژینەوەی پێشکەوتوو دەکات. هەموو ئەمانە لە ڕێگەی QR کۆدەوە کە بە شێوازێکی ئەلکترۆنی ئامادەکراوە.                        </p>
-                        <p>
-                            کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی، نیشاندەری پەیوەندی نێوان زانست و تەکنەلۆژیایە. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە، لە هەمان کاتدا یارمەتی خوێندکاران و توێژەران دەدات کە لە پێشکەوتنە زانستییە مۆدێرنەکاندا ئاگاداربن.
-                            <p>
-                                ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانە کە زانیاری بە ئازادی تێدا بەردەست بکرێت، بیرۆکەکان پەرەی پێبدرێت، و زانایانی داهاتوو بەهێز بکرێن بۆ دۆزینەوە و داهێنان و بەشداریکردن لە پێشکەوتنی زانست و کۆمەڵگا.ئەم سیستەمە مۆدێرنە بۆ خزمەتی خوێنەرانی کۆلێژی زانست دروست کراوە.
-                                <p>
-    
-                        <div class="objectives-card">
-    <h3>ئامانجەکانی پڕۆژەکە:</h3>
-    <ul class="objectives-list">
-        <li>🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ</li>
-        <li>⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی</li>
-        <li>📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن</li>
-        <li>📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن و خوێنەران</li>
-        <li>👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە سەرچاوەکانی پەرتووکخانەی دیجیتاڵی</li>
-        <li>⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی</li>
-        <li>🌐 بەردەست بوونی پەرتووک و سەرچاوەکان بە هەر سێ زمانی (کوردی، ئینگلیزی، عەرەبی)</li>
-    </ul>
+  <!-- ═══ MAIN LIBRARY 1 ═══ -->
+  <section class="library-sections">
+    <div class="container">
+      <Transition name="fade" mode="out-in">
+        <div class="main-library reveal-item" :key="currentLang" :dir="isLtr ? 'ltr' : 'rtl'">
+          <h2>{{ t('mainLibTitle') }}</h2>
+          <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d"
+             class="main-library-btn" target="_blank">{{ t('enterLib1') }}</a>
+        </div>
+      </Transition>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN LIBRARY 2 + DEPARTMENTS ═══ -->
+  <section class="library-sections">
+    <div class="container">
+      <Transition name="fade" mode="out-in">
+        <div :key="currentLang" :dir="isLtr ? 'ltr' : 'rtl'">
+          <div class="main-library reveal-item">
+            <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC"
+               class="main-library-btn" target="_blank">{{ t('enterLib2') }}</a>
+          </div>
+          <h2 style="text-align:center;margin-bottom:2.5rem;font-size:clamp(1.7rem,4.5vw,2.4rem);">
+            {{ t('deptTitle') }}
+          </h2>
+          <div class="sections-grid">
+            <div v-for="(dept, i) in departments" :key="dept.key"
+                 class="section-card reveal-item" :style="{ transitionDelay: (i * 70) + 'ms' }">
+              <span class="section-icon">{{ dept.icon }}</span>
+              <h3>{{ t(dept.nameKey) }}</h3>
+              <p>{{ t(dept.descKey) }}</p>
+              <a :href="dept.link" class="section-btn" target="_blank">{{ t('enterDept') }}</a>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about-section">
+    <div class="container">
+      <Transition name="fade" mode="out-in">
+        <div class="about-content" :key="currentLang" :dir="isLtr ? 'ltr' : 'rtl'">
+          <h2>{{ t('aboutTitle') }}</h2>
+          <div class="about-card reveal-item">
+            <p>{{ t('aboutText') }}</p>
+            <div class="mission-card">
+              <h3>{{ t('missionTitle') }}</h3>
+              <p>{{ t('missionText') }}</p>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer :dir="isLtr ? 'ltr' : 'rtl'">
+    <div class="container">
+      <Transition name="fade" mode="out-in">
+        <p :key="currentLang">{{ t('footerText') }} &copy; {{ currentYear }}</p>
+      </Transition>
+      <div class="visitor-badge">
+        <span>👁</span>
+        <a href="https://mahmodfaqe.goatcounter.com" target="_blank"
+           style="display:flex;align-items:center;gap:0.4rem;text-decoration:none;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);">
+          <img src="https://mahmodfaqe.goatcounter.com/counter/TOTAL.svg" alt="visitor count" />
+          <span>{{ t('visitors') }}</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <Transition name="fade">
+    <button v-if="showScrollTop" id="scroll-top" @click="scrollToTop" :title="t('scrollTopTitle')">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+  </Transition>
 </div>
-                        <div class="team-card">
-                            <h3>ئامادەکراوە لەلایەن:</h3>
-                            <div class="team-grid">
-                                <div class="team-member">
-                                    <h4>ژیاو یوسف حسێن</h4>
-                                    <p>خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>نیار قادر ڕەسوڵ</h4>
-                                    <p>خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                    <p>خوێندکاری بەشی بایەلۆجی ـ گەشەپێدەری وێبسایت</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-           <!-- English Content -->
-<div class="lang-content ltr" data-lang="en">
-    <div class="intro-content">
-        <h2>Introduction</h2>
-        <div class="intro-card">
-            <p>
-In the name of God, the most gracious, the most merciful
-            </p>
-            <p>
-                Today, readers live in a world where information becomes available faster than ever before. Waiting for a library and searching through shelves is no longer sufficient to meet the needs of modern learning. Therefore, feeling our responsibility toward science and books, we have undertaken the collection of thousands of sources and scientific books to serve the educational and scientific aspects of our readers.
-            </p>
-            <p>
-                The electronic library is a library without walls, providing access to thousands of digital books, academic journals, and research for readers. All of these are accessible through QR codes that have been prepared electronically. This modern system has been created to serve the readers of the College of Science.
-            </p>
-        </div>
-                        <div class="objectives-card">
-    <h3>Project Objectives:</h3>
-    <ul class="objectives-list">
-        <li>🎓 Supporting online learning at universities</li>
-        <li>⚡ Quick and easy access to scientific resources</li>
-        <li>📖 Gathering thousands of scientific resources in one place</li>
-        <li>📱 Utilizing modern technology {QR code} to serve education and students</li>
-        <li>👨‍🏫 Benefiting teachers and students from digital library resources</li>
-        <li>⏰ Filling students' free time with scientific projects</li>
-        <li>🌐 Availability of books and resources in all three languages (Kurdish, English, Arabic)</li>
-    </ul>
-</div>
-                        <div class="team-card">
-                            <h3>Prepared by:</h3>
-                            <div class="team-grid">
-                                <div class="team-member">
-                                    <h4>ZHYAW YOUSF HUSAIN</h4>
-                                    <p>Biology Department Student - Provision of books</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>NYAR QADR RASUL</h4>
-                                    <p>Biology Department Student - Organization of the library</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>MAHMOOD KHDIR FAQE RASUL</h4>
-                                    <p>Biology Department Student - Web Developer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<script>
+const { createApp, ref, computed, onMounted, onUnmounted, nextTick } = Vue
 
-            <!-- Arabic Content -->
-<div class="lang-content rtl" data-lang="ar">
-    <div class="intro-content">
-        <h2>مقدمة</h2>
-        <div class="intro-card">
-            <p>
-                بسم الله الرحمن الرحيم
-            </p>
-            <p>
-                يعيش القراء اليوم في عالم تصبح فيه المعلومات متاحة بشكل أسرع من أي وقت مضى. لم يعد انتظار المكتبة والبحث بين الرفوف كافياً لتلبية احتياجات التعلم الحديث. لذلك، إحساساً منا بالمسؤولية تجاه العلم والكتب، قمنا بجمع آلاف المصادر والكتب العلمية لخدمة الجانب التعليمي والعلمي لقرائنا.
-            </p>
-            <p>
-                المكتبة الإلكترونية هي مكتبة بلا جدران، توفر الوصول إلى آلاف الكتب الرقمية والمجلات الأكاديمية والبحوث للقراء. كل هذا متاح من خلال رموز QR التي تم إعدادها إلكترونياً. تم إنشاء هذا النظام الحديث لخدمة قراء كلية العلوم.
-            </p>
-        </div>
-                        <div class="objectives-card">
-    <h3>أهداف المشروع:</h3>
-    <ul class="objectives-list">
-        <li>🎓 دعم التعلم الإلكتروني في الجامعات</li>
-        <li>⚡ الوصول السريع والسهل إلى الموارد العلمية</li>
-        <li>📖 جمع آلاف الموارد العلمية في مكان واحد</li>
-        <li>📱 استخدام التكنولوجيا الحديثة {رموز QR} لخدمة التعليم والطلاب</li>
-        <li>👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية</li>
-        <li>⏰ ملء أوقات فراغ الطلاب بمشاريع علمية</li>
-        <li>🌐 توفر الكتب والموارد بجميع اللغات الثلاث (الكردية، الإنجليزية، العربية)</li>
-    </ul>
-</div>
- 
+// ─── i18n translations ───
+const translations = {
+  'ku-sorani': {
+    uniName: 'زانکۆی ڕاپەڕین', libName: 'کتێبخانەی ئەلیکترۆنی',
+    kurdishLabel: 'کوردی',
+    heroSub: 'بەخێربێن بۆ', heroTitle: 'کتێبخانەی ئەلیکترۆنی کۆلێژی زانست',
+    heroDesc: 'بەردەستبوون و کۆکردنەوەی هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.',
+    introTitle: 'پێشەکی',
+    intro1: 'بەخێربێن بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ژینگەیەکی دیجیتاڵییە کە دروستکراوە بۆ ئەوەی گەیشتن بە زانیاری و فێربوون چێژبەخش بێت و توێژینەوە کاراتر بێت بۆ خوێندکاران و ستافی ئەکادیمی.',
+    intro2: 'ئەم کتێبخانە ئەلیکترۆنییە کۆمەڵێک سەرچاوەی زانستی بەرفراوان پێشکەش دەکات، لەوانە کتێبی خوێندن، توێژینەوەی زانستی و ئەکادیمی، گۆڤاری ئەکادیمی، کەرەستەی وانەوتنەوە و ئاماژەی پەروەردەیی، کە هەموویان لە یەک پلاتفۆرمی گونجاودا بەردەستن.',
+    intro3: 'کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی، نیشاندەری پەیوەندی نێوان زانست و تەکنەلۆژیایە.',
+    intro4: 'ئەرکی ئێمە بنیاتنانی بۆشاییەکی ئەکادیمی پشتیوانەیە کە زانیاری بە ئازادی تێدا بەردەست بکرێت.',
+    objTitle: 'ئامانجەکانی پڕۆژەکە:',
+    objectives: ['🎓 پشتگیریکردنی خوێندنی ئۆنلاین لە زانکۆ','⚡ بەردەستبوونی سەرچاوەی زانستی بە خێرایی و ئاسانی','📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن','📱 بەکارهێنانی تەکنەلۆژیای سەردەم {QR code} بۆ خزمەتی خوێندن','👨‍🏫 سوودمەندبوونی مامۆستایان و خوێندکاران لە پەرتووکخانەی دیجیتاڵی','⏰ پڕکردنەوەی کاتە بەتاڵەکانی خوێندکاران بە پڕۆژەیەکی زانستی','🌐 بەردەستبوونی پەرتووک و سەرچاوەکان بە هەموو زمانەکان'],
+    teamTitle: 'ئامادەکراوە لەلایەن:',
+    role1: 'خوێندکاری بەشی بایەلۆجی - دابینکردنی پەرتووک',
+    role2: 'خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە',
+    role3: 'خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت',
+    mainLibTitle: 'کتێبخانەی سەرەکی', enterLib1: 'چونە ناو کتێبخانەی گشتی ١', enterLib2: 'چونە ناو کتێبخانەی گشتی ٢',
+    deptTitle: 'بەشە زانستییەکان', enterDept: 'چونە ناو بەش',
+    dept1: 'بەشی بایەلۆجی', dept1desc: 'پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر',
+    dept2: 'بەشی کیمیا', dept2desc: 'سەرچاوەکانی کیمیای ئەندامی، نا ئەندامی، فیزیکی و کیمیای تاقیگەیی',
+    dept3: 'بەشی فیزیا', dept3desc: 'پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی',
+    dept4: 'زانستی تاقیگەی پزیشکی', dept4desc: 'سەرچاوەکانی شیکردنەوەی کلینیکی، میکرۆبایەلۆجی پزیشکی و ڕێنماییەکان',
+    dept5: 'کتێبخانەی ئەندازیاری شارستانی', dept5desc: 'پەرتووکەکانی بواری ئەندازیاری شارستانی',
+    aboutTitle: '👥 دەربارەی ئێمە',
+    aboutText: 'ئێمە وەک تیمی BioNova کە سێ خوێندکاری زانکۆین خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەوەش ئیلهامبەخش بوو بۆ دروستکردنی ئەم پەرتووکخانە ئەلیکترۆنییە.',
+    missionTitle: 'ئامانجی ئێمە:', missionText: 'کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و دابینکردنی یەک پلاتفۆرم کە هەموو پێداویستییەکانی ئەکادیمی دابین بکات بە شێوەیەکی مۆدێرن و سەردەمیانە.',
+    footerText: 'کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین | هەموو مافەکان پارێزراون',
+    visitors: 'سەردانکەر', scrollTopTitle: 'بگەڕێوە سەرەوە',
+  },
+  'ku-badini': {
+    uniName: 'زانینگەها ڕاپەرین', libName: 'پرتوکخانەیا ئەلیکترۆنیک',
+    kurdishLabel: 'کوردی',
+    heroSub: 'بخێر هاتن بۆ', heroTitle: 'کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ',
+    heroDesc: 'بهێسانی و زو پەیدابوونا بی هەزاران چاوکانی و پەرتوکین زانستی.',
+    introTitle: 'پێشگرتن',
+    intro1: 'بخێر هاتن بۆ کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ — هاوێردۆرەکا دیجیتال کو ژ بۆ هێسانکرنا گهیشتنا ئاگەهداری و فێربوونێ هاتیە چێکرن.',
+    intro2: 'ئڤ پرتوکخانەیا ئەلیکترۆنیک جوربەجور چاوکانیێن زانستی پێشکێش دکە، د ناڤ دا پرتوکێن دەرسێ، لێکۆلینێن زانستی و ئەکادیمی، کۆڤارێن ئەکادیمی.',
+    intro3: 'پرتوکخانەیا ئەلیکترۆنیک بیاتر ئە ژ تەنە بەرھەڤەکا دیجیتال. هاندەرا بیرکرنا ڕەخنەگر و فێربوونا بەردەوامە.',
+    intro4: 'میسیونا مە ئەوە کو ئەم قادەکا ئەکادیمی یا هاڤکار بیاڤرینین.',
+    objTitle: 'ئارمانجێن پڕۆژەیێ:',
+    objectives: ['🎓 پشتگیریا پەروەردەهیا سەرھێل ل زانینگەھێ','⚡ هەبوونا بیلەز و هێسانا چاوکانیێن زانستی','📖 بەرھەڤکرنا بی هەزاران چاوکانیێن زانستی ل یەک جهێکی','📱 بکارئینانا تەکنەلۆژیا نووژەن {کۆدا QR}','👨‍🏫 سوودێن مامۆستا و خوێندکاران ژ کتێبخانەیێن دیجیتال','⏰ داگیرتنا دەمێ ڤالا یا خوێندکاران بی پرۆژەک زانستی','🌐 هەبوونا کتێب و چاوکانییان بی هەمی زمانان'],
+    teamTitle: 'هاتیە ئامادەکرن ژ هێلا:', role1: 'خینکارێ بایۆلۆجیێ - دابینکرنا پرتوکان', role2: 'خینکارێ بایۆلۆجیێ - ڕێکخستنا پرتوکخانەیێ', role3: 'خینکارێ بایۆلۆجیێ - پێشدەبرێ مالپەرێ',
+    mainLibTitle: 'کتێبخانەیا سەرەکە', enterLib1: 'بکەڤن کتێبخانەیا سەرەکە ١', enterLib2: 'بکەڤن کتێبخانەیا سەرەکە ٢',
+    deptTitle: 'بەشێن زانستی', enterDept: 'بکەڤن بەشێ',
+    dept1: 'بەشێ بایۆلۆجیێ', dept1desc: 'پرتوک و چاوکانیێن زانستێن ژیانێ، جینیتیک، مایکرۆبایۆلۆجی و زیاتر',
+    dept2: 'بەشێ کیمیایێ', dept2desc: 'چاوکانیێن کیمیایا ئەندامی، نائەندامی، فیزیکی و تاقیگەیی',
+    dept3: 'بەشێ فیزیایێ', dept3desc: 'پرتوکێن فیزیایا کلاسیک، مودێرن، کوانتوم و تاقیگەیی',
+    dept4: 'زانستێن تاقیگەیا پزیشکی', dept4desc: 'چاوکانیێن تەهلیلێ کلینیکی، مایکرۆبایۆلۆجیا پزیشکی',
+    dept5: 'پرتوکخانەیا ئەندازیاریا شاری', dept5desc: 'پرتوک و چاوکانیێن بوارێ ئەندازیاریا شاری',
+    aboutTitle: '👥 دەربارا مە',
+    aboutText: 'وەک تیما BioNova یا ژ سێ خوێندکارێن زانینگەهێ پێک تێ، ئەم ژ بۆ فێربوون و تەکنەلۆژیێ هەوەسەکا هەڤپار پارڤە دکین.',
+    missionTitle: 'ئارمانجا مە:', missionText: 'ڤەکرنا دەریێ ئاگەهداریێ ژ بۆ هەموو خوێندکاران و پەیداکرنا پلاتفۆرمەک کو بی ئاڤایەکی مودێرن و سەردەمی هەموو پێداڤیێن ئەکادیمی پێک تینە.',
+    footerText: 'کتێبخانەیا ئەلیکترۆنیکی یا کۆلێژا زانستێ - زانینگەها ڕاپەرین | هەموو ماف پاراستی نە',
+    visitors: 'سەردانکار', scrollTopTitle: 'بگەڕێ سەرەوە',
+  },
+  'ku-badini-lat': {
+    uniName: 'Zanko Raperin', libName: 'Kitêbxaneya Elektronîkî',
+    kurdishLabel: 'Kurdî',
+    heroSub: 'Bi xêr hatin', heroTitle: 'Kitêbxaneya Elektronîkî ya Kolêja Zanistê',
+    heroDesc: 'Bigihîje hezaran çavkanî û pirtûkên zanistî bi awayekî hêsan û bilez.',
+    introTitle: 'Pêşgotin',
+    intro1: 'Bi xêr hatin bo Kitêbxaneya Elektronîkî ya Kolêja Zanistê — ev jî hawîrdorek dîjîtal e ku ji bo ku gihîştina zaniariyê û fêrbûn kêfxweş bibe hat çêkirin.',
+    intro2: 'Ev kitêbxaneya elektronîkî gelek çavkaniyên zanistî pêşkêş dike, di nav wan de pirtûkên xwendinê, lêkolînên zanistî û akademîk, kovarên akademîk.',
+    intro3: 'Kitêbxaneya elektronîkî ji tena berhevokeke dîjîtal zêdetir e. Teşwîqa ramanêna rexnegir û fêrbûna domdar e.',
+    intro4: 'Mîsyona me avakirina cîhekî akademîk piştgirî ye.',
+    objTitle: 'Armancên Projeyê:',
+    objectives: ['🎓 Piştgirîkirina xwendina serhêl li zanko','⚡ Gihîştina zû û hêsan bo çavkaniyên zanistî','📖 Berhevkirina hezaran çavkaniyên zanistî di yek cihî de','📱 Bikaranîna teknolojiya nû {QR koda} bo xizmeta xwendinê','👨‍🏫 Sûdwergirtina mamoste û xwendekaran ji kitêbxaneya dîjîtal','⏰ Tijîkirina demên vala yên xwendekaran bi projeyek zanistî','🌐 Berdestbûna pirtûk û çavkaniyan bi hemû zimanan'],
+    teamTitle: 'Amadekirî ji aliyê:', role1: 'Xwendekarê Beşê Biyolojiyê - Dabînkirina pirtûkan', role2: 'Xwendekarê Beşê Biyolojiyê - Rêxistina kitêbxanê', role3: 'Xwendekarê Beşê Biyolojiyê - Pêşxistinkarê malperê',
+    mainLibTitle: 'Kitêbxaneya Sereke', enterLib1: 'Têkeve Kitêbxaneya Giştî 1', enterLib2: 'Têkeve Kitêbxaneya Giştî 2',
+    deptTitle: 'Beşên Zanistî', enterDept: 'Têkeve Beşê',
+    dept1: 'Beşa Biyolojiyê', dept1desc: 'Pirtûk û çavkaniyên zanistên jiyanê, genetîk, mîkrobiyolojî û zêdetir',
+    dept2: 'Beşa Kimyayê', dept2desc: 'Çavkaniyên kimyaya organîk, neorganîk, fîzîkî û laboratuwarê',
+    dept3: 'Beşa Fîzîkê', dept3desc: 'Pirtûkên fîzîka klasîk, modern, kuantum û ezmûnî',
+    dept4: 'Zanistên Laboratuwara Bijîşkî', dept4desc: 'Çavkaniyên analîza klînîkî, mîkrobiyolojiya bijîşkî',
+    dept5: 'Kitêbxaneya Endezyariya Sivîl', dept5desc: 'Pirtûk û çavkaniyên qada endezyariya sivîl',
+    aboutTitle: '👥 Derbarê Me',
+    aboutText: 'Em wek tîma BioNova, sê xwendekarên zanko ne ku xweşiya hevbeş ji bo fêrbûn û teknolojiyê parve dikin.',
+    missionTitle: 'Mîsyona Me:', missionText: 'Deriyê zaniariyê ji bo her xwendekarekî vekirin û peydakirina platformek berfireh ku hemû hewcedariyên akademîk bi awayekî nûjen û hemdem bicîh bîne.',
+    footerText: 'Kitêbxaneya Elektronîkî ya Kolêja Zanistê - Zanko Raperin | Hemû maf parastî ne',
+    visitors: 'Serdankar', scrollTopTitle: 'Vegere Jor',
+  },
+  'ku-hawrami': {
+    uniName: 'زانکۆی ڕاپەڕین', libName: 'کتێبخانەی ئەلیکترۆنی',
+    kurdishLabel: 'کوردی',
+    heroSub: 'خۆش بگەیەیت بۆ', heroTitle: 'کتێبخانەی ئەلیکترۆنی کۆلێژی زانست',
+    heroDesc: 'دەستڕەسیەتی بە هەزاران سەرچاوە و پەرتووکی زانستی بە شێوەیەکی ئاسان و خێرا.',
+    introTitle: 'پێشەکی',
+    intro1: 'خۆش بگەیەیت بۆ کتێبخانەی ئەلیکترۆنی کۆلێژی زانست — ئەمە یەک ژینگەی دیجیتاڵیە کە دروستکراوە بۆ ئەوەی دەستڕەسیەتی بە زانیاری و فێربوون ئاسان ببێت.',
+    intro2: 'ئەمە کتێبخانەی ئەلیکترۆنیە یەک کۆمەڵ سەرچاوەی زانستی بەرفراوان پێشکەش دەکات — هەموویان لە یەک پلاتفۆرمی گونجاودا ئامادەن.',
+    intro3: 'کتێبخانەی ئەلیکترۆنی زیاترە لە تەنها کۆمەڵەیەکی دیجیتاڵی. هاندەری بیرکردنەوەی ڕەخنەگرانە و فێربوونی بەردەوامە.',
+    intro4: 'ئەرکمان ئەوەیە کە یەک بۆشایی ئەکادیمی هاوکاری دروست بکەین.',
+    objTitle: 'ئامانجەکانی پرۆژەکە:',
+    objectives: ['🎓 پشتگیری کردن بە خوێندنی ئۆنلاین لە زانکۆ','⚡ دەستڕەسیەتی خێرا و ئاسان بە سەرچاوەی زانستی','📖 کۆکردنەوەی هەزاران سەرچاوەی زانستی لە یەک شوێن','📱 بەکارهێنانی تەکنەلۆژیای نوی {QR code}','👨‍🏫 سوودگرتنی مامۆستایان و خوێندکاران لە کتێبخانەی دیجیتاڵ','⏰ پڕکردنی کاتی بەتاڵی خوێندکاران بە پرۆژەیەکی زانستی','🌐 بەردەستبوونی کتێب و سەرچاوەکان بە هەموو زمانەکان'],
+    teamTitle: 'ئامادەکراوە لەلایەن:', role1: 'خوێندکاری بەشی بایەلۆجی - دابینکردنی کتێب', role2: 'خوێندکاری بەشی بایەلۆجی - ڕێکخستنی کتێبخانە', role3: 'خوێندکاری بەشی بایەلۆجی - گەشەپێدەری وێبسایت',
+    mainLibTitle: 'کتێبخانەی سەرەکی', enterLib1: 'بچۆ ناو کتێبخانەی گشتی ١', enterLib2: 'بچۆ ناو کتێبخانەی گشتی ٢',
+    deptTitle: 'بەشەکانی زانستی', enterDept: 'بچۆ ناو بەش',
+    dept1: 'بەشی بایەلۆجی', dept1desc: 'کتێب و سەرچاوەکانی زانستی ژیان، ژینیتیک، مایکرۆبایەلۆجی و زیاتر',
+    dept2: 'بەشی کیمیا', dept2desc: 'سەرچاوەکانی کیمیای ئەندامی، نائەندامی، فیزیکی و تاقیگەیی',
+    dept3: 'بەشی فیزیکا', dept3desc: 'کتێبەکانی فیزیکای کلاسیک، مۆدێرن، کوانتوم و تاقیگەیی',
+    dept4: 'زانستی تاقیگەی پزیشکی', dept4desc: 'سەرچاوەکانی تەهلیلی کلینیکی، مایکرۆبایەلۆجی پزیشکی',
+    dept5: 'کتێبخانەی ئەندازیاری شارستانی', dept5desc: 'کتێبەکانی بواری ئەندازیاری شارستانی',
+    aboutTitle: '👥 دەربارەی ئێمە',
+    aboutText: 'ئێمە وەک تیمی BioNova سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژی هەیە.',
+    missionTitle: 'ئامانجمان:', missionText: 'کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و پێشکەشکردنی یەک پلاتفۆرمی گشتگیر بە شێوازێکی مۆدێرن و سەردەمیانە.',
+    footerText: 'کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین | هەموو مافەکان پارێزراون',
+    visitors: 'سەردانکەر', scrollTopTitle: 'بگەڕێوە سەرەوە',
+  },
+  'en': {
+    uniName: 'University of Raparin', libName: 'Electronic Library',
+    kurdishLabel: 'Kurdish',
+    heroSub: 'Welcome To', heroTitle: 'College of Science Electronic Library',
+    heroDesc: 'Access and gather thousands of scientific resources and books easily and quickly.',
+    introTitle: 'Introduction',
+    intro1: 'Welcome to the College of Science Electronic Library — a digital environment created to make access to knowledge and learning enjoyable, and to make research more effective for students and academic staff.',
+    intro2: 'This electronic library offers a wide range of scientific resources, including textbooks, scientific and academic research, academic journals, teaching materials and educational references — all available on a single convenient platform.',
+    intro3: 'The electronic library is more than just a digital collection — it encourages critical thinking and lifelong learning.',
+    intro4: 'Our mission is to build a supportive academic space where knowledge is freely accessible.',
+    objTitle: 'Project Objectives:',
+    objectives: ['🎓 Supporting online learning at universities','⚡ Quick and easy access to scientific resources','📖 Gathering thousands of scientific resources in one place','📱 Utilizing modern technology {QR code} to serve education','👨‍🏫 Benefiting teachers and students from digital library resources','⏰ Filling students\' free time with scientific projects','🌐 Availability of books and resources in all languages'],
+    teamTitle: 'Prepared by:', role1: 'Biology Department Student - Provision of books', role2: 'Biology Department Student - Organization of the library', role3: 'Biology Department Student - Web Developer',
+    mainLibTitle: 'Main Library', enterLib1: 'Enter General Library 1', enterLib2: 'Enter General Library 2',
+    deptTitle: 'Scientific Departments', enterDept: 'Enter Department',
+    dept1: 'Biology Department', dept1desc: 'Books and resources in life sciences, genetics, microbiology and more',
+    dept2: 'Chemistry Department', dept2desc: 'Resources for organic, inorganic, physical and laboratory chemistry',
+    dept3: 'Physics Department', dept3desc: 'Books on classical, modern, quantum and experimental physics',
+    dept4: 'Medical Laboratory Science', dept4desc: 'Resources for clinical analysis, medical microbiology and guidelines',
+    dept5: 'Civil Engineering Library', dept5desc: 'Books and resources in the field of civil engineering',
+    aboutTitle: '👥 About Us',
+    aboutText: 'We are three university students as BioNova team who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality resources in one place was very difficult. This inspired us to create this electronic library.',
+    missionTitle: 'Our Mission:', missionText: 'To open the door of knowledge to every student and provide a platform that meets all academic needs in a modern and contemporary way.',
+    footerText: 'College of Science Electronic Library - Raparin University | All rights reserved',
+    visitors: 'Visitors', scrollTopTitle: 'Back to Top',
+  },
+  'ar': {
+    uniName: 'جامعة رابەرين', libName: 'المكتبة الإلكترونية',
+    kurdishLabel: 'الكردية',
+    heroSub: 'مرحبا بكم في', heroTitle: 'المكتبة الإلكترونية لكلية العلوم',
+    heroDesc: 'الوصول وتجميع آلاف المصادر والكتب العلمية بسهولة وسرعة.',
+    introTitle: 'مقدمة',
+    intro1: 'مرحباً بكم في المكتبة الإلكترونية لكلية العلوم — بيئة رقمية أُنشئت لجعل الوصول إلى المعرفة والتعلم ممتعاً.',
+    intro2: 'تقدم هذه المكتبة الإلكترونية مجموعة واسعة من المصادر العلمية، تشمل الكتب الدراسية، والبحوث العلمية والأكاديمية، والمجلات المتخصصة.',
+    intro3: 'المكتبة الإلكترونية أكثر من مجرد مجموعة رقمية. إنها تشجع على التفكير النقدي والتعلم المستمر.',
+    intro4: 'مهمتنا هي بناء فضاء أكاديمي داعم تكون فيه المعرفة متاحة بحرية.',
+    objTitle: 'أهداف المشروع:',
+    objectives: ['🎓 دعم التعلم الإلكتروني في الجامعات','⚡ الوصول السريع والسهل إلى الموارد العلمية','📖 جمع آلاف الموارد العلمية في مكان واحد','📱 استخدام التكنولوجيا الحديثة {رموز QR}','👨‍🏫 استفادة المدرسين والطلاب من موارد المكتبة الرقمية','⏰ ملء أوقات فراغ الطلاب بمشاريع علمية','🌐 توفر الكتب والموارد بجميع اللغات'],
+    teamTitle: 'إعداد:', role1: 'طالب قسم علوم الحياة - توفير الكتب', role2: 'طالبة قسم علوم الحياة - تنظيم المكتبة', role3: 'طالب قسم علوم الحياة - مطور مواقع الويب',
+    mainLibTitle: 'المكتبة الرئيسية', enterLib1: 'دخول إلى المكتبة العامة ١', enterLib2: 'دخول إلى المكتبة العامة ٢',
+    deptTitle: 'الأقسام العلمية', enterDept: 'دخول القسم',
+    dept1: 'قسم علوم الحياة', dept1desc: 'الكتب والمصادر في علوم الحياة والوراثة والأحياء الدقيقة',
+    dept2: 'قسم الكيمياء', dept2desc: 'مصادر الكيمياء العضوية وغير العضوية والفيزيائية',
+    dept3: 'قسم الفيزياء', dept3desc: 'كتب الفيزياء الكلاسيكية والحديثة والكمية',
+    dept4: 'علوم المختبرات الطبية', dept4desc: 'مصادر التحليل السريري والأحياء الدقيقة الطبية',
+    dept5: 'مكتبة الهندسة المدنية', dept5desc: 'الكتب والمصادر في مجال الهندسة المدنية',
+    aboutTitle: '👥 معلومات عنا',
+    aboutText: 'نحن فريق BioNova المكوّن من ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا.',
+    missionTitle: 'مهمتنا:', missionText: 'فتح باب المعرفة لكل طالب وتوفير منصة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.',
+    footerText: 'المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين | جميع الحقوق محفوظة',
+    visitors: 'زائر', scrollTopTitle: 'العودة للأعلى',
+  },
+  'fa': {
+    uniName: 'دانشگاه راپەرین', libName: 'کتابخانه الکترونیکی',
+    kurdishLabel: 'کردی',
+    heroSub: 'خوش آمدید به', heroTitle: 'کتابخانه الکترونیکی دانشکده علوم',
+    heroDesc: 'دسترسی و گردآوری هزاران منبع و کتاب علمی به آسانی و سرعت.',
+    introTitle: 'مقدمه',
+    intro1: 'به کتابخانه الکترونیکی دانشکده علوم خوش آمدید — یک محیط دیجیتال که برای آسان‌تر کردن دسترسی به دانش و لذت‌بخش‌تر کردن یادگیری طراحی شده است.',
+    intro2: 'این کتابخانه الکترونیکی طیف گسترده‌ای از منابع علمی ارائه می‌دهد — همه در یک پلتفرم واحد در دسترس هستند.',
+    intro3: 'کتابخانه الکترونیکی بیش از یک مجموعه دیجیتال است. تفکر انتقادی و یادگیری مستمر را تشویق می‌کند.',
+    intro4: 'مأموریت ما ایجاد یک فضای دانشگاهی حمایتگر است.',
+    objTitle: 'اهداف پروژه:',
+    objectives: ['🎓 حمایت از یادگیری آنلاین در دانشگاه‌ها','⚡ دسترسی سریع و آسان به منابع علمی','📖 گردآوری هزاران منبع علمی در یک مکان','📱 استفاده از فناوری مدرن {QR کد}','👨‍🏫 بهره‌مندی اساتید و دانشجویان از منابع کتابخانه دیجیتال','⏰ پر کردن اوقات فراغت دانشجویان با پروژه‌های علمی','🌐 در دسترس بودن کتاب‌ها و منابع به همه زبان‌ها'],
+    teamTitle: 'تهیه شده توسط:', role1: 'دانشجوی گروه زیست‌شناسی - تأمین کتاب‌ها', role2: 'دانشجوی گروه زیست‌شناسی - سازماندهی کتابخانه', role3: 'دانشجوی گروه زیست‌شناسی - توسعه‌دهنده وب',
+    mainLibTitle: 'کتابخانه اصلی', enterLib1: 'ورود به کتابخانه عمومی ۱', enterLib2: 'ورود به کتابخانه عمومی ۲',
+    deptTitle: 'بخش‌های علمی', enterDept: 'ورود به بخش',
+    dept1: 'بخش زیست‌شناسی', dept1desc: 'کتاب‌ها و منابع در زمینه علوم زیستی، ژنتیک، میکروبیولوژی',
+    dept2: 'بخش شیمی', dept2desc: 'منابع شیمی آلی، معدنی، فیزیکی و آزمایشگاهی',
+    dept3: 'بخش فیزیک', dept3desc: 'کتاب‌های فیزیک کلاسیک، مدرن، کوانتوم و تجربی',
+    dept4: 'علوم آزمایشگاه پزشکی', dept4desc: 'منابع آنالیز بالینی، میکروبیولوژی پزشکی',
+    dept5: 'کتابخانه مهندسی عمران', dept5desc: 'کتاب‌ها و منابع در حوزه مهندسی عمران',
+    aboutTitle: '👥 درباره ما',
+    aboutText: 'ما تیم BioNova هستیم، سه دانشجوی دانشگاه که علاقه مشترکی به یادگیری و فناوری داریم.',
+    missionTitle: 'مأموریت ما:', missionText: 'باز کردن درِ دانش به روی هر دانشجو و ارائه یک پلتفرم که تمام نیازهای دانشگاهی را به شیوه‌ای مدرن و معاصر برطرف کند.',
+    footerText: 'کتابخانه الکترونیکی دانشکده علوم - دانشگاه راپەرین | تمامی حقوق محفوظ است',
+    visitors: 'بازدیدکننده', scrollTopTitle: 'برگشت به بالا',
+  },
+  'tr': {
+    uniName: 'Raparin Üniversitesi', libName: 'Elektronik Kütüphane',
+    kurdishLabel: 'Kürtçe',
+    heroSub: 'Hoş Geldiniz', heroTitle: 'Fen Fakültesi Elektronik Kütüphanesi',
+    heroDesc: 'Binlerce bilimsel kaynak ve kitaba kolayca ve hızlıca erişin ve toplayın.',
+    introTitle: 'Giriş',
+    intro1: 'Fen Fakültesi Elektronik Kütüphanesi\'ne hoş geldiniz — bilgiye erişimi keyifli, araştırmayı öğrenciler ve akademik personel için daha verimli hale getirmek amacıyla oluşturulmuş dijital bir ortam.',
+    intro2: 'Bu elektronik kütüphane; ders kitapları, bilimsel ve akademik araştırmalar, akademik dergiler dahil olmak üzere geniş bir bilimsel kaynak yelpazesi sunar — hepsi tek platformda.',
+    intro3: 'Elektronik kütüphane yalnızca dijital bir koleksiyondan fazlasıdır. Eleştirel düşünmeyi ve yaşam boyu öğrenmeyi teşvik eder.',
+    intro4: 'Misyonumuz, bilginin özgürce erişilebilir olduğu destekleyici bir akademik alan inşa etmektir.',
+    objTitle: 'Proje Hedefleri:',
+    objectives: ['🎓 Üniversitelerde çevrimiçi öğrenimi destekleme','⚡ Bilimsel kaynaklara hızlı ve kolay erişim','📖 Binlerce bilimsel kaynağı tek bir yerde toplama','📱 Modern teknolojiyi {QR kodu} eğitime hizmet için kullanma','👨‍🏫 Öğretmenlerin ve öğrencilerin dijital kütüphane kaynaklarından yararlanması','⏰ Öğrencilerin boş zamanlarını bilimsel projelerle değerlendirme','🌐 Kitap ve kaynakların tüm dillerde erişilebilir olması'],
+    teamTitle: 'Hazırlayanlar:', role1: 'Biyoloji Bölümü Öğrencisi - Kitap temini', role2: 'Biyoloji Bölümü Öğrencisi - Kütüphane organizasyonu', role3: 'Biyoloji Bölümü Öğrencisi - Web Geliştirici',
+    mainLibTitle: 'Ana Kütüphane', enterLib1: 'Genel Kütüphane 1\'e Gir', enterLib2: 'Genel Kütüphane 2\'ye Gir',
+    deptTitle: 'Bilim Bölümleri', enterDept: 'Bölüme Gir',
+    dept1: 'Biyoloji Bölümü', dept1desc: 'Yaşam bilimleri, genetik, mikrobiyoloji ve daha fazlasında kitaplar',
+    dept2: 'Kimya Bölümü', dept2desc: 'Organik, inorganik, fiziksel ve laboratuvar kimyası kaynakları',
+    dept3: 'Fizik Bölümü', dept3desc: 'Klasik, modern, kuantum ve deneysel fizik kitapları',
+    dept4: 'Tıbbi Laboratuvar Bilimleri', dept4desc: 'Klinik analiz, tıbbi mikrobiyoloji ve rehber kaynakları',
+    dept5: 'İnşaat Mühendisliği Kütüphanesi', dept5desc: 'İnşaat mühendisliği alanındaki kitaplar ve kaynaklar',
+    aboutTitle: '👥 Hakkımızda',
+    aboutText: 'BioNova ekibi olarak, öğrenme ve teknolojiye ortak bir tutku duyan üç üniversite öğrencisiyiz.',
+    missionTitle: 'Misyonumuz:', missionText: 'Her öğrenciye bilgi kapısını açmak ve tüm akademik ihtiyaçları modern ve çağdaş bir şekilde karşılayan bir platform sunmak.',
+    footerText: 'Fen Fakültesi Elektronik Kütüphanesi - Raparin Üniversitesi | Tüm hakları saklıdır',
+    visitors: 'Ziyaretçi', scrollTopTitle: 'Başa Dön',
+  }
+}
 
-  <div class="team-card">
-                            <h3>إعداد:</h3>
-                            <div class="team-grid">
-                                <div class="team-member">
-                                    <h4>ژیاو یوسف حسێن</h4>
-                                    <p>طالب قسم علوم الحياة - توفير الكتب </p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>نیار قادر ڕەسوڵ </h4>
-                                    <p>مطالب قسم علوم الحياة - تنظيم المكتبة</p>
-                                </div>
-                                <div class="team-member">
-                                    <h4>محمود خدر فقێ ڕەسوڵ</h4>
-                                    <p>طالب قسم علوم الحياة - مطور مواقع الويب</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-                        
+const LTR_LANGS = ['en', 'tr', 'ku-badini-lat']
+const KU_DIALECTS = ['ku-sorani','ku-badini','ku-badini-lat','ku-hawrami']
 
-    <section class="library-sections">
-        <div class="container">
-            <div class="main-library">
-                <!-- Kurdish -->
-                <div class="lang-content active rtl" data-lang="ku">
-                    <h2>کتێبخانەی سەرەکی</h2>
-                    <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
-                        چونە ناو کتێبخانەی گشتی ١
-                    </a>
-                </div>
+const app = createApp({
+  setup() {
+    const currentLang = ref(sessionStorage.getItem('selectedLanguage') || 'ku-sorani')
+    const kuDropdownOpen = ref(false)
+    const kuDropdownStyle = ref({})
+    const isScrolled = ref(false)
+    const scrollPct = ref(0)
+    const showScrollTop = ref(false)
 
-                <!-- English -->
-                <div class="lang-content ltr" data-lang="en">
-                    <h2>Main Library</h2>
-                    <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
-                        Enter General Library 1
-                    </a>
-                </div>
+    // i18n
+    const t = (key) => {
+      const lang = translations[currentLang.value]
+      return lang?.[key] ?? translations['ku-sorani'][key] ?? key
+    }
 
-                <!-- Arabic -->
-                <div class="lang-content rtl" data-lang="ar">
-                    <h2>المكتبة الرئيسية</h2>
-                    <a href="https://drive.google.com/drive/folders/12PipzBzMVgfr1tFSy-4bplnVMnNHTy4d" class="main-library-btn" target="_blank">
-                        دخول إلى المكتبة العامة ١
-                    </a>
-                </div>
-</section>
-    <section class="library-sections">
-        <div class="container">
-            <div class="main-library">
-                <!-- Kurdish -->
-                 <div class="general-library-2">
-                <!-- Kurdish -->
-                <div class="lang-content active rtl" data-lang="ku">
+    const isLtr = computed(() => LTR_LANGS.includes(currentLang.value))
+    const isKurdish = computed(() => KU_DIALECTS.includes(currentLang.value))
+    const currentYear = computed(() => new Date().getFullYear())
 
-                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        چونە ناو کتێبخانەی گشتی ٢
-                    </a>
-                </div>
+    const kurdishDialects = [
+      { key: 'ku-sorani',     label: 'سۆرانی',  badge: 'Soranî',                ltr: false },
+      { key: 'ku-badini',     label: 'بادینی',   badge: 'Kurmancî (عەرەبی)',    ltr: false },
+      { key: 'ku-badini-lat', label: 'Badînî',   badge: 'Kurmancî (Latînî)',    ltr: true  },
+      { key: 'ku-hawrami',    label: 'هەورامی',  badge: 'Hewramî',              ltr: false },
+    ]
+    const otherLangs = [
+      { key: 'en', label: 'English' },
+      { key: 'ar', label: 'العربية' },
+      { key: 'fa', label: 'فارسی' },
+      { key: 'tr', label: 'Türkçe' },
+    ]
 
-                <!-- English -->
-                <div class="lang-content ltr" data-lang="en">
+    const teamMembers = [
+      { name: 'ژیاو یوسف حسێن',        roleKey: 'role1', social: false },
+      { name: 'نیار قادر ڕەسوڵ',        roleKey: 'role2', social: false },
+      { name: 'محمود خدر فقێ ڕەسوڵ',   roleKey: 'role3', social: true  },
+    ]
 
-                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        Enter General Library 2
-                    </a>
-                </div>
+    const departments = [
+      { key:'bio',   icon:'🧬', nameKey:'dept1', descKey:'dept1desc', link:'https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN' },
+      { key:'chem',  icon:'⚗️', nameKey:'dept2', descKey:'dept2desc', link:'https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh' },
+      { key:'phys',  icon:'⚛️', nameKey:'dept3', descKey:'dept3desc', link:'https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW' },
+      { key:'med',   icon:'🔬', nameKey:'dept4', descKey:'dept4desc', link:'https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i' },
+      { key:'civil', icon:'🏗️', nameKey:'dept5', descKey:'dept5desc', link:'https://bio.site/civil.engineer' },
+    ]
 
-                <!-- Arabic -->
-                <div class="lang-content rtl" data-lang="ar">
+    // Particles
+    const particles = Array.from({ length: 22 }, (_, i) => ({
+      id: i,
+      style: [
+        `left:${Math.random()*100}%`,
+        `top:${Math.random()*100}%`,
+        `width:${Math.random()*4+2}px`,
+        `height:${Math.random()*4+2}px`,
+        `animation-duration:${Math.random()*14+8}s`,
+        `animation-delay:${Math.random()*-15}s`,
+        `opacity:${Math.random()*0.5+0.1}`,
+      ].join(';')
+    }))
 
-                    <a href="https://drive.google.com/drive/folders/1KkvwcZdKCZzV7gjExlnOdl1JnCELHCkC" class="main-library-btn" target="_blank">
-                        دخول إلى المكتبة العامة ٢
-                         </a>
-                        </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-     </div>
-</div>
-</section>
-            <!-- Kurdish Content -->
-            <div class="lang-content active rtl" data-lang="ku">
-                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">بەشە زانستییەکان</h2>
-                <div class="sections-grid">
-                    <div class="section-card">
-                        <div class="section-icon">🧬</div>
-                        <h3>بەشی بایەلۆجی</h3>
-                        <p>پەرتووک و سەرچاوەکانی بواری زیندەزانی، بۆماوە، مایکرۆبایەلۆجی و زیاتر</p>
-                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">چونە ناو بەش</a>
-                    </div>
+    function selectLang(lang) {
+      currentLang.value = lang
+      sessionStorage.setItem('selectedLanguage', lang)
+      document.documentElement.setAttribute('dir', LTR_LANGS.includes(lang) ? 'ltr' : 'rtl')
+      document.documentElement.setAttribute('lang', lang)
+      kuDropdownOpen.value = false
+      nextTick(() => initReveal())
+    }
 
-                    <div class="section-card">
-                        <div class="section-icon">⚗️</div>
-                        <h3>بەشی کیمیا</h3>
-                        <p>سەرچاوەکانی کیمیای ئەندامی، نا ئەندامی، فیزیکی و کیمیای تاقیگەیی</p>
-                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">چونە ناو بەش</a>
-                    </div>
+    function toggleKuDropdown(e) {
+      if (!kuDropdownOpen.value) {
+        const rect = e.currentTarget.getBoundingClientRect()
+        kuDropdownStyle.value = { top: (rect.bottom + 6) + 'px', right: (window.innerWidth - rect.right) + 'px' }
+      }
+      kuDropdownOpen.value = !kuDropdownOpen.value
+    }
+    function closeKuDropdown() { kuDropdownOpen.value = false }
 
-                    <div class="section-card">
-                        <div class="section-icon">⚛️</div>
-                        <h3>بەشی فیزیا</h3>
-                        <p>پەرتووکەکانی فیزیای کلاسیک، مۆدێرن، کوانتەم و فیزیای تاقیگەیی</p>
-                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">چونە ناو بەش</a>
-                    </div>
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }) }
 
-                    <div class="section-card">
-                        <div class="section-icon">🔬</div>
-                        <h3>زانستی تاقیگەی پزیشکی</h3>
-                        <p>سەرچاوەکانی شیکردنەوەی کلینیکی، میکرۆبایەلۆجی پزیشکی و ڕێنماییەکان</p>
-                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">چونە ناو بەش</a>
-                    </div>
-                </div>
-            </div>
+    // Scroll
+    function onScroll() {
+      const scrolled = window.scrollY
+      const total = document.documentElement.scrollHeight - window.innerHeight
+      scrollPct.value = total > 0 ? (scrolled / total) * 100 : 0
+      isScrolled.value = scrolled > 40
+      showScrollTop.value = scrolled > 320
+    }
 
-            <!-- English Content -->
-            <div class="lang-content ltr" data-lang="en">
-                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">Scientific Departments</h2>
-                <div class="sections-grid">
-                    <div class="section-card">
-                        <div class="section-icon">🧬</div>
-                        <h3>Biology Department</h3>
-                        <p>Books and resources in life sciences, genetics, microbiology and more</p>
-                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">Enter Department</a>
-                    </div>
-
-                    <div class="section-card">
-                        <div class="section-icon">⚗️</div>
-                        <h3>Chemistry Department</h3>
-                        <p>Resources for organic, inorganic, physical and laboratory chemistry</p>
-                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">Enter Department</a>
-                    </div>
-
-                    <div class="section-card">
-                        <div class="section-icon">⚛️</div>
-                        <h3>Physics Department</h3>
-                        <p>Books on classical, modern, quantum and experimental physics</p>
-                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">Enter Department</a>
-                    </div>
-
-                    <div class="section-card">
-                        <div class="section-icon">🔬</div>
-                        <h3>Medical Laboratory Science</h3>
-                        <p>Resources for clinical analysis, medical microbiology and guidelines</p>
-                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">Enter Department</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Arabic Content -->
-            <div class="lang-content rtl" data-lang="ar">
-                <h2 style="text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 5vw, 2.5rem);">الأقسام العلمية</h2>
-                <div class="sections-grid">
-                    <div class="section-card">
-                        <div class="section-icon">🧬</div>
-                        <h3>قسم علوم الحياة</h3>
-                        <p>الكتب والمصادر في علوم الحياة والوراثة والأحياء الدقيقة والمزيد</p>
-                        <a href="https://drive.google.com/drive/folders/1daH4QdXeR7IglIiKeTNzjozlrqaRMXiN" class="section-btn">دخول القسم</a>
-                    </div>
-
-                    <div class="section-card">
-                        <div class="section-icon">⚗️</div>
-                        <h3>قسم الكيمياء</h3>
-                        <p>مصادر الكيمياء العضوية وغير العضوية والفيزيائية والمختبرية</p>
-                        <a href="https://drive.google.com/drive/folders/18Bng-T1WJS7s_WQVKWqsCTFfsdFMFAqh" class="section-btn">دخول القسم</a>
-                    </div>
-
-                    <div class="section-card">
-                        <div class="section-icon">⚛️</div>
-                        <h3>قسم الفيزياء</h3>
-                        <p>كتب الفيزياء الكلاسيكية والحديثة والكمية والتجريبية</p>
-                        <a href="https://drive.google.com/drive/folders/1BrvmaZTBXwCzPWpp-lFqAxOFXX-NBByW" class="section-btn">دخول القسم</a>
-                    </div>
-
-                    <div class="section-card">
-                        <div class="section-icon">🔬</div>
-                        <h3>علوم المختبرات الطبية</h3>
-                        <p>مصادر التحليل السريري والأحياء الدقيقة الطبية والإرشادات</p>
-                        <a href="https://drive.google.com/drive/folders/1tR1dwkEy9M4yM3CBiwajDRQ4-lCtp13i" class="section-btn">دخول القسم</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-   
-</section>
-    <!-- About Us Section -->
-    <section class="about-section">
-        <div class="container">
-            <!-- Kurdish Content -->
-            <div class="lang-content active rtl" data-lang="ku">
-                <div class="about-content">
-                    <h2>👥 دەربارەی ئێمە</h2>
-                    <div class="about-card">
-                        
-                        <p>
-                            ئێمە سێ خوێندکاری زانکۆین کە خولیای هاوبەشمان بۆ فێربوون و تەکنەلۆژیا هەیە. لە کاتی خوێندندا تێبینیمان کرد کە دۆزینەوەی سەرچاوەی متمانەپێکراو و باش و ڕێکخراو لە یەک شوێن زۆر ئەستەمە. ئەوەش ئیلهامبەخش بوو بۆ دروستکردنی ئەم پەرتووکخانە ئەلیکترۆنییە کە پلاتفۆرمێکی سادە و ئاسانە بۆ بەکارهێنان لە لایەن خوێندکاران و مامۆستایان کە دەتوانن زۆرترین زانیاری تێیدا بدۆزنەوە.
-                        </p>
-                        <div class="mission-card">
-                            <h3>ئامانجی ئێمە:</h3>
-                            <p>
-                                کردنەوەی دەرگای زانیاری بۆ هەموو خوێندکارێک و دابینکردنی یەک پلاتفۆرم کە هەموو پێداویستییەکانی ئەکادیمی دابین بکات بە شێوەیەکی مۆدێرن و سەردەمیانە.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- English Content -->
-            <div class="lang-content ltr" data-lang="en">
-                <div class="about-content">
-                    <h2>👥 About Us</h2>
-                    <div class="about-card">
-                        
-                        <p>
-                            We are three university students who share a passion for learning and technology. During our studies, we noticed that finding reliable, quality, and well-organized resources in one place was very difficult. This inspired us to create this electronic library as a simple and easy-to-use platform for students and teachers to find the most comprehensive information.
-                        </p>
-                        <div class="mission-card">
-                            <h3>Our Mission:</h3>
-                            <p>
-                                To open the door of knowledge to every student and provide a comprehensive platform that meets all academic needs in a modern and contemporary way.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Arabic Content -->
-            <div class="lang-content rtl" data-lang="ar">
-                <div class="about-content">
-                    <h2>👥 معلومات عنا</h2>
-                    <div class="about-card">
-                        
-                        <p>
-                            نحن ثلاثة طلاب جامعيين نتشارك شغفاً مشتركاً للتعلم والتكنولوجيا. خلال دراستنا، لاحظنا أن العثور على مصادر موثوقة وجيدة ومنظمة في مكان واحد أمر صعب جداً. هذا ما ألهمنا لإنشاء هذه المكتبة الإلكترونية كمنصة بسيطة وسهلة الاستخدام للطلاب والمدرسين للعثور على أكثر المعلومات شمولية.
-                        </p>
-                        <div class="mission-card">
-                            <h3>مهمتنا:</h3>
-                            <p>
-                                فتح باب المعرفة لكل طالب وتوفير منصة شاملة تلبي جميع الاحتياجات الأكاديمية بطريقة حديثة ومعاصرة.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <!-- Kurdish -->
-            <div class="lang-content active" data-lang="ku">
-                <p>  کتێبخانەی ئەلیکترۆنی کۆلێژی زانست - زانکۆی ڕاپەڕین. هەموو مافەکان پارێزراون. &copy; ٢٠٢٥ </p>
-            </div>
-
-            <!-- English -->
-            <div class="lang-content" data-lang="en">
-                <p> College of Science Electronic Library - Raparin University. All rights reserved. &copy; 2025 </p>
-            </div>
-
-            <!-- Arabic -->
-            <div class="lang-content" data-lang="ar">
-                <p>  المكتبة الإلكترونية لكلية العلوم - جامعة رابەرين. جميع الحقوق محفوظة. &copy; ٢٠٢٥ </p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Enhanced Language Switcher with Session Storage
-        const langButtons = document.querySelectorAll('.lang-btn');
-        const langContents = document.querySelectorAll('.lang-content');
-
-        // Load saved language preference
-        const savedLang = sessionStorage.getItem('selectedLanguage') || 'ku';
-        switchLanguage(savedLang);
-
-        langButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetLang = button.getAttribute('data-lang');
-                switchLanguage(targetLang);
-                sessionStorage.setItem('selectedLanguage', targetLang);
-            });
-        });
-
-        function switchLanguage(lang) {
-            // Add loading state
-            document.body.classList.add('loading');
-
-            setTimeout(() => {
-                // Remove active class from all buttons and contents
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                langContents.forEach(content => {
-                    content.classList.remove('active');
-                    content.style.opacity = '0';
-                });
-
-                // Add active class to selected button
-                const targetButton = document.querySelector(`[data-lang="${lang}"].lang-btn`);
-                if (targetButton) targetButton.classList.add('active');
-
-                // Show contents for selected language with fade effect
-                const targetContents = document.querySelectorAll(`[data-lang="${lang}"].lang-content`);
-                targetContents.forEach(content => {
-                    content.classList.add('active');
-                    setTimeout(() => content.style.opacity = '1', 10);
-                });
-
-                // Update body direction with smooth transition
-                document.body.classList.remove('rtl', 'ltr');
-                if (lang === 'en') {
-                    document.body.classList.add('ltr');
-                } else {
-                    document.body.classList.add('rtl');
-                }
-
-                // Remove loading state
-                document.body.classList.remove('loading');
-            }, 100);
+    // Reveal
+    let revealObserver = null
+    function initReveal() {
+      document.querySelectorAll('.reveal-item').forEach(el => {
+        el.classList.add('reveal')
+        const rect = el.getBoundingClientRect()
+        if (rect.top < window.innerHeight - 40) {
+          el.classList.add('visible')
+        } else {
+          el.classList.remove('visible')
+          revealObserver?.observe(el)
         }
+      })
+    }
 
-        // Enhanced Link Interaction with Loading States
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                this.classList.add('loading');
+    onMounted(() => {
+      window.addEventListener('scroll', onScroll, { passive: true })
+      revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible')
+            revealObserver.unobserve(e.target)
+          }
+        })
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+      nextTick(() => initReveal())
+      document.documentElement.setAttribute('dir', LTR_LANGS.includes(currentLang.value) ? 'ltr' : 'rtl')
+    })
 
-                // Remove loading state after a delay
-                setTimeout(() => {
-                    this.classList.remove('loading');
-                }, 2000);
-            });
-        });
+    onUnmounted(() => {
+      window.removeEventListener('scroll', onScroll)
+      revealObserver?.disconnect()
+    })
 
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    return {
+      currentLang, kuDropdownOpen, kuDropdownStyle,
+      isScrolled, scrollPct, showScrollTop,
+      isLtr, isKurdish, currentYear,
+      kurdishDialects, otherLangs, teamMembers, departments, particles,
+      t, selectLang, toggleKuDropdown, closeKuDropdown, scrollToTop
+    }
+  }
+})
 
-        // Enhanced Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// v-click-outside directive
+app.directive('click-outside', {
+  beforeMount(el, binding) {
+    el._clickOutside = e => { if (!el.contains(e.target)) binding.value(e) }
+    document.addEventListener('click', el._clickOutside)
+  },
+  unmounted(el) { document.removeEventListener('click', el._clickOutside) }
+})
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
+app.mount('#app')
+</script>
 
-        // Observe all cards
-        document.querySelectorAll('.section-card, .intro-card, .objectives-card, .team-card').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Touch feedback for mobile devices
-        if ('ontouchstart' in window) {
-            document.querySelectorAll('.section-btn, .main-library-btn, .lang-btn').forEach(button => {
-                button.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.95)';
-                });
-
-                button.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                });
-            });
-        }
-
-        // Keyboard navigation enhancement
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                document.body.classList.add('keyboard-nav');
-            }
-        });
-
-        document.addEventListener('mousedown', () => {
-            document.body.classList.remove('keyboard-nav');
-        });
-
-        // Orientation change handler
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 100);
-        });
-
-        // Performance optimization: Debounce resize events
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                // Re-calculate any dynamic elements if needed
-                console.log('Window resized - recalculating layout');
-            }, 250);
-        });
-
-        // Add CSS for additional animations
-        const additionalStyles = document.createElement('style');
-        additionalStyles.textContent = `
-            .keyboard-nav *:focus {
-                outline: 2px solid var(--primary-color);
-                outline-offset: 2px;
-            }
-            
-            .animate-in {
-                animation: slideInUp 0.6s ease-out forwards;
-            }
-            
-            @keyframes slideInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            /* Additional responsive utilities */
-            @media (max-width: 320px) {
-                .container {
-                    padding: 0 0.5rem;
-                }
-                
-                .section-card {
-                    min-height: 220px;
-                }
-            }
-            
-            @media (orientation: landscape) and (max-height: 500px) {
-                .hero {
-                    min-height: 400px;
-                    padding: 2rem 0;
-                }
-            }
-        `;
-        document.head.appendChild(additionalStyles);
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Electronic Library - Fully Responsive Version Loaded');
-
-            // Add a subtle loading animation to cards
-            const cards = document.querySelectorAll('.section-card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
-        });
-    </script>
+<script data-goatcounter="https://mahmodfaqe.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

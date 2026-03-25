@@ -272,11 +272,40 @@
 <div id="scrollProgress"></div>
 
 <!-- ══════════ HEADER ══════════ -->
-<header id="site-header" class="sticky top-0 z-[1000] backdrop-blur-md transition-shadow duration-300"
-        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 4px 24px rgba(102,126,234,0.25);">
-    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3">
-        <div class="flex items-center gap-2 sm:gap-4 flex-nowrap">
+<header id="site-header" class="sticky top-0 z-[1000] bg-white border-b border-gray-100 transition-all duration-300 shadow-sm">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div class="flex items-center justify-between gap-4 flex-nowrap">
 
+            <a class="logo-link flex items-center gap-3 no-underline group" href="#">
+                <img src="https://uor.edu.krd/wp-content/uploads/2023/12/4bc51081cc23dcd53e16c02e329e3878-scaled.webp"
+                     alt="UoR Logo"
+                     class="uor-logo object-contain transition-transform duration-300 group-hover:scale-105"
+                     style="height: clamp(45px, 8vw, 65px);">
+                
+                <div class="flex flex-col border-r-2 border-blue-900 pr-3">
+                    <span class="font-bold text-blue-900 leading-tight" style="font-size: clamp(0.9rem, 2.5vw, 1.3rem);">
+                        <span class="lang-content active" data-lang="ku-sorani">زانکۆی ڕاپەڕین</span>
+                        <span class="lang-content" data-lang="en">University of Raparin</span>
+                    </span>
+                    <span class="text-gray-500 font-medium" style="font-size: clamp(0.7rem, 1.8vw, 0.95rem);">
+                        <span class="lang-content active" data-lang="ku-sorani">کتێبخانەی ئەلیکترۆنی</span>
+                        <span class="lang-content" data-lang="en">Electronic Library</span>
+                    </span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2">
+                <div class="relative group">
+                    <button onclick="toggleKuDropdown()" 
+                            class="flex items-center gap-2 px-3 py-1.5 bg-gray-50 text-blue-900 border border-gray-200 rounded-md hover:bg-blue-900 hover:text-white transition-all duration-300 text-sm font-bold">
+                        <span>زمان</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</header>
             <!-- Logo -->
             <a class="logo-link flex items-center gap-1.5 sm:gap-2.5 flex-shrink min-w-0 no-underline" href="#">
                 <img src="https://uor.edu.krd/wp-content/uploads/2023/12/4bc51081cc23dcd53e16c02e329e3878-scaled.webp"

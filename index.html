@@ -226,14 +226,23 @@
         }
 
         /* Logo hover */
-        .logo-link:hover .uor-logo {
-            transform: scale(1.12) rotate(4deg);
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.55));
-        }
-        .logo-link:hover .logo-title-el  { color: #ffd700; }
-        .logo-link:hover .logo-sub-el { color: rgba(255,215,0,0.78); }
-        .uor-logo { transition: all 0.45s cubic-bezier(0.4,0,0.2,1); }
-        .logo-title-el, .logo-sub-el { transition: color 0.35s ease; }
+        /* ئەگەر دەتەوێت سێبەری ژێر لۆگۆکە وەک زانکۆ بێت */
+.logo-link:hover .uor-logo {
+    transform: scale(1.05);
+    filter: none; /* سێبەری سپی لادەین چونکە باکگراوەندەکە خۆی سپییە */
+}
+
+/* ڕەنگی دوگمەی زمانەکان */
+.lang-btn, #kuMainBtn {
+    color: #1e3a8a !important; /* Blue-900 */
+    border-color: #e5e7eb !important;
+    background-color: #f9fafb !important;
+}
+
+.lang-btn:hover, #kuMainBtn:hover {
+    background-color: #1e3a8a !important;
+    color: white !important;
+}
 
         /* Main library btn */
         .main-library-btn::after {

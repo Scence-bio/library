@@ -19,7 +19,7 @@
                         'bg-main': '#f8f9ff',
                     },
                     fontFamily: {
-                        kufi: ['NotoKufiArabic', 'sans-serif'],
+                      kufi: ['Rabar', 'sans-serif'],
                     },
                     backdropBlur: {
                         xs: '2px',
@@ -71,8 +71,8 @@
     </script>
     <style>
        @font-face {
-    font-family: "Rabar 015";
-    src: url("fonts/Rabar_015.ttf") format("truetype");
+    font-family: 'Rabar';
+    src: url('./Rabar_015.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -91,7 +91,7 @@
         @media (max-width: 480px)  { html { font-size: 14px; } }
         @media (min-width: 1200px) { html { font-size: 18px; } }
 
-        body { font-family: 'NotoKufiArabic', sans-serif; }
+        body { font-family: 'Rabar', sans-serif; }
 
         /* Scroll progress bar */
         #scrollProgress {
@@ -324,12 +324,12 @@
                         کوردی <span class="text-[0.5rem] transition-transform duration-300" id="kuArrow">▼</span>
                     </button>
                     <div class="ku-dropdown" id="kuDropdown">
-                        <button class="ku-dialect-btn active block w-full bg-transparent border-0 text-white text-right cursor-pointer transition-colors duration-200 hover:bg-white/15 font-[NotoKufiArabic,sans-serif]"
+                        <button class="ku-dialect-btn active block w-full bg-transparent border-0 text-white text-right cursor-pointer transition-colors duration-200 hover:bg-white/15 font-[Rabar,sans-serif]"
                                 style="padding: clamp(0.38rem,1.2vw,0.55rem) clamp(0.6rem,2vw,1rem); font-size:clamp(0.58rem,1.4vw,0.8rem); min-height:36px;"
                                 data-lang="ku-sorani" onclick="selectDialect('ku-sorani',this)">
                             سۆرانی<span class="block text-[0.5em] opacity-65 mt-px">Soranî</span>
                         </button>
-                        <button class="ku-dialect-btn block w-full bg-transparent border-0 text-white text-right cursor-pointer transition-colors duration-200 hover:bg-white/15 font-[NotoKufiArabic,sans-serif]"
+                        <button class="ku-dialect-btn block w-full bg-transparent border-0 text-white text-right cursor-pointer transition-colors duration-200 hover:bg-white/15 font-[Rabar,sans-serif]"
                                 style="padding: clamp(0.38rem,1.2vw,0.55rem) clamp(0.6rem,2vw,1rem); font-size:clamp(0.58rem,1.4vw,0.8rem); min-height:36px;"
                                 data-lang="ku-badini" onclick="selectDialect('ku-badini',this)">
                             بادینی<span class="block text-[0.5em] opacity-65 mt-px">Kurmancî (عەرەبی)</span>
@@ -339,7 +339,7 @@
                                 data-lang="ku-badini-lat" onclick="selectDialect('ku-badini-lat',this)">
                             Badînî<span class="block text-[0.5em] opacity-65 mt-px">Kurmancî (Latînî)</span>
                         </button>
-                        <button class="ku-dialect-btn block w-full bg-transparent border-0 text-white text-right cursor-pointer transition-colors duration-200 hover:bg-white/15 font-[NotoKufiArabic,sans-serif]"
+                        <button class="ku-dialect-btn block w-full bg-transparent border-0 text-white text-right cursor-pointer transition-colors duration-200 hover:bg-white/15 font-[Rabar,sans-serif]"
                                 style="padding: clamp(0.38rem,1.2vw,0.55rem) clamp(0.6rem,2vw,1rem); font-size:clamp(0.58rem,1.4vw,0.8rem); min-height:36px;"
                                 data-lang="ku-hawrami" onclick="selectDialect('ku-hawrami',this)">
                             هەورامی<span class="block text-[0.5em] opacity-65 mt-px">Hewramî</span>

@@ -1225,26 +1225,28 @@ document.querySelectorAll('.section-card').forEach(function(card){
     'file/image2.jpg',
     'file/image3.jpg',
     'file/image4.jpg'
-    ];
+];
 
     let currentIndex = 0;
     const heroSection = document.getElementById('hero-section');
 
-    // فەنکشنێک بۆ گۆڕینی وێنەکە
-    function updateBackground() {
-    heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
-    currentIndex = (currentIndex + 1) % images.length;
-    }
+    // --- ١. پێشوەختە بارکردنی وێنەکان (Preloading) ---
+    images.forEach((path) => {
+    const img = new Image();
+    img.src = path;
+});
+
+    // --- ٢. فەنکشنی گۆڕینی وێنە بە شێوازێکی نەرم ---
     function changeBackground() {
     currentIndex = (currentIndex + 1) % images.length;
-    // پاراستنی Overlayـە ڕەشەکە لەگەڵ گۆڕینی وێنەکە
+    
+    // لێرەدا وێنەکە دەگۆڕین و Overlayـە ڕەشەکەش دەهێڵینەوە (bg-black/40)
+    // تێبینی: Tailwind 'transition-all' کار لەسەر backgroundImage دەکات
     heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[currentIndex]}')`;
-    }
-    // بانگکردنی فەنکشنەکە بۆ جاری یەکەم (بۆ ئەوەی ٥ چرکە نەوەستێت)
-    updateBackground();
+}
 
-    // دانانی کات بۆ گۆڕین
-    setInterval(updateBackground, 5000);
+    // دەستپێکردنی گۆڕین هەر ٥ چرکە جارێک
+    setInterval(changeBackground, 5000);
 </script>
 
 <script data-goatcounter="https://mahmodfaqe.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

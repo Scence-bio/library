@@ -436,15 +436,19 @@
 
 <!-- ══════════ HERO ══════════ -->
 <section class="relative overflow-hidden flex items-center text-white text-center"
-         style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: clamp(5rem,14vw,10rem) 0 clamp(4rem,10vw,8rem); min-height: clamp(420px,65vh,680px);">
+         style="background-image: url('./image.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: clamp(5rem,14vw,10rem) 0 clamp(4rem,10vw,8rem); min-height: clamp(420px,65vh,680px);">
 
+    <!-- دانانی چینێکی تاریک (Overlay) بۆ ئەوەی نووسینەکان بە ڕوونی دەربکەون -->
+    <div class="absolute inset-0 bg-black/40 z-0"></div>
     <!-- Mesh blobs -->
     <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
         <span class="mesh-blob" style="width:45vw;height:45vw;background:rgba(255,255,255,0.15);top:-10%;left:-8%;animation-delay:0s;"></span>
         <span class="mesh-blob" style="width:35vw;height:35vw;background:rgba(255,107,107,0.2);top:20%;right:-5%;animation-delay:-4s;"></span>
         <span class="mesh-blob" style="width:30vw;height:30vw;background:rgba(255,255,255,0.1);bottom:-10%;left:30%;animation-delay:-8s;"></span>
     </div>
-
+<div class="container mx-auto relative z-20">
+      
+    </div>
     <!-- Particles -->
     <div class="absolute inset-0 pointer-events-none" id="heroParticles" aria-hidden="true"></div>
 

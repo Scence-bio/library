@@ -1221,22 +1221,30 @@ document.querySelectorAll('.section-card').forEach(function(card){
 </script>
 <script>
     const images = [
-        'file/image1.jpg',
-        'file/image2.jpg',
-        'file/image3.jpg',
-        'file/image4.jpg'
+    'file/image1.jpg',
+    'file/image2.jpg',
+    'file/image3.jpg',
+    'file/image4.jpg'
     ];
 
     let currentIndex = 0;
     const heroSection = document.getElementById('hero-section');
 
-    function changeBackground() {
-        currentIndex = (currentIndex + 1) % images.length;
-        heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
+    // فەنکشنێک بۆ گۆڕینی وێنەکە
+    function updateBackground() {
+    heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
+    currentIndex = (currentIndex + 1) % images.length;
     }
+    function changeBackground() {
+    currentIndex = (currentIndex + 1) % images.length;
+    // پاراستنی Overlayـە ڕەشەکە لەگەڵ گۆڕینی وێنەکە
+    heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[currentIndex]}')`;
+    }
+    // بانگکردنی فەنکشنەکە بۆ جاری یەکەم (بۆ ئەوەی ٥ چرکە نەوەستێت)
+    updateBackground();
 
-    // گۆڕینی وێنەکان هەر ٥ چرکە جارێک
-    setInterval(changeBackground, 5000);
+    // دانانی کات بۆ گۆڕین
+    setInterval(updateBackground, 5000);
 </script>
 
 <script data-goatcounter="https://mahmodfaqe.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

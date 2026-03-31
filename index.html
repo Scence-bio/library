@@ -225,19 +225,8 @@
             display: block;
             animation: dropdownOpen 0.22s cubic-bezier(0.34,1.56,0.64,1) forwards;
         }
-#hero-section {
-    /* دڵنیابوونەوە لەوەی تێپەڕینی وێنەکە نەرمە */
-    transition: background-image 1.2s ease-in-out !important;
-    background-size: cover;
-    background-position: center;
-}
 
-/* ئەگەر دەتەوێت کاتێک وێنەکە دەگۆڕێت کەمێک جوڵەی تێدابێت (Zoom effect) */
-@keyframes slowZoom {
-    from { background-size: 100%; }
-    to { background-size: 110%; }
-}
-     /* Logo hover */
+        /* Logo hover */
         .logo-link:hover .uor-logo {
             transform: scale(1.12) rotate(4deg);
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.55));
@@ -1232,35 +1221,21 @@ document.querySelectorAll('.section-card').forEach(function(card){
 </script>
 <script>
     const images = [
-    'file/image1.jpg',
-    'file/image2.jpg',
-    'file/image3.jpg',
-    'file/image4.jpg'
-];
+        'file/image1.jpg',
+        'file/image2.jpg',
+        'file/image3.jpg',
+        'file/image4.jpg'
+    ];
 
     let currentIndex = 0;
     const heroSection = document.getElementById('hero-section');
 
-    // --- ١. پێشوەختە بارکردنی وێنەکان (Preloading) ---
-    images.forEach((path) => {
-    const img = new Image();
-    img.src = path;
-});
+    function changeBackground() {
+        currentIndex = (currentIndex + 1) % images.length;
+        heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
+    }
 
-    // --- ٢. فەنکشنی گۆڕینی وێنە بە شێوازێکی نەرم ---
-    function changeBackground() {
-    currentIndex = (currentIndex + 1) % images.length;
-    
-    // لێرەدا وێنەکە دەگۆڕین و Overlayـە ڕەشەکەش دەهێڵینەوە (bg-black/40)
-    // تێبینی: Tailwind 'transition-all' کار لەسەر backgroundImage دەکات
-    heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[currentIndex]}')`;
-}
-    function changeBackground() {
-    currentIndex = (currentIndex + 1) % images.length;
-    // پاراستنی Overlayـە ڕەشەکە لەگەڵ گۆڕینی وێنەکە
-    heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[currentIndex]}')`;
-}
-    // دەستپێکردنی گۆڕین هەر ٥ چرکە جارێک
+    // گۆڕینی وێنەکان هەر ٥ چرکە جارێک
     setInterval(changeBackground, 5000);
 </script>
 

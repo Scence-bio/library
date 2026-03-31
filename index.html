@@ -1255,7 +1255,11 @@ document.querySelectorAll('.section-card').forEach(function(card){
     // تێبینی: Tailwind 'transition-all' کار لەسەر backgroundImage دەکات
     heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[currentIndex]}')`;
 }
-
+    function changeBackground() {
+    currentIndex = (currentIndex + 1) % images.length;
+    // پاراستنی Overlayـە ڕەشەکە لەگەڵ گۆڕینی وێنەکە
+    heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${images[currentIndex]}')`;
+}
     // دەستپێکردنی گۆڕین هەر ٥ چرکە جارێک
     setInterval(changeBackground, 5000);
 </script>

@@ -96,7 +96,13 @@ body { overflow-x: hidden; }
 }
 
 .ku-dropdown {
-  position: fixed; background: rgba(70,50,130,.96);
+  /* کۆن (کار ناکات) */
+position: fixed;
+
+/* نوێ (کار دەکات) */
+position: absolute;
+top: calc(100% + 6px);
+right: 0; background: rgba(70,50,130,.96);
   backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.15);
   border-radius: 12px; overflow: hidden; z-index: 9999;
   box-shadow: 0 16px 48px rgba(0,0,0,.35);
